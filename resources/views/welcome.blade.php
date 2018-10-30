@@ -96,6 +96,9 @@
             </div>
         </div>
 
-        @yield('auth.login')
+        <example-component></example-component>
+
+        {{--@yield('auth.login')--}}
     </body>
+    <script src="{{ mix('/js/app.js') }}"></script>
 </html>

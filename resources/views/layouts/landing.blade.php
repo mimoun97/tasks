@@ -5,11 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title', 'Put your title here')</title>
+    <title>Document</title>
 </head>
 <body>
-    @yield('')
 
-    <input type="hidden" name="_token" value="TODO">
 </body>
 </html>
