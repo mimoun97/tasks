@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Task;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class TasksController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +15,15 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+
+        return view('tasks', ['tasks' =>
+            [
+            'Comprar pa',
+            'Anar supermercat',
+            'Estudiar',
+            'Fer commit github'
+            ]
+        ]);
     }
 
     /**

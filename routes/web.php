@@ -15,7 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/tasks', 'TasksController@index');
+
 Route::get('/tasks', function () {
     return view('tasks');
 });
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+
 
