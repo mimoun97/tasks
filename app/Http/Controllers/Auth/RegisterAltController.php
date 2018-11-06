@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace AppTasques\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\User;
+use AppTasques\Http\Controllers\Controller;
+use AppTasques\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

@@ -6,8 +6,8 @@
     <h1>Tasques</h1>
 
     <ul>
-        @foreach($tasks as $task)
-            <li>{{ $task }}</li>
-        @endforeach
+        {{--@foreach($tasks as $task)--}}
+            {{--<li>{{ $task }}</li>--}}
+        {{--@endforeach--}}
     </ul>
 @endsection

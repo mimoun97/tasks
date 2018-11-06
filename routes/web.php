@@ -36,3 +36,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/register_alt','Auth\RegisterAltController@register');
+
+Route::get('/tasques', 'TasquesController@index');
