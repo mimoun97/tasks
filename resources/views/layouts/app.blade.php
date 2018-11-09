@@ -11,15 +11,9 @@
 </head>
 <body>
 HEADER
-<nav>
-    <ul><li><a href="/">Welcome</a></li></ul>
-    <ul><li><a href="/tasks">Tasques amb PHP</a></li></ul>
-    <ul><li><a href="/tasks_vue">Tasques amb Vue</a></li></ul>
-    <ul><li><a href="/contact">Contact</a></li></ul>
-    <ul><li><a href="/about">About</a></li></ul>
-</nav>
+
 <div id="app">
-    {{ message }}
+
 </div>
 FOOTER
 <script src="{{ mix('/js/app.js') }}"></script>

@@ -1,6 +1,6 @@
 <template>
     <span>
-        TODO
+       <h1>Tasques.vue</h1>
     </span>
 </template>
 
@@ -9,6 +9,9 @@
         name: "Tasques",
         data () {
             dataTasks: []
+        },
+        mounted() {
+            console.log('Component mounted.')
         }
     }
 </script>

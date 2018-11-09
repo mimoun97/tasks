@@ -10,16 +10,16 @@
     <title>@yield('title', 'Laravel')</title>
 
 </head>
-<body>
+<body id="app">
 
-
-
-<ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/contact">Contact'ns</a> per a aprendre més.</li>
-    <li><a href="/about">Sobre</a> nosaltres</li>
-    <li><a href="/tasks">Tasques</a></li>
-</ul>
+<nav>
+    <ul><li><a href="/">Welcome</a></li></ul>
+    <ul><li><a href="/tasks">Tasques amb PHP</a></li></ul>
+    <ul><li><a href="/tasks_vue">Tasques amb Vue</a></li></ul>
+    <ul><li><a href="/contact">Contact</a></li></ul>
+    <ul><li><a href="/about">About</a></li></ul>
+    <ul><li><a href="/about">About</a></li></ul>
+</nav>
 
 @yield('content')
 

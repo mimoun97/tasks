@@ -19,7 +19,10 @@
 
             }
         },
-        props: ['email', 'csrf-token']
+        props: ['email', 'csrf-token'],
+        mounted() {
+            console.log('Component mounted.')
+        }
     }
 
 </script>
