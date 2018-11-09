@@ -1,87 +1,61 @@
 <?php
 
-namespace AppTasques\Http\Controllers;
+namespace App\Http\Controllers;
 
-use AppTasques\Task;
+use App\Task;
 use Illuminate\Http\Request;
 
 class TasksController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $tasks =
-        return view('tasks');
+        $tasks = Task::orderBy('created_at','desc')->get();
+        return view('tasks',['tasks' => $tasks]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+//        dd(Request::input());
+        // Request::
+//        https://laravel.com/docs/5.7/requests
+        Task::create([
+            'name' => $request->name,
+            'completed' => false
+        ]);
+
+        // Retornar a /tasks
+        return redirect('/tasks');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \AppTasques\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Task $task)
+    public function destroy(Request $request)
     {
-        //
+//        dd($request->id);
+        $task = Task::findOrFail($request->id);
+        $task->delete();
+        // Retornar a /tasks
+        return redirect()->back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \AppTasques\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Task $task)
+    public function update(Request $request)
     {
-        //
+//        dd($request->id);
+        // Models -> Eloquent -> ORM (HIBERNATE de Java) Object Relation Model
+//        dd(Task::find($request->id));
+
+//        if (!Task::find($request->id)) return response(404,'No he trobat');
+        $task = Task::findOrFail($request->id);
+
+        $task->name = $request->name;
+        $task->completed = true;
+        $task->save();
+        return redirect('/tasks');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \AppTasques\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Task $task)
+    public function edit(Request $request)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \AppTasques\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Task $task)
-    {
-        //
+        $task = Task::findOrFail($request->id);
+        return view('task_edit',[ 'task' => $task]);
+//        return view('task_edit',compact('task'));
     }
 }

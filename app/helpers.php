@@ -1,7 +1,11 @@
 <?php
+
+use App\Task;
+use App\User;
+
 if (!function_exists('create_primary_user')) {
     function create_primary_user() {
-        $user = User::where('email', 'sergiturbadenas@gmail.com')->first();
+        $user = User::where('email', 'mimounhaddou@iesebre.com')->first();
         if (!$user) {
             User::firstOrCreate([
                 'name' => 'Mimoun Haddou',

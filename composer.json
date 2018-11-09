@@ -24,8 +24,11 @@
             "database/factories"
         ],
         "psr-4": {
-            "AppTasques\\": "app/"
-        }
+            "App\\": "app/"
+        },
+        "files" : [
+            "./app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
