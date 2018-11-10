@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    public function index()
-    {
-        $tasks = Task::orderBy('created_at', 'desc')->get();
-        return view('tasks');
-    }
+	/**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'completed'
+    ];
 }
