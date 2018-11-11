@@ -51,8 +51,9 @@ class TasksController extends Controller
         ]);
 
         $task->name = $request->name;
-        $task->completed = true;
+        $task->complete($request->has('completed'));
         $task->save();
+        
         return redirect('/tasks');
     }
 
@@ -63,4 +64,5 @@ class TasksController extends Controller
         return view('task_edit',[ 'task' => $task]);
 //        return view('task_edit',compact('task'));
     }
+
 }

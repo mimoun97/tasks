@@ -30,4 +30,14 @@ class Task extends Model
         $file->task_id = $this->id;
         $file->save();
     }
+
+        public function complete($completed = true)
+    {
+        $this->update(compact('completed'));
+    }
+    
+    public function incomplete()
+    {
+        $this->complete(false);
+    }
 }
