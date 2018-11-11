@@ -24,6 +24,7 @@ class TasksController extends Controller
 //        https://laravel.com/docs/5.7/requests
         Task::create([
             'name' => $request->name,
+            //'name' => $request('name'),
             'completed' => false
         ]);
 

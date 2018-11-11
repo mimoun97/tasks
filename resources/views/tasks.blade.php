@@ -6,13 +6,17 @@
     <h1>Tasques</h1>
 
 	<ul>
-        @foreach($tasks as $task)
-            <li>{{ $task->name }}</li>Completed:
-        @if ( $task->completed )
-            <input name="completed" type="checkbox" checked>
-        @else
-            <input name="completed" type="checkbox">
-        @endif
+         @foreach ($tasks as $task)
+            <li>{{ $task->name }} <button>Completar</button>
+                <a href="/task_edit/{{ $task->id }}">
+                    <button>Modificar</button>
+                </a>
+
+                <form action="/tasks/{{ $task->id }}" method="POST">
+                    @csrf
+                    {{ method_field('DELETE') }}
+                    <button>Eliminar</button>
+                </form>
             </li>
         @endforeach
     </ul> 

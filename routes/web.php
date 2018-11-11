@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Route::get('/tasks', 'TasksController@index');
 Route::post('/tasks','TasksController@store');
+Route::put('/tasks/{id}','TasksController@update');
+Route::delete('/tasks/{id}','TasksController@destroy');
+
+Route::get('/task_edit/{id}','TasksController@edit');
 
 Route::get('/contact', function () {
     return view('contact');
