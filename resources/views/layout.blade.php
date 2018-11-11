@@ -20,7 +20,12 @@
     <ul><li><a href="/about">About</a></li></ul>
 </nav>
 
-@yield('content')
+<div id="app">
+    @yield('content')
+    
+</div>
+
+
 
 </body>
 <script src="{{ mix('/js/app.js') }}"></script>
