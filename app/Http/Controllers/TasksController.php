@@ -51,9 +51,10 @@ class TasksController extends Controller
         ]);
 
         $task->name = $request->name;
-        $task->complete($request->has('completed'));
+        //$task->complete($request->has('completed'));
+        $request->has('completed') ? $task->complete() : $task->incomplete();
         $task->save();
-        
+
         return redirect('/tasks');
     }
 

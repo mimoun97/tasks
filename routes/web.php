@@ -22,6 +22,11 @@ Route::delete('/tasks/{id}','TasksController@destroy');
 
 Route::get('/task_edit/{id}','TasksController@edit');
 
+
+Route::post('/completed_task/{task}','CompletedTasksController@store');
+
+Route::delete('/completed_task/{task}','CompletedTasksController@destroy');
+
 Route::get('/contact', function () {
     return view('contact');
 });

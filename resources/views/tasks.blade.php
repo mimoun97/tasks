@@ -7,12 +7,13 @@
 	<ul>
          @foreach ($tasks as $task)
             <li>{{ $task->name }} 
-            	|| Completed: <input name="completed" type="checkbox" {{$task->completed ? 'checked' : '' }}>
-            	<form action="/tasks/{{ $task->id }}" method="POST">
-                    @csrf
-                    {{ method_field('PUT') }}
-                    <button>Completar</button>
-                </form>
+            <form action="/completed_task/{{$task->id}}" method="POST">
+                @csrf
+                @if ($task->completed)
+                    @method('DELETE')
+                @endif
+            	|| Completed: <input name="completed" type="checkbox" onchange="this.form.submit()" {{$task->completed ? 'checked' : '' }}>
+            </form>
                 <a href="/task_edit/{{ $task->id }}">
                     <button>Modificar</button>
                 </a>
