@@ -8,11 +8,7 @@
         Name: <input name="name" type="text" value="{{$task->name}}" >
         {{--// CHECKBOX--}}
         Completed:
-        @if ( $task->completed )
-            <input name="completed" type="checkbox" checked>
-        @else
-            <input name="completed" type="checkbox">
-        @endif
+            <input name="completed" type="checkbox" {{$task->completed ? 'checked' : '' }}>
         <button>Editar</button>
 
         @if ($errors->any())

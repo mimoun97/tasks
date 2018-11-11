@@ -14,4 +14,20 @@ class Task extends Model
     protected $fillable = [
         'name', 'completed'
     ];
+
+    public function user()
+    {
+    	return $this->belongsTo(User::class);
+    }
+
+    public function file()
+    {
+        return $this->hasOne(File::class);
+    }
+
+    public function assignFile(File $file)
+    {
+        $file->task_id = $this->id;
+        $file->save();
+    }
 }

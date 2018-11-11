@@ -3,18 +3,16 @@
 @section('title', 'Tasques')
 
 @section('content')
-    <h1>Tasques</h1>
-
+    <h1>Tasques ({{$tasks->count()}})</h1>
 	<ul>
          @foreach ($tasks as $task)
             <li>{{ $task->name }} 
-            	Completed:
-        @if ( $task->completed )
-            true
-        @else
-            fasle
-        @endif
-            	<button>Completar</button>
+            	|| Completed: <input name="completed" type="checkbox" {{$task->completed ? 'checked' : '' }}>
+            	<form action="/tasks/{{ $task->id }}" method="POST">
+                    @csrf
+                    {{ method_field('PUT') }}
+                    <button>Completar</button>
+                </form>
                 <a href="/task_edit/{{ $task->id }}">
                     <button>Modificar</button>
                 </a>
