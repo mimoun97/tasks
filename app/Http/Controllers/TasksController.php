@@ -10,7 +10,7 @@ class TasksController extends Controller
 
     public function index()
     {
-        $tasks = \App\Task::all();//orderBy('created_at','desc')->get();
+        $tasks = Task::all();//orderBy('created_at','desc')->get();
 
         //return $tasks; //en format json
         //return view('tasks',['tasks' => $tasks]);
