@@ -1,5 +1,12 @@
 @extends('layout')
 
 @section('content')
-    <tasques></tasques>
+    <v-container fluid>
+      <v-layout>
+        <v-flex>
+          <tasques></tasques>
+        </v-flex>
+      </v-layout>
+    </v-container>
 @endsection
+{{-- :tasks={{ $tasks }} --}}
