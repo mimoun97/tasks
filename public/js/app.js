@@ -71318,7 +71318,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -71705,7 +71705,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -71860,11 +71859,7 @@ var render = function() {
                 },
                 [_c("v-icon", [_vm._v("refresh")])],
                 1
-              ),
-              _vm._v(" "),
-              _c("v-avatar", { attrs: { title: "Mimoun" } }, [
-                _vm._v('") }}" alt="avatar">\n          ')
-              ])
+              )
             ],
             1
           ),
@@ -71897,8 +71892,20 @@ var render = function() {
                         _c(
                           "td",
                           [
-                            _vm._v('">\n                                '),
-                            _c("v-icon", [_vm._v("delete")]),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: {
+                                  icon: "",
+                                  color: "primary",
+                                  flat: "",
+                                  title: "Mostrar snackbar"
+                                },
+                                on: { click: _vm.toggle }
+                              },
+                              [_c("v-icon", [_vm._v("delete")])],
+                              1
+                            ),
                             _vm._v(" "),
                             _c(
                               "v-btn",
@@ -71955,7 +71962,20 @@ var render = function() {
                               },
                               [_c("v-icon", [_vm._v("delete")])],
                               1
-                            )
+                            ),
+                            _vm._v(" "),
+                            _c("v-switch", {
+                              attrs: {
+                                label: _vm.completed ? "completada" : "pendent"
+                              },
+                              model: {
+                                value: _vm.completed,
+                                callback: function($$v) {
+                                  _vm.completed = $$v
+                                },
+                                expression: "completed"
+                              }
+                            })
                           ],
                           1
                         )
