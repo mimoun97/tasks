@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.landing')
+
+@section('title', 'Welcome')
 
 @section('content')
-
-    @extends('layouts.landing')
 
 @section('content')
     <v-app light>
@@ -191,6 +191,4 @@
             </v-footer>
         </v-content>
     </v-app>
-@endsection
-
 @endsection

@@ -1,8 +1,7 @@
 @extends('layouts.login')
 
-@section('title')
-    Login a l'aplicació de Tasks
-@endsection
+@section('title', 'Login')
+
 @section('content')
     <v-content>
         @if ($errors->any())
