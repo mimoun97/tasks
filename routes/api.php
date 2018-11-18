@@ -29,3 +29,4 @@ Route::get('/v1/tags','Api\TagsController@index');                // BROWSE
 
 });
 
+Route::resource('project', 'Api\ProjectsController');

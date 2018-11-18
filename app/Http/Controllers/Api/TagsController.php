@@ -25,7 +25,7 @@ class TagsController extends Controller
 
     public function store(StoreTask $request)
     {
-      tag = new Tag();
+        $tag = new Tag();
         $tag->name = $request->name;
         $tag->description = $request->description;
         $tag->color = $request->color;
