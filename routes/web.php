@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//midleware auth
+Route::group(['middleware' => 'auth'], function () {
 Route::get('/tasks', 'TasksController@index');
 Route::post('/tasks','TasksController@store');
 Route::put('/tasks/{id}','TasksController@update');
@@ -30,6 +32,10 @@ Route::get('/tasks_vue', function (){
 	return view('tasks_vue');
 });
 
+Route::get('/tasques', 'TasquesController@index');
+});
+
+
 
 Route::get('/contact', function () {
     return view('contact');
@@ -39,19 +45,13 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
-Route::get('/register', function () {
-    return view('register');
-});
-
-
-
+//Equivalent a login->loginCotroller
+//Equivalent a register->registerController
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/register_alt','Auth\RegisterAltController@register');
+Route::post('/login_alt','Auth\LoginAltController@register');
 
-Route::get('/tasques', 'TasquesController@index');
+
