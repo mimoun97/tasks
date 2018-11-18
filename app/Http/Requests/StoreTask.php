@@ -13,7 +13,7 @@ class StoreTask extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true; //de moment tots poden obtenir les tasques
     }
 
     /**

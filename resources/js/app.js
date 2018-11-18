@@ -9,6 +9,7 @@ import './bootstrap'
 import AppComponent from './components/App.vue'
 import ExampleComponent from './components/ExampleComponent.vue'
 import Tasks from './components/Tasks.vue'
+import EditableText from './components/EditableText.vue'
 import Tasques from './components/Tasques.vue'
 import LoginForm from './components/LoginForm.vue'
 
@@ -17,6 +18,7 @@ window.Vue.use(Vuetify)
 
 window.Vue.component('example-component', ExampleComponent)
 window.Vue.component('tasks', Tasks)
+window.Vue.component('editable-text', EditableText)
 window.Vue.component('tasques', Tasques)
 window.Vue.component('login-form', LoginForm)
 
