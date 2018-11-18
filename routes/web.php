@@ -52,6 +52,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/register_alt','Auth\RegisterAltController@register');
-Route::post('/login_alt','Auth\LoginAltController@register');
-
-
+//Route::post('/login_alt','Auth\LoginAltController@register');
