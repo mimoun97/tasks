@@ -16,17 +16,19 @@ class TagsControllerTest extends TestCase
      */
     public function can_show_a_tag()
     {
-        //$this->login('api');
+        $this->login('api');
         $tag = factory(Tag::class)->create();
 
         $response = $this->json('GET','/api/v1/tags/' . $tag->id);
 
         $result = json_decode($response->getContent());
-        dd($tag);
+        //dd($tag);
         //dd($result);
         $response->assertSuccessful();
         $this->assertEquals($tag->name, $result->name);
         $this->assertEquals($tag->description, $result->description);
+        //dd($tag->color);
+        //dd($result->color);
         $this->assertEquals($tag->color, $result->color);
     }
 
@@ -41,10 +43,11 @@ class TagsControllerTest extends TestCase
         $response = $this->json('DELETE','/api/v1/tags/' . $tag->id);
 
         $result = json_decode($response->getContent());
+        //dd($result);
         $response->assertSuccessful();
-        $this->assertEquals('', $result);
+        $this->assertEquals(null, $result);
 
-        $this->assertNull(tag::find($tag->id));
+        $this->assertNull(Tag::find($tag->id));
     }
 
     /**
@@ -57,6 +60,7 @@ class TagsControllerTest extends TestCase
         $response = $this->json('POST','/api/v1/tags/',[
             'name' => ''
         ]);
+        //dd($response);
         $response->assertStatus(422);
     }
 
@@ -67,16 +71,20 @@ class TagsControllerTest extends TestCase
     {
         $this->login('api');
         $response = $this->json('POST','/api/v1/tags/',[
-            'name' => 'Comprar pa'
+            'name' => 'Business',
+            'description' => 'Tag de business',
+            'color' => '#FFFFFF'
         ]);
 
         $result = json_decode($response->getContent());
+        //dd($result);
         $response->assertSuccessful();
 
 //        $this->assertDatabaseHas('tags', [ 'name' => 'Comprar pa' ]);
         $this->assertNotNull($tag = Tag::find($result->id));
-        $this->assertEquals('Comprar pa',$result->name);
-        $this->assertFalse($result->completed);
+        $this->assertEquals('Business',$result->name);
+        $this->assertEquals('Tag de business',$result->description);
+        $this->assertEquals('#FFFFFF',$result->color);
     }
 
     /**
@@ -95,14 +103,18 @@ class TagsControllerTest extends TestCase
 
         $this->assertCount(3,$result);
 
-        $this->assertEquals('comprar pa', $result[0]->name);
-        $this->assertFalse((boolean)$result[0]->completed);
+        $this->assertEquals('estudis', $result[0]->name);
+        $this->assertEquals('relacionat amb estudis',$result[0]->description);
+        $this->assertEquals('#FFFFFF',$result[0]->color);
 
-        $this->assertEquals('comprar llet', $result[1]->name);
-        $this->assertFalse((boolean) $result[1]->completed);
+        $this->assertEquals('laravel', $result[1]->name);
+        $this->assertEquals('relacionat amb laravel',$result[1]->description);
+        $this->assertEquals('#FFFFFF',$result[1]->color);
 
-        $this->assertEquals('Estudiar PHP', $result[2]->name);
-        $this->assertTrue((boolean) $result[2]->completed);
+        $this->assertEquals('php', $result[2]->name);
+        $this->assertEquals('relacionat amb php',$result[2]->description);
+        $this->assertEquals('#FFFFFF',$result[2]->color);
+
     }
 
     /**
@@ -113,21 +125,29 @@ class TagsControllerTest extends TestCase
         $this->login('api');
 
         $oldtag = factory(Tag::class)->create([
-            'name' => 'Comprar llet'
+            'name' => 'Business',
+            'description' => 'Tag de business',
+            'color' => '#FFFFFF'
         ]);
 
         // 2
         $response = $this->json('PUT','/api/v1/tags/' . $oldtag->id, [
-            'name' => 'Comprar pa'
+            'name' => 'laravel',
+            'description' => 'laravel laravel laravel',
+            'color' => '#002500'
         ]);
 
         $result = json_decode($response->getContent());
+        //dd($result);
+        //dd($response);
         $response->assertSuccessful();
 
+        //dd($result->description);
         $newtag = $oldtag->refresh();
         $this->assertNotNull($newtag);
-        $this->assertEquals('Comprar pa',$result->name);
-        $this->assertFalse((boolean) $newtag->completed);
+        $this->assertEquals('laravel',$result->name);
+        $this->assertEquals('laravel laravel laravel',$result->description);
+        $this->assertEquals('#002500',$result->color);
     }
 
     /**

@@ -19,13 +19,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::middleware('auth:api')->group(function() {
-Route::get('/v1/tasks','Api\TasksController@index');                // BROWSE
+    Route::get('/v1/tasks','Api\TasksController@index');                // BROWSE
     Route::get('/v1/tasks/{task}','Api\TasksController@show');          // READ
     Route::delete('/v1/tasks/{task}','Api\TasksController@destroy');    // DELETE
     Route::post('/v1/tasks','Api\TasksController@store');               // CREATE
     Route::put('/v1/tasks/{task}','Api\TasksController@update');         // EDIT
 
-Route::get('/v1/tags','Api\TagsController@index');                // BROWSE
+    Route::get('/v1/tags','Api\TagsController@index');                // BROWSE
+    Route::get('/v1/tags/{tag}','Api\TagsController@show');          // READ
+    Route::delete('/v1/tags/{tag}','Api\TagsController@destroy');    // DELETE
+    Route::post('/v1/tags','Api\TagsController@store');               // CREATE
+    Route::put('/v1/tags/{tag}','Api\TagsController@update');         // EDIT
 
 });
 

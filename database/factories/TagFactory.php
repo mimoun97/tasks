@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Tag::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'name' => $faker->userName,
         'color' => $faker->hexColor,
         'description' => str_random(50),
     ];

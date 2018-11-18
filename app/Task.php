@@ -35,9 +35,24 @@ class Task extends Model
     {
         $this->update(compact('completed'));
     }
-    
+
     public function incomplete()
     {
         $this->complete(false);
+    }
+
+    public function map()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'completed' => $this->completed,
+            'user_id' => $this->user_id,
+            'user_name' => optional($this->user)->name,
+            'user_email' => optional($this->user)->email,
+            'user' => $this->user
+//            'tags' => $this->tags
+//            'file' => $this->file
+        ];
     }
 }

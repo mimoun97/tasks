@@ -22,6 +22,7 @@ class TasksControllerTest extends TestCase
         $response = $this->json('GET','/api/v1/tasks/' . $task->id);
 
         $result = json_decode($response->getContent());
+        //dd($result);
         $response->assertSuccessful();
         $this->assertEquals($task->name, $result->name);
         $this->assertEquals($task->completed, (boolean) $result->completed);
@@ -54,6 +55,7 @@ class TasksControllerTest extends TestCase
         $response = $this->json('POST','/api/v1/tasks/',[
             'name' => ''
         ]);
+        //dd($response);
         $response->assertStatus(422);
     }
 
@@ -68,6 +70,7 @@ class TasksControllerTest extends TestCase
         ]);
 
         $result = json_decode($response->getContent());
+        //dd($result);
         $response->assertSuccessful();
 
 //        $this->assertDatabaseHas('tasks', [ 'name' => 'Comprar pa' ]);
@@ -89,7 +92,7 @@ class TasksControllerTest extends TestCase
         $response->assertSuccessful();
 
         $result = json_decode($response->getContent());
-
+        //dd($result);
         $this->assertCount(3,$result);
 
         $this->assertEquals('comprar pa', $result[0]->name);
@@ -112,13 +115,14 @@ class TasksControllerTest extends TestCase
         $oldTask = factory(Task::class)->create([
             'name' => 'Comprar llet'
         ]);
-
+        //dd($oldTask);
         // 2
         $response = $this->json('PUT','/api/v1/tasks/' . $oldTask->id, [
             'name' => 'Comprar pa'
         ]);
 
         $result = json_decode($response->getContent());
+        //dd($result);
         $response->assertSuccessful();
 
         $newTask = $oldTask->refresh();

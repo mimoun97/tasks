@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     protected $guarded = [];
+    protected $fillable = ['name', 'description', 'color'];
 
     public function map()
     {
@@ -14,7 +15,7 @@ class Tag extends Model
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'color' => $this->user_id,
+            'color' => $this->color,
             'task_id' => optional($this->task)->id,
         ];
     }
