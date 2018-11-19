@@ -12,11 +12,14 @@ if (!function_exists('create_primary_user')) {
     function create_primary_user() {
         $user = User::where('email', 'mimounhaddou@iesebre.com')->first();
         if (!$user) {
-            User::firstOrCreate([
+            $user= User::firstOrCreate([
                 'name' => 'Mimoun Haddou',
                 'email' => 'mimounhaddou@iesebre.com',
                 'password' => bcrypt(env('PRIMARY_USER_PASSWORD','secret'))
             ]);
+
+            $user->admin = true;
+            $user->save();
         }
     }
 }
@@ -154,18 +157,6 @@ if (!function_exists('initialize_roles')) {
         } catch(Exception $e) {
 
         }
-    }
-}
-
-if (!function_exists('initialize_roles')) {
-    function initialize_roles() {
-        //Crear roles
-        $user = factory(User::class)->create([
-            'name' => 'Pepe'
-
-        ]);
-
-
     }
 }
 

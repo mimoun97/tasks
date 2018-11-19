@@ -1,7 +1,5 @@
 <?php
 
-namespace home\mimoun\Code\mimoun1997\tasks\database\seeds;
-
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

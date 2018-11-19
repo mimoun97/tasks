@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'admin'
     ];
 
 
@@ -44,5 +44,10 @@ class User extends Authenticatable
     public function addTasks($tasks)
     {
         $this->tasks()->saveMany($tasks);
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->admin;
     }
 }

@@ -14,9 +14,17 @@ class TasksControllerTest extends TestCase
     /**
      * @test
      */
-    public function can_show_a_task()
+    public function task_manager_can_show_a_task()
     {
-        $this->login('api');
+        //$this->withoutExceptionHandling();
+        initialize_roles();
+
+        $user = $this->login('api');
+
+        $user->assignRole('TaskManager');
+
+        $user->save();
+
         $task = factory(Task::class)->create();
 
         $response = $this->json('GET','/api/v1/tasks/' . $task->id);
