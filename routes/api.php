@@ -34,3 +34,5 @@ Route::middleware('auth:api')->group(function() {
 });
 
 Route::resource('project', 'Api\ProjectsController');
+
+Route::get('/v1/users','Api\UsersController@index');

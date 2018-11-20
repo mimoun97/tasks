@@ -5,12 +5,13 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasRoles, Notifiable, HasApiTokens;
+    use HasRoles, Notifiable, HasApiTokens, Impersonate;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email',
     ];
 
     /**
@@ -27,7 +28,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'admin'
+        'password', 'remember_token'
     ];
 
 
@@ -49,5 +50,25 @@ class User extends Authenticatable
     public function isSuperAdmin()
     {
         return $this->admin;
+    }
+
+    public function map()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'avatar' => $this->avatar
+        ];
+    }
+
+    public function getAvatarAttribute()
+    {
+        return 'https://www.gravatar.com/avatar/' . md5($this->email);
+    }
+
+    public function canImpersonate()
+    {
+        return $this->isSuperAdmin();
     }
 }

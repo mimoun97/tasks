@@ -43,6 +43,9 @@ Route::get('/contact', function () {
 
 Route::get('/about', function () {
     return view('about');
+
+
+    Route::impersonate();
 });
 
 //Equivalent a login->loginCotroller

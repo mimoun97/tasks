@@ -13,6 +13,25 @@
 <div id="app">
     <v-app>
         <v-navigation-drawer
+                v-model="drawerRigth"
+                fixed
+                right
+                clipped
+                app
+        >
+            <v-card>
+                {{--<v-toolbar color="blue" dark fixed>--}}
+                    {{--<v-toolbar-title >User</v-toolbar-title>--}}
+                {{--</v-toolbar>--}}
+
+                <user-select></user-select>
+
+                Llista usauris
+                <user-list></user-list>
+
+            </v-card>
+        </v-navigation-drawer>
+        <v-navigation-drawer
                 v-model="drawer"
                 fixed
                 app
@@ -80,7 +99,8 @@
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>Application</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-avatar title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">
+            <v-toolbar-side-icon @click.stop="drawerRigth = !drawerRigth"></v-toolbar-side-icon>
+            <v-avatar @click.stop="drawerRight = !drawerRight" title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">
                 <img src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}" alt="avatar">
             </v-avatar>
             <v-form action="logout" method="POST">
@@ -99,3 +119,9 @@
 <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>
+<script>
+    import UserList from "../../js/components/UserList";
+    export default {
+        components: {UserList}
+    }
+</script>

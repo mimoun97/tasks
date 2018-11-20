@@ -184,6 +184,52 @@ if (!function_exists('create_example_tags')) {
     }
 }
 
+if (!function_exists('sample_users')) {
+    function sample_users() {
+        // Superadmin no cal -> soc jo mateix
+
+        // Pepe Pringao -> No té cap permis ni cap rol
+
+        try {
+            factory(User::class)->create([
+                'name' => 'Pepe Pringao',
+                'email' => 'pepepringao@hotmail.com'
+            ]);
+        } catch (Exception $e) {}
+
+        try {
+            $bartsimpson = factory(User::class)->create([
+                'name' => 'Bart Simpson',
+                'email' => 'bartsimpson@simpson.com'
+            ]);
+        } catch (Exception $e) {}
+
+        try {
+            $bartsimpson->assignRole('Tasks');
+        } catch (Exception $e) {}
+
+        try {
+            $homersimpson = factory(User::class)->create([
+                'name' => 'Homer Simpson',
+                'email' => 'homersimpson@simpson.com'
+            ]);
+        } catch (Exception $e) {}
+
+        try {
+            $homersimpson->assignRole('TaskManager');
+        } catch (Exception $e) {}
+    }
+}
+
+if (!function_exists('map_collection')) {
+    function map_collection($collection) {
+        return $collection->map(function ($item) {
+           return $item->map();
+        });
+
+
+    }
+}
 
 
 //TODO Crear multiples usauris amb diferents rols

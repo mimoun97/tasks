@@ -5,6 +5,7 @@ export default {
   data () {
     return {
       drawer: null,
+        drawerRigth: false,
       items: [
         { icon: 'home', text: 'Welcome', url: '/' },
         { icon: 'home', text: 'Home', url: '/home' },
@@ -14,12 +15,12 @@ export default {
           text: 'Tasques',
           model: true,
           children: [
-            { icon: 'build', text: 'Tasques amb PHP', url: '/tasks' },
-            { icon: 'build', text: 'Tasques tailwind', url: '/tasks_vue' },
-            { icon: 'build', text: 'Tasques', url: '/tasques' }
+            { icon: 'list', text: 'Tasques amb PHP', url: '/tasks' },
+            { icon: 'list_alt', text: 'Tasques tailwind', url: '/tasks_vue' },
+            { icon: 'assignment', text: 'Tasques', url: '/tasques' }
           ]
         },
-        { icon: 'help', text: 'Contact', url: '/contact' },
+        { icon: 'message', text: 'Contact', url: '/contact' },
         { icon: 'public', text: 'About', url: '/about' }
       ]
     }
