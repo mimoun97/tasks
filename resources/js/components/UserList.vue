@@ -7,10 +7,10 @@
                         <img :src="user.avatar" :alt="user.name">
                     </v-avatar>
                 </v-list-tile-avatar>
-                <v-list-content>
+                <v-list-tile-content>
                     <v-list-tile-title> {{ user.name }}</v-list-tile-title>
                     <v-list-tile-sub-title>{{ user.email }}</v-list-tile-sub-title>
-                </v-list-content>
+                </v-list-tile-content>
             </v-list-tile>
         </template>
     </v-list>

@@ -27,7 +27,7 @@
                 <user-select></user-select>
 
                 Llista usauris
-                <user-list></user-list>
+                {{--<user-list></user-list>--}}
 
             </v-card>
         </v-navigation-drawer>
@@ -95,7 +95,7 @@
                 </template>
             </v-list>
         </v-navigation-drawer>
-        <v-toolbar color="indigo" dark fixed app>
+        <v-toolbar color="indigo" dark fixed app clipped-right>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>Application</v-toolbar-title>
             <v-spacer></v-spacer>
@@ -119,9 +119,4 @@
 <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>
-<script>
-    import UserList from "../../js/components/UserList";
-    export default {
-        components: {UserList}
-    }
-</script>
+</html>

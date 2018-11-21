@@ -24,6 +24,23 @@ if (!function_exists('create_primary_user')) {
     }
 }
 
+
+if (!function_exists('create_acacha_user')) {
+    function create_acacha_user() {
+        $user = User::where('email', 'sergiturbadenas@gmail.com')->first();
+        if (!$user) {
+            $user= User::firstOrCreate([
+                'name' => 'Sergi Tur Badenas',
+                'email' => 'sergiturbadenas@gmail.com',
+                'password' => bcrypt(env('PRIMARY_USER_PASSWORD','123456'))
+            ]);
+
+            $user->admin = true;
+            $user->save();
+        }
+    }
+}
+
 if (!function_exists('create_example_tasks')) {
     function create_example_tasks() {
         Task::create([

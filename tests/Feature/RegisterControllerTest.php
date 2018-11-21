@@ -27,12 +27,12 @@ class RegisterControllerTest extends TestCase
      */
     public function can_register_a_user()
     {
-//        $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
         //1
         $this->assertNull(Auth::user());
         initialize_roles();
 
-        $response = $this->post('/register');
+        //$response = $this->post('/register');
 //        dd($response);
 
         $response = $this->post('/register',$user = [

@@ -60,11 +60,7 @@ export default {
       return errors
     },
     passwordErrors () {
-      const errors = []
-      if (!this.$v.password.$dirty) return errors
-      !this.$v.password.minLength && errors.push('El camp password ha de tenir una mida mínima de 6 caràcters.')
-      !this.$v.password.required && errors.push('El camp password és obligatori.')
-      return errors
+
     }
   }
 }
