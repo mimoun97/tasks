@@ -5,7 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
+
 {
+    //use FormattedDates;
 	/**
      * The attributes that are mass assignable.
      *
@@ -54,5 +56,13 @@ class Task extends Model
 //            'tags' => $this->tags
 //            'file' => $this->file
         ];
+
+        //TODO timestamps
+    }
+
+    public function assignUser(User $user)
+    {
+        $this->user()->associate($user);
+        $this->save();
     }
 }

@@ -75033,8 +75033,8 @@ var render = function() {
             attrs: {
               id: "password",
               "prepend-icon": "lock",
-              name: "password_confirmation",
-              label: "Password Confirmation",
+              name: "password",
+              label: "Password",
               type: "password",
               "error-messages": _vm.passwordErrors
             },
@@ -75047,11 +75047,11 @@ var render = function() {
               }
             },
             model: {
-              value: _vm.password_confirmation,
+              value: _vm.password,
               callback: function($$v) {
-                _vm.password_confirmation = $$v
+                _vm.password = $$v
               },
-              expression: "password_confirmation"
+              expression: "password"
             }
           })
         ],
@@ -75213,7 +75213,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   validations: {
     dataEmail: { required: __WEBPACK_IMPORTED_MODULE_1_vuelidate_lib_validators__["required"], email: __WEBPACK_IMPORTED_MODULE_1_vuelidate_lib_validators__["email"] },
     password: { required: __WEBPACK_IMPORTED_MODULE_1_vuelidate_lib_validators__["required"], minLength: Object(__WEBPACK_IMPORTED_MODULE_1_vuelidate_lib_validators__["minLength"])(6) },
-    password_confirmation: sameAs('password'),
+    repeatPassword: {
+      sameAsPassword: Object(__WEBPACK_IMPORTED_MODULE_1_vuelidate_lib_validators__["sameAs"])('password')
+    },
     dataName: { required: __WEBPACK_IMPORTED_MODULE_1_vuelidate_lib_validators__["required"], minLength: Object(__WEBPACK_IMPORTED_MODULE_1_vuelidate_lib_validators__["minLength"])(4) }
   },
   data: function data() {
@@ -75221,7 +75223,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       dataName: this.name,
       dataEmail: this.email,
       password: '',
-      password_confirmation: ''
+      repeatPassword: ''
     };
   },
 
@@ -75243,7 +75245,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     passwordConfirmationErrors: function passwordConfirmationErrors() {
       var errors = [];
-      !this.$v.password_confirmation.sameAsPassword && errors.push('Els camps password no coincideixen.');
+      !this.$v.repeatPassword.sameAsPassword && errors.push('Els camps password no coincideixen.');
       return errors;
     },
     nameErrors: function nameErrors() {
@@ -75271,7 +75273,7 @@ var render = function() {
       _c(
         "v-toolbar",
         { attrs: { dark: "", color: "primary" } },
-        [_c("v-toolbar-title", [_vm._v("Register form")])],
+        [_c("v-toolbar-title", [_vm._v("Register")])],
         1
       ),
       _vm._v(" "),
@@ -75363,25 +75365,25 @@ var render = function() {
             attrs: {
               id: "password",
               "prepend-icon": "lock",
-              name: "password_confirmartion",
+              name: "password_confirmation",
               label: "Password Confirmation",
               type: "password",
               "error-messages": _vm.passwordConfirmationErrors
             },
             on: {
               input: function($event) {
-                _vm.$v.password_confirmation.$touch()
+                _vm.$v.repeatPassword.$touch()
               },
               blur: function($event) {
-                _vm.$v.password_confirmation.$touch()
+                _vm.$v.repeatPassword.$touch()
               }
             },
             model: {
-              value: _vm.password_confirmation,
+              value: _vm.repeatPassword,
               callback: function($$v) {
-                _vm.password_confirmation = $$v
+                _vm.repeatPassword = $$v
               },
-              expression: "password_confirmation"
+              expression: "repeatPassword"
             }
           })
         ],
@@ -75593,7 +75595,7 @@ var render = function() {
               ),
               _vm._v(" "),
               _c(
-                "v-list-content",
+                "v-list-tile-content",
                 [
                   _c("v-list-tile-title", [_vm._v(" " + _vm._s(user.name))]),
                   _vm._v(" "),
@@ -75831,7 +75833,7 @@ var render = function() {
             ),
             _vm._v(" "),
             _c(
-              "v-list-content",
+              "v-list-tile-content",
               [
                 _c("v-list-tile-title", {
                   domProps: { textContent: _vm._s(user.name) }

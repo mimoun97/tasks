@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Session;
 use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -70,5 +71,30 @@ class User extends Authenticatable
     public function canImpersonate()
     {
         return $this->isSuperAdmin();
+    }
+
+    /**
+     * @return bool
+     */
+    public function canBeImpersonated()
+    {
+        // els admins no poden ser impersonats
+        return !$this->isSuperAdmin();
+    }
+
+    public function impersonatedBy()
+    {
+        if ($this->isImpersonated()) return User::findOrFail(Session::get('impersonated_by'));
+        return null;
+    }
+
+    public function scopeRegular($query)
+    {
+        return $query->where('admin', false);
+    }
+
+    public function scopeAdmin($query)
+    {
+        return $query->where('admin', true);
     }
 }

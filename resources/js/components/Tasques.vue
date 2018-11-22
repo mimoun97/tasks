@@ -267,7 +267,7 @@
                     { text: 'Completat', value: 'completed' },
                     { text: 'Creat', value: 'created_at' },
                     { text: 'Modificat', value: 'updated_at' },
-                    { text: 'Accions', sortable: false }
+                    { text: 'Accions', sortable: false } //TODO timestamps
                 ]
             }
         },

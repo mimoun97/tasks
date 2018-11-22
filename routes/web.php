@@ -45,12 +45,14 @@ Route::get('/about', function () {
     return view('about');
 
 
-    Route::impersonate();
+
 });
 
 //Equivalent a login->loginCotroller
 //Equivalent a register->registerController
 Auth::routes();
+
+Route::impersonate();
 
 Route::get('/home', 'HomeController@index')->name('home');
 

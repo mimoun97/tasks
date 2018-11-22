@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\User;
 use Illuminate\Http\Request;
 
 class TasquesController extends Controller
 {
     public function index()
     {
-    	$tasks = Task::all();
-        return view ('tasques', compact('tasks'));
+        $tasks =  map_collection(Task::all());
+        $users = User::orderBy('name')->get();
+        return view('tasques',compact('tasks','users'));
     }
 }

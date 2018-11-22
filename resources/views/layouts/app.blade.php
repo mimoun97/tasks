@@ -24,9 +24,17 @@
                     {{--<v-toolbar-title >User</v-toolbar-title>--}}
                 {{--</v-toolbar>--}}
 
-                <user-select></user-select>
 
-                Llista usauris
+                @canImpersonate
+                    <user-select @selected="impersonate" url="/api/v1/regular_users/"></user-select>
+                @endCanImpersonate
+
+                @impersonating
+                L'usuari {{ Auth::user()->impersonatedBy()->name  }} està suplantant a {{ Auth::user()->name }}
+                <a href="/impersonate/leave">Leave impersonation</a>
+                @endImpersonating
+
+                TODO Llista usauris
                 {{--<user-list></user-list>--}}
 
             </v-card>
