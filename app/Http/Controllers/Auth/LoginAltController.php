@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -19,7 +20,7 @@ class LoginAltController extends Controller
         return redirect('/home');
    }
 
-    public function login(Request $request)
+    public function login2(Request $request)
     {
         // TODO -> VALIDATE
 //        $request->email

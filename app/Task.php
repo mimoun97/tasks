@@ -65,4 +65,9 @@ class Task extends Model
         $this->user()->associate($user);
         $this->save();
     }
+
+    public function addTag()
+    {
+        //TODO addTag
+    }
 }
