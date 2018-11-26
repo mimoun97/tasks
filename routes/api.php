@@ -31,10 +31,22 @@ Route::middleware('auth:api')->group(function() {
     Route::post('/v1/tags','Api\TagsController@store');               // CREATE
     Route::put('/v1/tags/{tag}','Api\TagsController@update');         // EDIT
 
+    //CompletedTaskControllers
+    Route::post('/v1/completed_task/{task}','Api\CompletedTasksController@store'); //BORRAR
+    Route::delete('/v1/completed_task/{task}','Api\CompletedTasksController@destroy'); //BORRAR
+
+    Route::resource('project', 'Api\ProjectsController'); //BREAD projects
+
+    Route::get('/v1/users','Api\UsersController@index');
+    Route::get('/v1/regular_users','Api\RegularUsersController@index');
+
+    Route::get('/v1/user/tasks','Api\LoggedUserTasksController@index');
+    Route::get('/v1/user/tasks/{task}','Api\LoggedUserTasksController@show');
+    Route::delete('/v1/user/tasks/{task}','Api\LoggedUserTasksController@destroy');
+    Route::post('/v1/user/tasks/','Api\LoggedUserTasksController@store');
+    Route::put('/v1/user/tasks/{task}','Api\LoggedUserTasksController@update');
+
+
 });
 
-Route::resource('project', 'Api\ProjectsController');
 
-
-Route::get('/v1/users','Api\UsersController@index');
-Route::get('/v1/regular_users','Api\RegularUsersController@index');

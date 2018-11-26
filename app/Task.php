@@ -33,7 +33,7 @@ class Task extends Model
         $file->save();
     }
 
-        public function complete($completed = true)
+    public function complete($completed = true)
     {
         $this->update(compact('completed'));
     }
@@ -52,9 +52,9 @@ class Task extends Model
             'user_id' => $this->user_id,
             'user_name' => optional($this->user)->name,
             'user_email' => optional($this->user)->email,
-            'user' => $this->user
-//            'tags' => $this->tags
-//            'file' => $this->file
+            'user' => $this->user,
+            'tags' => $this->tags,
+            'file' => $this->file
         ];
 
         //TODO timestamps
@@ -66,8 +66,19 @@ class Task extends Model
         $this->save();
     }
 
-    public function addTag()
+    public function addTag($tag)
     {
-        //TODO addTag
+        $this->tags()->save($tag);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    public function addTags($tags)
+    {
+        $this->tags()->saveMany($tags);
+    }
+
 }

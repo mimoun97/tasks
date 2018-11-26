@@ -9,8 +9,8 @@
         <v-toolbar class="white">
             <v-toolbar-title>Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn href="/login">Login</v-btn>
-            <v-btn href="/register">Register</v-btn>
+            <v-btn class="green lighten-2" href="/login">Login</v-btn>
+            <v-btn class="yellow lighten-2" href="/register">Register</v-btn>
         </v-toolbar>
         <v-content>
             <section>

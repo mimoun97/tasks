@@ -33,6 +33,8 @@ Route::get('/tasks_vue', function (){
 });
 
 Route::get('/tasques', 'TasquesController@index');
+
+    Route::get('/user/tasks','LoggedUserTasksController@index');
 });
 
 

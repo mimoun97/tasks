@@ -13,13 +13,13 @@ class CompletedTasksController extends Controller
     {
     	$task->complete();
 
-    	return back();
+        return redirect('/tasks');
     }
 
     public function destroy(Task $task)
     {
     	$task->incomplete();
 
-    	return back(); 
+        return redirect()->back();
     }
 }

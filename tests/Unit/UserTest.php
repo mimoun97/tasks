@@ -11,6 +11,8 @@ namespace Tests\Unit;
 use App\Task;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -131,6 +133,53 @@ class UserTest extends TestCase
         $this->assertEquals($mappedUser['name'], 'Benito Camelas');
         $this->assertEquals($mappedUser['email'], 'benito@gmail.com');
         $this->assertEquals($mappedUser['avatar'], 'https://www.gravatar.com/avatar/' . md5('benito@gmail.com'));
+        $this->assertEquals($mappedUser['admin'], false);
+
+        $this->assertCount(0, $mappedUser['roles']);
+        $this->assertCount(0, $mappedUser['permissions']);
+
+        $role = Role::create([
+            'name' => 'Rol'
+        ]);
+
+        $role1 = Role::create([
+            'name' => 'Rol1'
+        ]);
+
+        $permission = Permission::create([
+            'name' => 'Permission'
+        ]);
+
+        $permission1 = Permission::create([
+            'name' => 'Permission1'
+        ]);
+
+        $user->admin = true;
+        $user->save();
+
+        $user = $user->fresh();
+
+        $mappedUser = $user->map();
+        //TODO permisos
+
+        $user->givePermissionTo($permission1);
+        $user->givePermissionTo($permission);
+        $user->assignRole($role1);
+        $user->assignRole($role);
+
+
+        dd($mappedUser);
+
+
+        $this->assertEquals($mappedUser['roles'][0], 'Rol');
+        $this->assertEquals($mappedUser['roles'][1], 'Rol1');
+
+        $this->assertEquals($mappedUser['permissions'][0], 'Permission');
+        $this->assertEquals($mappedUser['permissions'][1], 'Permission1');
+
+        $this->assertCount(0, $mappedUser['roles']);
+        $this->assertCount(0, $mappedUser['permissions']);
+
     }
 
     /**
@@ -166,11 +215,11 @@ class UserTest extends TestCase
         $this->assertEquals($regularusers[0]->name, 'Benito Camelas');
         $this->assertEquals($regularusers[1]->name, 'mimoun haddou');
 
-        try {
-            //$this->assertNull($regularusers[2]);
-        } catch (ErrorException $e) {
-
-        }
+//        try {
+//            //$this->assertNull($regularusers[2]);
+//        } catch (ErrorException $e) {
+//
+//        }
 
     }
 }

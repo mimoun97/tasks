@@ -5,6 +5,7 @@ use App\Task;
 use App\User;
 use Illuminate\Container\factory;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -245,6 +246,12 @@ if (!function_exists('map_collection')) {
         });
 
 
+    }
+}
+
+if (!function_exists('logged_user')) {
+    function logged_user() {
+        return json_encode(optional(Auth::user())->map());
     }
 }
 
