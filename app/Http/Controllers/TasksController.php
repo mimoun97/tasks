@@ -10,7 +10,8 @@ class TasksController extends Controller
 
     public function index()
     {
-        $tasks = Task::all();//orderBy('created_at','desc')->get();
+        //TODO map collection no va a php blade
+        $tasks = Task::orderBy('created_at','desc')->get();//map_collection();//orderBy('created_at','desc')->get();
 
         //return $tasks; //en format json
         //return view('tasks',['tasks' => $tasks]);
@@ -47,7 +48,7 @@ class TasksController extends Controller
         $task = Task::findOrFail($request->id);
 
         request()->validate([
-            'name' => ['required', 'min:4', 'max:25']
+            'name' => ['required', 'min:4', 'max:250']
         ]);
 
         $task->name = $request->name;
@@ -60,7 +61,7 @@ class TasksController extends Controller
 
     public function edit(Request $request)
     {
-        
+
         $task = Task::findOrFail($request->id);
         return view('task_edit',[ 'task' => $task]);
 //        return view('task_edit',compact('task'));

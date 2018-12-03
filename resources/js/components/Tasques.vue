@@ -75,11 +75,6 @@
             </v-card>
         </v-dialog>
 
-        <v-snackbar :timeout="snackbarTimeout" :color="snackbarColor" v-model="snackbar">
-            {{ snackbarMessage }}
-            <v-btn dark flat @click="snackbar=false">Tancar</v-btn>
-        </v-snackbar>
-
         <v-toolbar color="blue darken-3">
             <v-menu>
                 <v-btn slot="activator" icon dark>
@@ -340,7 +335,12 @@
                 })
             },
             //SNACKBAR
-
+            showMessage () {
+                this.$snackbar.showMessage('Missatge exemple')
+            },
+            showError () {
+                this.$snackbar.showError('Error exemple')
+            }
 
 
         },

@@ -10,11 +10,18 @@
     <meta name="user" content="{{ logged_user() }}">
 
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link rel="stylesheet" href="/css/tailwind.min.css" type="text/css">
     <title>@yield('title','Put your title here')</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<div id="app">
+<div id="app" v-cloak>
     <v-app>
+        <snackbar></snackbar>
         <v-navigation-drawer
                 v-model="drawerRigth"
                 fixed
@@ -46,6 +53,7 @@
                 v-model="drawer"
                 fixed
                 app
+                clipped
         >
             <v-list dense>
                 <template v-for="item in items">

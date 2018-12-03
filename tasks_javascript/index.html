@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <link href="../public/css/tailwind.min.css" rel="stylesheet" type="text/css">
+    <title>Tasques Javascript</title>
+</head>
+<body class="bg-teal-lightest container mx-auto flex justify-center font-sans">
+<div class="bg-white rounded shadow-md p-6 m-6">
+    <div  class="mb-4">
+
+        <h1>Tasques JS</h1>
+
+        <div class="flex mt-4">
+            <input class="bg-grey-lighter focus:bg-white shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" type="text" id="inputTasca" placeholder="Nova tasca...">
+            <button onclick="novaTasca()" class="flex-no-shrink p-2 border-2 rounded text-green border-green bg-transparent hover:text-white focus:bg-green-lighter hover:bg-green">Afegir</button>
+        </div>
+
+    </div>
+
+    <div>
+        <div class="flex-col mb-4 items-center">
+            <div id="llista"></div>
+        </div>
+    </div>
+</div>
+
+
+
+    <script>
+        var tasks = ["Comprar pa","Comprar llet","Estudiar PHP", "Dormir"];
+        var llista = document.getElementById("llista");
+        var i;
+        for (i = 0; i < tasks.length; i++) {
+            let div = document.createElement("DIV");
+            let btn = document.createElement("BUTTON");
+            let tasca = document.createElement("P");
+
+            div.className = "w-full flex mb-4 items-center";
+
+            tasca.className = "w-full text-grey-darkest";
+            tasca.innerHTML = tasks[i];
+
+            btn.className = "flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red rounded";
+            btn.innerHTML = 'Eliminar';
+
+            btn.onclick = function() {
+                let div = this.parentElement;
+                div.style.display = "none";
+            }
+
+            div.appendChild(tasca);
+            div.appendChild(btn);
+
+            llista.appendChild(div);
+        }
+
+        //Listener per a tota la llista
+        llista.addEventListener('click', function(ev) {
+            if (ev.target.tagName === 'P') {
+                if (ev.target.classList.contains('line-through')) {
+                    ev.target.classList.add('text-grey-darkest');
+                    ev.target.classList.remove('line-through', 'text-green');
+                }
+                else {
+                    ev.target.classList.add('line-through', 'text-green');
+                }
+
+            }
+        }, false);
+
+
+        // S'afegeix el div quan la es clica tasca nova si no es buida
+        function novaTasca() {
+            let div = document.createElement("DIV");
+            let btn = document.createElement("BUTTON");
+            let tasca = document.createElement("P");
+            div.className = "flex mb-4 items-center";
+            btn.className = "flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red";
+            btn.innerHTML = 'Eliminar';
+            tasca.className = "w-full text-grey-darkest";
+            div.appendChild(tasca);
+            div.appendChild(btn);
+            llista.appendChild(div);
+
+            var inputValue = document.getElementById("inputTasca").value;
+            tasca.innerHTML = inputValue;
+
+            if (inputValue === '') {
+                alert("La tasca no te nom!");
+            } else {
+                llista.appendChild(div);
+            }
+            document.getElementById("inputTasca").value = "";
+
+            btn.onclick = function() {
+                let div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+    </script>
+
+
+</body>
+</html>
