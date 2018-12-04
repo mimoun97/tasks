@@ -345,8 +345,7 @@
 
         },
         created() {
-            console.log('Usuari logat: ')
-            console.log(window.laravel_user)
+            console.log('Usuari logat: '+window.laravel_user.name)
 
         }
     }

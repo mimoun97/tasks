@@ -72194,8 +72194,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         'icon-alt': 'keyboard_arrow_down',
         text: 'Tasques',
         model: true,
-        children: [{ icon: 'list', text: 'Tasques amb PHP', url: '/tasks' }, { icon: 'list_alt', text: 'Tasques tailwind', url: '/tasks_vue' }, { icon: 'assignment', text: 'Tasques', url: '/tasques' }]
-      }, { icon: 'message', text: 'Contact', url: '/contact' }, { icon: 'public', text: 'About', url: '/about' }]
+        children: [{ icon: 'list', text: 'Tasques amb PHP i Tailwind', url: '/tasks' }, { icon: 'list_alt', text: 'Tasques Vue', url: '/tasks_vue' }, { icon: 'assignment', text: 'Tasques', url: '/tasques' }]
+      }, { icon: 'tags', text: 'Tags', url: '/home' }, { icon: 'projects', text: 'Projects', url: '/home' }, { icon: 'message', text: 'Contact', url: '/contact' }, { icon: 'public', text: 'About', url: '/about' }]
     };
   },
 
@@ -72347,7 +72347,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-43ab059a"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -72390,13 +72390,13 @@ var content = __webpack_require__(66);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("26a1ac17", content, false, {});
+var update = __webpack_require__(7)("4c981cc8", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-43ab059a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tasks.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-43ab059a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tasks.vue");
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-43ab059a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tasks.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-43ab059a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tasks.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -72414,7 +72414,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.strike {\n  text-decoration: line-through;\n}\n", ""]);
+exports.push([module.i, "\n.strike[data-v-43ab059a] {\n  text-decoration: line-through;\n}\n", ""]);
 
 // exports
 
@@ -72518,6 +72518,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -72529,9 +72531,6 @@ var filters = {
   completed: function completed(tasks) {
     return tasks.filter(function (task) {
       return task.completed;
-      // NO CAL
-      // if (task.completed) return true
-      // else return false
     });
   },
   active: function active(tasks) {
@@ -72607,7 +72606,7 @@ var filters = {
 
     if (this.tasks.length === 0) {
       window.axios.get('/api/v1/tasks').then(function (response) {
-        console.log(response.data);
+        //console.log(response.data)
         _this2.dataTasks = response.data;
       }).catch(function (error) {
         _this2.errorMessage = error.response.data;
@@ -72924,6 +72923,8 @@ var render = function() {
                           )
                         })
                       ),
+                      _vm._v(" "),
+                      _c("v-divider"),
                       _vm._v(" "),
                       _c(
                         "span",
@@ -73405,8 +73406,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     created: function created() {
-        console.log('Usuari logat: ');
-        console.log(window.laravel_user);
+        console.log('Usuari logat: ' + window.laravel_user.name);
     }
 });
 
@@ -76037,6 +76037,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -76044,7 +76050,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "Tags",
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_HasSnackbar__["a" /* default */]],
     data: function data() {
-        return {};
+        return {
+            tags: [{ name: 'Foo' }, { name: 'Bar' }, { name: 'php' }, { name: 'laravel' }]
+        };
     },
 
     methods: {
@@ -76102,7 +76110,16 @@ var render = function() {
     [
       _c("v-btn", { on: { click: _vm.showMessage } }, [_vm._v("Hola")]),
       _vm._v(" "),
-      _c("v-btn", { on: { click: _vm.showError } }, [_vm._v("Adeu")])
+      _c("v-btn", { on: { click: _vm.showError } }, [_vm._v("Adeu")]),
+      _vm._v(" "),
+      _c(
+        "ul",
+        _vm._l(_vm.tags, function(tag) {
+          return _c("li", [
+            _vm._v("\n            " + _vm._s(tag.name) + "\n        ")
+          ])
+        })
+      )
     ],
     1
   )

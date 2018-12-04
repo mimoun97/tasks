@@ -2,6 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Mail\TestDinamicEmail;
+use App\Mail\WelcomeEmail;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
@@ -10,17 +14,7 @@ use App\User;
 
 class RegisterControllerTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->assertTrue(true);
-    }
-
-    use RefreshDatabase;
+    use RefreshDatabase, WithoutMiddleware;
 
     /**
      * @test
@@ -32,15 +26,29 @@ class RegisterControllerTest extends TestCase
         $this->assertNull(Auth::user());
         initialize_roles();
 
+
         //$response = $this->post('/register');
 //        dd($response);
 
         $response = $this->post('/register',$user = [
             'name' => 'pepito',
-            'email' => 'prova@gmail.com', //$user->email
+            'email' => 'pepito@gmail.com', //$user->email
             'password' => 'asdjaskdlasdasd0798asdjh',
             'password_confirmation' => 'asdjaskdlasdasd0798asdjh'
         ]);
+
+        Mail::fake();
+
+//        Mail::assertSent(WelcomeEmail::class, function ($mail) {
+//            dd($mail->user);
+//            return $mail->user->name == 'pepito';
+//        });
+
+        // Assert a message was sent to the given users...
+        Mail::assertSent(WelcomeEmail::class, function ($mail) use ($user) {
+
+            return $mail->hasTo($user->email);
+        });
 
         $response->assertStatus(302);
 

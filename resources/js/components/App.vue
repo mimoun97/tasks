@@ -15,12 +15,14 @@ export default {
           text: 'Tasques',
           model: true,
           children: [
-            { icon: 'list', text: 'Tasques amb PHP', url: '/tasks' },
-            { icon: 'list_alt', text: 'Tasques tailwind', url: '/tasks_vue' },
+            { icon: 'list', text: 'Tasques amb PHP i Tailwind', url: '/tasks' },
+            { icon: 'list_alt', text: 'Tasques Vue', url: '/tasks_vue' },
             { icon: 'assignment', text: 'Tasques', url: '/tasques' }
           ]
         },
-        { icon: 'message', text: 'Contact', url: '/contact' },
+          { icon: 'tags', text: 'Tags', url: '/tags' },
+          { icon: 'folder', text: 'Projects', url: '/projects' },
+          { icon: 'message', text: 'Contact', url: '/contact' },
         { icon: 'public', text: 'About', url: '/about' }
       ]
     }

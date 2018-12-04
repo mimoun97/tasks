@@ -73,7 +73,7 @@ export default {
         dataName: this.name,
       dataEmail: this.email,
       password: '',
-        repeatPassword: ''
+        repeatPassword: '',
     }
   },
   props: [ 'name', 'email', 'csrfToken' ],

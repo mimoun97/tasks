@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
+{{--TODO tags--}}
+
 @section('content')
+
+    bla bla bla
     <v-container fluid>
         <v-layout>
             <v-flex>

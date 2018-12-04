@@ -37,9 +37,11 @@
                                         ></editable-text>
                                     </v-list-tile-title>
                                 </v-list-tile-content>
-                            </v-list-tile>
-                        </v-list>
 
+                            </v-list-tile>
+
+                        </v-list>
+                        <v-divider></v-divider>
                         <span id="filters" v-show="total > 0">
         <h3>Filtros:</h3>
         Active filter: {{ filter }}
@@ -67,9 +69,6 @@ var filters = {
   completed: function (tasks) {
     return tasks.filter(function (task) {
       return task.completed
-      // NO CAL
-      // if (task.completed) return true
-      // else return false
     })
   },
   active: function (tasks) {
@@ -140,7 +139,7 @@ export default {
   created () {
     if (this.tasks.length === 0) {
       window.axios.get('/api/v1/tasks').then((response) => {
-        console.log(response.data)
+        //console.log(response.data)
         this.dataTasks = response.data
       }).catch((error) => {
         this.errorMessage = error.response.data
@@ -150,7 +149,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .strike {
     text-decoration: line-through;
   }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tasques PHP')
+@section('title', 'Tasques PHP i Tailwind')
 
 @section('content')
 <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg font-sans">
