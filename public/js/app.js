@@ -72195,7 +72195,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         text: 'Tasques',
         model: true,
         children: [{ icon: 'list', text: 'Tasques amb PHP i Tailwind', url: '/tasks' }, { icon: 'list_alt', text: 'Tasques Vue', url: '/tasks_vue' }, { icon: 'assignment', text: 'Tasques', url: '/tasques' }]
-      }, { icon: 'tags', text: 'Tags', url: '/home' }, { icon: 'projects', text: 'Projects', url: '/home' }, { icon: 'message', text: 'Contact', url: '/contact' }, { icon: 'public', text: 'About', url: '/about' }]
+      }, { icon: 'tags', text: 'Tags', url: '/tags' },
+      //{ icon: 'folder', text: 'Projects', url: '/projects' },
+      { icon: 'message', text: 'Contact', url: '/contact' }, { icon: 'public', text: 'About', url: '/about' }]
     };
   },
 
@@ -72621,8 +72623,6 @@ var filters = {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -73070,6 +73070,10 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -73897,9 +73901,24 @@ var render = function() {
                           domProps: { textContent: _vm._s(task.name) }
                         }),
                         _vm._v(" "),
-                        _c("td", {
-                          domProps: { textContent: _vm._s(task.user_id) }
-                        }),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "v-avatar",
+                              { attrs: { title: task.user_name } },
+                              [
+                                _c("img", {
+                                  attrs: {
+                                    src: task.user_gravatar,
+                                    alt: "avatar"
+                                  }
+                                })
+                              ]
+                            )
+                          ],
+                          1
+                        ),
                         _vm._v(" "),
                         _c("td", {
                           domProps: { textContent: _vm._s(task.completed) }
@@ -74190,6 +74209,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuelidate__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuelidate_lib_validators__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuelidate_lib_validators__);
+//
+//
 //
 //
 //
@@ -75024,7 +75045,8 @@ var render = function() {
               name: "email",
               label: "Login",
               type: "text",
-              "error-messages": _vm.emailErrors
+              "error-messages": _vm.emailErrors,
+              outline: ""
             },
             on: {
               input: function($event) {
@@ -75050,7 +75072,8 @@ var render = function() {
               name: "password",
               label: "Password",
               type: "password",
-              "error-messages": _vm.passwordErrors
+              "error-messages": _vm.passwordErrors,
+              outline: ""
             },
             on: {
               input: function($event) {
@@ -76043,6 +76066,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -76051,7 +76083,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_HasSnackbar__["a" /* default */]],
     data: function data() {
         return {
-            tags: [{ name: 'Foo' }, { name: 'Bar' }, { name: 'php' }, { name: 'laravel' }]
+            dataTags: this.tags
         };
     },
 
@@ -76064,7 +76096,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log('adeu');
             this.$snackbar.showError('Missatge error');
         }
-    }
+    },
+    props: ['tags']
 });
 
 /***/ }),
@@ -76113,12 +76146,27 @@ var render = function() {
       _c("v-btn", { on: { click: _vm.showError } }, [_vm._v("Adeu")]),
       _vm._v(" "),
       _c(
-        "ul",
-        _vm._l(_vm.tags, function(tag) {
-          return _c("li", [
-            _vm._v("\n            " + _vm._s(tag.name) + "\n        ")
-          ])
-        })
+        "v-list",
+        [
+          _vm._l(_vm.dataTags, function(tag) {
+            return [
+              _c(
+                "v-card",
+                [
+                  _c("v-subheader", [_vm._v(_vm._s(tag.name))]),
+                  _vm._v(" "),
+                  _c("v-list-tile", [_vm._v(_vm._s(tag.description))]),
+                  _vm._v(" "),
+                  _c("v-list-tile", [_vm._v(_vm._s(tag.color))]),
+                  _vm._v(" "),
+                  _c("v-divider", { key: _vm.index })
+                ],
+                1
+              )
+            ]
+          })
+        ],
+        2
       )
     ],
     1

@@ -6,8 +6,6 @@
         <span v-if="editing" @keyup.esc="editing=false"
               @keyup.enter="edit">
             <input type="text" v-model="currentText">
-            <!--// SINTAX SUGAR-->
-            <!--<input type="text" :value="currentText" @input="currentText= $event.target.value">-->
         </span>
     </span>
 </template>

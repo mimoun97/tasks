@@ -160,6 +160,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Lab404\Impersonate\ImpersonateServiceProvider::class,
+        //Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -7,6 +7,6 @@ $factory->define(Tag::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
         'color' => $faker->hexColor,
-        'description' => str_random(50),
+        'description' => $faker->text(200),
     ];
 });

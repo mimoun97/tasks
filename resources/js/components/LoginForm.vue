@@ -14,6 +14,7 @@
                     :error-messages="emailErrors"
                     @input="$v.dataEmail.$touch()"
                     @blur="$v.dataEmail.$touch()"
+                    outline
             ></v-text-field>
             <v-text-field id="password"
                           prepend-icon="lock"
@@ -24,6 +25,7 @@
                           :error-messages="passwordErrors"
                           @input="$v.password.$touch()"
                           @blur="$v.password.$touch()"
+                          outline
             ></v-text-field>
         </v-card-text>
         <v-card-actions>

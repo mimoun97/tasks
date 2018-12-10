@@ -30,6 +30,8 @@ class RegisterControllerTest extends TestCase
         //$response = $this->post('/register');
 //        dd($response);
 
+        Mail::fake();
+
         $response = $this->post('/register',$user = [
             'name' => 'pepito',
             'email' => 'pepito@gmail.com', //$user->email
@@ -37,7 +39,7 @@ class RegisterControllerTest extends TestCase
             'password_confirmation' => 'asdjaskdlasdasd0798asdjh'
         ]);
 
-        Mail::fake();
+
 
 //        Mail::assertSent(WelcomeEmail::class, function ($mail) {
 //            dd($mail->user);
@@ -46,8 +48,9 @@ class RegisterControllerTest extends TestCase
 
         // Assert a message was sent to the given users...
         Mail::assertSent(WelcomeEmail::class, function ($mail) use ($user) {
-
-            return $mail->hasTo($user->email);
+            //dump($mail);
+//            dd($user);
+            return $mail->hasTo($user['email']);
         });
 
         $response->assertStatus(302);

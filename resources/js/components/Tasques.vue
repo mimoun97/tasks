@@ -145,7 +145,11 @@
                     <tr>
                         <td>{{ task.id }}</td>
                         <td v-text="task.name"></td>
-                        <td v-text="task.user_id"></td>
+                        <td>
+                            <v-avatar :title="task.user_name">
+                                <img :src="task.user_gravatar" alt="avatar">
+                            </v-avatar>
+                        </td>
                         <td v-text="task.completed"></td>
                         <td v-text="task.created_at"></td>
                         <td v-text="task.updated_at"></td>
