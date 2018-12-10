@@ -130,6 +130,7 @@ class UserTest extends TestCase
 
         $mappedUser = $user->map();
 
+
         $this->assertEquals($mappedUser['name'], 'Benito Camelas');
         $this->assertEquals($mappedUser['email'], 'benito@gmail.com');
         $this->assertEquals($mappedUser['avatar'], 'https://www.gravatar.com/avatar/' . md5('benito@gmail.com'));
@@ -160,25 +161,19 @@ class UserTest extends TestCase
         $user = $user->fresh();
 
         $mappedUser = $user->map();
-        //TODO permisos
 
         $user->givePermissionTo($permission1);
         $user->givePermissionTo($permission);
         $user->assignRole($role1);
         $user->assignRole($role);
 
+        //dd($user->roles());
 
-        dd($mappedUser);
+        $this->assertTrue($user->hasRole('Rol'));
+        $this->assertTrue($user->hasRole('Rol1'));
 
-
-        $this->assertEquals($mappedUser['roles'][0], 'Rol');
-        $this->assertEquals($mappedUser['roles'][1], 'Rol1');
-
-        $this->assertEquals($mappedUser['permissions'][0], 'Permission');
-        $this->assertEquals($mappedUser['permissions'][1], 'Permission1');
-
-        $this->assertCount(0, $mappedUser['roles']);
-        $this->assertCount(0, $mappedUser['permissions']);
+        $this->assertTrue($user->hasPermissionTo('Permission'));
+        $this->assertTrue($user->hasPermissionTo('Permission1'));
 
     }
 
