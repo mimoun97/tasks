@@ -59,14 +59,14 @@ class User extends Authenticatable
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'avatar' => $this->avatar,
+            'gavatar' => $this->gavatar,
             'admin' => (boolean) $this->admin,
             'roles' => $this->roles()->pluck('name')->unique()->toArray(),
             'permissions' => $this->getAllPermissions()->pluck('name')->unique()->toArray()
         ];
     }
 
-    public function getAvatarAttribute()
+    public function getGravatarAttribute()
     {
         return 'https://www.gravatar.com/avatar/' . md5($this->email);
     }
@@ -93,7 +93,7 @@ class User extends Authenticatable
 
     public function scopeRegular($query)
     {
-        return $query->where('admin', false);
+        return $query->where('admin', 0);
     }
 
     public function scopeAdmin($query)

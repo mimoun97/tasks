@@ -35,13 +35,14 @@
 
         data () {
             return {
-                dataUsers: this.user,
+                dataUsers: this.users,
                 selectedUser: null
             }
         },
         props : {
             users: {
                 type: Array,
+                required: true
             },
             url: {
                 type: String,
@@ -51,17 +52,6 @@
         watch: {
             selectedUser (newValue) {
                 this.$emit('selected', newValue)
-            }
-        },
-        created () {
-            if (this.users) this.dataUser = this.users
-            else {
-                window.axios(this.url).then(response => {
-                    this.dataUsers = response.data
-                }).catch(error => {
-                    console.log(error)
-                    //this.snackbar.showErroMessage
-                })
             }
         }
     }

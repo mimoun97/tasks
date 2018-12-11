@@ -30,11 +30,7 @@
         </v-card-actions>
         </v-card>
         </v-dialog>
-        <v-dialog v-model="createDialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-            <v-card>
-                PROVA
-            </v-card>
-        </v-dialog>
+
         <v-dialog v-model="editDialog" fullscreen hide-overlay transition="dialog-bottom-transition"
                   @keydown.esc="editDialog=false">
             <v-toolbar color="blue darken-3" class="white--text">
@@ -150,9 +146,12 @@
                                 <img :src="task.user_gravatar" alt="avatar">
                             </v-avatar>
                         </td>
+                        <td>
+                            <task-completed-toggle :task="task"></task-completed-toggle>
+                        </td>
                         <td v-text="task.completed"></td>
-                        <td v-text="task.created_at"></td>
-                        <td v-text="task.updated_at"></td>
+                        <td v-text="task.created_at_human"></td>
+                        <td v-text="task.updated_at_human"></td>
                         <td>
                             <v-btn icon color="primary" flat title="Mostrar snackbar"
                                    @click="snackbar=true">
@@ -207,37 +206,31 @@
                 </v-flex>
             </v-data-iterator>
         </v-card>
-        <v-btn
-                @click="showCreate"
-                fab
-                bottom
-                right
-                fixed
-                color="pink"
-                class="white--text"
-        >
-            <v-icon>add</v-icon>
-        </v-btn>
+
+        <task-create :users="dataUsers" :created="refresh()"></task-create>
     </span>
 </template>
 
 <script>
+    import TaskCompletedToggle from './TaskCompletedToggle'
+    import Toggle from './Toggle'
+    import TaskCreate from './TaskCreate'
+
     export default {
         name: 'Tasques',
+        components: {
+            'task-completed-toggle': TaskCompletedToggle,
+            'toggle': Toggle,
+            'task-create': TaskCreate
+        },
         data () {
             return {
-                snackbarMessage: '',
-                snackbarTimeout: 3000,
-                snackbarColor: 'succes',
                 dataUsers: this.users,
                 completed: false,
                 name: '',
                 description: '',
-                deleteDialog: false,
-                createDialog: false,
                 editDialog: false,
-                taskBeingRemoved: null,
-                snackbar: true,
+                deleteDialog: false,
                 user: '',
                 usersold: [
                     'Sergi Tur',
@@ -257,16 +250,17 @@
                 loading: false,
                 creating: false,
                 editing: false,
-                removing: false,
+                removing: null,
                 dataTasks: this.tasks,
                 headers: [
                     { text: 'Id', value: 'id' },
                     { text: 'Name', value: 'name' },
                     { text: 'User', value: 'user_id' },
                     { text: 'Completat', value: 'completed' },
-                    { text: 'Creat', value: 'created_at' },
-                    { text: 'Modificat', value: 'updated_at' },
-                    { text: 'Accions', sortable: false } //TODO timestamps
+                    { text: 'Completat', value: 'completed' },
+                    { text: 'Creat', value: 'created_at_human.' },
+                    { text: 'Modificat', value: 'updated_at_human' },
+                    { text: 'Accions', sortable: false, value: 'full_search' }
                 ]
             }
         },
@@ -278,6 +272,10 @@
             users: {
                 type: Array,
                 required: true
+            },
+            uri: {
+                type: String,
+                required: true
             }
         },
         methods: {
@@ -287,30 +285,43 @@
             opcio1 () {
                 console.log('OPCIO 1 REFRESH')
             },
-            showDestroy (task) {
-                this.deleteDialog = true
-                this.taskBeingRemoved = task
-            },
             removeTask (task) {
                 this.dataTasks.splice(this.dataTasks.indexOf(task), 1)
             },
-            destroy () {
-                this.removing = true
-                window.axios.delete('/api/v1/tasks/' + this.taskBeingRemoved.id).then(() => {
-                    // this.refresh() // Problema -> rendiment
-                    this.removeTask(this.taskBeingRemoved)
-                    this.deleteDialog = false
-                    this.taskBeingRemoved = null
-                    this.showMessage
-                    this.removing = false
-                }).catch(error => {
-                    console.log(error)
-                    // TODO showSnackbar
-                    this.removing = false
-                })
-            },
-            showCreate () {
-                this.createDialog = true
+            // destroyWithPromises () {
+            //   this.$confirm().then(
+            //     // Ok tirem endavant
+            //     window.axios.then(
+            //       window.axios.then(
+            //     ).catch
+            //   ).catch(
+            //     // No fer res
+            //   )
+            // },
+            async destroy (task) {
+                // ES6 async await
+                let result = await this.$confirm('Les tasques esborrades no es poden recuperar',
+                    {
+                        title: 'Esteu segurs?',
+                        buttonTruetext: 'Eliminar',
+                        buttonFalsetext: 'Cancel·lar',
+                        // icon: '',
+                        color: 'error'
+                    })
+                if (result) {
+                    this.removing = task.id
+                    window.axios.delete(this.uri + '/' + task.id).then(() => {
+                        // this.refresh() // Problema -> rendiment
+                        this.removeTask(task)
+                        this.deleteDialog = false
+                        task = null
+                        this.$snackbar.showMessage("S'ha esborrat correctament la tasca")
+                        this.removing = null
+                    }).catch(error => {
+                        this.$snackbar.showError(error.message)
+                        this.removing = null
+                    })
+                }
             },
             create (task) {
                 console.log('TODO CREATE TASK')
@@ -322,35 +333,16 @@
                 console.log('TODO SHOW TASK ' + task.id)
             },
             refresh () {
-                this.loading = true
-                // setTimeout(() => { this.loading = false }, 5000)
-                // OCO !! URL CANVIA SEGONS EL CAS!!! TODO
-                // window.axios.get('/api/v1/tasks').then().catch()
-                // USERS TASKS O TOTES LES TASQUES?
-                window.axios.get('/api/v1/tasks').then(response => {
-                    console.log(response.data)
-                    // SHOW SNACKBAR MISSATGE OK: 'Les tasques s'han actualitzat correctament
+                //this.loading = true
+                window.axios.get(this.uri).then(response => {
                     this.dataTasks = response.data
                     this.loading = false
+                    this.$snackbar.showMessage('Tasques actualitzades correctament')
                 }).catch(error => {
                     console.log(error)
                     this.loading = false
-                    // SHOW SNACKBAR ERROR TODO
                 })
-            },
-            //SNACKBAR
-            showMessage () {
-                this.$snackbar.showMessage('Missatge exemple')
-            },
-            showError () {
-                this.$snackbar.showError('Error exemple')
             }
-
-
-        },
-        created() {
-            console.log('Usuari logat: '+window.laravel_user.name)
-
         }
     }
 </script>

@@ -1,5 +1,5 @@
 import Snackbar from './Snackbar'
-import EventBus from '../../components/mixins/eventBus'
+import EventBus from '../../eventBus'
 
 function Install (Vue, options) {
   Vue.component('snackbar', Snackbar)

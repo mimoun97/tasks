@@ -23,7 +23,6 @@ class MailTest extends TestCase
     {
         //dump(env('MAIL_DRIVER'));
         $user = factory(User::class)->create();
-        $user->email = 'mimounhm.97@gmail.com';
 
         Mail::to($user)->send(new TestEmail());
         $this::assertTrue(true);

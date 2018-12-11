@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mimoun
- * Date: 22/11/18
- * Time: 20:15
- */
 
 namespace App;
 
@@ -15,9 +9,12 @@ trait FormattedDates
 {
     public function getCreatedAtFormattedAttribute()
     {
-        //carbon
-        return optional($this->created_at)->format('h:s:sA d-m-Y');
+        return optional($this->created_at)->format('h:i:sA d-m-Y');
+    }
 
+    public function getCreatedAtTimestampAttribute()
+    {
+        return optional($this->created_at)->timestamp;
     }
 
     public function getCreatedAtHumanAttribute()
@@ -26,14 +23,10 @@ trait FormattedDates
         return optional($this->created_at)->diffForHumans(Carbon::now());
     }
 
-    public function getCreatedAtTimestampAttribute()
-    {
-        return optional($this->created_at)->timestamp;
-    }
-
     public function getUpdatedAtFormattedAttribute()
     {
-        return optional($this->updated_at)->format('h:s:sA d-m-Y');
+        return optional($this->updated_at)->format('h:i:sA d-m-Y');
+
     }
 
     public function getUpdatedAtHumanAttribute()
@@ -41,4 +34,16 @@ trait FormattedDates
         Carbon::setLocale(config('app.locale'));
         return optional($this->updated_at)->diffForHumans(Carbon::now());
     }
+
+    public function getUpdatedAtTimestampAttribute()
+    {
+        return optional($this->updated_at)->timestamp;
+
+    }
+
+//$this->assertNotNull($mappedTask['created_at_formatted']);
+//$this->assertNotNull($mappedTask['created_at_human']);
+//$this->assertNotNull($mappedTask['updated_at']);
+//$this->assertNotNull($mappedTask['updated_at_human']);
+//$this->assertNotNull($mappedTask['updated_at_formatted']);
 }

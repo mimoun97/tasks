@@ -21,11 +21,9 @@
 </template>
 
 <script>
-    import HasSnackbar from "./mixins/HasSnackbar";
 
     export default {
         name: "Tags",
-        mixins: [HasSnackbar],
         data (){
             return {
                 dataTags: this.tags
@@ -34,7 +32,7 @@
         methods: {
             showMessage () {
                 console.log('blablasdas')
-                this.$snackbar.showMessage('Missatge exemple')
+                this.$snackbar.showMessage('Crea creada correctament')
             },
             showError () {
                 console.log('adeu')

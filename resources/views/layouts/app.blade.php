@@ -11,7 +11,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <link rel="stylesheet" href="/css/tailwind.min.css" type="text/css">
-    <title>@yield('title','Put your title here')</title>
+    <title>@yield('title','App Tasques')</title>
     <style>
         [v-cloak] {
             display: none;
@@ -30,30 +30,56 @@
                 app
         >
             <v-card>
-                {{--<v-toolbar color="blue" dark fixed>--}}
-                    {{--<v-toolbar-title >User</v-toolbar-title>--}}
-                {{--</v-toolbar>--}}
+                <v-card-title class="blue darken-3 white--text"><h4>Perfil</h4></v-card-title>
+                <v-layout row wrap>
+                    <v-flex xs12>
+                        <ul>
+                            <li>Nom : {{ Auth::user()->name }}</li>
+                            <li>Email : {{ Auth::user()->email }}</li>
+                            <li>Admin : {{ Auth::user()->admin }}</li>
+                            <li>Roles : {{ implode(',',Auth::user()->map()['roles']) }}</li>
+                            <li>Permissions : {{ implode(', ',Auth::user()->map()['permissions']) }}</li>
+                            {{--<li>Permissions : {{ implode(', ',Auth::user()->map()['permissions']) }}</li>--}}
+                        </ul>
+                    </v-flex>
+                </v-layout>
+            </v-card>
+            <v-card>
+                <v-card-title class="blue darken-3 white--text" primary-title><h4>Opcions administrador</h4></v-card-title>
 
+                    <div row wrap>
+                        @canImpersonate
 
-                @canImpersonate
-                    <user-select @selected="impersonate" url="/api/v1/regular_users/"></user-select>
-                @endCanImpersonate
+                        <v-flex xs12>
+                            <impersonate label="Entrar com..." @selected="impersonate" url="/api/v1/regular_users"></impersonate>
 
-                @impersonating
-                L'usuari {{ Auth::user()->impersonatedBy()->name  }} està suplantant a {{ Auth::user()->name }}
-                <a href="/impersonate/leave">Leave impersonation</a>
-                @endImpersonating
+                            {{--<user-select label="Entrar com..." @selected="impersonate" url="/api/v1/regular_users"></user-select>--}}
+                        </v-flex>
 
-                TODO Llista usauris
-                {{--<user-list></user-list>--}}
+                        @endCanImpersonate
 
+                        @impersonating
+
+                        <div>
+                            <v-avatar title="{{ Auth::user()->impersonatedBy()->name }} ( {{ Auth::user()->impersonatedBy()->email }} )">
+                                <img src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->impersonatedBy()->email) }}" alt="avatar">
+                            </v-avatar>
+                            <p>
+                                L'usuari <b>{{ Auth::user()->impersonatedBy()->name }}
+                                </b> està suplantant a <b>{{ Auth::user()->name }}</b>
+                            </p>
+                            <a class="pink--text" href="/impersonate/leave">Abandonar la suplantació</a>
+                        </div>
+
+                        @endImpersonating
+                    </div>
             </v-card>
         </v-navigation-drawer>
         <v-navigation-drawer
                 v-model="drawer"
                 fixed
-                app
-                clipped
+                clipped dark app
+                class="indigo darken-1"
         >
             <v-list dense>
                 <template v-for="item in items">
@@ -114,7 +140,7 @@
                 </template>
             </v-list>
         </v-navigation-drawer>
-        <v-toolbar color="indigo" dark fixed app clipped-right>
+        <v-toolbar color="indigo" dark fixed app clipped-right clipped-left>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>Application</v-toolbar-title>
             <v-spacer></v-spacer>
@@ -124,14 +150,14 @@
             </v-avatar>
             <v-form action="logout" method="POST">
                 @csrf
-                <v-btn color="primary" type="submit">Logout</v-btn>
+                <v-btn depressed round color="blue-grey darken-4" type="submit" placeholder="Sortir">Logout</v-btn>
             </v-form>
         </v-toolbar>
         <v-content>
             @yield('content')
         </v-content>
-        <v-footer color="indigo" app>
-            <span class="white--text">&copy; 2017</span>
+        <v-footer color="blue-grey darken-4" app>
+            <span class="white--text">Fet per <b>Mimoun Haddou</b> Curs 2018-2019</span>
         </v-footer>
     </v-app>
 </div>
@@ -139,3 +165,9 @@
 </body>
 </html>
 </html>
+<script>
+    import Impersonate from "../../js/components/Impersonate";
+    export default {
+        components: {Impersonate}
+    }
+</script>

@@ -46,7 +46,5 @@ Route::middleware('auth:api')->group(function() {
     Route::post('/v1/user/tasks/','Api\LoggedUserTasksController@store');
     Route::put('/v1/user/tasks/{task}','Api\LoggedUserTasksController@update');
 
-
 });
-
 

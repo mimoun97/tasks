@@ -10,8 +10,7 @@ class TasksController extends Controller
 
     public function index()
     {
-        //TODO map collection no va a php blade
-        $tasks = Task::orderBy('created_at','desc')->get();//map_collection();//orderBy('created_at','desc')->get();
+        $tasks = map_collection(Task::orderBy('created_at','desc')->get());
 
         //return $tasks; //en format json
         //return view('tasks',['tasks' => $tasks]);
