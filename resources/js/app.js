@@ -15,11 +15,11 @@ import LoginForm from './components/LoginForm.vue'
 import RegisterForm from './components/RegisterForm.vue'
 import UserList from './components/UserList.vue'
 import UserSelect from './components/UserSelect.vue'
-import permissions from "./plugins/permissions";
+import permissions from './plugins/permissions'
 import Tags from './components/Tags.vue'
 import Impersonate from './components/Impersonate.vue'
 
-import snackbar from "./plugins/snackbar";
+import snackbar from './plugins/snackbar'
 
 window.Vue = Vue
 window.Vue.use(Vuetify)
