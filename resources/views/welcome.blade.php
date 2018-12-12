@@ -6,11 +6,11 @@
 
 @section('content')
     <v-app light>
-        <v-toolbar class="white">
+        <v-toolbar dark class="white--text">
             <v-toolbar-title>Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn class="green lighten-2" href="/login">Login</v-btn>
-            <v-btn class="yellow lighten-2" href="/register">Register</v-btn>
+            <v-btn class="green lighten-2 black--text" href="/login">Login</v-btn>
+            <v-btn class="yellow lighten-2 black--text" href="/register">Register</v-btn>
         </v-toolbar>
         <v-content>
             <section>
@@ -23,9 +23,8 @@
                     >
                         <img src="img/vuetify.png" alt="Vuetify.js" height="200">
                         <h1 class="white--text mb-2 display-1 text-xs-center">Mimoun Haddou</h1>
-                        <div class="subheading mb-3 text-xs-center">Powered by Vuetify</div>
-                        //TODO boto github
-                        <v-btn class="blue lighten-2 mt-5"
+                        <div class="subheading mb-3 text-xs-center">Està en mode: {{ config('app.env') }}</div>
+                        <v-btn class="indigo accent-1 mb-2"
                                dark
                                large
                                href="https://github.com/mimoun1997/tasks">GitHub </v-btn>

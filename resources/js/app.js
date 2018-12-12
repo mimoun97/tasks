@@ -15,11 +15,13 @@ import LoginForm from './components/LoginForm.vue'
 import RegisterForm from './components/RegisterForm.vue'
 import UserList from './components/UserList.vue'
 import UserSelect from './components/UserSelect.vue'
-import permissions from './plugins/permissions'
 import Tags from './components/Tags.vue'
 import Impersonate from './components/Impersonate.vue'
+import About from './components/About.vue'
+import Contact from './components/Contact.vue'
 
 import snackbar from './plugins/snackbar'
+import permissions from './plugins/permissions'
 
 window.Vue = Vue
 window.Vue.use(Vuetify)
@@ -36,6 +38,8 @@ window.Vue.component('user-list', UserList)
 window.Vue.component('user-select', UserSelect)
 window.Vue.component('tags', Tags)
 window.Vue.component('impersonate', Impersonate)
+window.Vue.component('about', About)
+window.Vue.component('contact', Contact)
 
 // eslint-disable-next-line no-unused-vars
 const app = new window.Vue(AppComponent)

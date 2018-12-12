@@ -146,7 +146,7 @@
             <v-spacer></v-spacer>
             <v-toolbar-side-icon @click.stop="drawerRigth = !drawerRigth"></v-toolbar-side-icon>
             <v-avatar @click.stop="drawerRight = !drawerRight" title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">
-                <img src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}" alt="avatar">
+                <img src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}" alt="avatar" />
             </v-avatar>
             <v-form action="logout" method="POST">
                 @csrf
@@ -166,7 +166,7 @@
 </html>
 </html>
 <script>
-    import Impersonate from "../../js/components/Impersonate";
+    import Impersonate from "../../js/components/Impersonate"
     export default {
         components: {Impersonate}
     }

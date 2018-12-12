@@ -4,5 +4,10 @@
 
 @section('content')
 
-    <h1>Contacte</h1>
+    <v-container>
+		
+	    <contact></contact>
+
+	</v-container>
+	
 @endsection

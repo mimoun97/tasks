@@ -1,23 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<container>
+    <v-container fluid>
+        <v-layout>
+            <v-flex xs12>
+                <v-card>
+                    <h1>Hola <b>{{ Auth::user()->name }}</b></h1>
+                    <h2>Està en mode: {{ config('app.env') }}</h2>
+                </v-card>
+            </v-flex>
+        </v-layout>
+    </container>
 @endsection
