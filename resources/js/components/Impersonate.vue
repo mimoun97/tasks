@@ -22,11 +22,11 @@ export default {
     },
     url: {
       type: String,
-      required: '/api/v1/users'
+      default: '/api/v1/users'
     },
     label: {
       type: String,
-      required: 'Usuaris'
+      default: 'Usuaris'
     }
   }
 }

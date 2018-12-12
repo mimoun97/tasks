@@ -9,8 +9,12 @@
         <v-toolbar dark class="white--text">
             <v-toolbar-title>Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn class="green lighten-2 black--text" href="/login">Login</v-btn>
-            <v-btn class="yellow lighten-2 black--text" href="/register">Register</v-btn>
+            @if (!Auth::user())
+                <v-btn class="green lighten-2 black--text" href="/login">Login</v-btn>
+                <v-btn class="yellow lighten-2 black--text" href="/register">Register</v-btn>
+            @else
+            <v-toolbar-title>{{ Auth::user()->name }}</v-toolbar-title>
+            @endif
         </v-toolbar>
         <v-content>
             <section>
