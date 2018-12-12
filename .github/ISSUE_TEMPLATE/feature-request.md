@@ -1,20 +1,20 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: ''
+about: Suggereix una idea per a aquest projecte
+title: "[Feature request]"
 labels: ''
 assignees: mimoun1997
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+**Problema per resoldre**
+Una descripció clara i concisa del que és el problema. Ex. Sempre estic frustrat quan [...]
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+**Solució proposada**
+Una descripció clara i concisa del que vols que passi.
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+**Descriu les alternatives que ha considerat**
+Una descripció clara i concisa de les solucions o funcions alternatives que hàgiu considerat.
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+**Context addicional**
+Afegiu qualsevol altre context o captures de pantalla sobre la sol·licitud de funcions aquí.
