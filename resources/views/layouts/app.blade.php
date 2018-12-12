@@ -142,7 +142,7 @@
         </v-navigation-drawer>
         <v-toolbar color="indigo" dark fixed app clipped-right clipped-left>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-            <v-toolbar-title>Application</v-toolbar-title>
+            <v-toolbar-title>Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-side-icon @click.stop="drawerRigth = !drawerRigth"></v-toolbar-side-icon>
             <v-avatar @click.stop="drawerRight = !drawerRight" title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">
@@ -156,9 +156,7 @@
         <v-content>
             @yield('content')
         </v-content>
-        <v-footer color="blue-grey darken-4" app>
-            <span class="white--text">Fet per <b>Mimoun Haddou</b> Curs 2018-2019</span>
-        </v-footer>
+        
     </v-app>
 </div>
 <script src="{{ mix('/js/app.js') }}"></script>

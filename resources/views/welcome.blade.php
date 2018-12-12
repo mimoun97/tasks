@@ -6,7 +6,7 @@
 
 @section('content')
     <v-app light>
-        <v-toolbar dark class="white--text">
+        <v-toolbar dark class="blue-grey darken-4" class="white--text">
             <v-toolbar-title>Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
             @if (!Auth::user())
@@ -185,13 +185,13 @@
                 </v-container>
             </section>
 
-            <v-footer class="blue darken-2">
+            <v-footer class="blue-grey darken-4">
                 <v-layout row wrap align-center>
                     <v-flex xs12>
                         <div class="white--text ml-3">
-                            Made with
-                            <v-icon class="red--text">favorite</v-icon>
-                            by <a class="white--text" href="https://vuetifyjs.com" target="_blank">Vuetify</a>
+                            App feta per <a class="white--text" href="https://github.com/mimoun1997"> Mimoun Haddou</a>
+                            
+                            i amb tot <v-icon class="red--text">favorite</v-icon> tema i layout fets amb <a class="white--text" href="https://vuetifyjs.com" target="_blank">Vuetify</a>
                             and <a class="white--text" href="https://github.com/vwxyzjn">Costa Huang</a>
                         </div>
                     </v-flex>
