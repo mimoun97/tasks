@@ -4,9 +4,9 @@
             <v-flex xs12>
                 <v-card>
                     <v-card-title dark color="primary">
-                        <span class="title">Tasques ({{total}})</span>
+                        <span class="title headline indigo--text">Tasques ({{total}})</span>
                     </v-card-title>
-                    <v-card-text class="px-0">
+                    <v-card-text class="xs12">
                         <form>
                             <v-text-field
                                     type="text"
@@ -19,7 +19,7 @@
                                    name="name"
                                    required
                             >
-                            <v-btn id="button_add_task" @click="add">Afegir</v-btn>
+                            <v-btn dark class="indigo" id="button_add_task" @click="add">Afegir</v-btn>
                         </form>
 
                         <div v-if="errorMessage">

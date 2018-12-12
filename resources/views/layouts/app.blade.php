@@ -26,26 +26,29 @@
                 v-model="drawerRigth"
                 fixed
                 right
-                clipped
+                clipped-right clipped
                 app
         >
             <v-card>
-                <v-card-title class="blue darken-3 white--text"><h4>Perfil</h4></v-card-title>
+                <v-card-title dark class="indigo darken-2 white--text"><h4>Perfil</h4></v-card-title>
                 <v-layout row wrap>
                     <v-flex xs12>
-                        <ul>
-                            <li>Nom : {{ Auth::user()->name }}</li>
-                            <li>Email : {{ Auth::user()->email }}</li>
-                            <li>Admin : {{ Auth::user()->admin }}</li>
-                            <li>Roles : {{ implode(',',Auth::user()->map()['roles']) }}</li>
-                            <li>Permissions : {{ implode(', ',Auth::user()->map()['permissions']) }}</li>
-                            {{--<li>Permissions : {{ implode(', ',Auth::user()->map()['permissions']) }}</li>--}}
-                        </ul>
+                        <div row>
+                            <v-list>
+                              
+                            
+                            <div class="ml-2"><b>Nom :</b> {{ Auth::user()->name }}</div>
+                            <div class="ml-2"><b>Email :</b> {{ Auth::user()->email }}</div>
+                            <div class="ml-2"><b>Admin :</b> {{ Auth::user()->admin ? 'Si' : 'No' }}</div>
+                            <div class="ml-2"><b>Roles :</b> {{ implode(',',Auth::user()->map()['roles']) }}</div>
+                            <div class="ml-2"><b>Permissions :</b> {{ implode(', ',Auth::user()->map()['permissions']) }}</div>
+                            </v-list>
+                        </div>
                     </v-flex>
                 </v-layout>
             </v-card>
             <v-card>
-                <v-card-title class="blue darken-3 white--text" primary-title><h4>Opcions administrador</h4></v-card-title>
+                <v-card-title dark class="indigo darken-2 white--text" primary-title><h4>Opcions administrador</h4></v-card-title>
 
                     <div row wrap>
                         @canImpersonate
@@ -144,9 +147,9 @@
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-toolbar-side-icon @click.stop="drawerRigth = !drawerRigth"></v-toolbar-side-icon>
+            {{-- <v-toolbar-side-icon @click.stop="drawerRigth = !drawerRigth"></v-toolbar-side-icon> --}}
             <v-avatar @click.stop="drawerRight = !drawerRight" title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">
-                <img src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}" alt="avatar" />
+                <img @click.stop="drawerRigth = !drawerRigth" src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}" alt="avatar" />
             </v-avatar>
             <v-form action="logout" method="POST">
                 @csrf
@@ -162,10 +165,3 @@
 <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>
-</html>
-<script>
-    import Impersonate from "../../js/components/Impersonate"
-    export default {
-        components: {Impersonate}
-    }
-</script>

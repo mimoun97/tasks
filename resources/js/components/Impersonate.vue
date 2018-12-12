@@ -13,12 +13,14 @@ export default {
 
   data () {
     return {
+      dataUsers: [],
+      errorMessage: '',
     }
   },
   props: {
     users: {
       type: Array,
-      required: true
+      required: false
     },
     url: {
       type: String,
@@ -27,6 +29,17 @@ export default {
     label: {
       type: String,
       default: 'Usuaris'
+    }
+  }, 
+  created() {
+    if (this.users){
+      this.dataUsers = this.users
+    } else {
+      window.axios.get(this.url).then((response) => {
+        this.dataUsers = response.data
+      }).catch((error) => {
+        this.errorMessage = error.response.data
+      })
     }
   }
 }
