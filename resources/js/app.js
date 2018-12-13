@@ -19,6 +19,7 @@ import Tags from './components/Tags.vue'
 import Impersonate from './components/Impersonate.vue'
 import About from './components/About.vue'
 import Contact from './components/Contact.vue'
+import TaskList from './components/TaskList.vue'
 
 import snackbar from './plugins/snackbar'
 import permissions from './plugins/permissions'
@@ -40,6 +41,7 @@ window.Vue.component('tags', Tags)
 window.Vue.component('impersonate', Impersonate)
 window.Vue.component('about', About)
 window.Vue.component('contact', Contact)
+window.Vue.component('task-list', TaskList)
 
 // eslint-disable-next-line no-unused-vars
 const app = new window.Vue(AppComponent)

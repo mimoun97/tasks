@@ -5,7 +5,7 @@ export default {
   data () {
     return {
       drawer: null,
-        drawerRigth: false,
+      drawerRigth: false,
       items: [
         { icon: 'home', text: 'Welcome', url: '/' },
         { icon: 'home', text: 'Home', url: '/home' },
@@ -20,20 +20,20 @@ export default {
             { icon: 'assignment', text: 'Tasques', url: '/tasques' }
           ]
         },
-          { icon: 'tags', text: 'Tags', url: '/tags' },
-          //{ icon: 'folder', text: 'Projects', url: '/projects' },
-          { icon: 'message', text: 'Contact', url: '/contact' },
+        { icon: 'tags', text: 'Tags', url: '/tags' },
+        // { icon: 'folder', text: 'Projects', url: '/projects' },
+        { icon: 'message', text: 'Contact', url: '/contact' },
         { icon: 'public', text: 'About', url: '/about' }
       ]
     }
   },
-    methods: {
-        impersonate(user) {
-            //console.log(user)
-            if (user) {
-                window.location.href = '/impersonate/take/' + user
-            }
-        }
+  methods: {
+    impersonate (user) {
+      // console.log(user)
+      if (user) {
+        window.location.href = '/impersonate/take/' + user
+      }
     }
+  }
 }
 </script>

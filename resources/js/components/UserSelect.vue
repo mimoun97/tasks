@@ -26,35 +26,34 @@
         </template>
     </v-autocomplete>
 
-
 </template>
 
 <script>
-    export default {
-        name: "UserSelect",
+export default {
+  name: 'UserSelect',
 
-        data () {
-            return {
-                dataUsers: this.users,
-                selectedUser: null
-            }
-        },
-        props : {
-            users: {
-                type: Array,
-                required: true
-            },
-            url: {
-                type: String,
-                default: '/api/v1/users'
-            }
-        },
-        watch: {
-            selectedUser (newValue) {
-                this.$emit('selected', newValue)
-            }
-        }
+  data () {
+    return {
+      dataUsers: this.users,
+      selectedUser: null
     }
+  },
+  props: {
+    users: {
+      type: Array,
+      required: true
+    },
+    url: {
+      type: String,
+      default: '/api/v1/users'
+    }
+  },
+  watch: {
+    selectedUser (newValue) {
+      this.$emit('selected', newValue)
+    }
+  }
+}
 </script>
 
 <style scoped>

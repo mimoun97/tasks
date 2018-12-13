@@ -17,31 +17,31 @@
 </template>
 
 <script>
-    export default {
-        name: "UserList",
+export default {
+  name: 'UserList',
 
-        data () {
-            return {
-                dataUsers: this.user
-            }
-        },
-        props : {
-            users: {
-                type: Array,
-            }
-        },
-        created () {
-            if (this.users) this.dataUser = this.users
-            else {
-                window.axios('/api/v1/users').then(response => {
-                    this.dataUsers = response.data
-                }).catch(error => {
-                    console.log(error)
-                    //this.snackbar.showErroMessage
-                })
-            }
-        }
+  data () {
+    return {
+      dataUsers: this.user
     }
+  },
+  props: {
+    users: {
+      type: Array
+    }
+  },
+  created () {
+    if (this.users) this.dataUser = this.users
+    else {
+      window.axios('/api/v1/users').then(response => {
+        this.dataUsers = response.data
+      }).catch(error => {
+        console.log(error)
+        // this.snackbar.showErroMessage
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>

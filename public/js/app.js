@@ -72861,15 +72861,17 @@ var render = function() {
                     "v-card-title",
                     { attrs: { dark: "", color: "primary" } },
                     [
-                      _c("span", { staticClass: "title" }, [
-                        _vm._v("Tasques (" + _vm._s(_vm.total) + ")")
-                      ])
+                      _c(
+                        "span",
+                        { staticClass: "title headline indigo--text" },
+                        [_vm._v("Tasques (" + _vm._s(_vm.total) + ")")]
+                      )
                     ]
                   ),
                   _vm._v(" "),
                   _c(
                     "v-card-text",
-                    { staticClass: "px-0" },
+                    { staticClass: "xs12" },
                     [
                       _c(
                         "form",
@@ -72941,7 +72943,8 @@ var render = function() {
                           _c(
                             "v-btn",
                             {
-                              attrs: { id: "button_add_task" },
+                              staticClass: "indigo",
+                              attrs: { dark: "", id: "button_add_task" },
                               on: { click: _vm.add }
                             },
                             [_vm._v("Afegir")]
@@ -75327,7 +75330,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "v-toolbar",
-        { attrs: { color: "blue darken-3" } },
+        { attrs: { color: "indigo darken-3" } },
         [
           _c(
             "v-menu",
@@ -77699,7 +77702,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -77726,21 +77729,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   data: function data() {
-    return {};
+    return {
+      dataUsers: [],
+      errorMessage: ''
+    };
   },
 
   props: {
     users: {
       type: Array,
-      required: true
+      required: false
     },
     url: {
       type: String,
-      required: '/api/v1/users'
+      default: '/api/v1/users'
     },
     label: {
       type: String,
-      required: 'Usuaris'
+      default: 'Usuaris'
+    }
+  },
+  created: function created() {
+    var _this = this;
+
+    if (this.users) {
+      this.dataUsers = this.users;
+    } else {
+      window.axios.get(this.url).then(function (response) {
+        _this.dataUsers = response.data;
+      }).catch(function (error) {
+        _this.errorMessage = error.response.data;
+      });
     }
   }
 });
@@ -78008,7 +78027,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -78019,6 +78038,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -78064,9 +78087,18 @@ var render = function() {
       _c(
         "v-card-actions",
         [
-          _c("v-btn", { staticClass: "indigo accent-1" }, [_vm._v("github")]),
+          _c(
+            "v-btn",
+            {
+              staticClass: "indigo accent-1",
+              attrs: { dark: "", href: "https://github.com/mimoun1997/tasks" }
+            },
+            [_vm._v("github")]
+          ),
           _vm._v(" "),
-          _c("v-btn", { staticClass: "success accent-3" }, [_vm._v("moodle")])
+          _c("v-btn", { staticClass: "orange accent-3", attrs: { dark: "" } }, [
+            _vm._v("moodle")
+          ])
         ],
         1
       )

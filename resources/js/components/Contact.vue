@@ -7,11 +7,11 @@
 		  bla bla bla
 		</v-card-text>
 		<v-card-actions>
-		  <v-btn 
-		  dark 
+		  <v-btn
+		  dark
 		  href="https://github.com/mimoun1997/tasks" class="indigo accent-1">github</v-btn>
-		  <v-btn 
-		  dark 
+		  <v-btn
+		  dark
 		  class="orange accent-3">moodle</v-btn>
 		</v-card-actions>
 	</v-card>
@@ -22,12 +22,12 @@ export default {
 
   name: 'Contact',
 
-  data() {
+  data () {
     return {
 
-    };
-  },
-};
+    }
+  }
+}
 </script>
 
 <style lang="css" scoped>

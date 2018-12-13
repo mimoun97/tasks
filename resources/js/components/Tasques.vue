@@ -61,7 +61,7 @@
                                 <v-icon class="mr-1">exit_to_app</v-icon>
                                 Cancel·lar
                             </v-btn>
-                            <v-btn color="success">
+                            <v-btn color="success" @click="update">
                                 <v-icon class="mr-1" >save</v-icon>
                                 Guardar
                             </v-btn>
@@ -211,6 +211,13 @@
 
         <!--//TODO component tasks-list-->
 
+        <task-list></task-list>
+
+        <!--//TODO component task-destroy-->
+        <task-destroy :uri="uri"></task-destroy>
+
+        <!--//TODO component task-update-->
+        <task-update :uri="uri"></task-update>
     </span>
 </template>
 
@@ -218,13 +225,19 @@
 import TaskCompletedToggle from './TaskCompletedToggle'
 import Toggle from './Toggle'
 import TaskCreate from './TaskCreate'
+import TaskList from './TaskList'
+import TaskDestroy from './TaskDestroy'
+import TaskUpdate from './TaskUpdate'
 
 export default {
   name: 'Tasques',
   components: {
     'task-completed-toggle': TaskCompletedToggle,
     'toggle': Toggle,
-    'task-create': TaskCreate
+    'task-create': TaskCreate,
+    'task-list': TaskList,
+    'task-destroy': TaskDestroy,
+    'task-update': TaskUpdate
   },
   data () {
     return {
