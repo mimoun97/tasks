@@ -15,12 +15,11 @@ use Tests\TestCase;
 
 class RegularUsersControllerTest extends TestCase
 {
-    use RefreshDatabase, CanLogin;
+    use RefreshDatabase;
     /**
      * @test */
     public function can_list_regular_users()
     {
-        //$this->login();
         $this->withoutExceptionHandling();
         $user1 = factory(User::class)->create([
             'name' => 'Benito Camelas',
@@ -52,6 +51,6 @@ class RegularUsersControllerTest extends TestCase
         $this->assertEquals($result[1]->gravatar, 'https://www.gravatar.com/avatar/' .md5('mimoun@gmail.com'));
         $this->assertEquals($result[1]->email, 'mimoun@gmail.com');
 
-        //$this->assertNull($result[2]);
+        //$this->assertNull($result[2]); -> ErrorException : Undefined offset: 2
     }
 }
