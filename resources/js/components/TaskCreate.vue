@@ -37,22 +37,22 @@
 </template>
 
 <script>
-    import TaskForm from './TaskForm'
-    export default {
-        name: 'TaskCreate',
-        components: {
-            'task-form': TaskForm
-        },
-        data () {
-            return {
-                dialog: false
-            }
-        },
-        props: {
-            users: {
-                type: Array,
-                required: true
-            }
-        }
+import TaskForm from './TaskForm'
+export default {
+  name: 'TaskCreate',
+  components: {
+    'task-form': TaskForm
+  },
+  data () {
+    return {
+      dialog: false
     }
+  },
+  props: {
+    users: {
+      type: Array,
+      required: true
+    }
+  }
+}
 </script>

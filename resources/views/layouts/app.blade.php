@@ -35,8 +35,8 @@
                     <v-flex xs12>
                         <div row>
                             <v-list>
-                              
-                            
+
+
                             <div class="ml-2"><b>Nom :</b> {{ Auth::user()->name }}</div>
                             <div class="ml-2"><b>Email :</b> {{ Auth::user()->email }}</div>
                             <div class="ml-2"><b>Admin :</b> {{ Auth::user()->admin ? 'Si' : 'No' }}</div>
@@ -153,13 +153,13 @@
             </v-avatar>
             <v-form action="logout" method="POST">
                 @csrf
-                <v-btn depressed round color="blue-grey darken-4" type="submit" placeholder="Sortir">Logout</v-btn>
+                <v-btn depressed round color="blue-grey darken-4 elevation-2" type="submit" placeholder="Sortir">Logout</v-btn>
             </v-form>
         </v-toolbar>
         <v-content>
             @yield('content')
         </v-content>
-        
+
     </v-app>
 </div>
 <script src="{{ mix('/js/app.js') }}"></script>

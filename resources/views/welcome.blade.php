@@ -13,7 +13,12 @@
                 <v-btn class="green lighten-2 black--text" href="/login">Login</v-btn>
                 <v-btn class="yellow lighten-2 black--text" href="/register">Register</v-btn>
             @else
-            <v-toolbar-title>{{ Auth::user()->name }}</v-toolbar-title>
+                {{--<v-toolbar-title>--}}
+                    {{--<span>{{ Auth::user()->name }}</span>--}}
+                {{--</v-toolbar-title>--}}
+                <v-btn dark round color="indigo" class="elevation-2" placeholder="Home" href="/home">
+                    <v-icon>home</v-icon>
+                </v-btn>
             @endif
         </v-toolbar>
         <v-content>
@@ -190,7 +195,7 @@
                     <v-flex xs12>
                         <div class="white--text ml-3">
                             App feta per <a class="white--text" href="https://github.com/mimoun1997"> Mimoun Haddou</a>
-                            
+
                             i amb tot <v-icon class="red--text">favorite</v-icon> tema i layout fets amb <a class="white--text" href="https://vuetifyjs.com" target="_blank">Vuetify</a>
                             and <a class="white--text" href="https://github.com/vwxyzjn">Costa Huang</a>
                         </div>

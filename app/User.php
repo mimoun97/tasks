@@ -59,7 +59,7 @@ class User extends Authenticatable
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'gavatar' => $this->gavatar,
+            'gravatar' => $this->gravatar,
             'admin' => (boolean) $this->admin,
             'roles' => $this->roles()->pluck('name')->unique()->toArray(),
             'permissions' => $this->getAllPermissions()->pluck('name')->unique()->toArray()

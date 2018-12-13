@@ -353,6 +353,7 @@ export default {
       window.axios.get(this.uri).then(response => {
         this.dataTasks = response.data
         this.loading = false
+        this.refresh()
         this.$snackbar.showMessage('Tasques actualitzades correctament')
       }).catch(error => {
         console.log(error)

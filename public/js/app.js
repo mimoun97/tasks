@@ -73588,6 +73588,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       window.axios.get(this.uri).then(function (response) {
         _this2.dataTasks = response.data;
         _this2.loading = false;
+        _this2.refresh();
         _this2.$snackbar.showMessage('Tasques actualitzades correctament');
       }).catch(function (error) {
         console.log(error);
@@ -74725,22 +74726,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'TaskCreate',
-    components: {
-        'task-form': __WEBPACK_IMPORTED_MODULE_0__TaskForm___default.a
-    },
-    data: function data() {
-        return {
-            dialog: false
-        };
-    },
+  name: 'TaskCreate',
+  components: {
+    'task-form': __WEBPACK_IMPORTED_MODULE_0__TaskForm___default.a
+  },
+  data: function data() {
+    return {
+      dialog: false
+    };
+  },
 
-    props: {
-        users: {
-            type: Array,
-            required: true
-        }
+  props: {
+    users: {
+      type: Array,
+      required: true
     }
+  }
 });
 
 /***/ }),
