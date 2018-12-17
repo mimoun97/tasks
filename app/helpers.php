@@ -16,7 +16,7 @@ if (!function_exists('create_primary_user')) {
             $user= User::firstOrCreate([
                 'name' => 'Mimoun Haddou',
                 'email' => 'mimounhaddou@iesebre.com',
-                'password' => bcrypt(env('PRIMARY_USER_PASSWORD','secret'))
+                'password' => bcrypt(env('PRIMARY_USER_PASSWORD', 'secret'))
             ]);
 
             $user->admin = true;
@@ -24,7 +24,6 @@ if (!function_exists('create_primary_user')) {
         }
     }
 }
-
 
 if (!function_exists('create_acacha_user')) {
     function create_acacha_user() {
@@ -175,6 +174,15 @@ if (!function_exists('initialize_roles')) {
         } catch(Exception $e) {
 
         }
+    }
+}
+
+if (!function_exists('initialize_gates')) {
+    function initialize_gates()
+    {
+        Gate::define('tasks.manage',function($user) {
+            return $user->isSuperAdmin() || $user->hasRole('TaskManager');
+        });
     }
 }
 

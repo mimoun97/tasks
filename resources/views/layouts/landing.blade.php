@@ -20,5 +20,8 @@
     </v-app>
 </div>
 <script src="{{ mix('/js/app.js') }}"></script>
+<noscript>
+    <p>S'ha <b>d'activar javascript</b> per tal de que la pàgina funcioni <b>correctament.</b></p>
+</noscript>
 </body>
 </html>

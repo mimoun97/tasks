@@ -94,6 +94,7 @@
                 <v-icon>refresh</v-icon>
             </v-btn>
         </v-toolbar>
+
         <v-card>
             <v-card-title>
                 <v-layout row wrap>
@@ -109,7 +110,7 @@
                     <v-flex lg4 class="mr-2">
                         <v-select
                                 label="User"
-                                :items="dataUsers"
+                                :items="dataTasks"
                                 v-model="user"
                                 item-text="name"
                                 clearable>

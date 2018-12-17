@@ -23,20 +23,22 @@
         </v-toolbar>
         <v-content>
             <section>
-                <v-parallax src="img/hero.jpeg" height="600">
+                <v-parallax src="svg/pattern.svg" height="600">
                     <v-layout
                             column
                             align-center
                             justify-center
                             class="white--text"
                     >
-                        <img src="img/vuetify.png" alt="Vuetify.js" height="200">
+                        <img src="svg/logo.svg" alt="Vuetify.js" height="200">
                         <h1 class="white--text mb-2 display-1 text-xs-center">Mimoun Haddou</h1>
                         <div class="subheading mb-3 text-xs-center">Està en mode: {{ config('app.env') }}</div>
-                        <v-btn class="indigo accent-1 mb-2"
-                               dark
-                               large
-                               href="https://github.com/mimoun1997/tasks">GitHub </v-btn>
+                        <v-btn dark color="#6e5494"
+                               class="mb-3"
+                               target="_blank"
+                               large  round ripple
+                               href="https://github.com/mimoun1997/tasks"
+                        ><img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" alt="GitHub" height="28" class="mr-2">GitHub</v-btn>
                         <v-btn
                                 class="blue lighten-2 mt-5"
                                 dark

@@ -17,15 +17,15 @@
     <div>
         @foreach($tasks as $task)
         <div class="flex mb-4 items-center">
-            @if ($task->completed)
+            @if ($task['completed'])
 
-                <p class="w-full line-through text-green">{{ $task->name }}</p>
+                <p class="w-full line-through text-green">{{ $task['name'] }}</p>
             @else
-                <p class="w-full text-grey-darkest">{{ $task->name }}</p>
+                <p class="w-full text-grey-darkest">{{ $task['name'] }}</p>
             @endif
-                <a href="/task_edit/{{ $task->id }}">
+                <a href="/task_edit/{{ $task['id'] }}">
                     <button class="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-teal">Modificar</button></a>
-                <form action="/tasks/{{ $task->id }}" method="POST">
+                <form action="/tasks/{{ $task['id'] }}" method="POST">
                     @csrf
                     {{ method_field('DELETE') }}
                     <button class="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red">Eliminar</button>

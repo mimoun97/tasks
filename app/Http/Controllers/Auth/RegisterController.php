@@ -71,7 +71,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        // TODO envio email despresd de registrar
         Mail::to($user)->send(new WelcomeEmail($user));
 
         return $user;

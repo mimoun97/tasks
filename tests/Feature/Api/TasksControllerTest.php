@@ -123,14 +123,13 @@ class TasksControllerTest extends TestCase
         $oldTask = factory(Task::class)->create([
             'name' => 'Comprar llet'
         ]);
-        //dd($oldTask);
-        // 2
+
         $response = $this->json('PUT','/api/v1/tasks/' . $oldTask->id, [
             'name' => 'Comprar pa'
         ]);
 
         $result = json_decode($response->getContent());
-        //dd($result);
+
         $response->assertSuccessful();
 
         $newTask = $oldTask->refresh();

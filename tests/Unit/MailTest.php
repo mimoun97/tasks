@@ -21,7 +21,8 @@ class MailTest extends TestCase
      */
     public function send_markdown_email()
     {
-        //dump(env('MAIL_DRIVER'));
+        $this->withoutExceptionHandling();
+
         $user = factory(User::class)->create();
 
         Mail::to($user)->send(new TestEmail());
@@ -33,8 +34,7 @@ class MailTest extends TestCase
      */
     public function send_text_email()
     {
-        //dump(env('MAIL_DRIVER'));
-        //dump(env('MAIL_HOST'));
+
         $user = factory(User::class)->create();
 
         Mail::to($user)->send(new TestTextEmail());
@@ -46,7 +46,6 @@ class MailTest extends TestCase
      */
     public function send_markdown_email_dinamic()
     {
-        //dump(env('MAIL_DRIVER'));
         $user = factory(User::class)->create();
 
         Mail::to($user)->send(new TestDinamicEmail($user));

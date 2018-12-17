@@ -10,15 +10,18 @@ namespace Tests\Feature\Api;
 
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\Traits\CanLogin;
 use Tests\TestCase;
 
 class UsersControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, CanLogin;
     /**
      * @test */
     public function can_list_users()
     {
+        $this->login('api');
+
         $user1 = factory(User::class)->create([
             'name' => 'Benito Camelas',
             'email' => 'benito@gmail.com',
@@ -35,23 +38,25 @@ class UsersControllerTest extends TestCase
         ]);
 
 
-        $users = [$user1, $user2, $user3];
+        //$users = [$user1, $user2, $user3];
 
         $response = $this->json('GET', '/api/v1/users');
         $response->assertSuccessful();
         $result = json_decode($response->getContent());
 
-        $this->assertEquals($result[0]->name, 'Benito Camelas');
-        $this->assertEquals($result[0]->avatar, 'https://www.gravatar.com/avatar/' . md5('benito@gmail.com'));
-        $this->assertEquals($result[0]->email, 'benito@gmail.com');
+        //var_dump($result[0]->name);
+        //El metode login crea i registra un usuari.
+        $this->assertEquals($result[1]->name, 'Benito Camelas');
+        $this->assertEquals($result[1]->gravatar, 'https://www.gravatar.com/avatar/' . md5('benito@gmail.com'));
+        $this->assertEquals($result[1]->email, 'benito@gmail.com');
 
-        $this->assertEquals($result[1]->name, 'mimoun haddou');
-        $this->assertEquals($result[1]->avatar, 'https://www.gravatar.com/avatar/' .md5('mimoun@gmail.com'));
-        $this->assertEquals($result[1]->email, 'mimoun@gmail.com');
+        $this->assertEquals($result[2]->name, 'mimoun haddou');
+        $this->assertEquals($result[2]->gravatar, 'https://www.gravatar.com/avatar/' .md5('mimoun@gmail.com'));
+        $this->assertEquals($result[2]->email, 'mimoun@gmail.com');
 
-        $this->assertEquals($result[2]->name, 'prova cognom');
-        $this->assertEquals($result[2]->avatar, 'https://www.gravatar.com/avatar/' . md5('prova@gmail.com'));
-        $this->assertEquals($result[2]->email, 'prova@gmail.com');
+        $this->assertEquals($result[3]->name, 'prova cognom');
+        $this->assertEquals($result[3]->gravatar, 'https://www.gravatar.com/avatar/' . md5('prova@gmail.com'));
+        $this->assertEquals($result[3]->email, 'prova@gmail.com');
 
     }
 }

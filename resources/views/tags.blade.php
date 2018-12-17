@@ -4,7 +4,6 @@
 
 @section('content')
 
-    bla bla bla
     <v-container fluid>
         <v-layout>
             <v-flex>

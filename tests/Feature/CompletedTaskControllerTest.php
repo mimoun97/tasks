@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Task;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\Feature\Traits\CanLogin;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;

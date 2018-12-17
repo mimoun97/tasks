@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Task;
 use Tests\Feature\Traits\CanLogin;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -10,10 +11,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class TasquesControllerTest extends TestCase
 {
     use RefreshDatabase, CanLogin;
-
-    //Accés url /tasques
-
-    // 1) superadmin
 
     /**
      * @test
@@ -63,8 +60,29 @@ class TasquesControllerTest extends TestCase
     public function owner_tasks_user_can_index_tasques()
     {
         $this->withoutExceptionHandling();
-        $this->loginAsTasksUser();
+        create_example_tasks();
+
+        $user = $this->loginAsTasksUser();
+
+        //var_dump($user->getAllPermissions());
+
+        Task::create([
+            'name' => 'Comprar pa',
+            'completed' => false,
+            'description' => 'lorem',
+            'user_id' => $user->id
+        ]);
+
         $response = $this->get('/tasques');
         $response->assertSuccessful();
+
+        $response->assertViewIs('tasques');
+//        $response->assertViewHas('tasks', function($tasks) {
+//            return count($tasks)===1 &&
+//                $tasks[0]['name']==='Comprar pa';
+//        });
+        $response->assertViewHas('tasks');
+        $response->assertViewHas('users');
+        $response->assertViewHas('uri');
     }
 }

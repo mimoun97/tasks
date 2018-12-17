@@ -38,7 +38,12 @@ class TasksController extends Controller
 
     public function update(UpdateTask $request, Task $task)
     {
-        $task->name = $request->name;
+        if ($request->has('completed')) {
+            $task->completed = $request->completed;
+        }
+        if ($request->has('name')) {
+            $task->name = $request->name;
+        }
         $task->save();
         return $task->map();
     }

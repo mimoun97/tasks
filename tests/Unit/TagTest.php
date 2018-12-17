@@ -17,12 +17,4 @@ class TagTest extends TestCase
     {
         $this->assertTrue(true);
     }
-
-    /**
-     * @test
-     */
-    public function map()
-    {
-
-    }
 }

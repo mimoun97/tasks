@@ -133,7 +133,7 @@ class UserTest extends TestCase
 
         $this->assertEquals($mappedUser['name'], 'Benito Camelas');
         $this->assertEquals($mappedUser['email'], 'benito@gmail.com');
-        $this->assertEquals($mappedUser['avatar'], 'https://www.gravatar.com/avatar/' . md5('benito@gmail.com'));
+        $this->assertEquals($mappedUser['gravatar'], 'https://www.gravatar.com/avatar/' . md5('benito@gmail.com'));
         $this->assertEquals($mappedUser['admin'], false);
 
         $this->assertCount(0, $mappedUser['roles']);

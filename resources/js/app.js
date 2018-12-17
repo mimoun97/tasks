@@ -23,6 +23,7 @@ import TaskList from './components/TaskList.vue'
 
 import snackbar from './plugins/snackbar'
 import permissions from './plugins/permissions'
+import GitInfoComponent from './components/git/GitInfoComponent'
 
 window.Vue = Vue
 window.Vue.use(Vuetify)

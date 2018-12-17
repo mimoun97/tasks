@@ -17,27 +17,29 @@ Route::get('/', function () {
 
 //midleware auth
 Route::group(['middleware' => 'auth'], function () {
-Route::get('/tasks', 'TasksController@index');
-Route::post('/tasks','TasksController@store');
-Route::put('/tasks/{id}','TasksController@update');
-Route::delete('/tasks/{id}','TasksController@destroy');
+    Route::get('/tasks', 'TasksController@index');
+    Route::post('/tasks','TasksController@store');
+    Route::put('/tasks/{id}','TasksController@update');
+    Route::delete('/tasks/{id}','TasksController@destroy');
 
-Route::get('/task_edit/{id}','TasksController@edit');
+    Route::get('/task_edit/{id}','TasksController@edit');
 
-Route::post('/completed_task/{task}','CompletedTasksController@store');
+    Route::post('/completed_task/{task}','CompletedTasksController@store');
 
-Route::delete('/completed_task/{task}','CompletedTasksController@destroy');
+    Route::delete('/completed_task/{task}','CompletedTasksController@destroy');
 
-Route::get('/tasks_vue', function (){
-	return view('tasks_vue');
-});
+    Route::get('/tasks_vue', function (){
+        return view('tasks_vue');
+    });
 
-Route::get('/tasques', 'TasquesController@index');
+    Route::get('/tasques', 'TasquesController@index');
 
     Route::get('/user/tasks','LoggedUserTasksController@index');
 
     //TAGS
     Route::get('/tags', 'TagsController@index');
+
+    Route::get('/home', 'HomeController@index')->name('home');
 });
 
 
@@ -57,9 +59,9 @@ Route::get('/about', function () {
 //Equivalent a register->registerController
 Auth::routes();
 
+Route::post('/login_alt','Auth\LoginAltController@login');
+Route::post('/register_alt','Auth\RegisterAltController@register');
+
 Route::impersonate();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/register_alt','Auth\RegisterAltController@register');
-//Route::post('/login_alt','Auth\LoginAltController@register');
