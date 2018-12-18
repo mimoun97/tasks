@@ -163,6 +163,21 @@ class TaskTest extends TestCase
             'user_id' => $user->id
         ]);
 
+        $tag1 = Tag::create([
+            'name' => 'laravel',
+            'description' => 'laravel',
+            'color' => 'roig'
+        ]);
+
+        $tag2 = Tag::create([
+            'name' => 'php',
+            'description' => 'php',
+            'color' => 'lila'
+        ]);
+
+        $task->addTag($tag1);
+        $task->addTag($tag2);
+
         $task->assignUser($user);
 
         $mappedTask = $task->map();
@@ -174,5 +189,8 @@ class TaskTest extends TestCase
         $this->assertEquals($mappedTask['user_name'],$user->name);
         $this->assertEquals($mappedTask['user_email'],$user->email);
         $this->assertTrue($user->is($mappedTask['user']));
+
+        $this->assertEquals($mappedTask['tags'][0]->name, $tag1->name);
+        $this->assertEquals($mappedTask['tags'][1]->name, $tag2->name);
     }
 }
