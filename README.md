@@ -2,7 +2,7 @@
 
 > Aplicació de tasques feta a 2DAM curs 2018-2019
 
-[![Captura pantalla](C:\Users\dimhaddou.DISI\Documents\capturatasks.PNG)]()
+[![Captura pantalla](public/img/capturatasks.PNG)]()
 
 - Captures de pantalla tasks
 
