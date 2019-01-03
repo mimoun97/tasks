@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TasquesIndex;
 use App\Task;
 use App\User;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,7 @@ class TasquesController extends Controller
         }
         $users = User::all();
         $tags = map_collection(Tag::all());
-        return view('tasques',compact('tasks','users','uri'));
+        return view('tasques',compact('tasks','users','uri', 'tags'));
 
     }
 }

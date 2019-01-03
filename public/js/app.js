@@ -72525,7 +72525,7 @@ var content = __webpack_require__(69);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("4c981cc8", content, false, {});
+var update = __webpack_require__(4)("fe487fe2", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73014,9 +73014,9 @@ var render = function() {
                       _vm.errorMessage
                         ? _c("div", [
                             _vm._v(
-                              "\n                            Ha succeit un error: " +
+                              "\r\n                            Ha succeit un error: " +
                                 _vm._s(_vm.errorMessage) +
-                                "\n                        "
+                                "\r\n                        "
                             )
                           ])
                         : _vm._e(),
@@ -73078,9 +73078,9 @@ var render = function() {
                         [
                           _c("h3", [_vm._v("Filtros:")]),
                           _vm._v(
-                            "\n        Active filter: " +
+                            "\r\n        Active filter: " +
                               _vm._s(_vm.filter) +
-                              "\n        "
+                              "\r\n        "
                           ),
                           _c("ul", [
                             _c("li", [
@@ -75138,7 +75138,7 @@ var content = __webpack_require__(93);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("90e37404", content, false, {});
+var update = __webpack_require__(4)("6e4002aa", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -75256,7 +75256,7 @@ var content = __webpack_require__(97);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("00991cbc", content, false, {});
+var update = __webpack_require__(4)("197e79af", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -75483,7 +75483,7 @@ var content = __webpack_require__(103);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("2f332111", content, false, {});
+var update = __webpack_require__(4)("b795e578", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -75621,7 +75621,7 @@ var content = __webpack_require__(108);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("97e470f2", content, false, {});
+var update = __webpack_require__(4)("9057ee18", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -75742,7 +75742,7 @@ var content = __webpack_require__(112);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("037a1fe1", content, false, {});
+var update = __webpack_require__(4)("4e37e2ce", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -76885,7 +76885,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var withParams = Object({"NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(122).withParams : __webpack_require__(20).withParams;
+var withParams = Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(122).withParams : __webpack_require__(20).withParams;
 var _default = withParams;
 exports.default = _default;
 
@@ -77940,7 +77940,7 @@ var content = __webpack_require__(149);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("fe0119f0", content, false, {});
+var update = __webpack_require__(4)("db5da896", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -78088,7 +78088,7 @@ var content = __webpack_require__(153);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("77e55366", content, false, {});
+var update = __webpack_require__(4)("7bab94d3", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79024,7 +79024,7 @@ var content = __webpack_require__(161);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("211a1af6", content, false, {});
+var update = __webpack_require__(4)("d3c7f1ae", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79349,7 +79349,7 @@ var content = __webpack_require__(169);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("2b8a124f", content, false, {});
+var update = __webpack_require__(4)("b00fdffc", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79373,7 +79373,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -79384,6 +79384,49 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -79422,32 +79465,173 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-card",
+    "div",
     [
-      _c("v-card-title", { attrs: { "primary-title": "" } }, [
-        _vm._v("\n\t  Posa't en contacte amb nosaltres\n\t")
-      ]),
-      _vm._v(" "),
-      _c("v-card-text", [_vm._v("\n\t  bla bla bla\n\t")]),
-      _vm._v(" "),
       _c(
-        "v-card-actions",
+        "v-card",
         [
-          _c(
-            "v-btn",
-            {
-              staticClass: "indigo accent-1",
-              attrs: { dark: "", href: "https://github.com/mimoun1997/tasks" }
-            },
-            [_vm._v("github")]
-          ),
+          _c("v-card-title", { attrs: { "primary-title": "" } }, [
+            _vm._v("\r\n\t\t  Posa't en contacte amb nosaltres\r\n\t\t")
+          ]),
           _vm._v(" "),
-          _c("v-btn", { staticClass: "orange accent-3", attrs: { dark: "" } }, [
-            _vm._v("moodle")
-          ])
+          _c("v-card-text", [_vm._v("\r\n\t\t  bla bla bla\r\n\t\t")]),
+          _vm._v(" "),
+          _c(
+            "v-card-actions",
+            [
+              _c(
+                "v-btn",
+                {
+                  staticClass: "indigo accent-1",
+                  attrs: {
+                    dark: "",
+                    href: "https://github.com/mimoun1997/tasks"
+                  }
+                },
+                [_vm._v("github")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                { staticClass: "orange accent-3", attrs: { dark: "" } },
+                [_vm._v("moodle")]
+              )
+            ],
+            1
+          )
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      _c("v-hover", {
+        scopedSlots: _vm._u([
+          {
+            key: "default",
+            fn: function(ref) {
+              var hover = ref.hover
+              return _c(
+                "v-card",
+                {
+                  class: "elevation-" + (hover ? 12 : 2),
+                  attrs: { "mt-5": "" }
+                },
+                [
+                  _c(
+                    "v-img",
+                    {
+                      attrs: {
+                        src:
+                          "https://avatars3.githubusercontent.com/u/23049511?s=460&v=4",
+                        height: "200px"
+                      }
+                    },
+                    [
+                      _c("v-expand-transition", [
+                        hover
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "d-flex transition-fade-transition indigo darken-2 v-card--reveal  justify-center white--text",
+                                staticStyle: { height: "100%" }
+                              },
+                              [
+                                _vm._v(
+                                  "\r\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, repudiandae?\r\n          "
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-card-title", { attrs: { "primary-title": "" } }, [
+                    _c("div", [
+                      _c("div", { staticClass: "headline" }, [
+                        _vm._v("Mimoun Haddou")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "grey--text" }, [
+                        _vm._v("Curs 2018/2019")
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c(
+                        "v-btn",
+                        { attrs: { depressed: "", flat: "", color: "red" } },
+                        [_vm._v("gmail")]
+                      ),
+                      _vm._v(" "),
+                      _c("v-btn", { attrs: { flat: "", color: "purple" } }, [
+                        _vm._v("Github")
+                      ]),
+                      _vm._v(" "),
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { icon: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.show = !_vm.show
+                            }
+                          }
+                        },
+                        [
+                          _c("v-icon", [
+                            _vm._v(
+                              _vm._s(
+                                _vm.show
+                                  ? "keyboard_arrow_up"
+                                  : "keyboard_arrow_down"
+                              )
+                            )
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-slide-y-transition",
+                    [
+                      _c(
+                        "v-card-text",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.show,
+                              expression: "show"
+                            }
+                          ]
+                        },
+                        [
+                          _vm._v(
+                            "\r\n              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, hic, sunt laboriosam animi ipsa nesciunt aperiam incidunt officia quod sit veritatis, quibusdam tempore. Vitae in architecto dolore, eos deserunt iste.\r\n            "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            }
+          }
+        ])
+      })
     ],
     1
   )
@@ -79791,7 +79975,7 @@ var content = __webpack_require__(179);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("eb71a5b4", content, false, {});
+var update = __webpack_require__(4)("87991c00", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags

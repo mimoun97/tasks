@@ -1,20 +1,47 @@
 <template>
-	<v-card>
-		<v-card-title primary-title>
-		  Posa't en contacte amb nosaltres
-		</v-card-title>
-		<v-card-text>
-		  bla bla bla
-		</v-card-text>
-		<v-card-actions>
-		  <v-btn
-		  dark
-		  href="https://github.com/mimoun1997/tasks" class="indigo accent-1">github</v-btn>
-		  <v-btn
-		  dark
-		  class="orange accent-3">moodle</v-btn>
-		</v-card-actions>
-	</v-card>
+<div>
+        <v-hover>
+          <v-card mt-5 slot-scope="{ hover }"
+      :class="`elevation-${hover ? 12 : 2}`">
+          <v-img
+            src="https://avatars3.githubusercontent.com/u/23049511?s=460&v=4"
+            height="200px"
+          >
+            <v-expand-transition>
+          <div
+            v-if="hover"
+            class="d-flex transition-fade-transition indigo darken-2 v-card--reveal  justify-center white--text"
+            style="height: 100%;"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, repudiandae?
+          </div>
+        </v-expand-transition>
+          </v-img>
+  
+          <v-card-title primary-title>
+            <div>
+              <div class="headline">Mimoun Haddou</div>
+              <span class="grey--text">Curs 2018/2019</span>
+            </div>
+          </v-card-title>
+  
+          <v-card-actions>
+            <v-btn depressed flat color="red">gmail</v-btn>
+            <v-btn flat color="purple">Github</v-btn>
+            <v-spacer></v-spacer>
+            <v-btn icon @click="show = !show">
+              <v-icon>{{ show ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</v-icon>
+            </v-btn>
+          </v-card-actions>
+  
+          <v-slide-y-transition>
+            <v-card-text v-show="show">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, hic, sunt laboriosam animi ipsa nesciunt aperiam incidunt officia quod sit veritatis, quibusdam tempore. Vitae in architecto dolore, eos deserunt iste.
+            </v-card-text>
+          </v-slide-y-transition>
+        </v-card>
+        </v-hover>  
+		</div>
 </template>
 
 <script>
