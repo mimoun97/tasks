@@ -46,3 +46,5 @@ window.Vue.component('task-list', TaskList)
 
 // eslint-disable-next-line no-unused-vars
 const app = new window.Vue(AppComponent)
+
+Vue.config.productionTip = false

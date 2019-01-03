@@ -4,18 +4,9 @@
           <v-card mt-5 slot-scope="{ hover }"
       :class="`elevation-${hover ? 12 : 2}`">
           <v-img
-            src="https://avatars3.githubusercontent.com/u/23049511?s=460&v=4"
-            height="200px"
+            src="https://avatars3.githubusercontent.com/u/23049511?s=460&v=4" width="100%"
+            
           >
-            <v-expand-transition>
-          <div
-            v-if="hover"
-            class="d-flex transition-fade-transition indigo darken-2 v-card--reveal  justify-center white--text"
-            style="height: 100%;"
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, repudiandae?
-          </div>
-        </v-expand-transition>
           </v-img>
   
           <v-card-title primary-title>

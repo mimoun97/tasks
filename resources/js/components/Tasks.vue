@@ -1,25 +1,22 @@
 <template>
-<v-container grid-list-md text-xs-center id="tasks" class="tasks">
-        <v-layout row wrap>
+  <v-container grid-list-md text-xs-center id="tasks" class="tasks">
+        <v-layout column row wrap>
             <v-flex xs12>
                 <v-card>
-                    <v-card-title dark color="primary">
-                        <span class="title headline indigo--text">Tasques ({{total}})</span>
+                    <v-card-title dark class="display-2 indigo--text roboto" color="primary">
+												<span v-if="filter">Tasques <b>({{totalFiltered}})</b></span>
+                        <span v-else>Tasques <b>({{total}})</b></span>
                     </v-card-title>
                     <v-card-text class="xs12">
-                        <form>
+                        <form class="block">
+														<v-layout></v-layout>
                             <v-text-field
                                     type="text"
                                     v-model="newTask" @keyup.enter="add"
                                     name="name"
                                     required>
                             </v-text-field>
-                            <input type="text"
-                                   v-model="newTask" @keyup.enter="add"
-                                   name="name"
-                                   required
-                            >
-                            <v-btn dark class="indigo" id="button_add_task" @click="add">Afegir</v-btn>
+                            <v-btn block dark class="indigo" id="button_add_task" @click="add">Afegir</v-btn>
                         </form>
 
                         <div v-if="errorMessage">
@@ -29,30 +26,44 @@
                             <v-list-tile v-for="task in filteredTasks" :key="task.id">
                                 <v-list-tile-content>
                                     <v-list-tile-title>
-                                        <span :id="'task' + task.id" :class="{ strike: task.completed }">
-                                        </span>
-                                        <editable-text
+																			<div>
+                                        <span class="indigo--text" :id="'task' + task.id" :class="{ strike: task.completed }">
+																				<editable-text :class="{ 'orange--text': !task.completed }" class="black--text"
                                                 :text="task.name"
                                                 @edited="editName(task, $event)"
                                         ></editable-text>
+                                        </span>
+																				<span @click="remove(task)">
+            																<v-icon color="error">delete</v-icon>
+          															</span>
+																				<span type="checkbox" name="checked" @click="toggle(task)">
+            																<v-icon v-if="task.completed" color="green">check_box</v-icon>
+																						<v-icon v-else color="orange">check_box_outline_blank</v-icon>
+          															</span>
+																			</div>
                                     </v-list-tile-title>
+
                                 </v-list-tile-content>
 
                             </v-list-tile>
 
                         </v-list>
-                        <v-divider></v-divider>
-                        <span id="filters" v-show="total > 0">
-        <h3>Filtros:</h3>
-        Active filter: {{ filter }}
-        <ul>
-            <li><button @click="setFilter('all')">Totes</button></li>
-            <li><button @click="setFilter('completed')">Completades</button></li>
-            <li><button @click="setFilter('active')">Pendents</button></li>
-        </ul>
-    </span>
+                        
+                        
                     </v-card-text>
                 </v-card>
+<v-flex id="filters" v-show="total > 0">
+        <v-card raised row d-inline-block dark class="indigo darken-1">
+					<v-card-title primary-title class="justify-center display-1 pl-12 pt-2 pb-0">Filtros:</v-card-title>
+					<v-card-text class="headline pt-0">Filtre activat: <b :class="colorFiltre">"{{ filter }}"</b></v-card-text>
+<v-card-actions class="justify-center pt-0 pb-2">
+					<v-btn @click="setFilter('all')">Totes</v-btn>
+					<v-btn  class="green" @click="setFilter('completed')">Completades</v-btn>
+					<v-btn class="orange" @click="setFilter('active')">Pendents</v-btn>
+        </v-card-actions>
+</v-card>
+        
+    </v-flex>
             </v-flex>
         </v-layout>
     </v-container>
@@ -99,16 +110,26 @@ export default {
       }
     }
   },
-  computed: {
-    total () {
+	computed: {
+		total () {
       return this.dataTasks.length
     },
     filteredTasks () {
       // Segons el filtre actiu
       // Alternativa switch/case -> array associatiu
       return filters[this.filter](this.dataTasks)
+    },
+		totalFiltered() {
+			return filters[this.filter](this.dataTasks).length;
+		},
+		colorFiltre: function () {
+    return {
+      'black--text': this.filter == 'all',
+      'green--text': this.filter == 'completed',
+			'orange--text': this.filter == 'active',
     }
-  },
+  }
+	},
   watch: {
     tasks (newTasks) {
       this.dataTasks = newTasks

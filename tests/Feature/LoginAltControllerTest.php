@@ -20,7 +20,8 @@ class LoginAltControllerTest extends TestCase
         $this->withoutExceptionHandling();
         //1
         $user = factory(User::class)->create([
-            'email' => 'prova@gmail.com'
+            'email' => 'prova@gmail.com',
+            'password' => 'secret'
         ]);
         $this->assertNull(Auth::user());
         //2
