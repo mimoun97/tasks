@@ -79488,7 +79488,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -79531,15 +79531,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-
-  name: 'Contact',
+  name: "Contact",
 
   data: function data() {
     return {
@@ -79575,8 +79569,7 @@ var render = function() {
                   _c("v-img", {
                     attrs: {
                       src:
-                        "https://avatars3.githubusercontent.com/u/23049511?s=460&v=4",
-                      width: "60%"
+                        "https://avatars3.githubusercontent.com/u/23049511?s=460&v=4"
                     }
                   }),
                   _vm._v(" "),
@@ -79651,7 +79644,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\r\n              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, hic, sunt laboriosam animi ipsa nesciunt aperiam incidunt officia quod sit veritatis, quibusdam tempore. Vitae in architecto dolore, eos deserunt iste.\r\n            "
+                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, hic, sunt laboriosam animi ipsa nesciunt aperiam incidunt officia quod sit veritatis, quibusdam tempore. Vitae in architecto dolore, eos deserunt iste."
                           )
                         ]
                       )
