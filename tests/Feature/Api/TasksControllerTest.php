@@ -121,11 +121,13 @@ class TasksControllerTest extends TestCase
         $this->login('api');
 
         $oldTask = factory(Task::class)->create([
-            'name' => 'Comprar llet'
+            'name' => 'Comprar llet',
+            'completed' => false
         ]);
 
         $response = $this->json('PUT','/api/v1/tasks/' . $oldTask->id, [
-            'name' => 'Comprar pa'
+            'name' => 'Comprar pa',
+            'completed' => true
         ]);
 
         $result = json_decode($response->getContent());
@@ -135,7 +137,7 @@ class TasksControllerTest extends TestCase
         $newTask = $oldTask->refresh();
         $this->assertNotNull($newTask);
         $this->assertEquals('Comprar pa',$result->name);
-        $this->assertFalse((boolean) $newTask->completed);
+        $this->assertTrue((boolean) $newTask->completed);
     }
 
     /**

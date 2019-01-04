@@ -3,9 +3,10 @@
 namespace Tests\Feature;
 
 use App\User;
-use Illuminate\Support\Facades\Auth;
-use Tests\Feature\Traits\CanLogin;
 use Tests\TestCase;
+use Tests\Feature\Traits\CanLogin;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -17,22 +18,32 @@ class LoginAltControllerTest extends TestCase
      */
     public function can_login_a_user()
     {
+
         $this->withoutExceptionHandling();
         //1
         $user = factory(User::class)->create([
+            'name' => 'prova',
             'email' => 'prova@gmail.com',
             'password' => 'secret'
         ]);
+
         $this->assertNull(Auth::user());
+        
         //2
         $response = $this->post('/login_alt',[
+            'name' => 'prova',
             'email' => 'prova@gmail.com',
             'password' => 'secret'
         ]);
+
         $response->assertStatus(302);
+
         $response->assertRedirect('/home');
+
         $this->assertNotNull(Auth::user());
-        $this->assertEquals('prova@gmail.com',Auth::user()->email);
+
+        $this->assertEquals('prova@gmail.com', Auth::user()->email);
+
     }
     /**
      * @test
@@ -46,7 +57,7 @@ class LoginAltControllerTest extends TestCase
         //2
         $response = $this->post('/login_alt',[
             'email' => 'prova@gmail.com',
-            'passowrd' => 'asdasdasdasdasdasdd324234234asd'
+            'passowrd' => 'asdasdasdasdasdasdd324234234asda'
         ]);
         $response->assertStatus(302);
         $response->assertRedirect('/');

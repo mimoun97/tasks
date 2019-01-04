@@ -2,23 +2,30 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Requests\LoginRequest;
+use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginAltController extends Controller
 {
         // Exercici fer validació valtros
-   public function login(LoginRequest $request)
-   {
-   	    $user = User::where('email',$request->email)->first();
+    public function login(Request $request)
+    {
+
+        $user = User::where('email', $request->email)->first();
 
         if (!$user) return redirect('/');
-        if (!Hash::check($request->password, $user->password)) return redirect('/');
-        // Logar
+
+        if (!Hash::check(Hash::make($request->password), $user->password))
+            return redirect('/');
+
         Auth::login($user);
+
         return redirect('/home');
-   }
+    }
 
     public function login2(Request $request)
     {
@@ -28,7 +35,7 @@ class LoginAltController extends Controller
 
             // Buscar el usuari a la base de dades i comprovar password ok
 
-        $user = User::where('email',$request->email)->first();
+        $user = User::where('email', $request->email)->first();
 
         if (!$user) return redirect('/');
         if (!Hash::check($request->password, $user->password)) return redirect('/');
