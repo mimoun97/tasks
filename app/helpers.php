@@ -63,117 +63,69 @@ if (!function_exists('create_example_tasks')) {
 
 if (!function_exists('initialize_roles')) {
     function initialize_roles() {
-        // Crear roles
-        try {
-            $taskManager = Role::create([
-                'name' => 'TaskManager'
-            ]);
-        } catch(Exception $e) {
-
+        $roles = [
+            'TaskManager',
+            'Tasks',
+            'TagsManager',
+            'Tags'
+        ];
+        foreach ($roles as $role) {
+            create_role($role);
         }
-
-        try {
-            $tasks = Role::create([
-                'name' => 'Tasks'
-            ]);
-        } catch(Exception $e) {
-
+        $taskManagerPermissions = [
+            'tasks.index',
+            'tasks.show',
+            'tasks.store',
+            'tasks.update',
+            'tasks.complete',
+            'tasks.uncomplete',
+            'tasks.destroy'
+            ];
+        $tagsManagerPermissions = [
+            'tags.index',
+            'tags.show',
+            'tags.store',
+            'tags.update',
+            'tags.complete',
+            'tags.uncomplete',
+            'tags.destroy'
+        ];
+        // user.tasks Who:
+        // Logged->user === Task->user_id &&
+        // També ha de tenir Rol Tasks
+        $userTaskPermissions = [
+            'user.tasks.index',
+            'user.tasks.show',
+            'user.tasks.store',
+            'user.tasks.update',
+            'user.tasks.complete',
+            'user.tasks.uncomplete',
+            'user.tasks.destroy'
+        ];
+        $userTagsPermissions = [
+            'user.tags.index',
+            'user.tags.show',
+            'user.tags.store',
+            'user.tags.update',
+            'user.tags.complete',
+            'user.tags.uncomplete',
+            'user.tags.destroy'
+        ];
+        $permissions = array_merge($taskManagerPermissions, $userTaskPermissions, $tagsManagerPermissions, $userTagsPermissions);
+        foreach ($permissions as $permission) {
+            create_permission($permission);
         }
-
-
-        // Crear permisos
-
-        // CRUD de tasques
-        try {
-            Permission::create([
-                'name' => 'tasks.index'
-            ]);
-            //
-//        Gate::define('tasks.index', function ($user) {
-//            return $user->hasPermission('tasks.index');
-//        });
-
-            Permission::create([
-                'name' => 'tasks.show'
-            ]);
-            Permission::create([
-                'name' => 'tasks.store'
-            ]);
-            Permission::create([
-                'name' => 'tasks.update'
-            ]);
-            Permission::create([
-                'name' => 'tasks.complete'
-            ]);
-            Permission::create([
-                'name' => 'tasks.uncomplete'
-            ]);
-            Permission::create([
-                'name' => 'tasks.destroy'
-            ]);
-        }  catch(Exception $e) {
-
-        }
-
-        try {
-            // Assignar permissos a TaskManager
-            $taskManager->givePermissionTo('tasks.index');
-            $taskManager->givePermissionTo('tasks.show');
-            $taskManager->givePermissionTo('tasks.store');
-            $taskManager->givePermissionTo('tasks.update');
-            $taskManager->givePermissionTo('tasks.complete');
-            $taskManager->givePermissionTo('tasks.uncomplete');
-            $taskManager->givePermissionTo('tasks.destroy');
-        } catch(Exception $e) {
-
-        }
-
-        try {
-            // CRUD TASQUES D'UN USUARI
-            Permission::create([
-                'name' => 'user.tasks.index'
-            ]);
-            Permission::create([
-                'name' => 'user.tasks.show'
-            ]);
-            Permission::create([
-                'name' => 'user.tasks.store'
-            ]);
-            Permission::create([
-                'name' => 'user.tasks.update'
-            ]);
-            Permission::create([
-                'name' => 'user.tasks.complete'
-            ]);
-            Permission::create([
-                'name' => 'user.tasks.uncomplete'
-            ]);
-//        //
-//        Gate::define('user.tasks.update', function ($user) {
-//            return $user->hasPermission('user.tasks.update');
-//        });
-//
-//        Gate::define('user.tasks.update', function ($user, $task) {
-//            return $user->id === $task->user_id;
-//        });
-            Permission::create([
-                'name' => 'user.tasks.destroy'
-            ]);
-        } catch (Exception $e) {
-
-        }
-
-
-        try {
-            $tasks->givePermissionTo('user.tasks.index');
-            $tasks->givePermissionTo('user.tasks.show');
-            $tasks->givePermissionTo('user.tasks.store');
-            $tasks->givePermissionTo('user.tasks.update');
-            $tasks->givePermissionTo('user.tasks.complete');
-            $tasks->givePermissionTo('user.tasks.uncomplete');
-            $tasks->givePermissionTo('user.tasks.destroy');
-        } catch(Exception $e) {
-
+        $rolePermissions = [
+            'TaskManager' => $taskManagerPermissions,
+            'Tasks' => $userTaskPermissions,
+            'TagsManager' => $tagsManagerPermissions,
+            'Tags' => $userTagsPermissions,
+        ];
+        foreach ($rolePermissions as $role => $rolePermission) {
+            $role = Role::findByName($role);
+            foreach ($rolePermission as $permission) {
+                $role->givePermissionTo($permission);
+            }
         }
     }
 }
@@ -249,12 +201,12 @@ if (!function_exists('sample_users')) {
 }
 
 if (!function_exists('map_collection')) {
-    function map_collection($collection) {
-        return $collection->map(function ($item) {
-           return $item->map();
+    function map_collection($collection)
+    {
+        return !method_exists($collection, 'map') ? null :
+            $collection->map(function ($item) {
+            return $item->map();
         });
-
-
     }
 }
 
@@ -355,5 +307,78 @@ if (! function_exists('git_remote_origin_url')) {
     {
         exec("git config --get remote.origin.url", $output);
         return $output[0];
+    }
+}
+
+
+//Mysql
+if (!function_exists('create_mysql_database')) {
+    function create_mysql_database($name)
+    {
+        // PDO
+        // MYSQL: CREATE DATABASE IF NOT EXISTS $name
+        $statement = "CREATE DATABASE IF NOT EXISTS $name";
+        DB::connection('mysqlroot')->getPdo()->exec($statement);
+    }
+}
+if (!function_exists('drop_mysql_database')) {
+    function drop_mysql_database($name)
+    {
+        // PDO
+        // MYSQL: CREATE DATABASE IF NOT EXISTS $name
+        $statement = "DROP DATABASE IF EXISTS $name";
+        DB::connection('mysqlroot')->getPdo()->exec($statement);
+    }
+}
+if (!function_exists('create_mysql_user')) {
+    function create_mysql_user($name, $password = null, $host = 'localhost')
+    {
+        if (!$password) $password = str_random();
+        $statement = "CREATE USER IF NOT EXISTS {$name}@{$host}";
+        DB::connection('mysqlroot')->getPdo()->exec($statement);
+        $statement = "ALTER USER '{$name}'@'{$host}' IDENTIFIED BY '{$password}'";
+        DB::connection('mysqlroot')->getPdo()->exec($statement);
+        return $password;
+    }
+}
+if (!function_exists('grant_mysql_privileges')) {
+    function grant_mysql_privileges($user, $database, $host = 'localhost')
+    {
+        $statement = "GRANT ALL PRIVILEGES ON {$database}.* TO '{$user}'@'{$host}' WITH GRANT OPTION";
+        DB::connection('mysqlroot')->getPdo()->exec($statement);
+        $statement = "FLUSH PRIVILEGES";
+        DB::connection('mysqlroot')->getPdo()->exec($statement);
+    }
+}
+if (!function_exists('create_database')) {
+    function create_database()
+    {
+        create_mysql_database(env('DB_DATABASE'));
+        create_mysql_user(env('DB_USERNAME'), env('DB_PASSWORD'));
+        grant_mysql_privileges(env('DB_USERNAME'), env('DB_DATABASE'));
+    }
+}
+if (!function_exists('create_role')) {
+    function create_role($role)
+    {
+        try {
+            return Role::create([
+                'name' => $role
+            ]);
+        } catch (Exception $e) {
+            return Role::findByName($role);
+        }
+    }
+}
+if (!function_exists('create_permission')) {
+    function create_permission($permission)
+    {
+        try {
+            return Permission::create([
+                'name' => $permission
+            ]);
+        } catch (Exception $e) {
+            return Permission::findByName($permission);
+        }
     }
 }
