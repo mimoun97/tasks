@@ -54,7 +54,7 @@
                         @canImpersonate
 
                         <v-flex xs12>
-                            <impersonate label="Entrar com..." @selected="impersonate" url="/api/v1/regular_users"></impersonate>
+                            <impersonate label="Entrar com..." url="/api/v1/regular_users"></impersonate>
 
                             {{--<user-select label="Entrar com..." @selected="impersonate" url="/api/v1/regular_users"></user-select>--}}
                         </v-flex>

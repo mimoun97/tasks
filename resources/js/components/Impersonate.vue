@@ -1,6 +1,5 @@
 <template>
-    <user-select :users="dataUsers"></user-select>
-
+    <user-select :users="dataUsers" :label="label" @selected="impersonate" :item-value="null"></user-select>
 </template>
 
 <script>
@@ -10,17 +9,14 @@ export default {
   components: {
     'user-select': UserSelect
   },
-
   data () {
     return {
-      dataUsers: [],
-      errorMessage: '',
+      dataUsers: []
     }
   },
   props: {
     users: {
-      type: Array,
-      required: false
+      type: Array
     },
     url: {
       type: String,
@@ -30,21 +26,23 @@ export default {
       type: String,
       default: 'Usuaris'
     }
-  }, 
-  created() {
-    if (this.users){
-      this.dataUsers = this.users
-    } else {
-      window.axios.get(this.url).then((response) => {
+  },
+  methods: {
+    impersonate (user) {
+      if (user) {
+        window.location.href = '/impersonate/take/' + user.id
+      }
+    }
+  },
+  created () {
+    if (this.users) this.dataUsers = this.users
+    else {
+      window.axios.get(this.url).then(response => {
         this.dataUsers = response.data
-      }).catch((error) => {
-        this.errorMessage = error.response.data
+      }).catch(error => {
+        this.$snackbar.showError(error)
       })
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>
