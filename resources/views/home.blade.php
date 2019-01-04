@@ -5,7 +5,7 @@
         <v-layout>
             <v-flex xs12>
                 <v-card>
-                    <h1>Logat com: <b>{{ Auth::user()->name }}</b></h1>
+                    <v-card-title>{{ Auth::user()->name }}</v-card-title>
                 </v-card>
             </v-flex>
         </v-layout>

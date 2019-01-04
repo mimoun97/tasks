@@ -79542,7 +79542,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   name: 'Contact',
 
   data: function data() {
-    return {};
+    return {
+      show: false
+    };
   }
 });
 
@@ -79566,7 +79568,7 @@ var render = function() {
               return _c(
                 "v-card",
                 {
-                  class: "elevation-" + (hover ? 12 : 2),
+                  class: "elevation-" + (hover ? 2 : 12),
                   attrs: { "mt-5": "" }
                 },
                 [
@@ -79574,7 +79576,7 @@ var render = function() {
                     attrs: {
                       src:
                         "https://avatars3.githubusercontent.com/u/23049511?s=460&v=4",
-                      width: "100%"
+                      width: "60%"
                     }
                   }),
                   _vm._v(" "),

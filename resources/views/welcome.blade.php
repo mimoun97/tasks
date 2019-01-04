@@ -32,7 +32,6 @@
                     >
                         <img src="svg/logo.svg" alt="Vuetify.js" height="200">
                         <h1 class="white--text mb-2 display-1 text-xs-center">Mimoun Haddou</h1>
-                        <div class="subheading mb-3 text-xs-center">Està en mode: {{ config('app.env') }}</div>
                         <v-btn dark color="#6e5494"
                                class="mb-3"
                                target="_blank"
@@ -121,7 +120,7 @@
             </section>
 
             <section>
-                <v-parallax src="img/section.jpeg" height="380">
+                <v-parallax src="svg/pattern.svg" height="200">
                     <v-layout column align-center justify-center>
                         <div class="headline white--text mb-3 text-xs-center">Web development has never been easier</div>
                         <em>Kick-start your application today</em>
