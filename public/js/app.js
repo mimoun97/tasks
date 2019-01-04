@@ -26929,6 +26929,7 @@ window.Vue.component('impersonate', __WEBPACK_IMPORTED_MODULE_15__components_Imp
 window.Vue.component('about', __WEBPACK_IMPORTED_MODULE_16__components_About_vue___default.a);
 window.Vue.component('contact', __WEBPACK_IMPORTED_MODULE_17__components_Contact_vue___default.a);
 window.Vue.component('task-list', __WEBPACK_IMPORTED_MODULE_18__components_TaskList_vue___default.a);
+window.Vue.component('git-info', __WEBPACK_IMPORTED_MODULE_21__components_git_GitInfoComponent___default.a);
 
 // eslint-disable-next-line no-unused-vars
 var app = new window.Vue(__WEBPACK_IMPORTED_MODULE_5__components_App_vue___default.a);
@@ -50265,6 +50266,10 @@ if (user) {
   console.error('CAUTION: user not found at HTML!');
 }
 
+var gitHeader = document.head.querySelector('meta[name="git"]');
+window.git = null;
+if (gitHeader) if (gitHeader.content) window.git = JSON.parse(gitHeader.content);
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -72551,7 +72556,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.strike[data-v-43ab059a] {\n  text-decoration: line-through;\n}\n", ""]);
+exports.push([module.i, "\n.strike[data-v-43ab059a] {\r\n  text-decoration: line-through;\n}\r\n", ""]);
 
 // exports
 
@@ -72668,7 +72673,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -72689,16 +72700,16 @@ var filters = {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Tasks',
+  name: "Tasks",
   components: {
-    'editable-text': __WEBPACK_IMPORTED_MODULE_0__EditableText___default.a
+    "editable-text": __WEBPACK_IMPORTED_MODULE_0__EditableText___default.a
   },
   data: function data() {
     return {
-      filter: 'all', // All Completed Active
-      newTask: '',
+      filter: "all", // All Completed Active
+      newTask: "",
       dataTasks: this.tasks,
-      errorMessage: ''
+      errorMessage: ""
     };
   },
 
@@ -72725,9 +72736,9 @@ var filters = {
 
     colorFiltre: function colorFiltre() {
       return {
-        'black--text': this.filter == 'all',
-        'green--text': this.filter == 'completed',
-        'orange--text': this.filter == 'active'
+        "black--text": this.filter == "all",
+        "green--text": this.filter == "completed",
+        "orange--text": this.filter == "active"
       };
     }
   },
@@ -72746,12 +72757,16 @@ var filters = {
     add: function add() {
       var _this = this;
 
-      if (this.newTask === '') return;
-      window.axios.post('/api/v1/tasks', {
+      if (this.newTask === "") return;
+      window.axios.post("/api/v1/tasks", {
         name: this.newTask
       }).then(function (response) {
-        _this.dataTasks.splice(0, 0, { id: response.data.id, name: _this.newTask, completed: false });
-        _this.newTask = '';
+        _this.dataTasks.splice(0, 0, {
+          id: response.data.id,
+          name: _this.newTask,
+          completed: false
+        });
+        _this.newTask = "";
       }).catch(function (error) {
         console.log(error);
       });
@@ -72764,7 +72779,7 @@ var filters = {
     var _this2 = this;
 
     if (this.tasks.length === 0) {
-      window.axios.get('/api/v1/tasks').then(function (response) {
+      window.axios.get("/api/v1/tasks").then(function (response) {
         //console.log(response.data)
         _this2.dataTasks = response.data;
       }).catch(function (error) {
@@ -72948,13 +72963,13 @@ var render = function() {
                     [
                       _vm.filter
                         ? _c("span", [
-                            _vm._v("Tasques "),
+                            _vm._v("\n            Tasques\n            "),
                             _c("b", [
                               _vm._v("(" + _vm._s(_vm.totalFiltered) + ")")
                             ])
                           ])
                         : _c("span", [
-                            _vm._v("Tasques "),
+                            _vm._v("\n            Tasques\n            "),
                             _c("b", [_vm._v("(" + _vm._s(_vm.total) + ")")])
                           ])
                     ]
@@ -72964,6 +72979,112 @@ var render = function() {
                     "v-card-text",
                     { staticClass: "xs12" },
                     [
+                      _c(
+                        "div",
+                        [
+                          _c(
+                            "v-flex",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.total > 0,
+                                  expression: "total > 0"
+                                }
+                              ],
+                              attrs: { id: "filters" }
+                            },
+                            [
+                              _c(
+                                "v-card",
+                                {
+                                  staticClass: "indigo darken-1",
+                                  attrs: {
+                                    raised: "",
+                                    row: "",
+                                    "d-inline-block": "",
+                                    dark: ""
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "v-card-title",
+                                    {
+                                      staticClass:
+                                        "justify-center display-1 pl-12 pt-2 pb-0",
+                                      attrs: { "primary-title": "" }
+                                    },
+                                    [_vm._v("Filtros:")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-card-text",
+                                    { staticClass: "headline pt-0" },
+                                    [
+                                      _vm._v(
+                                        "\n                  Filtre activat:\n                  "
+                                      ),
+                                      _c("b", { class: _vm.colorFiltre }, [
+                                        _vm._v('"' + _vm._s(_vm.filter) + '"')
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-card-actions",
+                                    { staticClass: "justify-center pt-0 pb-2" },
+                                    [
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          on: {
+                                            click: function($event) {
+                                              _vm.setFilter("all")
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Totes")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          staticClass: "green",
+                                          on: {
+                                            click: function($event) {
+                                              _vm.setFilter("completed")
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Completades")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          staticClass: "orange",
+                                          on: {
+                                            click: function($event) {
+                                              _vm.setFilter("active")
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Pendents")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
                       _c(
                         "form",
                         { staticClass: "block" },
@@ -73018,9 +73139,7 @@ var render = function() {
                       _vm.errorMessage
                         ? _c("div", [
                             _vm._v(
-                              "\n                            Ha succeit un error: " +
-                                _vm._s(_vm.errorMessage) +
-                                "\n                        "
+                              "Ha succeit un error: " + _vm._s(_vm.errorMessage)
                             )
                           ])
                         : _vm._e(),
@@ -73122,100 +73241,6 @@ var render = function() {
                             1
                           )
                         })
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.total > 0,
-                      expression: "total > 0"
-                    }
-                  ],
-                  attrs: { id: "filters" }
-                },
-                [
-                  _c(
-                    "v-card",
-                    {
-                      staticClass: "indigo darken-1",
-                      attrs: {
-                        raised: "",
-                        row: "",
-                        "d-inline-block": "",
-                        dark: ""
-                      }
-                    },
-                    [
-                      _c(
-                        "v-card-title",
-                        {
-                          staticClass:
-                            "justify-center display-1 pl-12 pt-2 pb-0",
-                          attrs: { "primary-title": "" }
-                        },
-                        [_vm._v("Filtros:")]
-                      ),
-                      _vm._v(" "),
-                      _c("v-card-text", { staticClass: "headline pt-0" }, [
-                        _vm._v("Filtre activat: "),
-                        _c("b", { class: _vm.colorFiltre }, [
-                          _vm._v('"' + _vm._s(_vm.filter) + '"')
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        { staticClass: "justify-center pt-0 pb-2" },
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              on: {
-                                click: function($event) {
-                                  _vm.setFilter("all")
-                                }
-                              }
-                            },
-                            [_vm._v("Totes")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              staticClass: "green",
-                              on: {
-                                click: function($event) {
-                                  _vm.setFilter("completed")
-                                }
-                              }
-                            },
-                            [_vm._v("Completades")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              staticClass: "orange",
-                              on: {
-                                click: function($event) {
-                                  _vm.setFilter("active")
-                                }
-                              }
-                            },
-                            [_vm._v("Pendents")]
-                          )
-                        ],
-                        1
                       )
                     ],
                     1
@@ -73577,7 +73602,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       editing: false,
       removing: null,
       dataTasks: this.tasks,
-      headers: [{ text: 'Id', value: 'id' }, { text: 'Name', value: 'name' }, { text: 'User', value: 'user_id' }, { text: 'Completat', value: 'completed' }, { text: 'Completat', value: 'completed' }, { text: 'Creat', value: 'created_at_human.' }, { text: 'Modificat', value: 'updated_at_human' }, { text: 'Accions', sortable: false, value: 'full_search' }]
+      headers: [{ text: 'Id', value: 'id' }, { text: 'Name', value: 'name' }, { text: 'User', value: 'user_id' }, { text: 'Completat', value: 'completed' }, { text: 'tags', value: 'tags.name' }, { text: 'Creat', value: 'created_at_human.' }, { text: 'Modificat', value: 'updated_at_human' }, { text: 'Accions', sortable: false, value: 'full_search' }]
     };
   },
 
@@ -80005,7 +80030,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -80020,14 +80045,90 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "GitInfoComponent",
-    data: function data() {
-        return {};
-    },
+  name: 'GitInfoComponent',
+  data: function data() {
+    return {
+      dialog: false,
+      dataGit: this.git
+    };
+  },
 
-    props: {}
+  props: {
+    git: {
+      type: Object,
+      required: false
+    }
+  },
+  methods: {
+    githubUri: function githubUri() {
+      return this.dataGit.origin.split(':')[1].split('.')[0];
+    },
+    githubURL: function githubURL() {
+      return 'https://github.com/' + this.githubUri();
+    },
+    githubURLIssues: function githubURLIssues() {
+      return this.githubURL() + '/commits/master';
+    },
+    refresh: function refresh() {
+      var _this = this;
+
+      window.axios.get('/api/v1/git/info').then(function (response) {
+        _this.$snackbar.showMessage('Dades actualitzades correctament');
+        _this.dataGit = response.data;
+      }).catch(function (error) {
+        _this.$snackbar.showError(error);
+      });
+    }
+  },
+  created: function created() {
+    if (!this.git) this.dataGit = window.git;
+  }
 });
 
 /***/ }),
@@ -80038,7 +80139,153 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "span",
+    { attrs: { "mr-5": "" } },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialog,
+            callback: function($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog"
+          }
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c(
+                "v-card-title",
+                {
+                  staticClass: "headline grey lighten-2",
+                  attrs: { "primary-title": "" }
+                },
+                [
+                  _vm._v(
+                    "\n          Informació versió de l'aplicació\n        "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("v-card-text", [
+                _c("ul", [
+                  _c("li", [_vm._v("Branca: " + _vm._s(_vm.dataGit.branch))]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Commit: " + _vm._s(_vm.dataGit.commit))]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v("Commit_short: " + _vm._s(_vm.dataGit.commit_short))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v("Autor: " + _vm._s(_vm.dataGit.author_name))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v("Email: " + _vm._s(_vm.dataGit.author_email))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v("Missatge: " + _vm._s(_vm.dataGit.message))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v(
+                      "Data: " +
+                        _vm._s(_vm.dataGit.date_human) +
+                        " | " +
+                        _vm._s(_vm.dataGit.date_formatted)
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Origin: " + _vm._s(_vm.dataGit.origin))]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v("Projecte Github: "),
+                    _c(
+                      "a",
+                      { attrs: { href: _vm.githubURL(), target: "_blank" } },
+                      [_vm._v(_vm._s(_vm.githubUri()))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v("Commits Github: "),
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: _vm.githubURLIssues(), target: "_blank" }
+                      },
+                      [_vm._v(_vm._s(_vm.githubUri()))]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("v-divider"),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        icon: "",
+                        small: "",
+                        title: "Actualitzeu les dades/flush de la cache"
+                      },
+                      on: { click: _vm.refresh }
+                    },
+                    [_c("v-icon", [_vm._v("refresh")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "primary", flat: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialog = false
+                        }
+                      }
+                    },
+                    [_vm._v("\n            Tancar\n          ")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v("\n    Versió: "),
+      _c(
+        "a",
+        {
+          staticClass: "white--text",
+          attrs: { href: "#", click: "dialog=true" },
+          on: {
+            click: function($event) {
+              _vm.dialog = true
+            }
+          }
+        },
+        [_vm._v(_vm._s(_vm.dataGit.commit_short))]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

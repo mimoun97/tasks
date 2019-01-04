@@ -274,7 +274,7 @@ export default {
         { text: 'Name', value: 'name' },
         { text: 'User', value: 'user_id' },
         { text: 'Completat', value: 'completed' },
-        { text: 'Completat', value: 'completed' },
+        { text: 'tags', value: 'tags.name' },
         { text: 'Creat', value: 'created_at_human.' },
         { text: 'Modificat', value: 'updated_at_human' },
         { text: 'Accions', sortable: false, value: 'full_search' }

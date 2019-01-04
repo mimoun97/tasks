@@ -43,6 +43,7 @@ window.Vue.component('impersonate', Impersonate)
 window.Vue.component('about', About)
 window.Vue.component('contact', Contact)
 window.Vue.component('task-list', TaskList)
+window.Vue.component('git-info', GitInfoComponent)
 
 // eslint-disable-next-line no-unused-vars
 const app = new window.Vue(AppComponent)
