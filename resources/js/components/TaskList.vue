@@ -5,12 +5,9 @@
         <v-btn slot="activator" icon dark>
           <v-icon>more_vert</v-icon>
         </v-btn>
-        <v-list>
+        <v-list v-for="i in 3" :key="i">
           <v-list-tile>
-            <v-list-tile-title>Opció 1</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile href="http://google.com">
-            <v-list-tile-title>Google</v-list-tile-title>
+            <v-list-tile-title>Opció {{ i }}</v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-menu>
@@ -69,7 +66,7 @@
               <task-completed-toggle :task="task"></task-completed-toggle>
             </td>
             <td>
-              <tasks-tags task="task"></tasks-tags>
+              <tasks-tags :task="task" :tags="task.tags"></tasks-tags>
             </td>
             <td v-text="task.completed"></td>
             <td v-text="task.created_at_human"></td>
@@ -131,7 +128,7 @@ export default {
       filters: ["Totes", "Completades", "Pendents"],
       search: "",
       pagination: {
-        rowsPerPage: 25
+      rowsPerPage: 25
       },
       headers: [
         { text: "Id", value: "id" },
@@ -146,7 +143,7 @@ export default {
     };
   },
   components: {
-    toggle: Toggle,
+    "toggle": Toggle,
     "task-destroy": TaskDestroy,
     "task-update": TaskUpdate,
     "task-show": TaskShow,
@@ -195,13 +192,6 @@ export default {
           console.log(error);
           this.loading = false;
         });
-    }
-  },
-  computed: {
-    gravatar(task) {
-      return (
-        "www.gravatar.com/avatar/" + md5("example@gmail.com".toLowerCase())
-      );
     }
   }
 };
