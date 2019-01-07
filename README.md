@@ -49,6 +49,10 @@ TODO
 [Web acacha.org] (http://acacha.org/)
 
 
+### Issues / Incidències
+Tancar issues en commits paraules clau
+````close, closes, closed, fixes, fixed #numero-issue````
+
 
 
 
