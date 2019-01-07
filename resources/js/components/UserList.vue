@@ -40,7 +40,7 @@ export default {
         })
         .catch(error => {
           console.log(error);
-          // this.$snackbar.showError(error)
+          this.$snackbar.showError(error)
         });
     }
   }

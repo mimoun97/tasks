@@ -66,7 +66,10 @@ class CompletedTaskControllerTest extends TestCase
     }
 
     /**
+     * Test no es pot descompletar una tasca inexistent
+     * 
      * @test
+     * @return void
      */
     public function cannot_uncomplete_a_unexisting_task()
     {

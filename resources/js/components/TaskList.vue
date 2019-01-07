@@ -31,7 +31,7 @@
             <v-select label="Filtres" :items="filters" v-model="filter" item-text="name"></v-select>
           </v-flex>
           <v-flex lg4 class="mr-2">
-            <v-select label="User" :items="dataTasks" v-model="user" item-text="name" clearable></v-select>
+            <v-select label="User" :items="dataUsers" v-model="user" item-text="name" clearable></v-select>
           </v-flex>
           <v-flex lg5>
             <v-text-field append-icon="search" label="Buscar" v-model="search"></v-text-field>
@@ -58,14 +58,18 @@
             <td>
               <v-avatar :title="task.user_name">
                 <img v-if="task.user_gravatar" :src="task.user_gravatar" alt="avatar">
-                <img v-else src="https://www.gravatar.com/avatar/00000000000000000000000000000000?" alt="avatar">
+                <img
+                  v-else
+                  src="https://www.gravatar.com/avatar/00000000000000000000000000000000?"
+                  alt="avatar"
+                >
               </v-avatar>
             </td>
             <td>
               <task-completed-toggle :task="task"></task-completed-toggle>
             </td>
             <td>
-                <tasks-tags task="task"></tasks-tags>
+              <tasks-tags task="task"></tasks-tags>
             </td>
             <td v-text="task.completed"></td>
             <td v-text="task.created_at_human"></td>
@@ -106,8 +110,6 @@
         </v-flex>
       </v-data-iterator>
     </v-card>
-
-    
   </div>
 </template>
 
@@ -196,9 +198,11 @@ export default {
     }
   },
   computed: {
-      gravatar (task) {
-          return 'www.gravatar.com/avatar/'+md5('example@gmail.com'.toLowerCase())
-      }
+    gravatar(task) {
+      return (
+        "www.gravatar.com/avatar/" + md5("example@gmail.com".toLowerCase())
+      );
+    }
   }
 };
 </script>
