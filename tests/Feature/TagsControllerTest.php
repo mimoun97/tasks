@@ -30,8 +30,6 @@ class TagsControllerTest extends TestCase
                 $tags[1]['name'] === 'laravel' &&
                 $tags[2]['name'] === 'php';
         });
-
-        $response->assertSuccessful();
     }
 
 

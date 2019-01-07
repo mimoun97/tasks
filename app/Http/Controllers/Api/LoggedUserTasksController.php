@@ -6,6 +6,7 @@ use App\Task;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use function Psy\debug;
 
 class LoggedUserTasksController extends Controller
 {
@@ -19,6 +20,7 @@ class LoggedUserTasksController extends Controller
         Auth::user()->tasks()->findOrFail($task->id);
         $task->name = $request->name;
         $task->completed = $request->completed;
+        $task->description = $request->description;
         $task->save();
         return $task;
     }

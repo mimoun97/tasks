@@ -66,14 +66,17 @@ class UserTest extends TestCase
         // 1 Preparar
         $user = factory(User::class)->create();
         $task = factory(Task::class)->create();
+        $task2 = factory(Task::class)->create();
 
         $user->addTask($task);
+        $user->addTask($task2);
 
         // 2 executar
         $tasks = $user->tasks;
 
         // 3 comprovar
         $this->assertTrue($tasks[0]->is($task));
+        $this->assertTrue($tasks[1]->is($task2));
     }
 
     /**
@@ -108,6 +111,8 @@ class UserTest extends TestCase
     public function isSuperAdmin()
     {
         $user = factory(User::class)->create();
+
+        $this->assertNotNull($user);
 
         $this->assertFalse($user->isSuperAdmin());
 
@@ -167,14 +172,15 @@ class UserTest extends TestCase
         $user->assignRole($role1);
         $user->assignRole($role);
 
-        //dd($user->roles());
+        $user = $user->fresh();
+
+        $this->assertEquals($mappedUser['admin'], true);
 
         $this->assertTrue($user->hasRole('Rol'));
         $this->assertTrue($user->hasRole('Rol1'));
 
         $this->assertTrue($user->hasPermissionTo('Permission'));
         $this->assertTrue($user->hasPermissionTo('Permission1'));
-
     }
 
     /**
@@ -209,12 +215,5 @@ class UserTest extends TestCase
 
         $this->assertEquals($regularusers[0]->name, 'Benito Camelas');
         $this->assertEquals($regularusers[1]->name, 'mimoun haddou');
-
-//        try {
-//            //$this->assertNull($regularusers[2]);
-//        } catch (ErrorException $e) {
-//
-//        }
-
     }
 }

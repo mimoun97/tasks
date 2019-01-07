@@ -79,6 +79,7 @@ class LoggedUserTasksControllerTest extends TestCase
 
         $oldTask = factory(Task::class)->create([
             'name' => 'Comprar llet',
+            'description' => 'comprar',
             'completed' => true
         ]);
         $user->addTask($oldTask);
@@ -86,6 +87,7 @@ class LoggedUserTasksControllerTest extends TestCase
         // 2
         $response = $this->json('PUT','/api/v1/user/tasks/' . $oldTask->id, [
             'name' => 'Comprar pa',
+            'description' => 'tornar',
             'completed' => false
         ]);
 
@@ -95,6 +97,7 @@ class LoggedUserTasksControllerTest extends TestCase
         $this->assertNotNull($newTask);
         $this->assertEquals($oldTask->id,$result->id);
         $this->assertEquals('Comprar pa',$result->name);
+        $this->assertEquals('tornar',$result->description);
         $this->assertFalse((boolean) $newTask->completed);
     }
 
@@ -114,6 +117,24 @@ class LoggedUserTasksControllerTest extends TestCase
         $this->assertCount(0,$user->tasks);
         $task = $task->fresh();
         $this->assertNull($task);
+    }
+
+    /**
+     * @test
+     */
+    public function cannot_delete_a_task_not_associated_to_user()
+    {
+        initialize_roles();
+        $user = $this->login('api');
+        $user->assignRole('Tasks');
+
+        $task = factory(Task::class)->create([
+            'name' => 'Comprar llet',
+            'description' => 'Bla bla bla'
+        ]);
+
+        $response = $this->json('DELETE', '/api/v1/user/tasks/' . $task->id);
+        $response->assertStatus(404);
     }
 
 }

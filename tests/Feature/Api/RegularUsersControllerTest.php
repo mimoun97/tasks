@@ -43,6 +43,8 @@ class RegularUsersControllerTest extends TestCase
         $response->assertSuccessful();
         $result = json_decode($response->getContent());
 
+        $this->assertCount(2, $result);
+
         $this->assertEquals($result[0]->name, 'Benito Camelas');
         $this->assertEquals($result[0]->gravatar, 'https://www.gravatar.com/avatar/' . md5('benito@gmail.com'));
         $this->assertEquals($result[0]->email, 'benito@gmail.com');

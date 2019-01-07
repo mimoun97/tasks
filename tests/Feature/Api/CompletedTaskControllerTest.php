@@ -24,6 +24,7 @@ class CompletedTaskControllerTest extends TestCase {
         $response = $this->json('POST','/api/v1/completed_task/' . $task->id);
         $response->assertSuccessful();
         $task = $task->fresh();
+        $this->assertEquals($task->name, 'comprar pa');
         $this->assertEquals($task->completed, true);
     }
 
@@ -32,7 +33,9 @@ class CompletedTaskControllerTest extends TestCase {
      */
     public function cannot_complete_a_unexisting_task()
     {
+        //1 prepare
         $this->login('api');
+        //2 execute
         $response = $this->json('POST','/api/v1/completed_task/1');
         //3 Assert
         $response->assertStatus(404);
