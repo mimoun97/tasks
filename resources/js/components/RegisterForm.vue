@@ -1,7 +1,14 @@
 <template>
+<div>
     <v-form action="/register" method="POST">
         <v-toolbar dark color="primary">
             <v-toolbar-title>Register</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-toolbar-items class="hidden-xs-and-down">
+                <v-btn href="/" icon>
+                    <v-icon>arrow_back</v-icon>
+                </v-btn>
+            </v-toolbar-items>
         </v-toolbar>
         <v-card-text>
             <input type="hidden" name="_token" :value="csrfToken">
@@ -47,10 +54,24 @@
             ></v-text-field>
         </v-card-text>
         <v-card-actions>
+            <v-card-text class="ml-4"><a href="/home" class="grey--text">Més info?</a></v-card-text>
             <v-spacer></v-spacer>
             <v-btn color="primary" type="submit" :disabled="$v.$invalid">Register</v-btn>
         </v-card-actions>
     </v-form>
+    <div class="grey lighten-1">
+    <v-card-text>
+      <v-container text-xs-center>
+        <v-layout>
+      <v-flex href="/login" xs12 text-xs-center>
+        <span class="white--text">Ja tens un compte?</span>
+        <a href="/login" class="indigo--text ml-2"><b> LOG IN</b></a>
+      </v-flex>
+        </v-layout>
+       </v-container>
+    </v-card-text>
+   </div>
+   </div>
 </template>
 
 <script>
