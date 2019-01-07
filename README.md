@@ -24,13 +24,16 @@
 ```bash
 cd ~/Code
 mdkir mimoun1997
+cd mimoun1997/
 git clone git@github.com:mimoun1997/tasks.git
 cd tasks
 npm install
 composer install
-cp .env.example .env
+cp .env.example .env # modificar les configuracions
 php artisan key:generate
+touch database/database.sqlite #Per a configuració sqlite
 php artisan migrate --seed
+php artisan passport:install
 ```
 
 
@@ -57,6 +60,9 @@ Per executar els testos
 ```bash
 phpunit
 ```
+Executant phpunit en SO windows.
+![Test](public/img/tests.gif)
+
 - javascript
 ```bash
 cd vue

@@ -16,6 +16,9 @@
                 <ul>
                     <li>Branca: {{ dataGit.branch }}</li>
                     <li>Commit: {{ dataGit.commit }}</li>
+                    <li>URL Commit: 
+                      <a :href="githubURLCommit()" target="_blank">{{ dataGit.commit }}</a>
+                    </li>
                     <li>Commit_short: {{ dataGit.commit_short }}</li>
                     <li>Autor: {{ dataGit.author_name }}</li>
                     <li>Email: {{ dataGit.author_email }}</li>
@@ -62,6 +65,9 @@ export default {
     }
   },
   methods: {
+    githubURLCommit () {
+      return this.githubURL() + '/commits/' + this.dataGit.commit
+    },
     githubUri () {
       return this.dataGit.origin.split(':')[1].split('.')[0]
     },
