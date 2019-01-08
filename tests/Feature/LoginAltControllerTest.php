@@ -69,6 +69,7 @@ class LoginAltControllerTest extends TestCase
         $response->assertStatus(302);
         $response->assertRedirect('/');
         $this->assertNull(Auth::user());
+        $this->assertGuest();
     }
     /**
      * @test
@@ -90,6 +91,6 @@ class LoginAltControllerTest extends TestCase
         $response->assertStatus(302);
         $response->assertRedirect('/');
         $this->assertNull(Auth::user());
-        $this->assertGuest($guard = null);
+        $this->assertGuest();
     }
 }

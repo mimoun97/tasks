@@ -85,10 +85,14 @@ class TasksControllerTest extends TestCase
             'description' => 'Copiant , no s\'apren'
         ]);
 
+        $this->assertNotNull($task);
+
         $response = $this->delete('/tasks/' . $task->id);
 
         $response->assertStatus(302);
 
         $this->assertDatabaseMissing('tasks', ['name' => 'No copiar, així no s\'apren']);
     }
+
+    // TODO more tests ...
 }
