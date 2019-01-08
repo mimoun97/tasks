@@ -44,6 +44,8 @@ class LoginAltControllerTest extends TestCase
 
         $this->assertEquals('prova@gmail.com', Auth::user()->email);
 
+        $this->assertAuthenticatedAs($user);
+
     }
     /**
      * @test
@@ -88,5 +90,6 @@ class LoginAltControllerTest extends TestCase
         $response->assertStatus(302);
         $response->assertRedirect('/');
         $this->assertNull(Auth::user());
+        $this->assertGuest($guard = null);
     }
 }

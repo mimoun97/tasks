@@ -77,10 +77,7 @@ class TasquesControllerTest extends TestCase
         $response->assertSuccessful();
 
         $response->assertViewIs('tasques');
-//        $response->assertViewHas('tasks', function($tasks) {
-//            return count($tasks)===1 &&
-//                $tasks[0]['name']==='Comprar pa';
-//        });
+
         $response->assertViewHas('tasks');
         $response->assertViewHas('users');
         $response->assertViewHas('uri');

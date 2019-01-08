@@ -14,7 +14,7 @@ class TasksController extends Controller
 
         //return $tasks; //en format json
         //return view('tasks',['tasks' => $tasks]);
-        return view('tasks',compact('tasks'));
+        return view('tasks', compact('tasks'));
     }
 
     public function store(Request $request)

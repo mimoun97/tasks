@@ -98,7 +98,8 @@ class TasksControllerTest extends TestCase
 
         $response = $this->json('GET','/api/v1/tasks/' . $task->id);
 
-        $response->assertStatus(403);//Forbidden
+        //$response->assertStatus(403);//Forbidden
+        $response->assertForbidden(); //403
     }
 
     /**
@@ -170,6 +171,8 @@ class TasksControllerTest extends TestCase
 
         $response = $this->json('POST','/api/v1/tasks/',[
             'name' => ''
+        ])->assertJson([
+            "message" => "The given data was invalid."
         ]);
         //dd($response);
         $response->assertStatus(422);
@@ -184,6 +187,8 @@ class TasksControllerTest extends TestCase
 
         $response = $this->json('POST','/api/v1/tasks/',[
             'name' => ''
+        ])->assertJson([
+            "message" => "The given data was invalid."
         ]);
         //dd($response);
         $response->assertStatus(422);
