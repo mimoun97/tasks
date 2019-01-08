@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreTask extends FormRequest
@@ -13,6 +14,7 @@ class StoreTask extends FormRequest
      */
     public function authorize()
     {
+        return Auth::user()->can('tasks.store');
         return true; //de moment tots poden obtenir les tasques
     }
 

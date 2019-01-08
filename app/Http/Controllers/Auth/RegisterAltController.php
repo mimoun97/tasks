@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterAltStore;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,7 +13,7 @@ class RegisterAltController extends Controller
 {
     //pubf
 
-    public function register(Request $request)
+    public function register(RegisterAltStore $request)
     {
         $user = User::create([
             'name' => $request->name,
@@ -23,7 +24,6 @@ class RegisterAltController extends Controller
         Auth::login($user);
 
         return redirect('/home');
-
     }
 
 }

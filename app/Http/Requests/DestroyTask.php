@@ -14,7 +14,7 @@ class DestroyTask extends FormRequest
      */
     public function authorize()
     {
-        var_dump('Se pot?' . Auth::user()->can('tasks.destroy'));
+        //var_dump('Se pot?' . Auth::user()->can('tasks.destroy'));
         return Auth::user()->can('tasks.destroy');
     }
 

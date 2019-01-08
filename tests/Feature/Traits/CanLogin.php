@@ -3,6 +3,7 @@
 namespace Tests\Feature\Traits;
 
 use App\User;
+use Spatie\Permission\Models\Permission;
 
 trait CanLogin
 {

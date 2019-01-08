@@ -32,8 +32,7 @@ class LoginAltControllerTest extends TestCase
         
         //2
         $response = $this->post('/login_alt',[
-            'name' => 'prova',
-            'email' => 'prova@gmail.com',
+            'email' => $user->email,
             'password' => 'secret'
         ]);
 
@@ -51,15 +50,20 @@ class LoginAltControllerTest extends TestCase
      */
     public function cannot_login_a_user_with_incorrect_password()
     {
-        //1
+        //1 prepare
         $user = factory(User::class)->create([
             'email' => 'prova@gmail.com'
         ]);
-        //2
+
+        //2 execute
         $response = $this->post('/login_alt',[
             'email' => 'prova@gmail.com',
             'passowrd' => 'asdasdasdasdasdasdd324234234asda'
         ]);
+
+        //3 assert
+        $this->assertNotNull($user);
+        $this->assertDatabaseHas('users', [ 'email' => 'prova@gmail.com']);
         $response->assertStatus(302);
         $response->assertRedirect('/');
         $this->assertNull(Auth::user());
@@ -73,11 +77,14 @@ class LoginAltControllerTest extends TestCase
         $user = factory(User::class)->create([
             'email' => 'prova@gmail.com'
         ]);
+        
         //2
         $response = $this->post('/login_alt',[
             'email' => 'proasdasdasdasdva@gmail.com',
             'passowrd' => 'secret'
         ]);
+        $this->assertNotNull($user);
+        $this->assertDatabaseHas('users', [ 'email' => 'prova@gmail.com']);
         $response->assertStatus(302);
         $response->assertRedirect('/');
         $this->assertNull(Auth::user());

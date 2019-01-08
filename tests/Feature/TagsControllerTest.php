@@ -32,5 +32,10 @@ class TagsControllerTest extends TestCase
         });
     }
 
+    public function FunctionName(Type $var = null)
+    {
+        // TODO testos tags
+    }
+
 
 }

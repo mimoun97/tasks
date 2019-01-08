@@ -8,39 +8,25 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\LoginAlt;
 
 class LoginAltController extends Controller
 {
-        // Exercici fer validació valtros
-    public function login(Request $request)
+
+    /**
+     * Logueja l'usuari a l'applicació
+     * 
+     */
+    public function login(LoginAlt $request)
     {
+        $user = User::where('email', $request->email)->firstOrFail();
 
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user) return redirect('/');
-
-        if (!Hash::check(Hash::make($request->password), $user->password))
-            return redirect('/');
+        if (!$user) return redirect('/login');
+               
+        if (!Hash::check($user->password, Hash::make($request->password))) return redirect('login');
 
         Auth::login($user);
 
-        return redirect('/home');
-    }
-
-    public function login2(Request $request)
-    {
-        // TODO -> VALIDATE
-//        $request->email
-//        $request->password
-
-            // Buscar el usuari a la base de dades i comprovar password ok
-
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user) return redirect('/');
-        if (!Hash::check($request->password, $user->password)) return redirect('/');
-        // Logar
-        Auth::login($user);
         return redirect('/home');
     }
 }

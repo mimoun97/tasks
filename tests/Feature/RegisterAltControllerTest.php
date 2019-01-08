@@ -44,8 +44,8 @@ class RegisterAltControllerTest extends TestCase
 
         $this->assertTrue(Hash::check($user['password'], Auth::user()->password));
 
+        $this->assertTrue(Hash::check($user['password_confirmation'], Auth::user()->password));
+
+        $this->assertEquals($user['password'], $user['password_confirmation']);
     }
-
-
-
 }

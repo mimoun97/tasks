@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTask extends FormRequest
+class LoginAlt extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +13,7 @@ class UpdateTask extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->can('tasks.update');
+        return true;
     }
 
     /**
@@ -25,8 +24,8 @@ class UpdateTask extends FormRequest
     public function rules()
     {
         return [
-            //Validació backend
-            'name' => 'required'
+            'email' => 'bail|Required|string|email|exists:users',
+            'password' => 'Required|string|min:6',
         ];
     }
 }

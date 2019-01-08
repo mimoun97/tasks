@@ -32,22 +32,18 @@ class TasksController extends Controller
     {
         $task = new Task();
         $task->name = $request->name;
-        $task->completed = false;
+        $task->description = ($request->has('description')) ? $request->description : null;
+        $task->completed = ($request->has('completed')) ? $request->completed : null;
+        $task->user_id = ($request->has('user')) ? $request->user_id : null;
         $task->save();
         return $task->map();
     }
 
     public function update(UpdateTask $request, Task $task)
     {
-        if ($request->has('completed')) {
-            $task->completed = $request->completed;
-        }
-        if ($request->has('description')) {
-            $task->description = $request->description;
-        }
-        if ($request->has('name')) {
-            $task->name = $request->name;
-        }
+        $task->description = ($request->has('description')) ? $request->description : null;
+        $task->completed = ($request->has('completed')) ? $request->completed : null;
+        $task->name = ($request->has('name')) ? $request->name : null;
         $task->save();
         return $task->map();
     }

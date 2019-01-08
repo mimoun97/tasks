@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTask extends FormRequest
+class RegisterAltStore extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +13,7 @@ class UpdateTask extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->can('tasks.update');
+        return true;
     }
 
     /**
@@ -25,8 +24,10 @@ class UpdateTask extends FormRequest
     public function rules()
     {
         return [
-            //Validació backend
-            'name' => 'required'
+            'name' => 'bail|Required|String|max:255', //bail -> para quan una de les validacions no compleix
+            'email' => 'Required|unique:users|email',
+            'password' => 'Required|confirmed|min:6',
+            'password_confirmation' => 'Required|min:6'
         ];
     }
 }

@@ -46,16 +46,19 @@ if (!function_exists('create_example_tasks')) {
     function create_example_tasks() {
         Task::create([
             'name' => 'comprar pa',
+            'description' => 'pa',
             'completed' => false
         ]);
 
         Task::create([
             'name' => 'comprar llet',
+            'description' => 'llet',
             'completed' => false
         ]);
 
         Task::create([
             'name' => 'Estudiar PHP',
+            'description' => 'php',
             'completed' => true
         ]);
     }
