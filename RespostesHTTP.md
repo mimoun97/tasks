@@ -1,5 +1,25 @@
 # Respostes HTTP Laravel
 
+## Resum 
+The first digit of the status-code defines the class of response.
+   The last two digits do not have any categorization role.  There are
+   five values for the first digit:
+
+   +  **1xx (Informational)**: The request was received, continuing process
+
+   +  **2xx (Successful):** The request was successfully received,
+      understood, and accepted
+
+   +  **3xx (Redirection):** Further action needs to be taken in order to
+      complete the request
+
+   +  **4xx (Client Error):** The request contains bad syntax or cannot be
+      fulfilled
+
+Link: [Referencia](https://tools.ietf.org/html/rfc7231#section-6)
+
+## Respostes
+
     100 => 'Continue',
     101 => 'Switching Protocols',
     102 => 'Processing',            
