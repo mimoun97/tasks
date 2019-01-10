@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\ProfileController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -40,6 +42,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/tags', 'TagsController@index');
 
     Route::get('/home', 'HomeController@index')->name('home');
+
+    //Profile
+    //Route::get('/profile', 'ProfileController@index');
+    Route::get('/profile','\\'. ProfileController::class . '@index');
 });
 
 
