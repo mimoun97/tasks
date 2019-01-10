@@ -14,6 +14,8 @@ class User extends Authenticatable
 {
     use HasRoles, Notifiable, HasApiTokens, Impersonate;
 
+    const DEFAULT_PHOTO_PATH = 'app/photos/default.png';
+
     /**
      * The attributes that are mass assignable.
      *

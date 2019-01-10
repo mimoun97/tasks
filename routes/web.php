@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\LoggedUserPhotoController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
@@ -46,6 +48,11 @@ Route::group(['middleware' => 'auth'], function () {
     //Profile
     //Route::get('/profile', 'ProfileController@index');
     Route::get('/profile','\\'. ProfileController::class . '@index');
+
+    Route::post('/photo', '\\'. PhotoController::class . '@store');
+
+    Route::get('/user/photo', '\\'. LoggedUserPhotoController::class . '@show');
+    Route::put('/user/photo','\\'. LoggedUserPhotoController::class . '@update');
 });
 
 
