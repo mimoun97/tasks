@@ -14,6 +14,8 @@ class User extends Authenticatable
 {
     use HasRoles, Notifiable, HasApiTokens, Impersonate;
 
+    const DEFAULT_PHOTO_PATH = 'app/photos/default.png';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -100,4 +102,28 @@ class User extends Authenticatable
     {
         return $query->where('admin', true);
     }
+
+    public function photo()
+    {
+        return $this->hasOne(Photo::class);
+    }
+
+    public function assignPhoto(Photo $photo)
+    {
+        $photo->user_id = $this->id;
+        $photo->save();
+        return $this;
+    }
+
+    public function avatars()
+    {
+        return $this->hasMany(Avatar::class);
+    }
+
+    public function addAvatar(Avatar $avatar)
+    {
+        $this->avatars()->save($avatar);
+        return $this;
+    }
+
 }

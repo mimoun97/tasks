@@ -8,6 +8,8 @@
 
 namespace Tests\Unit;
 
+use App\Avatar;
+use App\Photo;
 use App\Task;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -215,5 +217,39 @@ class UserTest extends TestCase
 
         $this->assertEquals($regularusers[0]->name, 'Benito Camelas');
         $this->assertEquals($regularusers[1]->name, 'mimoun haddou');
+    }
+
+    /**
+     * @test
+     */
+    public function assignPhoto()
+    {
+        $user = factory(User::class)->create();
+        $this->assertNull($user->photo);
+        $photo = Photo::create([
+            'url' => '/photo1.png',
+        ]);
+        $user->assignPhoto($photo);
+        $user = $user->fresh();
+        $this->assertNotNull($user->photo);
+        $this->assertEquals('/photo1.png',$user->photo->url);
+        $this->assertEquals($user->id,$user->photo->user_id);
+    }
+
+    /**
+     * @test
+     */
+    public function addAvatar()
+    {
+        $user = factory(User::class)->create();
+        $this->assertCount(0,$user->avatars);
+        $avatar = Avatar::create([
+            'url' => '/avatar.png',
+        ]);
+        $user->addTask($avatar);
+        $user = $user->fresh();
+        $this->assertCount(1,$user->avatars);
+        $this->assertEquals('/avatar.png',$user->avatars[0]->url);
+        $this->assertEquals($user->id,$user->avatars[0]->id);
     }
 }

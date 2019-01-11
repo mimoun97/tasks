@@ -21,6 +21,7 @@ import About from './components/About.vue'
 import Contact from './components/Contact.vue'
 import TaskList from './components/TaskList.vue'
 import TaskCompletedToggle from './components/TaskCompletedToggle.vue'
+import UserProfile from './components/UserProfile.vue'
 
 import snackbar from './plugins/snackbar'
 import permissions from './plugins/permissions'
@@ -46,6 +47,7 @@ window.Vue.component('contact', Contact)
 window.Vue.component('task-list', TaskList)
 window.Vue.component('git-info', GitInfoComponent)
 window.Vue.component('task-completed-toggle', TaskCompletedToggle)
+window.Vue.component('user-profile', UserProfile)
 
 
 // eslint-disable-next-line no-unused-vars
