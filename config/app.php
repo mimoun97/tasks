@@ -162,6 +162,8 @@ return [
         Lab404\Impersonate\ImpersonateServiceProvider::class,
         //Spatie\Permission\PermissionServiceProvider::class,
 
+        \App\Providers\GoogleDriveServiceProvider::class,
+
         /*
          * Package Service Providers...
          */

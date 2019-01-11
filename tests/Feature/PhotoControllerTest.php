@@ -20,7 +20,7 @@ class PhotoControllerTest extends TestCase
     {
         $this->withoutExceptionHandling();
         Storage::fake('local');
-        //Storage::fake('google');
+        Storage::fake('google');
 
         $user = $this->login();
         $response = $this->post('/photo',[
@@ -29,7 +29,7 @@ class PhotoControllerTest extends TestCase
         $response->assertRedirect();
 
         Storage::disk('local')->assertExists($photoUrl = 'photos/' . $user->id . '.jpg');
-        //Storage::disk('google')->assertExists($photoUrl = 'photos/' . $user->id . '.jpg');
+        Storage::disk('google')->assertExists($photoUrl = 'photos/' . $user->id . '.jpg');
 
         $photo = Photo::first();
         $this->assertEquals($photoUrl, $photo->url);
@@ -53,6 +53,7 @@ class PhotoControllerTest extends TestCase
         ]);
 
         Storage::fake('local');
+        Storage::fake('google');
 
         $response = $this->post('/photo',[
             'photo' => UploadedFile::fake()->image('photo.jpg')
@@ -60,6 +61,7 @@ class PhotoControllerTest extends TestCase
         $response->assertRedirect();
 
         Storage::disk('local')->assertExists($photoUrl);
+        Storage::disk('google')->assertExists($photoUrl);
 
         $photo = Photo::first();
         $this->assertEquals($photoUrl, $photo->url);
