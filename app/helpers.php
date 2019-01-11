@@ -286,8 +286,8 @@ if (! function_exists('git_current_commit_message')) {
 if (! function_exists('git_current_commit_timestamp')) {
     function git_current_commit_timestamp()
     {
-        exec("git log -1 --pretty=format:'%at'", $output);
-        $output = intval(preg_replace('/\s+/', '', $output));
+        //intval(exec("git log -1 --pretty=format:'%at'"));
+        intval(exec("git log -1 --pretty=format:%ct", $output)); //me va en windows
         return $output[0];
     }
 }
