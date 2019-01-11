@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="user" content="{{ logged_user() }}">
     <meta name="git" content="{{ git() }}">
+    <link rel="manifest" href="/manifest.json">
 
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <link rel="stylesheet" href="/css/tailwind.min.css" type="text/css">
@@ -30,7 +31,7 @@
                 app
         >
             <v-card>
-                <v-card-title dark class="indigo darken-2 white--text"><h4>Perfil</h4></v-card-title>
+                <v-card-title dark class="primary darken-2 white--text"><h4>Perfil</h4></v-card-title>
                 <v-layout row wrap>
                     <v-flex xs12>
                         <div row>
@@ -48,7 +49,7 @@
                 </v-layout>
             </v-card>
             <v-card>
-                <v-card-title dark class="indigo darken-2 white--text" primary-title><h4>Opcions administrador</h4></v-card-title>
+                <v-card-title dark class="primary darken-2 white--text" primary-title><h4>Opcions administrador</h4></v-card-title>
 
                     <div row wrap>
                         @canImpersonate
@@ -82,7 +83,7 @@
                 v-model="drawer"
                 fixed
                 clipped dark app
-                class="indigo darken-1"
+                class="primary darken-1"
         >
             <v-list dense>
                 <template v-for="item in items">
@@ -143,7 +144,7 @@
                 </template>
             </v-list>
         </v-navigation-drawer>
-        <v-toolbar color="indigo" dark fixed app clipped-right clipped-left>
+        <v-toolbar class="primary"  dark fixed app clipped-right clipped-left>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>

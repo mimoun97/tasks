@@ -26921,7 +26921,90 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
-window.Vue.use(__WEBPACK_IMPORTED_MODULE_1_vuetify___default.a);
+window.Vuetify = __WEBPACK_IMPORTED_MODULE_1_vuetify___default.a;
+
+var PRIMARY_COLOR_KEY = 'primary_color_key';
+
+var primaryColor = window.localStorage.getItem(PRIMARY_COLOR_KEY) || '#4C63B6';
+
+window.Vue.use(window.Vuetify, {
+  theme: {
+    primary: {
+      base: primaryColor,
+      lighten1: '#4C63B6',
+      lighten2: '#4055A8',
+      lighten3: '#35469C',
+      lighten4: '#2D3A8C',
+      lighten5: '#19216C',
+      darken1: '#186FAF',
+      darken2: '#0F609B',
+      darken3: '#0A558C',
+      darken4: '#003E6B'
+    },
+    secondary: {
+      base: '#2CB1BC',
+      lighten1: '#38BEC9',
+      lighten2: '#54D1DB',
+      lighten3: '#87EAF2',
+      lighten4: '#BEF8FD',
+      lighten5: '#E0FCFF',
+      darken1: '#14919B',
+      darken2: '#0E7C86',
+      darken3: '#0A6C74',
+      darken4: '#044E54'
+    },
+    accent: {
+      base: '#F0B429',
+      lighten1: '#F7C948',
+      lighten2: '#FADB5F',
+      lighten3: '#FCE588',
+      lighten4: '#FFF3C4',
+      lighten5: '#FFFBEA',
+      darken1: '#DE911D',
+      darken2: '#CB6E17',
+      darken3: '#B44D12',
+      darken4: '#8D2B0B'
+    },
+    error: {
+      base: '#BA2525',
+      lighten1: '#D64545',
+      lighten2: '#E66A6A',
+      lighten3: '#F29B9B',
+      lighten4: '#FACDCD',
+      lighten5: '#FFEEEE',
+      darken1: '#A61B1B',
+      darken2: '#911111',
+      darken3: '#780A0A',
+      darken4: '#610404'
+    },
+    // Taken from palete 3
+    success: {
+      base: '#27AB83',
+      lighten1: '#3EBD93',
+      lighten2: '#65D6AD',
+      lighten3: '#8EEDC7',
+      lighten4: '#C6F7E2',
+      lighten5: '#EFFCF6',
+      darken1: '#199473',
+      darken2: '#147D64',
+      darken3: '#0C6B58',
+      darken4: '#014D40'
+    },
+    grey: {
+      base: '#627D98',
+      lighten1: '#829AB1',
+      lighten2: '#9FB3C8',
+      lighten3: '#BCCCDC',
+      lighten4: '#D9E2EC',
+      lighten5: '#F0F4F8',
+      darken1: '#486581',
+      darken2: '#334E68',
+      darken3: '#243B53',
+      darken4: '#102A43'
+    }
+  }
+});
+
 window.Vue.use(__WEBPACK_IMPORTED_MODULE_22__plugins_permissions__["a" /* default */]);
 window.Vue.use(__WEBPACK_IMPORTED_MODULE_21__plugins_snackbar__["a" /* default */]);
 
@@ -50264,6 +50347,7 @@ var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.csrf_token = token.content;
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
@@ -72543,7 +72627,7 @@ var content = __webpack_require__(70);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("4c981cc8", content, false, {});
+var update = __webpack_require__(5)("fe487fe2", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -72567,7 +72651,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.strike[data-v-43ab059a] {\n  text-decoration: line-through;\n}\n", ""]);
+exports.push([module.i, "\n.strike[data-v-43ab059a] {\r\n  text-decoration: line-through;\n}\r\n", ""]);
 
 // exports
 
@@ -74760,7 +74844,7 @@ var content = __webpack_require__(87);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("90e37404", content, false, {});
+var update = __webpack_require__(5)("6e4002aa", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -76649,7 +76733,7 @@ var render = function() {
     [
       _c(
         "v-toolbar",
-        { attrs: { color: "indigo darken-3" } },
+        { attrs: { color: "primary darken-3" } },
         [
           _c(
             "v-menu",
@@ -77401,7 +77485,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var withParams = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(117).withParams : __webpack_require__(21).withParams;
+var withParams = Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(117).withParams : __webpack_require__(21).withParams;
 var _default = withParams;
 exports.default = _default;
 
@@ -79956,7 +80040,7 @@ var content = __webpack_require__(158);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("2b8a124f", content, false, {});
+var update = __webpack_require__(5)("b00fdffc", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -80508,6 +80592,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Profile',
+  props: ['user'],
   components: {
     'material-card': __WEBPACK_IMPORTED_MODULE_0__ui_MaterialCard___default.a
   },
@@ -80578,7 +80663,7 @@ var content = __webpack_require__(168);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("547c63a7", content, false, {});
+var update = __webpack_require__(5)("e159f6f2", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -80786,7 +80871,7 @@ var content = __webpack_require__(172);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("7b03f0ce", content, false, {});
+var update = __webpack_require__(5)("2939aa1a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -81577,7 +81662,7 @@ var content = __webpack_require__(184);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("eb71a5b4", content, false, {});
+var update = __webpack_require__(5)("87991c00", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags

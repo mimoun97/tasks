@@ -16,7 +16,7 @@
                 {{--<v-toolbar-title>--}}
                     {{--<span>{{ Auth::user()->name }}</span>--}}
                 {{--</v-toolbar-title>--}}
-                <v-btn dark round color="indigo" class="elevation-2" placeholder="Home" href="/home">
+                <v-btn dark round color="primary" class="elevation-2" placeholder="Home" href="/home">
                     <v-icon>home</v-icon>
                 </v-btn>
             @endif
