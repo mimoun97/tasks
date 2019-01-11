@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,6 +24,6 @@ class LoggedUserPhotoController extends Controller
 
     protected function defaultPhoto()
     {
-        return 'photos/default.png';
+        return User::DEFAULT_PHOTO_PATH;
     }
 }

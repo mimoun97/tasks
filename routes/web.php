@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/photo', '\\'. PhotoController::class . '@store');
 
     Route::get('/user/photo', '\\'. LoggedUserPhotoController::class . '@show');
-    Route::put('/user/photo','\\'. LoggedUserPhotoController::class . '@update');
+    Route::put('/user/photo', '\\'. LoggedUserPhotoController::class . '@update');
 });
 
 

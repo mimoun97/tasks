@@ -163,6 +163,7 @@
   import MaterialCard from './ui/MaterialCard'
   export default {
     name: 'Profile',
+    props : ['user'],
     components: {
       'material-card': MaterialCard
     },
