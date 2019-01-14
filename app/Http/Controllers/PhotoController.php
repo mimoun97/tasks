@@ -12,12 +12,15 @@ class PhotoController extends Controller
     {
         $extension = $request->file('photo')->getClientOriginalExtension();
         $path = $request->file('photo')->storeAs(
-            'photos', $request->user()->id. '.'. $extension
+            'photos',
+            $request->user()->id . '.' . $extension
         );
         $request->file('photo')->storeAs(
-            $request->user()->id. '.'. $extension,'google'
+            '',
+            $request->user()->id . '.' . $extension,
+            'google'
         );
-        if ($photo = Photo::where('user_id',$request->user()->id)->first()) {
+        if ($photo = Photo::where('user_id', $request->user()->id)->first()) {
             $photo->url = $path;
             $photo->save();
         } else {

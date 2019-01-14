@@ -37,7 +37,7 @@ class User extends Authenticatable
     ];
 
 
-        public function tasks()
+    public function tasks()
     {
         return $this->hasMany(Task::class);
     }
@@ -64,7 +64,7 @@ class User extends Authenticatable
             'name' => $this->name,
             'email' => $this->email,
             'gravatar' => $this->gravatar,
-            'admin' => (boolean) $this->admin,
+            'admin' => (boolean)$this->admin,
             'roles' => $this->roles()->pluck('name')->unique()->toArray(),
             'permissions' => $this->getAllPermissions()->pluck('name')->unique()->toArray()
         ];

@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
 //            'email_verified_at' => now(),
 //        ]);
 
-        factory(App\User::class, 50)->create()->each(function ($user) {
+        factory(App\User::class, 10)->create()->each(function ($user) {
             $user->tasks()->save(factory(App\Task::class)->make());
         });
     }

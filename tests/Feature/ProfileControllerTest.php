@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProfileControllerTest extends TestCase
 {
-    use CanLogin;
+    use CanLogin, RefreshDatabase;
     /**
      * @test
      */
