@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\StoreTag;
-use App\Http\Requests\UpdateTag;
 use App\Tag;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTag;
+use App\Http\Requests\TagsIndex;
+use App\Http\Requests\UpdateTag;
+use App\Http\Requests\TagsDestroy;
 use App\Http\Controllers\Controller;
 
 class TagsController extends Controller
@@ -15,12 +17,12 @@ class TagsController extends Controller
         return Tag::all();
     }
 
-    public function show(Request $request, Tag $tag) // Route Model Binding
+    public function show(TagsIndex $request, Tag $tag) // Route Model Binding
     {
         return $tag->map();
     }
 
-    public function destroy(Request $request, Tag $tag)
+    public function destroy(TagsDestroy $request, Tag $tag)
     {
           $tag->delete();
     }
