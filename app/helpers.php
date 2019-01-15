@@ -1,14 +1,15 @@
 <?php
 
+use App\Log;
 use App\Tag;
 use App\Task;
 use App\User;
-use Illuminate\Container\factory;
+use Carbon\Carbon;
 use Faker\Generator as Faker;
+use Illuminate\Container\factory;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
-use Carbon\Carbon;  
 
 if (!function_exists('create_primary_user')) {
     function create_primary_user() {
@@ -383,5 +384,64 @@ if (!function_exists('create_permission')) {
         } catch (Exception $e) {
             return Permission::findByName($permission);
         }
+    }
+}
+
+if (!function_exists('sample_logs')) {
+    function sample_logs()
+    {
+        $user1 = factory(User::class)->create();
+        $user2 = factory(User::class)->create();
+
+        $task = Task::create([
+            'name' => 'Comprar pa',
+        ]);
+        $task->assignUser($user1);
+
+        $log1 = Log::create([
+            'text' => 'Ha creat la tasca TODO_LINK_TASCA',
+            'time' => Carbon::now(),
+            'action_type' => 'store',
+            'module_type' => 'Tasks',
+            'loggable_id' => $task->id,
+            'loggable_type' => Task::class,
+            'user_id' => $user1->id,
+            'icon' => 'home',
+            'color' => 'teal'
+        ]);
+        $log2 = Log::create([
+            'text' => 'Ha modificat la tasca TODO_LINK_TASCA',
+            'time' => Carbon::now(),
+            'action_type' => 'update',
+            'module_type' => 'Tasks',
+            'loggable_id' => 1,
+            'loggable_type' => Task::class,
+            'user_id' => $user2->id,
+            'icon' => 'home',
+            'color' => 'teal'
+        ]);
+        $log3 = Log::create([
+            'text' => 'Ha modificat la tasca TODO_LINK_TASCA',
+            'time' => Carbon::now(),
+            'action_type' => 'update',
+            'module_type' => 'Tasks',
+            'loggable_id' => 1,
+            'loggable_type' => Task::class,
+            'user_id' => $user2->id,
+            'icon' => 'home',
+            'color' => 'teal'
+        ]);
+        $log4 = Log::create([
+            'text' => 'BLA BLA BLA',
+            'time' => Carbon::now(),
+            'action_type' => 'update',
+            'module_type' => 'OtherModule',
+            'loggable_id' => 1,
+            'loggable_type' => User::class,
+            'user_id' => $user2->id,
+            'icon' => 'home',
+            'color' => 'teal'
+        ]);
+        return [$log1,$log2,$log3,$log4];
     }
 }

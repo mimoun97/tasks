@@ -11,9 +11,10 @@
 |
 */
 
-use App\Http\Controllers\LoggedUserPhotoController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\LoggedUserPhotoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,6 +52,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/user/photo', '\\'. LoggedUserPhotoController::class . '@show');
     Route::put('/user/photo', '\\'. LoggedUserPhotoController::class . '@update');
+
+    Route::get('/settings', '\\'. SettingsController::class . '@index');
+
 });
 
 

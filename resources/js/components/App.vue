@@ -8,7 +8,7 @@ export default {
       drawerRigth: false,
       items: [
         { icon: 'home', text: 'Welcome', url: '/' },
-        { icon: 'home', text: 'Home', url: '/home' },
+        { icon: 'dashboard', text: 'Home', url: '/home' },
         {
           icon: 'keyboard_arrow_up',
           'icon-alt': 'keyboard_arrow_down',
@@ -23,7 +23,8 @@ export default {
         { icon: 'tags', text: 'Tags', url: '/tags' },
         // { icon: 'folder', text: 'Projects', url: '/projects' },
         { icon: 'message', text: 'Contact', url: '/contact' },
-        { icon: 'public', text: 'About', url: '/about' }
+        { icon: 'public', text: 'About', url: '/about' },
+        { icon: 'settings', text: 'Settings', url: '/settings' },
       ]
     }
   },

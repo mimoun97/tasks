@@ -44,7 +44,9 @@
                             <div class="ml-2"><b>Roles :</b> {{ implode(',',Auth::user()->map()['roles']) }}</div>
                             <div class="ml-2"><b>Permissions :</b> {{ implode(', ',Auth::user()->map()['permissions']) }}</div>
                             </v-list>
+                            <v-btn href="/profile" color="primary" >Perfil</v-btn>
                         </div>
+                        
                     </v-flex>
                 </v-layout>
             </v-card>
@@ -83,7 +85,7 @@
                 v-model="drawer"
                 fixed
                 clipped dark app
-                class="primary darken-1"
+                class="primary"
         >
             <v-list dense>
                 <template v-for="item in items">

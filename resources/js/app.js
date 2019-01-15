@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
+import TreeView from 'vue-json-tree-view'
 
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
@@ -24,29 +25,32 @@ import TaskCompletedToggle from './components/TaskCompletedToggle.vue'
 import UserProfile from './components/UserProfile.vue'
 
 import snackbar from './plugins/snackbar'
+import confirm from './plugins/confirm'
 import permissions from './plugins/permissions'
 import GitInfoComponent from './components/git/GitInfoComponent'
+import UserSettings from './components/UserSettings'
 
 window.Vue = Vue
 window.Vuetify = Vuetify
 
 const PRIMARY_COLOR_KEY = 'primary_color_key'
 
-const primaryColor = window.localStorage.getItem(PRIMARY_COLOR_KEY) || '#4C63B6'
+const primaryColor = window.localStorage.getItem(PRIMARY_COLOR_KEY) || '#19216C'
 
 window.Vue.use(window.Vuetify, {
   theme: {
+    //Palette 10
     primary: {
       base: primaryColor,
-      lighten1: '#4C63B6',
-      lighten2: '#4055A8',
-      lighten3: '#35469C',
-      lighten4: '#2D3A8C',
-      lighten5: '#19216C',
-      darken1: '#186FAF',
-      darken2: '#0F609B',
-      darken3: '#0A558C',
-      darken4: '#003E6B'
+      lighten1: '#647ACB',
+      lighten2: '#7B93DB',
+      lighten3: '#98AEEB',
+      lighten4: '#BED0F7',
+      lighten5: '#E0E8F9',
+      darken1: '#2D3A8C',
+      darken2: '#35469C',
+      darken3: '#4055A8',
+      darken4: '#4C63B6'
     },
     secondary: {
       base: '#2CB1BC',
@@ -115,6 +119,8 @@ window.Vue.use(window.Vuetify, {
 
 window.Vue.use(permissions)
 window.Vue.use(snackbar)
+window.Vue.use(confirm)
+window.Vue.use(TreeView)
 
 window.Vue.component('example-component', ExampleComponent)
 window.Vue.component('tasks', Tasks)
@@ -132,6 +138,7 @@ window.Vue.component('task-list', TaskList)
 window.Vue.component('git-info', GitInfoComponent)
 window.Vue.component('task-completed-toggle', TaskCompletedToggle)
 window.Vue.component('user-profile', UserProfile)
+window.Vue.component('user-settings', UserSettings)
 
 
 // eslint-disable-next-line no-unused-vars
