@@ -23,8 +23,10 @@ class CreateLogsTable extends Migration
             $table->string('old_value')->nullable();
             $table->string('new_value')->nullable();
             $table->nullableMorphs('loggable');
-            $table->json('old_loggable')->nullable();
-            $table->json('new_loggable')->nullable();
+            // $table->json('old_loggable')->nullable();
+            // $table->json('new_loggable')->nullable();
+            $table->text('old_loggable')->nullable();
+            $table->text('new_loggable')->nullable();
             $table->string('icon');
             $table->string('color');
             $table->timestamps();

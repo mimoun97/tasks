@@ -137,8 +137,13 @@ if (!function_exists('initialize_roles')) {
 if (!function_exists('initialize_gates')) {
     function initialize_gates()
     {
-        Gate::define('tasks.manage',function($user) {
+        Gate::define('tasks.manage', function ($user) {
             return $user->isSuperAdmin() || $user->hasRole('TaskManager');
+        });
+
+                // Changelog
+        Gate::define('changelog.list', function ($user) {
+            return $user->hasRole('ChangelogManager');
         });
     }
 }

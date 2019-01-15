@@ -29,6 +29,7 @@ import confirm from './plugins/confirm'
 import permissions from './plugins/permissions'
 import GitInfoComponent from './components/git/GitInfoComponent'
 import UserSettings from './components/UserSettings'
+import Changelog from './components/changelog/ChangelogComponent.vue'
 
 window.Vue = Vue
 window.Vuetify = Vuetify
@@ -139,6 +140,7 @@ window.Vue.component('git-info', GitInfoComponent)
 window.Vue.component('task-completed-toggle', TaskCompletedToggle)
 window.Vue.component('user-profile', UserProfile)
 window.Vue.component('user-settings', UserSettings)
+window.Vue.component('changelog', Changelog)
 
 
 // eslint-disable-next-line no-unused-vars

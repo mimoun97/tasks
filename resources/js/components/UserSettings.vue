@@ -17,7 +17,8 @@
                         <v-spacer></v-spacer>
                     </v-toolbar>
                     <v-card-media>
-                        <v-chip color="primary">Select color</v-chip>
+                        <v-chip color="primary" class="white--text">Select color</v-chip>
+                        <input type="color">
                     </v-card-media>
                 </v-card>
             </v-flex>

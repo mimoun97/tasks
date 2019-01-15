@@ -14,6 +14,7 @@
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\ChangelogController;
 use App\Http\Controllers\LoggedUserPhotoController;
 
 Route::get('/', function () {
@@ -54,6 +55,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/user/photo', '\\'. LoggedUserPhotoController::class . '@update');
 
     Route::get('/settings', '\\'. SettingsController::class . '@index');
+
+    Route::get('/changelog', '\\'. ChangelogController::class . '@index');
+
 
 });
 
