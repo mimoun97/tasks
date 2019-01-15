@@ -68,7 +68,6 @@
             <td>
               <tasks-tags :task="task" :tags="task.tags"></tasks-tags>
             </td>
-            <td v-text="task.completed"></td>
             <td v-text="task.created_at_human"></td>
             <td v-text="task.updated_at_human"></td>
             <td>

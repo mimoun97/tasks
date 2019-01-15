@@ -31,7 +31,7 @@
                 app
         >
             <v-card>
-                <v-card-title dark class="primary darken-2 white--text"><h4>Perfil</h4></v-card-title>
+                <v-card-title dark class="primary lighten-2 white--text"><h4>Perfil</h4></v-card-title>
                 <v-layout row wrap>
                     <v-flex xs12>
                         <div row>
@@ -84,8 +84,8 @@
         <v-navigation-drawer
                 v-model="drawer"
                 fixed
-                clipped dark app
-                class="primary"
+                clipped app
+                class="grey primary--text"
         >
             <v-list dense>
                 <template v-for="item in items">
@@ -146,12 +146,12 @@
                 </template>
             </v-list>
         </v-navigation-drawer>
-        <v-toolbar class="primary"  dark fixed app clipped-right clipped-left>
+        <v-toolbar class="white primary--text" fixed app clipped-right clipped-left>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
 
-            <span class="mr-5" v-role="'SuperAdmin'"><git-info></git-info></span>
+            <span class="mr-5 accent--text" v-role="'SuperAdmin'"><git-info class="accent--text"></git-info></span>
 
             {{-- <v-toolbar-side-icon @click.stop="drawerRigth = !drawerRigth"></v-toolbar-side-icon> --}}
             <v-avatar @click.stop="drawerRight = !drawerRight" title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">
@@ -159,7 +159,7 @@
             </v-avatar>
             <v-form action="logout" method="POST">
                 @csrf
-                <v-btn depressed round color="blue-grey darken-4 elevation-2" type="submit" placeholder="Sortir">Logout</v-btn>
+                <v-btn depressed round color="primary accent-2 elevation-2" type="submit" placeholder="Sortir">Logout</v-btn>
             </v-form>
         </v-toolbar>
         <v-content>

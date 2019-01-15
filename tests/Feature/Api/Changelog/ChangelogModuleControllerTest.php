@@ -76,9 +76,9 @@ class ChangelogModuleControllerTest extends TestCase {
         $role = Role::firstOrCreate(['name' => 'IncidentsManager']);
         Config::set('auth.providers.users.model', User::class);
         $user->assignRole($role);
-        $this->actingAs($user,'api');
+        $this->actingAs($user, 'api');
 
-        $response =  $this->json('GET','/api/v1/changelog/module/nonexistingmodule');
+        $response =  $this->json('GET', '/api/v1/changelog/module/nonexistingmodule');
         $response->assertStatus(404);
     }
 
