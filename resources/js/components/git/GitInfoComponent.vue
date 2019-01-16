@@ -6,7 +6,8 @@
         >
           <v-card>
             <v-card-title
-                    class="headline primary lighten-2"
+                    class="headline grey lighten-4 black--text"
+                    
                     primary-title
             >
               Informació versió de l'aplicació
@@ -45,7 +46,7 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        Versió: <a href="#" click="dialog=true" class="white--text" @click="dialog = true">{{ dataGit.commit_short }}</a>
+        Versió: <a href="#" click="dialog=true" class="primary--text" @click="dialog = true">{{ dataGit.commit_short }}</a>
     </span>
 </template>
 

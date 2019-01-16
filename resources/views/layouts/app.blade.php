@@ -31,7 +31,7 @@
                 app
         >
             <v-card>
-                <v-card-title dark class="primary lighten-2 white--text"><h4>Perfil</h4></v-card-title>
+                <v-card-title class="primary lighten-2 white--text"><h4>Perfil</h4></v-card-title>
                 <v-layout row wrap>
                     <v-flex xs12>
                         <div row>
@@ -44,14 +44,29 @@
                             <div class="ml-2"><b>Roles :</b> {{ implode(',',Auth::user()->map()['roles']) }}</div>
                             <div class="ml-2"><b>Permissions :</b> {{ implode(', ',Auth::user()->map()['permissions']) }}</div>
                             </v-list>
-                            <v-btn href="/profile" color="primary" >Perfil</v-btn>
+                            <v-card-actions class="block">
+                                <v-layout
+                                    align-center
+                                    justify-end
+                                >
+                                    <v-form action="logout" method="POST">
+                                        @csrf
+                                        <v-btn depressed flat small round color="grey lighten-2 elevation-0" type="submit" placeholder="Sortir">Logout</v-btn>
+                                    </v-form>
+                                    <v-btn block flat href="/profile" color="secondary lighten-2" dark>
+                                        <span>Perfil</span>
+                                        <v-icon right>person</v-icon>
+                                    </v-btn>
+                                  </v-layout>
+                            </v-card-actions>
+                            
                         </div>
                         
                     </v-flex>
                 </v-layout>
             </v-card>
             <v-card>
-                <v-card-title dark class="primary darken-2 white--text" primary-title><h4>Opcions administrador</h4></v-card-title>
+                <v-card-title dark class="primary lighten-2 white--text" primary-title><h4>Opcions administrador</h4></v-card-title>
 
                     <div row wrap>
                         @canImpersonate
@@ -84,8 +99,10 @@
         <v-navigation-drawer
                 v-model="drawer"
                 fixed
-                clipped app
-                class="grey primary--text"
+                dark
+                clipped 
+                app
+                class="primary lighten-1"
         >
             <v-list dense>
                 <template v-for="item in items">
@@ -101,7 +118,7 @@
                             </v-subheader>
                         </v-flex>
                         <v-flex xs6 class="text-xs-center">
-                            <a href="#!" class="body-2 black--text">EDIT</a>
+                            <a href="#!" class="body-2 grey--text">EDIT</a>
                         </v-flex>
                     </v-layout>
                     <v-list-group
@@ -124,7 +141,7 @@
                                 :href="child.url"
                         >
                             <v-list-tile-action v-if="child.icon">
-                                <v-icon>@{{ child.icon }}</v-icon>
+                                <v-icon>@{{ child.icon }}</v-icon >
                             </v-list-tile-action>
                             <v-list-tile-content>
                                 <v-list-tile-title>
@@ -147,20 +164,17 @@
             </v-list>
         </v-navigation-drawer>
         <v-toolbar class="white primary--text" fixed app clipped-right clipped-left>
-            <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+            <v-toolbar-side-icon @click.stop="drawer = !drawer" class="primary--text"></v-toolbar-side-icon>
             <v-toolbar-title>Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
 
-            <span class="mr-5 accent--text" v-role="'SuperAdmin'"><git-info class="accent--text"></git-info></span>
+            <span class="mr-5" v-role="'SuperAdmin'"><git-info class="primary--text"></git-info></span>
 
             {{-- <v-toolbar-side-icon @click.stop="drawerRigth = !drawerRigth"></v-toolbar-side-icon> --}}
             <v-avatar @click.stop="drawerRight = !drawerRight" title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">
                 <img @click.stop="drawerRigth = !drawerRigth" src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}" alt="avatar" />
             </v-avatar>
-            <v-form action="logout" method="POST">
-                @csrf
-                <v-btn depressed round color="primary accent-2 elevation-2" type="submit" placeholder="Sortir">Logout</v-btn>
-            </v-form>
+            
         </v-toolbar>
         <v-content>
             @yield('content')
