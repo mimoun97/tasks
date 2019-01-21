@@ -449,4 +449,13 @@ if (!function_exists('sample_logs')) {
         ]);
         return [$log1,$log2,$log3,$log4];
     }
+
+    if (! function_exists('ellipsis')) {
+        function ellipsis($text,$max=50)
+        {
+            $ellipted = strlen($text) > $max ? substr($text,0,$max)."..." : $text;
+            return $ellipted;
+        }
+    }
+
 }
