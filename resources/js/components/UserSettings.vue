@@ -55,6 +55,9 @@
             <v-flex>
                 <v-layout align-center justify-center column fill-height>
                     <div>
+                        <v-btn color="primary">
+                            Success
+                        </v-btn>
                         <v-btn color="success">
                             Success
                         </v-btn>
@@ -69,6 +72,9 @@
                         </v-btn>
                     </div>
                     <div>
+                        <v-btn color="primary darken-3">
+                        Success
+                    </v-btn>
                     <v-btn color="success darken-1">
                         Success
                     </v-btn>

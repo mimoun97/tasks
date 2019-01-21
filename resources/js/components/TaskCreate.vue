@@ -28,7 +28,7 @@
                 bottom
                 right
                 fixed
-                color="pink"
+                color="red darken-1"
                 class="white--text"
         >
                 <v-icon>add</v-icon>

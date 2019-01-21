@@ -5054,6 +5054,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -5355,6 +5361,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -43420,7 +43427,13 @@ var render = function() {
         "v-btn",
         {
           staticClass: "white--text",
-          attrs: { fab: "", bottom: "", right: "", fixed: "", color: "pink" },
+          attrs: {
+            fab: "",
+            bottom: "",
+            right: "",
+            fixed: "",
+            color: "red darken-1"
+          },
           on: {
             click: function($event) {
               _vm.dialog = true
@@ -43624,7 +43637,7 @@ var render = function() {
     [
       _c(
         "v-toolbar",
-        { attrs: { color: "primary darken-3" } },
+        { attrs: { color: "primary lighten-1" } },
         [
           _c(
             "v-menu",
@@ -43894,7 +43907,7 @@ var render = function() {
             },
             [
               _c("v-progress-linear", {
-                attrs: { slot: "progress", color: "blue", indeterminate: "" },
+                attrs: { slot: "progress", color: "info", indeterminate: "" },
                 slot: "progress"
               })
             ],
@@ -45685,6 +45698,12 @@ var render = function() {
                   _c(
                     "div",
                     [
+                      _c("v-btn", { attrs: { color: "primary" } }, [
+                        _vm._v(
+                          "\r\n                            Success\r\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
                       _c("v-btn", { attrs: { color: "success" } }, [
                         _vm._v(
                           "\r\n                            Success\r\n                        "
@@ -45715,6 +45734,12 @@ var render = function() {
                   _c(
                     "div",
                     [
+                      _c("v-btn", { attrs: { color: "primary darken-3" } }, [
+                        _vm._v(
+                          "\r\n                        Success\r\n                    "
+                        )
+                      ]),
+                      _vm._v(" "),
                       _c("v-btn", { attrs: { color: "success darken-1" } }, [
                         _vm._v(
                           "\r\n                        Success\r\n                    "
@@ -46404,7 +46429,7 @@ var render = function() {
               _c(
                 "v-card-title",
                 {
-                  staticClass: "headline primary lighten-2",
+                  staticClass: "headline grey lighten-4 black--text",
                   attrs: { "primary-title": "" }
                 },
                 [
@@ -46526,7 +46551,7 @@ var render = function() {
       _c(
         "a",
         {
-          staticClass: "white--text",
+          staticClass: "primary--text",
           attrs: { href: "#", click: "dialog=true" },
           on: {
             click: function($event) {

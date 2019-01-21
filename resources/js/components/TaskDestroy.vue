@@ -9,7 +9,7 @@
     :disabled="removing"
     @click="destroy(task)"
   >
-    <v-icon>delete</v-icon>
+    <v-icon >delete</v-icon>
   </v-btn>
 </template>
 
