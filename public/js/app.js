@@ -10560,7 +10560,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.strike[data-v-43ab059a] {\r\n  text-decoration: line-through;\n}\r\n", ""]);
+exports.push([module.i, "\n.strike[data-v-43ab059a] {\n  text-decoration: line-through;\n}\n", ""]);
 
 // exports
 
@@ -42960,7 +42960,7 @@ var render = function() {
               staticClass: "hidden-md-and-down",
               attrs: {
                 headers: _vm.headers,
-                items: _vm.dataTasks,
+                items: _vm.dataTags,
                 search: _vm.search,
                 "no-results-text": "No s'ha trobat cap registre coincident",
                 "no-data-text": "No hi han dades disponibles",
@@ -42989,10 +42989,10 @@ var render = function() {
                     var task = ref.item
                     return [
                       _c("tr", [
-                        _c("td", [_vm._v(_vm._s(task.id))]),
+                        _c("td", [_vm._v(_vm._s(_vm.tag.id))]),
                         _vm._v(" "),
                         _c("td", {
-                          domProps: { textContent: _vm._s(task.name) }
+                          domProps: { textContent: _vm._s(_vm.tag.name) }
                         }),
                         _vm._v(" "),
                         _c(
@@ -43000,11 +43000,11 @@ var render = function() {
                           [
                             _c(
                               "v-avatar",
-                              { attrs: { title: task.user_name } },
+                              { attrs: { title: _vm.tag.task.user_name } },
                               [
                                 _c("img", {
                                   attrs: {
-                                    src: task.user_gravatar,
+                                    src: _vm.tag.user_gravatar,
                                     alt: "avatar"
                                   }
                                 })
@@ -43030,13 +43030,13 @@ var render = function() {
                         _vm._v(" "),
                         _c("td", {
                           domProps: {
-                            textContent: _vm._s(task.created_at_human)
+                            textContent: _vm._s(_vm.tag.created_at_human)
                           }
                         }),
                         _vm._v(" "),
                         _c("td", {
                           domProps: {
-                            textContent: _vm._s(task.updated_at_human)
+                            textContent: _vm._s(_vm.tag.updated_at_human)
                           }
                         }),
                         _vm._v(" "),
@@ -43073,7 +43073,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    _vm.show(task)
+                                    _vm.show(_vm.tag)
                                   }
                                 }
                               },
@@ -43092,7 +43092,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    _vm.showUpdate(task)
+                                    _vm.showUpdate(_vm.tag)
                                   }
                                 }
                               },
@@ -43119,7 +43119,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    _vm.showDestroy(task)
+                                    _vm.showDestroy(_vm.tag)
                                   }
                                 }
                               },
@@ -43147,7 +43147,7 @@ var render = function() {
           _c("v-data-iterator", {
             staticClass: "hidden-lg-and-up",
             attrs: {
-              items: _vm.dataTasks,
+              items: _vm.dataTags,
               search: _vm.search,
               "no-results-text": "No s'ha trobat cap registre coincident",
               "no-data-text": "No hi han dades disponibles",
@@ -45641,7 +45641,7 @@ var render = function() {
                     _c("div", [
                       _c("h3", { staticClass: "headline mb-0" }, [
                         _vm._v(
-                          "\r\n                        Kangaroo Valley Safari\r\n                        "
+                          "\n                        Kangaroo Valley Safari\n                        "
                         )
                       ]),
                       _vm._v(" "),
@@ -45661,14 +45661,14 @@ var render = function() {
                         { attrs: { flat: "", color: "grey darken-4" } },
                         [
                           _vm._v(
-                            "\r\n                        Share\r\n                    "
+                            "\n                        Share\n                    "
                           )
                         ]
                       ),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { flat: "", color: "secondary" } }, [
                         _vm._v(
-                          "\r\n                        Explore\r\n                    "
+                          "\n                        Explore\n                    "
                         )
                       ])
                     ],
@@ -45700,31 +45700,31 @@ var render = function() {
                     [
                       _c("v-btn", { attrs: { color: "primary" } }, [
                         _vm._v(
-                          "\r\n                            Success\r\n                        "
+                          "\n                            Success\n                        "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "success" } }, [
                         _vm._v(
-                          "\r\n                            Success\r\n                        "
+                          "\n                            Success\n                        "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "error" } }, [
                         _vm._v(
-                          "\r\n                            Error\r\n                        "
+                          "\n                            Error\n                        "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "warning" } }, [
                         _vm._v(
-                          "\r\n                            Warning\r\n                        "
+                          "\n                            Warning\n                        "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "info" } }, [
                         _vm._v(
-                          "\r\n                            Info\r\n                        "
+                          "\n                            Info\n                        "
                         )
                       ])
                     ],
@@ -45736,31 +45736,31 @@ var render = function() {
                     [
                       _c("v-btn", { attrs: { color: "primary darken-3" } }, [
                         _vm._v(
-                          "\r\n                        Success\r\n                    "
+                          "\n                        Success\n                    "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "success darken-1" } }, [
                         _vm._v(
-                          "\r\n                        Success\r\n                    "
+                          "\n                        Success\n                    "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "error darken-1" } }, [
                         _vm._v(
-                          "\r\n                        Error\r\n                    "
+                          "\n                        Error\n                    "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "warning darken-1" } }, [
                         _vm._v(
-                          "\r\n                        Warning\r\n                    "
+                          "\n                        Warning\n                    "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "info darken-1" } }, [
                         _vm._v(
-                          "\r\n                        Info\r\n                    "
+                          "\n                        Info\n                    "
                         )
                       ])
                     ],
@@ -60510,7 +60510,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var withParams = Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
+var withParams = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
 var _default = withParams;
 exports.default = _default;
 
@@ -87706,8 +87706,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\dimhaddou.DISI\Code\mimoun1997\tasks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\dimhaddou.DISI\Code\mimoun1997\tasks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/mimoun/Code/mimoun1997/tasks/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/mimoun/Code/mimoun1997/tasks/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
