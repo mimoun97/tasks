@@ -11,7 +11,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class LogTaskUncompletedTest extends TestCase
+class LogTaskUncompTletedTest extends TestCase
 {
     use RefreshDatabase;
     /**
@@ -34,16 +34,16 @@ class LogTaskUncompletedTest extends TestCase
 
         //        // Test log is inserted
         $log  = Log::where('loggable_id', $task->id)->first();
-        dd($log);
-        $this->assertEquals($log->text,"S'ha marcat com a pendent la tasca 'comprar pa'");
-        $this->assertEquals($log->action_type,'descompletar');
-        $this->assertEquals($log->module_type,'Tasques');
-        $this->assertEquals($log->user_id,$user->id);
-        $this->assertEquals($log->old_value,true);
-        $this->assertEquals($log->new_value,0);
-        $this->assertEquals($log->loggable_id,$task->id);
-        $this->assertEquals($log->loggable_type,App\Task::class);
-        $this->assertEquals($log->icon,'lock_open');
-        $this->assertEquals($log->color,'primary');
+        //dd($log);
+        $this->assertEquals($log->text, "S'ha marcat com a pendent la tasca '{$task->name}'");
+        $this->assertEquals($log->action_type, 'descompletar');
+        $this->assertEquals($log->module_type, 'Tasques');
+        $this->assertEquals($log->user_id, $task->user_id);
+        $this->assertEquals($log->old_value, true);
+        $this->assertEquals($log->new_value, 0);
+        $this->assertEquals($log->loggable_id, $task->id);
+        $this->assertEquals($log->loggable_type, 'App\Task');
+        $this->assertEquals($log->icon, 'lock_open');
+        $this->assertEquals($log->color, 'primary');
     }
 }

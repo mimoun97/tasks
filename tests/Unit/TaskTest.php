@@ -60,6 +60,29 @@ class TaskTest extends TestCase
     /**
      * @test
      */
+    public function can_assign_tag_to_task_using_id()
+    {
+        // 1 Prepare
+        $task = Task::create([
+            'name' => 'Comprar pa'
+        ]);
+
+        $tag = Tag::create([
+            'name' => 'home'
+        ]);
+
+        // execució
+        $task->addTag($tag->id);
+
+        // Assertion
+        $tags = $task->tags;
+
+        $this->assertTrue($tags[0]->is($tag));
+    }
+
+    /**
+     * @test
+     */
     public function a_task_can_have_tags() {
         // 1 Prepare
         $task = Task::create([

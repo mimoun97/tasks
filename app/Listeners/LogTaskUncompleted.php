@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Log;
+use App\Task;
 use Carbon\Carbon;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
