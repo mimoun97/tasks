@@ -1,4 +1,4 @@
-Database (database.sqlite) does not exist. (SQL: select count(*) as aggregate from "users" where "email" = verida@mimoun.com)Database (database.sqlite) does not exist. (SQL: select count(*) as aggregate from "users" where "email" = verida@mimoun.com)<?php
+<?php
 
 return [
 
