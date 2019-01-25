@@ -22,8 +22,9 @@ class LoggedUserPhotoControllerTest extends TestCase
         $this->withoutExceptionHandling();
         $this->login();
         $response = $this->get('/user/photo');
+        dd($response);
         $response->assertSuccessful();
-        //dd(storage_path(User::DEFAULT_PHOTO_PATH));
+        dd(storage_path(User::DEFAULT_PHOTO_PATH));
         
         $this->assertTrue(file_exists($response->baseResponse->getFile()->getPathName()));
         

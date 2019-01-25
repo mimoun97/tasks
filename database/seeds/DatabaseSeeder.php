@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
 
         Model::unguard();
+        create_database();
 
         // $this->call(UsersTableSeeder::class);
         create_primary_user();

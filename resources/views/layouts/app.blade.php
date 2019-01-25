@@ -25,6 +25,7 @@
 <div id="app" v-cloak>
     <v-app>
         <snackbar></snackbar>
+        <service-worker></service-worker>
         <v-navigation-drawer
                 v-model="drawerRigth"
                 fixed
@@ -61,9 +62,9 @@
                                     </v-btn>
                                   </v-layout>
                             </v-card-actions>
-                            
+
                         </div>
-                        
+
                     </v-flex>
                 </v-layout>
             </v-card>
@@ -102,7 +103,7 @@
                 v-model="drawer"
                 fixed
                 dark
-                clipped 
+                clipped
                 app
                 class="primary lighten-1"
         >
@@ -176,7 +177,7 @@
             <v-avatar @click.stop="drawerRight = !drawerRight" title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">
                 <img @click.stop="drawerRigth = !drawerRigth" src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}" alt="avatar" />
             </v-avatar>
-            
+
         </v-toolbar>
         <v-content>
             @yield('content')

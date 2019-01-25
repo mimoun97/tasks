@@ -30,6 +30,7 @@ import permissions from './plugins/permissions'
 import GitInfoComponent from './components/git/GitInfoComponent'
 import UserSettings from './components/UserSettings'
 import Changelog from './components/changelog/ChangelogComponent.vue'
+import ServiceWorker from './components/ServiceWorker.vue'
 
 window.Vue = Vue
 window.Vuetify = Vuetify
@@ -165,9 +166,14 @@ window.Vue.component('task-completed-toggle', TaskCompletedToggle)
 window.Vue.component('user-profile', UserProfile)
 window.Vue.component('user-settings', UserSettings)
 window.Vue.component('changelog', Changelog)
+window.Vue.component('service-worker', ServiceWorker)
 
 
 // eslint-disable-next-line no-unused-vars
 const app = new window.Vue(AppComponent)
 
 Vue.config.productionTip = false
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js');
+}

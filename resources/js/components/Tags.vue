@@ -56,7 +56,7 @@
             </v-card-title>
             <v-data-table
                     :headers="headers"
-                    :items="dataTasks"
+                    :items="dataTags"
                     :search="search"
                     no-results-text="No s'ha trobat cap registre coincident"
                     no-data-text="No hi han dades disponibles"
@@ -69,34 +69,34 @@
                 <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
                 <template slot="items" slot-scope="{item: task}">
                     <tr>
-                        <td>{{ task.id }}</td>
-                        <td v-text="task.name"></td>
+                        <td>{{ tag.id }}</td>
+                        <td v-text="tag.name"></td>
                         <td>
-                            <v-avatar :title="task.user_name">
-                                <img :src="task.user_gravatar" alt="avatar">
+                            <v-avatar :title="tag.task.user_name">
+                                <img :src="tag.user_gravatar" alt="avatar">
                             </v-avatar>
                         </td>
                         <td>
                             <task-completed-toggle :task="task"></task-completed-toggle>
                         </td>
                         <td v-text="task.completed"></td>
-                        <td v-text="task.created_at_human"></td>
-                        <td v-text="task.updated_at_human"></td>
+                        <td v-text="tag.created_at_human"></td>
+                        <td v-text="tag.updated_at_human"></td>
                         <td>
                             <v-btn icon color="primary" flat title="Mostrar snackbar"
                                    @click="snackbar=true">
                                 <v-icon>info</v-icon>
                             </v-btn>
                             <v-btn icon color="primary" flat title="Mostrar la tasca"
-                                   @click="show(task)">
+                                   @click="show(tag)">
                                 <v-icon>visibility</v-icon>
                             </v-btn>
                             <v-btn icon color="success" flat title="Canviar la tasca"
-                                   @click="showUpdate(task)">
+                                   @click="showUpdate(tag)">
                                 <v-icon>edit</v-icon>
                             </v-btn>
                             <v-btn v-can="tasks.destroy" icon color="error" flat title="Eliminar la tasca"
-                                   @click="showDestroy(task)">
+                                   @click="showDestroy(tag)">
                                 <v-icon>delete</v-icon>
                             </v-btn>
                         </td>
@@ -104,7 +104,7 @@
                 </template>
             </v-data-table>
             <v-data-iterator class="hidden-lg-and-up"
-                             :items="dataTasks"
+                             :items="dataTags"
                              :search="search"
                              no-results-text="No s'ha trobat cap registre coincident"
                              no-data-text="No hi han dades disponibles"
