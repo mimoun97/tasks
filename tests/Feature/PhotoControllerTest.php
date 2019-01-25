@@ -45,6 +45,7 @@ class PhotoControllerTest extends TestCase
      */
     public function upload_photo_update()
     {
+        $this->withoutExceptionHandling();
         $user = $this->login();
         $photoUrl = 'photos/' . $user->id . '.jpg';
         Photo::create([
