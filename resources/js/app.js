@@ -104,7 +104,7 @@ window.Vue.use(window.Vuetify, {
       darken4: '#014D40'
     },
     grey: {
-      base: '##1F2933',
+      base: '#1F2933',
       lighten1: '#7B8794',
       lighten2: '#9AA5B1',
       lighten3: '#CBD2D9',
