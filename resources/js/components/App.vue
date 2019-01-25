@@ -4,7 +4,7 @@ export default {
   name: 'App',
   data () {
     return {
-      drawer: null,
+      drawer: false,
       drawerRigth: false,
       items: [
         { icon: 'home', text: 'Welcome', url: '/' },
@@ -26,14 +26,6 @@ export default {
         { icon: 'public', text: 'About', url: '/about' },
         { icon: 'settings', text: 'Settings', url: '/settings' },
       ]
-    }
-  },
-  methods: {
-    impersonate (user) {
-      // console.log(user)
-      if (user) {
-        window.location.href = '/impersonate/take/' + user
-      }
     }
   }
 }
