@@ -2627,7 +2627,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'App',
   data: function data() {
     return {
-      drawer: null,
+      drawer: false,
       drawerRigth: false,
       items: [{
         icon: 'home',
@@ -2674,14 +2674,6 @@ __webpack_require__.r(__webpack_exports__);
         url: '/settings'
       }]
     };
-  },
-  methods: {
-    impersonate: function impersonate(user) {
-      // console.log(user)
-      if (user) {
-        window.location.href = '/impersonate/take/' + user;
-      }
-    }
   }
 });
 
