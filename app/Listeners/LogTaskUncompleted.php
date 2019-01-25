@@ -29,7 +29,7 @@ class LogTaskUncompleted
     public function handle($event)
     {
         Log::create([
-            'text' => "S'ha marcat com a pendent la tasca".  $event->task->name. "'",
+            'text' => "S'ha marcat com a pendent la tasca '" . $event->task->name . "'",
             'time' => Carbon::now(),
             'action_type'=> 'descompletar',
             'module_type' => 'Tasques',

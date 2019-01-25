@@ -22,15 +22,12 @@ class LoggedUserPhotoControllerTest extends TestCase
         $this->withoutExceptionHandling();
         $this->login();
         $response = $this->get('/user/photo');
-        dd($response);
+        //dd($response);
         $response->assertSuccessful();
-        dd(storage_path(User::DEFAULT_PHOTO_PATH));
-        
+        //dd(storage_path(User::DEFAULT_PHOTO_PATH));
+        //dd($response->baseResponse->getFile()->getPathName());
         $this->assertTrue(file_exists($response->baseResponse->getFile()->getPathName()));
-        
-        
-        $this->assertEquals(storage_path(User::DEFAULT_PHOTO_PATH), $response->baseResponse->getFile()->getPathName());
-        $response->assertSuccessful();
+        $this->assertEquals(storage_path("app\\". User::DEFAULT_PHOTO_PATH), $response->baseResponse->getFile()->getPathName());
     }
 
     /** @test */
@@ -42,17 +39,15 @@ class LoggedUserPhotoControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         Storage::disk('local')->put(
-            [
-                '/photos/' . $user->id . '.jpg',
-                File::get(base_path('tests/__Fixtures__/photos/default.png'))
-            ]
+            '/photos/' . $user->id . '.jpg',
+            File::get('tests\__Fixtures__\photos\default.png')
         );
         $photo = Photo::create([
             'url' => 'photos/' . $user->id . '.jpg',
         ]);
         $user->assignPhoto($photo);
 
-        $this->actingAs($user,'web');
+        $this->actingAs($user, 'web');
         $response = $this->get('/user/photo');
         $response->assertSuccessful();
         $this->assertEquals(Storage::disk('local')->path('photos/' . $user->id . '.jpg'), $response->baseResponse->getFile()->getPathName());
