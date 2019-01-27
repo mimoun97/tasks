@@ -77,7 +77,9 @@ class TasksTagsControllerTest extends TestCase
         $this->withoutExceptionHandling();
         $this->loginAsTaskManager('api');
         $task = Task::create([
-            'name' => 'Hola'
+            'name' => 'Hola',
+            'description' => 'hola',
+            'completed' => false
         ]);
 
         $tag = Tag::create([
@@ -89,6 +91,8 @@ class TasksTagsControllerTest extends TestCase
         $response = $this->json('PUT', '/api/v1/tasks/' . $task->id . '/tags/', [
             'tags' => [$tag->id]
         ]);
+
+        dd($response);
 
         $response->assertStatus(403);
     }

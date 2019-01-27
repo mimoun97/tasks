@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Tag;
 use Illuminate\Http\Request;
+use App\Http\Requests\TagsIndex;
 
 class TagsController extends Controller
 {
-    public function index()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(TagsIndex $request)
     {
-        ///$tags = Tag::all();//orderBy('created_at','desc')->get();
         $tags = map_collection(Tag::all());
-        //dd($tags);
         return view('tags', [
             'tags' => $tags
         ]);

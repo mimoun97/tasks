@@ -22,6 +22,7 @@ export default {
         },
         { icon: 'tags', text: 'Tags', url: '/tags' },
         // { icon: 'folder', text: 'Projects', url: '/projects' },
+        { icon: 'settings', text: 'Changelog', url: '/changelog' },
         { icon: 'message', text: 'Contact', url: '/contact' },
         { icon: 'public', text: 'About', url: '/about' },
         { icon: 'settings', text: 'Settings', url: '/settings' },

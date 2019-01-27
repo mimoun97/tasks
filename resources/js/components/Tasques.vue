@@ -1,24 +1,24 @@
 <template>
   <span>
     <task-create :users="dataUsers"></task-create>
-    <task-list v-if="zeroTasks" :tasks="dataTasks" :tags="dataTags" :users="dataUsers" :uri="uri"></task-list>
+    <task-list v-if="noZeroTasks" :tasks="dataTasks" :tags="dataTags" :users="dataUsers" :uri="uri"></task-list>
     <div v-else>
-      <v-card
+      <v-card dark flat
     class="mx-auto"
-    color="grey lighten-3"
+    color="grey lighten-4"
     max-width="400"
   >
     <v-card-title>
     </v-card-title>
 
-    <v-card-text class="grey--text headline font-weight-bold">
-      "Cap tasca encara"
+    <v-card-text class="grey--text lkighten-4 headline font-weight-bold">
+      Cap tasca encara
     </v-card-text>
 
     <v-card-actions>
       <v-list-tile class="grow">
         <v-list-tile-content>
-          <v-btn light color="white ">Afegir</v-btn>   
+          <v-btn raised flat color="primary">Afegir</v-btn>   
         </v-list-tile-content>
       </v-list-tile>
     </v-card-actions>
@@ -67,9 +67,9 @@ export default {
     
   },
   computed: {
-    zeroTasks: function () {
+    noZeroTasks: function () {
       // `this` points to the vm instance
-      console.log('HOLA TRUE?' + this.dataTasks.length)
+      //console.log('HOLA TRUE?' + this.dataTasks.length)
       return this.dataTasks.length !== 0
     }
   }
