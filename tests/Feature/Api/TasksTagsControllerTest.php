@@ -14,23 +14,23 @@ class TasksTagsControllerTest extends TestCase
     use RefreshDatabase, CanLogin;
 
     /**
-     *
      * @test
      */
-    public function task_manager_can_add_tag_to_task()
+    public function can_add_tag_to_task()
     {
         $this->withoutExceptionHandling();
         $this->loginAsTaskManager('api');
+        // 1 Prepare
         $task = Task::create([
-            'name' => 'Hola'
+            'name' => 'Comprar pa'
         ]);
 
         $tag = Tag::create([
-            'name' => 'casa',
-            'description' => 'estic a casa',
-            'color' => 'green'
+            'name' => 'home',
+            'description' => 'bla bla',
+            'color' => 'blue'
         ]);
-
+        $this->assertCount(0, $task->tags);
         $response = $this->json('PUT', '/api/v1/tasks/' . $task->id . '/tags/', [
             'tags' => [$tag->id]
         ]);
@@ -42,58 +42,75 @@ class TasksTagsControllerTest extends TestCase
         $this->assertCount(1, $task->tags);
         $this->assertEquals('home', $task->tags[0]->name);
         $this->assertTrue($task->tags[0]->is($tag));
+        $this->assertEquals($task->tags[0]->id, $tag->id);
     }
 
     /**
-     *
      * @test
      */
-    public function guest_user_can_not_add_tag_to_task()
+    public function can_add_tag_to_task_validation()
     {
-        $this->withoutExceptionHandling();
-        $task = Task::create([
-            'name' => 'Hola'
-        ]);
-
-        $tag = Tag::create([
-            'name' => 'casa',
-            'description' => 'estic a casa',
-            'color' => 'green'
-        ]);
-
-        $response = $this->json('PUT', '/api/v1/tasks/' . $task->id . '/tags/', [
-            'tags' => [$tag->id]
-        ]);
-
-        $response->assertStatus(403);
-    }
-
-    /**
-     *
-     * @test
-     */
-    public function task_manager_user_can_not_add_tag_to_task()
-    {
-        $this->withoutExceptionHandling();
         $this->loginAsTaskManager('api');
+        // 1 Prepare
         $task = Task::create([
-            'name' => 'Hola',
-            'description' => 'hola',
-            'completed' => false
+            'name' => 'Comprar pa'
         ]);
 
         $tag = Tag::create([
-            'name' => 'casa',
-            'description' => 'estic a casa',
-            'color' => 'green'
+            'name' => 'home',
+            'description' => 'bla bla',
+            'color' => 'blue'
+        ]);
+        $this->assertCount(0, $task->tags);
+        $response = $this->json('PUT', '/api/v1/tasks/' . $task->id . '/tags/');
+
+        $response->assertStatus(422);
+    }
+
+    /**
+     * @test
+     */
+    public function regular_user_cannot_add_tag_to_task()
+    {
+        $this->login('api');
+        // 1 Prepare
+        $task = Task::create([
+            'name' => 'Comprar pa'
         ]);
 
+        $tag = Tag::create([
+            'name' => 'home',
+            'description' => 'bla bla',
+            'color' => 'blue'
+        ]);
+        $this->assertCount(0, $task->tags);
         $response = $this->json('PUT', '/api/v1/tasks/' . $task->id . '/tags/', [
             'tags' => [$tag->id]
         ]);
 
-        dd($response);
-
         $response->assertStatus(403);
+    }
+
+    /**
+     * @test
+     */
+    public function guest_user_cannot_add_tag_to_task()
+    {
+        // 1 Prepare
+        $task = Task::create([
+            'name' => 'Comprar pa'
+        ]);
+
+        $tag = Tag::create([
+            'name' => 'home',
+            'description' => 'bla bla',
+            'color' => 'blue'
+        ]);
+        $this->assertCount(0, $task->tags);
+        $response = $this->json('PUT', '/api/v1/tasks/' . $task->id . '/tags/', [
+            'tags' => [$tag->id]
+        ]);
+
+        $response->assertStatus(401);
     }
 }

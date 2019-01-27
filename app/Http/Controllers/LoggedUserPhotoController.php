@@ -11,6 +11,7 @@ class LoggedUserPhotoController extends Controller
     public function show(Request $request)
     {
         $photo = $this->userPhotoExists($request->user()) ? $request->user()->photo->url : $this->defaultPhoto();
+        //dd($photo);
         return response()->file(Storage::disk('local')->path($photo), [
             'Cache-Control' => 'no-cache, must-revalidate, no-store, max-age=0, private',
             'Pragma' => 'no-cache'

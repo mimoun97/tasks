@@ -12,12 +12,13 @@ class TasksTagsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  TasksTagsUpdate  $request
-     * @param  $Task
+     * @param TasksTagsUpdate $request
+     * @param $Task
      * @return void
      */
     public function update(TasksTagsUpdate $request, Task $task)
     {
-        $task->addTags($request->tags);
+        $tags = Task::find($request->tags);
+        $task->addTags($tags);
     }
 }

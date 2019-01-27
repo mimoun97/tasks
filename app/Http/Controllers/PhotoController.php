@@ -20,7 +20,6 @@ class PhotoController extends Controller
             $request->user()->id . '.' . $extension,
             'google'
         );
-        
         if ($photo = Photo::where('user_id', $request->user()->id)->first()) {
             $photo->url = $path;
             $photo->save();
@@ -31,5 +30,30 @@ class PhotoController extends Controller
             ]);
         }
         return back();
+    }
+
+    public function storeExamples(PhotoStore $request)
+    {
+        //Nom definit per Laravel amb un sistema per evitar colisions:
+        $path = $request->file('photo')->store('photos');
+//        $path = Storage::putFile('photos', $request->file('photo'));
+        //CustomFileName
+        $path = $request->file('photo')->storeAs(
+            'photos',
+            $request->user()->id
+        );
+        //CustomFileName with extension
+        $path = $request->file('photo')->storeAs(
+            'photos',
+            $request->user()->id
+        );
+        // Specificar un disk
+//        $path = $request->file('photo')->store(
+//            'photos/'.$request->user()->id, 's3'
+//        );
+        dump($path);
+        return Photo::create([
+            'url' => $path
+        ]);
     }
 }

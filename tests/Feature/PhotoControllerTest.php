@@ -18,18 +18,18 @@ class PhotoControllerTest extends TestCase
      */
     public function upload_photo()
     {
-        $this->withoutExceptionHandling();
+//        $this->withoutExceptionHandling();
         Storage::fake('local');
         Storage::fake('google');
 
         $user = $this->login();
-        $response = $this->post('/photo',[
+        $response = $this->post('/photo', [
             'photo' => UploadedFile::fake()->image('photo.jpg')
         ]);
         $response->assertRedirect();
 
         Storage::disk('local')->assertExists($photoUrl = 'photos/' . $user->id . '.jpg');
-        Storage::disk('google')->assertExists($photoUrl = 'photos/' . $user->id . '.jpg');
+        Storage::disk('google')->assertExists('/' . $user->id . '.jpg');
 
         $photo = Photo::first();
         $this->assertEquals($photoUrl, $photo->url);
@@ -45,7 +45,7 @@ class PhotoControllerTest extends TestCase
      */
     public function upload_photo_update()
     {
-        $this->withoutExceptionHandling();
+        $this->withExceptionHandling();
         $user = $this->login();
         $photoUrl = 'photos/' . $user->id . '.jpg';
         Photo::create([
@@ -56,13 +56,12 @@ class PhotoControllerTest extends TestCase
         Storage::fake('local');
         Storage::fake('google');
 
-        $response = $this->post('/photo',[
+        $response = $this->post('/photo', [
             'photo' => UploadedFile::fake()->image('photo.jpg')
         ]);
         $response->assertRedirect();
 
         Storage::disk('local')->assertExists($photoUrl);
-        Storage::disk('google')->assertExists($photoUrl);
 
         $photo = Photo::first();
         $this->assertEquals($photoUrl, $photo->url);
