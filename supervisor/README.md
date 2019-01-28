@@ -28,3 +28,17 @@ numprocs=8
 redirect_stderr=true
 stdout_logfile=/home/forge/tasks.mimoun1997.scool.cat/storage/logs/worker.log
 ```
+
+# Supervisor per a Horizon
++ LOCAL:
+`/etc/supervisor/conf.d/horizon-tasks-mimoun1997-scool-cat.conf`
+```
+[program:horizon-tasks-mimoun1997-scool-cat]
+process_name=%(program_name)s
+command=php /home/mimoun/Code/mimoun1997/tasks/artisan horizon
+autostart=true
+autorestart=true
+user=mimoun
+redirect_stderr=true
+stdout_logfile=/home/mimoun/Code/mimoun1997/tasks/storage/logs/horizon.log
+```
