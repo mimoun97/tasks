@@ -2661,6 +2661,10 @@ __webpack_require__.r(__webpack_exports__);
         url: '/tags'
       }, // { icon: 'folder', text: 'Projects', url: '/projects' },
       {
+        icon: 'receipt',
+        text: 'Changelog',
+        url: '/changelog'
+      }, {
         icon: 'message',
         text: 'Contact',
         url: '/contact'
@@ -3376,10 +3380,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    completeTask: function completeTask() {// REMEMBER LOADING I DISABLED
-      // window.axios.post('/v1/completed_task/' + this.task.id) // TODO ACABAR
+    completeTask: function completeTask() {
+      window.axios.post('api/v1/completed_task/' + this.task.id);
     },
-    uncompleteTask: function uncompleteTask() {// window.axios.delete('/v1/completed_task/' + this.task.id) // TODO ACABAR
+    uncompleteTask: function uncompleteTask() {
+      window.axios.delete('api/v1/completed_task/' + this.task.id);
     }
   }
 });
@@ -4518,6 +4523,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4551,7 +4579,14 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  methods: {}
+  methods: {},
+  computed: {
+    noZeroTasks: function noZeroTasks() {
+      // `this` points to the vm instance
+      //console.log('HOLA TRUE?' + this.dataTasks.length)
+      return this.dataTasks.length !== 0;
+    }
+  }
 });
 
 /***/ }),
@@ -5444,7 +5479,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     githubURLCommit: function githubURLCommit() {
-      return this.githubURL() + '/commits/' + this.dataGit.commit;
+      return this.githubURL() + '/commit/' + this.dataGit.commit;
     },
     githubUri: function githubUri() {
       return this.dataGit.origin.split(':')[1].split('.')[0];
@@ -45093,14 +45128,77 @@ var render = function() {
     [
       _c("task-create", { attrs: { users: _vm.dataUsers } }),
       _vm._v(" "),
-      _c("task-list", {
-        attrs: {
-          tasks: _vm.dataTasks,
-          tags: _vm.dataTags,
-          users: _vm.dataUsers,
-          uri: _vm.uri
-        }
-      })
+      _vm.noZeroTasks
+        ? _c("task-list", {
+            attrs: {
+              tasks: _vm.dataTasks,
+              tags: _vm.dataTags,
+              users: _vm.dataUsers,
+              uri: _vm.uri
+            }
+          })
+        : _c(
+            "div",
+            [
+              _c(
+                "v-card",
+                {
+                  staticClass: "mx-auto",
+                  attrs: {
+                    dark: "",
+                    flat: "",
+                    color: "grey lighten-4",
+                    "max-width": "400"
+                  }
+                },
+                [
+                  _c("v-card-title"),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    {
+                      staticClass:
+                        "grey--text lkighten-4 headline font-weight-bold"
+                    },
+                    [_vm._v("\n    Cap tasca encara\n  ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c(
+                        "v-list-tile",
+                        { staticClass: "grow" },
+                        [
+                          _c(
+                            "v-list-tile-content",
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: {
+                                    raised: "",
+                                    flat: "",
+                                    color: "primary"
+                                  }
+                                },
+                                [_vm._v("Afegir")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
     ],
     1
   )
@@ -84595,7 +84693,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // Notifications
 
+window.Vue.component('notifications', Notifications);
 window.Vue = vue__WEBPACK_IMPORTED_MODULE_0___default.a;
 window.Vuetify = vuetify__WEBPACK_IMPORTED_MODULE_1___default.a;
 var PRIMARY_COLOR_KEY = 'primary_color_key';

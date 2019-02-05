@@ -252,4 +252,12 @@ class UserTest extends TestCase
         $this->assertEquals('/avatar.png',$user->avatars[0]->url);
         $this->assertEquals($user->id,$user->avatars[0]->id);
     }
+
+    /** @test */
+    public function hash_id()
+    {
+        $user = factory(User::class)->create();
+        $hashids = new \Hashids\Hashids(config('tasks.salt'));
+        $this->assertEquals($user->hashid, $hashids->encode($user->getKey()));
+    }
 }

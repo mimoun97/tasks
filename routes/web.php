@@ -15,6 +15,7 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ChangelogController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\LoggedUserPhotoController;
 
 Route::get('/', function () {
@@ -58,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/changelog', '\\'. ChangelogController::class . '@index');
 
-
+    Route::get('/notifications', '\\' . NotificationController::class . '@index');
 });
 
 

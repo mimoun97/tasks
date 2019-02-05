@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import TreeView from 'vue-json-tree-view'
+import VueTimeago from 'vue-timeago'
 
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
-
 import './bootstrap'
 
 import AppComponent from './components/App.vue'
@@ -31,6 +31,10 @@ import GitInfoComponent from './components/git/GitInfoComponent'
 import UserSettings from './components/UserSettings'
 import Changelog from './components/changelog/ChangelogComponent.vue'
 import ServiceWorker from './components/ServiceWorker.vue'
+import Notifications from './components/notifications/Notifications'
+import Navigation from './components/Navigation'
+import NotificationsWidget from './components/notifications/NotificationsWidget'
+
 
 window.Vue = Vue
 window.Vuetify = Vuetify
@@ -38,6 +42,13 @@ window.Vuetify = Vuetify
 const PRIMARY_COLOR_KEY = 'primary_color_key'
 
 const primaryColor = window.localStorage.getItem(PRIMARY_COLOR_KEY) || '#4C63B6'//'#19216C'
+
+window.Vue.use(VueTimeago, {
+  locale: 'ca', // Default locale
+  locales: {
+    'ca': require('date-fns/locale/ca')
+  }
+})
 
 window.Vue.use(window.Vuetify, {
   theme: {
@@ -167,6 +178,12 @@ window.Vue.component('user-profile', UserProfile)
 window.Vue.component('user-settings', UserSettings)
 window.Vue.component('changelog', Changelog)
 window.Vue.component('service-worker', ServiceWorker)
+
+//Navigation
+window.Vue.component('navigation', Navigation)
+// Notifications
+window.Vue.component('notifications', Notifications)
+window.Vue.component('notificationsWidget', NotificationsWidget)
 
 
 // eslint-disable-next-line no-unused-vars

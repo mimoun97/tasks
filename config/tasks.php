@@ -7,4 +7,6 @@
  */
 return [
     'manager_email' => env('TASKS_MANAGER_EMAIL', 'tasksmanager@miempresa@empresa.com'),
+    //Salts hash id's
+    'tasks_salt' => env('TASKS_SALT'),
 ];
