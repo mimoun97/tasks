@@ -18,6 +18,7 @@
         "spatie/laravel-permission": "^2.25"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.2",
         "beyondcode/laravel-dump-server": "^1.0",
         "brianium/paratest": "^2.1",
         "codedungeon/phpunit-result-printer": "^0.24.1",
