@@ -15,7 +15,7 @@ export default {
   methods: {
     show() {
       if (!("share" in navigator)) {
-        alert("Web Share API not supported.");
+        alert("Web Share API not supported!!");
         return;
       }
 
