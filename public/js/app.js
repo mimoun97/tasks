@@ -7310,7 +7310,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     show: function show() {
       if (!("share" in navigator)) {
-        alert("Web Share API not supported.");
+        alert("Web Share API not supported!!");
         return;
       }
 
