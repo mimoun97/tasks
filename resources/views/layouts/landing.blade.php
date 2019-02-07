@@ -27,6 +27,7 @@
     <v-app>
         @yield('content')
     </v-app>
+    <share-fab></share-fab>
 </div>
 <script src="{{ mix('/js/app.js') }}"></script>
 <noscript>
