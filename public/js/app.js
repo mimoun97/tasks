@@ -2628,58 +2628,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       drawer: false,
-      drawerRigth: false,
-      items: [{
-        icon: 'home',
-        text: 'Welcome',
-        url: '/'
-      }, {
-        icon: 'dashboard',
-        text: 'Home',
-        url: '/home'
-      }, {
-        icon: 'keyboard_arrow_up',
-        'icon-alt': 'keyboard_arrow_down',
-        text: 'Tasques',
-        model: true,
-        children: [{
-          icon: 'list',
-          text: 'Tasques amb PHP i Tailwind',
-          url: '/tasks'
-        }, {
-          icon: 'list_alt',
-          text: 'Tasques Vue',
-          url: '/tasks_vue'
-        }, {
-          icon: 'assignment',
-          text: 'Tasques',
-          url: '/tasques'
-        }]
-      }, {
-        icon: 'tags',
-        text: 'Tags',
-        url: '/tags'
-      }, {
-        icon: 'notifications',
-        text: 'Notifications',
-        url: '/notifications'
-      }, {
-        icon: 'receipt',
-        text: 'Changelog',
-        url: '/changelog'
-      }, {
-        icon: 'message',
-        text: 'Contact',
-        url: '/contact'
-      }, {
-        icon: 'public',
-        text: 'About',
-        url: '/about'
-      }, {
-        icon: 'settings',
-        text: 'Settings',
-        url: '/settings'
-      }]
+      drawerRigth: false
     };
   }
 });
@@ -3064,6 +3013,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Navigation',
   data: function data() {
@@ -3074,55 +3024,51 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Welcome',
         url: '/'
       }, {
-        icon: 'home',
+        icon: 'dashboard',
         text: 'Home',
         url: '/home'
-      }, {
-        icon: 'notifications',
-        text: 'Notificacions',
-        url: '/notifications'
       }, {
         icon: 'keyboard_arrow_up',
         'icon-alt': 'keyboard_arrow_down',
         text: 'Tasques',
         model: true,
         children: [{
-          icon: 'build',
-          text: 'Tasques amb PHP',
+          icon: 'list',
+          text: 'Tasques amb PHP i Tailwind',
           url: '/tasks'
         }, {
-          icon: 'build',
-          text: 'Tasques tailwind',
+          icon: 'list_alt',
+          text: 'Tasques Vue',
           url: '/tasks_vue'
         }, {
-          icon: 'build',
+          icon: 'assignment',
           text: 'Tasques',
           url: '/tasques'
-        }, {
-          icon: 'build',
-          text: 'Tags',
-          url: '/tags'
         }]
       }, {
-        icon: 'help',
-        text: 'Profile',
-        url: '/profile'
+        icon: 'tags',
+        text: 'Tags',
+        url: '/tags'
       }, {
-        icon: 'help',
-        text: 'Telescope',
-        url: '/telescope'
+        icon: 'notifications',
+        text: 'Notifications',
+        url: '/notifications'
       }, {
-        icon: 'help',
+        icon: 'receipt',
         text: 'Changelog',
         url: '/changelog'
       }, {
-        icon: 'help',
+        icon: 'message',
         text: 'Contact',
         url: '/contact'
       }, {
         icon: 'public',
         text: 'About',
         url: '/about'
+      }, {
+        icon: 'settings',
+        text: 'Settings',
+        url: '/settings'
       }]
     };
   },
@@ -5575,6 +5521,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -45571,7 +45518,8 @@ var render = function() {
   return _c(
     "v-navigation-drawer",
     {
-      attrs: { fixed: "", app: "", clipped: "" },
+      staticClass: "primary lighten-1",
+      attrs: { fixed: "", dark: "", clipped: "", app: "" },
       model: {
         value: _vm.dataDrawer,
         callback: function($$v) {
@@ -45637,8 +45585,7 @@ var render = function() {
                         attrs: {
                           "prepend-icon": item.model
                             ? item.icon
-                            : item["icon-alt"],
-                          "append-icon": ""
+                            : item["icon-alt"]
                         },
                         model: {
                           value: item.model,
@@ -49708,7 +49655,7 @@ var render = function() {
       _c(
         "v-dialog",
         {
-          attrs: { width: "500" },
+          attrs: { width: "500", fullscreen: _vm.$vuetify.breakpoint.xsOnly },
           model: {
             value: _vm.dialog,
             callback: function($$v) {
