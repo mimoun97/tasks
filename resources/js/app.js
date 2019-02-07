@@ -34,7 +34,7 @@ import ServiceWorker from './components/ServiceWorker.vue'
 import Notifications from './components/notifications/Notifications'
 import Navigation from './components/Navigation'
 import NotificationsWidget from './components/notifications/NotificationsWidget'
-
+import ShareFab from './components/ui/ShareFab'
 
 window.Vue = Vue
 window.Vuetify = Vuetify
@@ -184,6 +184,8 @@ window.Vue.component('navigation', Navigation)
 // Notifications
 window.Vue.component('notifications', Notifications)
 window.Vue.component('notificationsWidget', NotificationsWidget)
+//Share Fab
+window.Vue.component('share-fab', ShareFab)
 
 
 // eslint-disable-next-line no-unused-vars
