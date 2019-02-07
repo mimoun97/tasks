@@ -9,9 +9,8 @@
     <meta name="user" content="{{ logged_user() }}">
     <meta name="git" content="{{ git() }}">
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-
+    <link rel="icon" type="image/ico" size="16x16" href="/img/favicon-16x16.png">
+    <link rel="icon" type="image/ico" size="32x32" href="/img/favicon-32x32.png">
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <link rel="stylesheet" href="/css/tailwind.min.css" type="text/css">
     <title>@yield('title','App Tasques')</title>
