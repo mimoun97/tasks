@@ -1,9 +1,11 @@
 <template>
     <v-navigation-drawer
             v-model="dataDrawer"
-            fixed
-            app
-            clipped
+                fixed
+                dark
+                clipped
+                app
+                class="primary lighten-1"
     >
         <v-list dense>
             <template v-for="item in items">
@@ -27,7 +29,6 @@
                         v-model="item.model"
                         :key="item.text"
                         :prepend-icon="item.model ? item.icon : item['icon-alt']"
-                        append-icon=""
                 >
                     <v-list-tile slot="activator" :href="item.url">
                         <v-list-tile-content>
@@ -74,25 +75,24 @@ export default {
       dataDrawer: this.drawer,
       items: [
         { icon: 'home', text: 'Welcome', url: '/' },
-        { icon: 'home', text: 'Home', url: '/home' },
-        { icon: 'notifications', text: 'Notificacions', url: '/notifications' },
+        { icon: 'dashboard', text: 'Home', url: '/home' },
         {
           icon: 'keyboard_arrow_up',
           'icon-alt': 'keyboard_arrow_down',
           text: 'Tasques',
           model: true,
           children: [
-            { icon: 'build', text: 'Tasques amb PHP', url: '/tasks' },
-            { icon: 'build', text: 'Tasques tailwind', url: '/tasks_vue' },
-            { icon: 'build', text: 'Tasques', url: '/tasques' },
-            { icon: 'build', text: 'Tags', url: '/tags' }
+            { icon: 'list', text: 'Tasques amb PHP i Tailwind', url: '/tasks' },
+            { icon: 'list_alt', text: 'Tasques Vue', url: '/tasks_vue' },
+            { icon: 'assignment', text: 'Tasques', url: '/tasques' }
           ]
         },
-        { icon: 'help', text: 'Profile', url: '/profile' },
-        { icon: 'help', text: 'Telescope', url: '/telescope' },
-        { icon: 'help', text: 'Changelog', url: '/changelog' },
-        { icon: 'help', text: 'Contact', url: '/contact' },
-        { icon: 'public', text: 'About', url: '/about' }
+        { icon: 'tags', text: 'Tags', url: '/tags' },
+        { icon: 'notifications', text: 'Notifications', url: '/notifications' },
+        { icon: 'receipt', text: 'Changelog', url: '/changelog' },
+        { icon: 'message', text: 'Contact', url: '/contact' },
+        { icon: 'public', text: 'About', url: '/about' },
+        { icon: 'settings', text: 'Settings', url: '/settings' },
       ]
     }
   },

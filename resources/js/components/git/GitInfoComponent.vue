@@ -3,6 +3,7 @@
         <v-dialog
                 v-model="dialog"
                 width="500"
+                :fullscreen="$vuetify.breakpoint.xsOnly"
         >
           <v-card>
             <v-card-title
