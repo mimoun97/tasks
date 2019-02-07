@@ -12,7 +12,8 @@ use Tests\TestCase;
  *
  * @package Tests\Feature\Tenants\Api
  */
-class ChangelogControllerTest extends TestCase {
+class ChangelogControllerTest extends TestCase
+{
 
     use RefreshDatabase;
 
@@ -26,9 +27,9 @@ class ChangelogControllerTest extends TestCase {
         $user = factory(User::class)->create();
         $role = Role::firstOrCreate(['name' => 'ChangelogManager']);
         $user->assignRole($role);
-        $this->actingAs($user,'api');
+        $this->actingAs($user, 'api');
 
-        $response =  $this->json('GET','/api/v1/changelog');
+        $response =  $this->json('GET', '/api/v1/changelog');
         $response->assertSuccessful();
         $result = json_decode($response->getContent());
 //        dump($result);

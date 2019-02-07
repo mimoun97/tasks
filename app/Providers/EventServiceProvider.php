@@ -25,7 +25,15 @@ class EventServiceProvider extends ServiceProvider
         ],
         TaskUncompleted::class => [
             LogTaskUncompleted::class,
-            SendMailTaskUncompleted::class
+            //SendMailTaskUncompleted::class
+        ],
+        \App\Events\TaskCompleted::class  => [
+            \App\Listeners\LogTaskCompleted::class,
+            //\App\Listeners\SendMailTaskCompleted::class
+        ],
+        \App\Events\TaskUpdated::class => [
+            \App\Listeners\LogTaskUpdated::class,
+            //\App\Listeners\SendMailTaskUpdated::class
         ]
     ];
 

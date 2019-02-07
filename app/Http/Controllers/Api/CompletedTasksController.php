@@ -9,12 +9,13 @@ use App\Task;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Events\TaskCompleted;
 
 class CompletedTasksController
 {
     public function destroy(Request $request, Task $task)
     {
-        $task->completed=false;
+        $task->complete(false);
         $task->save();
 
         event(new TaskUncompleted($task));
@@ -38,11 +39,16 @@ class CompletedTasksController
 //        Mail::to($request->user())
 //
 //            ->send(new TaskUncompleted($task, $request->user()));
+        return $task->completed ? "Completada" : "Pendent";
     }
 
     public function store(Request $request, Task $task)
     {
-        $task->completed=true;
+        $task->complete();
         $task->save();
+
+        event(new TaskCompleted($task));
+
+        return $task->completed ? "Completada" : "Pendent";
     }
 }

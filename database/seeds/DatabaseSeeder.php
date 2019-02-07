@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         create_example_tasks();
         initialize_roles();
         sample_users();
+        sample_logs();
 
         $this->call([
             TagSeeder::class,

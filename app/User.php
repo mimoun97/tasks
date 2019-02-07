@@ -128,4 +128,36 @@ class User extends Authenticatable
         return $this;
     }
 
+    /**
+     * Hashed key.
+     * @return string
+     */
+    protected function hashedKey()
+    {
+        $hashids = new \Hashids\Hashids(config('tasks.salt'));
+        return $hashids->encode($this->getKey());
+    }
+
+    /**
+     * Get the photo path prefix.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getHashIdAttribute($value)
+    {
+        return $this->hashedKey();
+    }
+
+    public function mapSimple()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'gravatar' => $this->gravatar,
+            'admin' => (boolean)$this->admin,
+            'hash_id' => $this->hash_id,
+        ];
+    }
 }

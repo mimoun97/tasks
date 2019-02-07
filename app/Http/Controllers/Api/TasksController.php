@@ -9,6 +9,7 @@ use App\Http\Requests\StoreTask;
 use App\Http\Requests\UpdateTask;
 use App\Http\Requests\DestroyTask;
 use App\Http\Controllers\Controller;
+use App\Events\TaskUpdated;
 
 class TasksController extends Controller
 {
@@ -46,6 +47,8 @@ class TasksController extends Controller
         $task->name = ($request->has('name')) ? $request->name : null;
         $task->save();
         return $task->map();
+
+        event(new TaskUpdated($task));
     }
 
 }

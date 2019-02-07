@@ -10,6 +10,7 @@ use Illuminate\Container\factory;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
+use App\Notifications\SimpleNotification;
 
 if (!function_exists('create_primary_user')) {
     function create_primary_user() {
@@ -451,11 +452,61 @@ if (!function_exists('sample_logs')) {
     }
 
     if (! function_exists('ellipsis')) {
-        function ellipsis($text,$max=50)
+        function ellipsis($text, $max = 50)
         {
-            $ellipted = strlen($text) > $max ? substr($text,0,$max)."..." : $text;
+            $ellipted = strlen($text) > $max ? substr($text, 0, $max)."..." : $text;
             return $ellipted;
         }
     }
 
+    if (!function_exists('is_valid_uuid')) {
+        /**
+         * Check if a given string is a valid UUID
+         *
+         * @param   string  $uuid   The string to check
+         * @return  boolean
+         */
+        function is_valid_uuid($uuid)
+        {
+
+            if (!is_string($uuid) || (preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $uuid) !== 1)) {
+                return false;
+            }
+            return true;
+        }
+    }
+
+    if (!function_exists('set_sample_notifications_to_user')) {
+        function set_sample_notifications_to_user($user)
+        {
+            $user->notify(new SimpleNotification('Notification 1'));
+            $user->notify(new SimpleNotification('Notification 2'));
+            $user->notify(new SimpleNotification('Notification 3'));
+        }
+    }
+
+    if (!function_exists('sample_notifications')) {
+        function sample_notifications()
+        {
+            $user1 = factory(User::class)->create([
+                'name' => 'Homer Simpson',
+                'email' => 'homer@lossimpsons.com'
+            ]);
+            $user2 = factory(User::class)->create([
+                'name' => 'Bart Simpson',
+                'email' => 'bart@lossimpsons.com'
+            ]);
+            $user1->notify(new SimpleNotification('Sample Notification 1'));
+            $user2->notify(new SimpleNotification('Sample Notification 2'));
+        }
+    }
+
+    if (!function_exists('map_simple_collection')) {
+        function map_simple_collection($collection)
+        {
+            return $collection->map(function ($item) {
+                return $item->mapSimple();
+            });
+        }
+    }
 }

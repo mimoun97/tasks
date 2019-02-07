@@ -30,11 +30,10 @@ export default {
   },
   methods: {
     completeTask () {
-      // REMEMBER LOADING I DISABLED
-      // window.axios.post('/v1/completed_task/' + this.task.id) // TODO ACABAR
+      window.axios.post('api/v1/completed_task/' + this.task.id)
     },
     uncompleteTask () {
-      // window.axios.delete('/v1/completed_task/' + this.task.id) // TODO ACABAR
+      window.axios.delete('api/v1/completed_task/' + this.task.id)
     }
   }
 }

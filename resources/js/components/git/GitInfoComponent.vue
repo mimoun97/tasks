@@ -3,6 +3,7 @@
         <v-dialog
                 v-model="dialog"
                 width="500"
+                :fullscreen="$vuetify.breakpoint.xsOnly"
         >
           <v-card>
             <v-card-title
@@ -67,7 +68,7 @@ export default {
   },
   methods: {
     githubURLCommit () {
-      return this.githubURL() + '/commits/' + this.dataGit.commit
+      return this.githubURL() + '/commit/' + this.dataGit.commit
     },
     githubUri () {
       return this.dataGit.origin.split(':')[1].split('.')[0]

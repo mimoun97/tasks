@@ -15,15 +15,14 @@ class TasquesController extends Controller
     {
 
         if (Auth::user()->can('tasks.manage')) {
-            $tasks = map_collection(Task::orderBy('created_at', 'desc')->get());
+            $tasks = map_collection(Task::with(['user', 'tags'])->orderBy('created_at', 'desc')->get());
             $uri = '/api/v1/tasks';
         } else {
             $tasks = map_collection($request->user()->tasks);
             $uri = '/api/v1/user/tasks';
         }
         $users = User::all();
-        $tags = map_collection(Tag::all());
+        $tags = Tag::all();
         return view('tasques', compact('tasks', 'users', 'uri', 'tags'));
-
     }
 }
