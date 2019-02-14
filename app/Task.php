@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
-
 {
     use FormattedDates;
-	/**
+
+    const TASQUES_CACHE_KEY = 'tasks.mimoun1997.tasks';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -19,7 +21,7 @@ class Task extends Model
 
     public function user()
     {
-    	return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function file()
@@ -49,7 +51,7 @@ class Task extends Model
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'completed' => (boolean) $this->completed,
+            'completed' => (boolean)$this->completed,
             'user_id' => $this->user_id,
             'user_name' => optional($this->user)->name,
             'user_email' => optional($this->user)->email,
@@ -91,7 +93,4 @@ class Task extends Model
     {
         $this->tags()->saveMany($tags);
     }
-
-
-
 }

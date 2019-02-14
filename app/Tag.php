@@ -8,7 +8,10 @@ class Tag extends Model
 {
 
     use FormattedDates;
+
     protected $guarded = [];
+
+    const TAGS_CACHE_KEY = 'tasks.mimoun1997.tags';
 
     public function map()
     {

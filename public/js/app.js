@@ -3256,14 +3256,26 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ServiceWorker',
-  mounted: function mounted() {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js');
-    } else {
-      console.log('Navegador no soporta workers');
+  methods: {
+    registerServiceWorker: function registerServiceWorker() {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+          console.log('Registration successful, scope is.', registration.scope);
+        }).catch(function (error) {
+          console.log('Service worker registration failed, error', error);
+        });
+      } else {
+        console.log('Navegador obsolet');
+      }
     }
+  },
+  // VULL EXECUTAR EL REGISTRE DEL SERVICE WORKER
+  mounted: function mounted() {
+    this.registerServiceWorker();
   }
 });
 
@@ -46008,7 +46020,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("span")
 }
 var staticRenderFns = []
 render._withStripped = true
