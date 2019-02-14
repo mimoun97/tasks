@@ -18,6 +18,8 @@ class User extends Authenticatable
 
     const DEFAULT_PHOTO_PATH = 'photos/' . self::DEFAULT_PHOTO;
 
+    const USERS_CACHE_KEY = 'tasks.mimoun1997.users';
+
     /**
      * The attributes that are mass assignable.
      *

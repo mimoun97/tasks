@@ -45,5 +45,7 @@ class LogTaskUncompTletedTest extends TestCase
         $this->assertEquals($log->loggable_type, 'App\Task');
         $this->assertEquals($log->icon, 'lock_open');
         $this->assertEquals($log->color, 'primary');
+
+        
     }
 }

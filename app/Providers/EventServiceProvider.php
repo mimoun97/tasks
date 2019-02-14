@@ -29,6 +29,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         \App\Events\TaskCompleted::class  => [
             \App\Listeners\LogTaskCompleted::class,
+            \App\Listeners\ForgetCachedTasks::class,
             //\App\Listeners\SendMailTaskCompleted::class
         ],
         \App\Events\TaskUpdated::class => [

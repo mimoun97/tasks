@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Task;
+use function Psy\debug;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use function Psy\debug;
+use Illuminate\Support\Facades\Cache;
 
 class LoggedUserTasksController extends Controller
 {

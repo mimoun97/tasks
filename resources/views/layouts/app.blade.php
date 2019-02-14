@@ -30,11 +30,7 @@
     </style>
 </head>
 <body>
-<div id="app" v-cloak>data () {
-    return {
-      dialog: false
-    }
-  },
+<div id="app" v-cloak>
     <v-app>
         <snackbar></snackbar>
         <service-worker></service-worker>
