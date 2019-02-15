@@ -4653,21 +4653,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -7072,6 +7057,17 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ui/FooterApp.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ui/FooterApp.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/mimoun/Code/mimoun1997/tasks/resources/js/components/ui/FooterApp.vue: Unexpected token, expected \",\" (51:4)\n\n\u001b[0m \u001b[90m 49 | \u001b[39m      \u001b[32m'/svg/instagram.svg'\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 50 | \u001b[39m    ]\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 51 | \u001b[39m  })lighten\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 52 | \u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 53 | \u001b[39m\u001b[0m\n    at Parser.raise (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:4051:15)\n    at Parser.unexpected (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:5382:16)\n    at Parser.expect (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:5370:28)\n    at Parser.parseObj (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:6861:14)\n    at Parser.parseExprAtom (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:6487:21)\n    at Parser.parseExprSubscripts (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:6104:21)\n    at Parser.parseMaybeUnary (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:6083:21)\n    at Parser.parseExprOps (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:5968:21)\n    at Parser.parseMaybeConditional (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:5940:21)\n    at Parser.parseMaybeAssign (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:5887:21)\n    at Parser.parseExportDefaultExpression (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:8631:22)\n    at Parser.parseExport (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:8571:31)\n    at Parser.parseStatementContent (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:7592:27)\n    at Parser.parseStatement (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:7505:17)\n    at Parser.parseBlockOrModuleBlockBody (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:8073:23)\n    at Parser.parseBlockBody (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:8060:10)\n    at Parser.parseTopLevel (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:7470:10)\n    at Parser.parse (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:8915:17)\n    at parse (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/node_modules/@babel/parser/lib/index.js:10946:38)\n    at parser (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/lib/transformation/normalize-file.js:170:34)\n    at normalizeFile (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/lib/transformation/normalize-file.js:138:11)\n    at runSync (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at process.nextTick (/home/mimoun/Code/mimoun1997/tasks/node_modules/@babel/core/lib/transform.js:34:34)\n    at _combinedTickCallback (internal/process/next_tick.js:132:7)\n    at process._tickCallback (internal/process/next_tick.js:181:9)");
 
 /***/ }),
 
@@ -12115,7 +12111,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.strike[data-v-43ab059a] {\r\n  text-decoration: line-through;\n}\r\n", ""]);
+exports.push([module.i, "\n.strike[data-v-43ab059a] {\n  text-decoration: line-through;\n}\n", ""]);
 
 // exports
 
@@ -48348,68 +48344,15 @@ var render = function() {
               uri: _vm.uri
             }
           })
-        : _c(
-            "div",
-            [
-              _c(
-                "v-card",
-                {
-                  staticClass: "mx-auto",
-                  attrs: {
-                    dark: "",
-                    flat: "",
-                    color: "grey lighten-4",
-                    "max-width": "400"
-                  }
-                },
-                [
-                  _c("v-card-title"),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-text",
-                    {
-                      staticClass:
-                        "grey--text lkighten-4 headline font-weight-bold"
-                    },
-                    [_vm._v("\n    Cap tasca encara\n  ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-actions",
-                    [
-                      _c(
-                        "v-list-tile",
-                        { staticClass: "grow" },
-                        [
-                          _c(
-                            "v-list-tile-content",
-                            [
-                              _c(
-                                "v-btn",
-                                {
-                                  attrs: {
-                                    raised: "",
-                                    flat: "",
-                                    color: "primary"
-                                  }
-                                },
-                                [_vm._v("Afegir")]
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
+        : _c("empty-state", {
+            attrs: {
+              label: "Crea la teva primera tasca!",
+              icon: "done",
+              description:
+                "Si creeu una tasca, podreu afegir etiquetes i col·laborar amb les persones.",
+              button: "Crea"
+            }
+          })
     ],
     1
   )
@@ -48989,7 +48932,7 @@ var render = function() {
                     _c("div", [
                       _c("h3", { staticClass: "headline mb-0" }, [
                         _vm._v(
-                          "\r\n                        Kangaroo Valley Safari\r\n                        "
+                          "\n                        Kangaroo Valley Safari\n                        "
                         )
                       ]),
                       _vm._v(" "),
@@ -49009,14 +48952,14 @@ var render = function() {
                         { attrs: { flat: "", color: "grey darken-4" } },
                         [
                           _vm._v(
-                            "\r\n                        Share\r\n                    "
+                            "\n                        Share\n                    "
                           )
                         ]
                       ),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { flat: "", color: "secondary" } }, [
                         _vm._v(
-                          "\r\n                        Explore\r\n                    "
+                          "\n                        Explore\n                    "
                         )
                       ])
                     ],
@@ -49048,31 +48991,31 @@ var render = function() {
                     [
                       _c("v-btn", { attrs: { color: "primary" } }, [
                         _vm._v(
-                          "\r\n                            Success\r\n                        "
+                          "\n                            Success\n                        "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "success" } }, [
                         _vm._v(
-                          "\r\n                            Success\r\n                        "
+                          "\n                            Success\n                        "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "error" } }, [
                         _vm._v(
-                          "\r\n                            Error\r\n                        "
+                          "\n                            Error\n                        "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "warning" } }, [
                         _vm._v(
-                          "\r\n                            Warning\r\n                        "
+                          "\n                            Warning\n                        "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "info" } }, [
                         _vm._v(
-                          "\r\n                            Info\r\n                        "
+                          "\n                            Info\n                        "
                         )
                       ])
                     ],
@@ -49084,31 +49027,31 @@ var render = function() {
                     [
                       _c("v-btn", { attrs: { color: "primary darken-3" } }, [
                         _vm._v(
-                          "\r\n                        Success\r\n                    "
+                          "\n                        Success\n                    "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "success darken-1" } }, [
                         _vm._v(
-                          "\r\n                        Success\r\n                    "
+                          "\n                        Success\n                    "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "error darken-1" } }, [
                         _vm._v(
-                          "\r\n                        Error\r\n                    "
+                          "\n                        Error\n                    "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "warning darken-1" } }, [
                         _vm._v(
-                          "\r\n                        Warning\r\n                    "
+                          "\n                        Warning\n                    "
                         )
                       ]),
                       _vm._v(" "),
                       _c("v-btn", { attrs: { color: "info darken-1" } }, [
                         _vm._v(
-                          "\r\n                        Info\r\n                    "
+                          "\n                        Info\n                    "
                         )
                       ])
                     ],
@@ -51796,6 +51739,124 @@ var render = function() {
             _vm._v(_vm._s(this.button))
           ])
         : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ui/FooterApp.vue?vue&type=template&id=6a416214&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ui/FooterApp.vue?vue&type=template&id=6a416214& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-footer",
+    { attrs: { dark: "", height: "auto" } },
+    [
+      _c(
+        "v-card",
+        {
+          staticClass: "grey darken-1 white--text text-xs-center",
+          attrs: { flat: "", tile: "" }
+        },
+        [
+          _c(
+            "v-card-text",
+            _vm._l(_vm.icons, function(icon) {
+              return _c(
+                "v-btn",
+                {
+                  key: icon,
+                  staticClass: "mx-3 white--text",
+                  attrs: { dark: "", color: "grey lighten-1", icon: "" }
+                },
+                [
+                  _c("img", {
+                    staticStyle: {
+                      width: "24px",
+                      height: "24px",
+                      color: "white"
+                    },
+                    attrs: { src: icon }
+                  })
+                ]
+              )
+            }),
+            1
+          ),
+          _vm._v(" "),
+          _c("v-card-text", { staticClass: "white--text pt-0" }, [
+            _vm._v(
+              "\n      Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("v-divider"),
+          _vm._v(" "),
+          _c("v-card-text", { staticClass: "white--text" }, [
+            _c("p", [
+              _vm._v("©2018 — "),
+              _c("strong", [_vm._v("Aplicació Tasques")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "white--text ml-3" },
+              [
+                _vm._v("\n                          App feta per "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "white--text",
+                    attrs: { href: "https://github.com/mimoun1997" }
+                  },
+                  [_vm._v(" Mimoun Haddou")]
+                ),
+                _vm._v("\n\n                          i amb tot "),
+                _c("v-icon", { staticClass: "red--text" }, [
+                  _vm._v("favorite")
+                ]),
+                _vm._v(" tema i layout fets amb "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "white--text",
+                    attrs: { href: "https://vuetifyjs.com", target: "_blank" }
+                  },
+                  [_vm._v("Vuetify")]
+                ),
+                _vm._v("\n                          and "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "white--text",
+                    attrs: { href: "https://github.com/vwxyzjn" }
+                  },
+                  [_vm._v("Costa Huang")]
+                )
+              ],
+              1
+            )
+          ])
+        ],
+        1
+      )
     ],
     1
   )
@@ -65731,7 +65792,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var withParams = Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
+var withParams = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
 var _default = withParams;
 exports.default = _default;
 
@@ -89755,6 +89816,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_notifications_NotificationsWidget__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/notifications/NotificationsWidget */ "./resources/js/components/notifications/NotificationsWidget.vue");
 /* harmony import */ var _components_ui_ShareFab__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/ui/ShareFab */ "./resources/js/components/ui/ShareFab.vue");
 /* harmony import */ var _components_ui_EmptyState__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/ui/EmptyState */ "./resources/js/components/ui/EmptyState.vue");
+/* harmony import */ var _components_ui_FooterApp__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/ui/FooterApp */ "./resources/js/components/ui/FooterApp.vue");
+
 
 
 
@@ -89935,7 +89998,9 @@ window.Vue.component('notificationsWidget', _components_notifications_Notificati
 
 window.Vue.component('share-fab', _components_ui_ShareFab__WEBPACK_IMPORTED_MODULE_33__["default"]); //empty state
 
-window.Vue.component('empty-state', _components_ui_EmptyState__WEBPACK_IMPORTED_MODULE_34__["default"]); // eslint-disable-next-line no-unused-vars
+window.Vue.component('empty-state', _components_ui_EmptyState__WEBPACK_IMPORTED_MODULE_34__["default"]); //footer
+
+window.Vue.component('footer-app', _components_ui_FooterApp__WEBPACK_IMPORTED_MODULE_35__["default"]); // eslint-disable-next-line no-unused-vars
 
 var app = new window.Vue(_components_App_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.productionTip = false;
@@ -93331,6 +93396,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/ui/FooterApp.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/ui/FooterApp.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _FooterApp_vue_vue_type_template_id_6a416214___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FooterApp.vue?vue&type=template&id=6a416214& */ "./resources/js/components/ui/FooterApp.vue?vue&type=template&id=6a416214&");
+/* harmony import */ var _FooterApp_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FooterApp.vue?vue&type=script&lang=js& */ "./resources/js/components/ui/FooterApp.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FooterApp_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FooterApp_vue_vue_type_template_id_6a416214___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FooterApp_vue_vue_type_template_id_6a416214___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ui/FooterApp.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ui/FooterApp.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/ui/FooterApp.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FooterApp_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./FooterApp.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ui/FooterApp.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FooterApp_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ui/FooterApp.vue?vue&type=template&id=6a416214&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/ui/FooterApp.vue?vue&type=template&id=6a416214& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FooterApp_vue_vue_type_template_id_6a416214___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./FooterApp.vue?vue&type=template&id=6a416214& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ui/FooterApp.vue?vue&type=template&id=6a416214&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FooterApp_vue_vue_type_template_id_6a416214___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FooterApp_vue_vue_type_template_id_6a416214___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/ui/FullScreenDialog.vue":
 /*!*********************************************************!*\
   !*** ./resources/js/components/ui/FullScreenDialog.vue ***!
@@ -94135,8 +94269,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\dimhaddou.DISI\Code\mimoun1997\tasks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\dimhaddou.DISI\Code\mimoun1997\tasks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/mimoun/Code/mimoun1997/tasks/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/mimoun/Code/mimoun1997/tasks/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

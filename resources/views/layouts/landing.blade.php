@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/ico" size="16x16" href="/img/favicon-16x16.png">
     <link rel="icon" type="image/ico" size="32x32" href="/img/favicon-32x32.png">
@@ -28,6 +29,9 @@
         @yield('content')
     </v-app>
     <share-fab></share-fab>
+
+    <footer-app></footer-app>
+
 </div>
 <script src="{{ mix('/js/app.js') }}"></script>
 <noscript>

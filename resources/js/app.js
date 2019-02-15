@@ -36,6 +36,7 @@ import Navigation from './components/Navigation'
 import NotificationsWidget from './components/notifications/NotificationsWidget'
 import ShareFab from './components/ui/ShareFab'
 import EmptyState from './components/ui/EmptyState'
+import FooterApp from './components/ui/FooterApp'
 
 window.Vue = Vue
 window.Vuetify = Vuetify
@@ -189,6 +190,8 @@ window.Vue.component('notificationsWidget', NotificationsWidget)
 window.Vue.component('share-fab', ShareFab)
 //empty state
 window.Vue.component('empty-state', EmptyState)
+//footer
+window.Vue.component('footer-app', FooterApp)
 
 
 // eslint-disable-next-line no-unused-vars

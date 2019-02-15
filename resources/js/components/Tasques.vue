@@ -2,28 +2,13 @@
   <span>
     <task-create :users="dataUsers"></task-create>
     <task-list v-if="noZeroTasks" :tasks="dataTasks" :tags="dataTags" :users="dataUsers" :uri="uri"></task-list>
-    <div v-else>
-      <v-card dark flat
-    class="mx-auto"
-    color="grey lighten-4"
-    max-width="400"
-  >
-    <v-card-title>
-    </v-card-title>
 
-    <v-card-text class="grey--text lkighten-4 headline font-weight-bold">
-      Cap tasca encara
-    </v-card-text>
-
-    <v-card-actions>
-      <v-list-tile class="grow">
-        <v-list-tile-content>
-          <v-btn raised flat color="primary">Afegir</v-btn>   
-        </v-list-tile-content>
-      </v-list-tile>
-    </v-card-actions>
-  </v-card>
-    </div>
+    <empty-state v-else
+                    label="Crea la teva primera tasca!" 
+                    icon="done" 
+                    description="Si creeu una tasca, podreu afegir etiquetes i col·laborar amb les persones."
+                    button="Crea">
+    </empty-state>
     
   </span>
 </template>

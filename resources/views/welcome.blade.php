@@ -2,7 +2,7 @@
 
 @section('title', 'Welcome')
 
-@section('content')
+{{-- @section('content') --}}
 
 @section('content')
     <v-app light>
@@ -37,7 +37,7 @@
                                target="_blank"
                                large  round ripple
                                href="https://github.com/mimoun1997/tasks"
-                        ><img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" alt="GitHub" height="28" class="mr-2">GitHub</v-btn>
+                        ><img src="/img/Octocat.png" alt="GitHub" height="28" class="mr-2">GitHub</v-btn>
                         <v-btn
                                 class="blue lighten-2 mt-5"
                                 dark
@@ -190,19 +190,6 @@
                     </v-layout>
                 </v-container>
             </section>
-
-            <v-footer class="blue-grey darken-4">
-                <v-layout row wrap align-center>
-                    <v-flex xs12>
-                        <div class="white--text ml-3">
-                            App feta per <a class="white--text" href="https://github.com/mimoun1997"> Mimoun Haddou</a>
-
-                            i amb tot <v-icon class="red--text">favorite</v-icon> tema i layout fets amb <a class="white--text" href="https://vuetifyjs.com" target="_blank">Vuetify</a>
-                            and <a class="white--text" href="https://github.com/vwxyzjn">Costa Huang</a>
-                        </div>
-                    </v-flex>
-                </v-layout>
-            </v-footer>
         </v-content>
     </v-app>
 @endsection
