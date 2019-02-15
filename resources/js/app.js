@@ -6,7 +6,6 @@ import VueTimeago from 'vue-timeago'
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import './bootstrap'
-import 'vue-material/dist/vue-material.min.css'
 
 import AppComponent from './components/App.vue'
 import ExampleComponent from './components/ExampleComponent.vue'
@@ -36,7 +35,6 @@ import Notifications from './components/notifications/Notifications'
 import Navigation from './components/Navigation'
 import NotificationsWidget from './components/notifications/NotificationsWidget'
 import ShareFab from './components/ui/ShareFab'
-import { MdEmptyState, MdIcon, MdDescription, MdLabel, MdButton } from 'vue-material/dist/components'
 import EmptyState from './components/ui/EmptyState'
 
 window.Vue = Vue
@@ -189,10 +187,7 @@ window.Vue.component('notifications', Notifications)
 window.Vue.component('notificationsWidget', NotificationsWidget)
 //Share Fab
 window.Vue.component('share-fab', ShareFab)
-
-Vue.use(MdEmptyState)
-Vue.use(MdButton)
-Vue.use(MdIcon)
+//empty state
 window.Vue.component('empty-state', EmptyState)
 
 

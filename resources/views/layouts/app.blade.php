@@ -47,6 +47,23 @@
                 <v-layout row wrap>
                     <v-flex xs12>
                         <div row>
+                            <v-card>
+                                <v-avatar
+                                    tile="false"
+                                    size="96px"
+                                    color="grey lighten-4"
+                                  >
+                                  <img src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}" alt="avatar"/>
+                                </v-avatar>
+                                <v-card-title primary-title>
+                                        <div>
+                                          <h3 class="headline mb-0">{{ Auth::user()->name }}</h3>
+                                          <div>{{ Auth::user()->email }}</div>
+                                          <v-badge>{{ Auth::user()->admin ? 'Admin' : 'Regular' }}</v-badge>
+                                          <div></div>
+                                        </div>
+                                </v-card-title>
+                            </v-card>
                             <v-list>
 
 

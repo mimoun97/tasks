@@ -1,52 +1,44 @@
 <template>
-    <div>
-         <md-empty-state
-            class="md-accent"
-            :md-icon="icon"
-            :md-label="label"
-            :md-description="description">
-            <v-btn v-if="button" color="primary" flat>{{ button }}</v-btn>
-        </md-empty-state>
-    </div>
+  <v-layout align-center column>
+    <v-icon color="grey lighten-1" style="font-size: 128px;">description</v-icon>
+    <h3 class="grey--text text--darken-2 display-1">{{label}}</h3>
+    <p class="grey--text text--lighten-1 subheading mb-2 font-weight-light">{{ description }}</p>
+    <v-btn color="primary" flat raised v-if="button">{{this.button}}</v-btn>
+  </v-layout>
 </template>
 
 <script>
-
-
-
 export default {
-    name: 'EmptyState',
-    data () {
-        return {
-            icon: this.icon || '',
-            label: this.label || 'Label obligatoria',
-            description: this.description || '',
-            button: this.button || null,
-        }
-    },
-    props: {
-        'icon': {
-            type: String,
-            required: false
-        },
-        'label': {
-            type: String,
-            required: true
-        },
-        'description': {
-            type: String,
-            required: false
-        },
-        'button': {
-            type: String,
-            required: false
-        },
-
-
+  name: "EmptyState",
+  data() {
+    return {
+      iicon: this.icon || "",
+      llabel: this.label || "Label obligatoria",
+      ddescription: this.description || "",
+      bbutton: this.button || null
+    };
   },
-}
+  props: {
+    icon: {
+      type: String,
+      required: false
+    },
+    label: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: false
+    },
+    button: {
+      type: String,
+      required: false
+    }
+  }
+};
 </script>
 
-<style scoped>
+<style>
 
 </style>
