@@ -14,8 +14,8 @@ class TasquesIndex extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->can('user.tasks.index');
-        return Auth::user()->can('tasks.index');
+        return Auth::user()->can('user.tasks.index') || Auth::user()->can('tasks.index');
+        //return Auth::user()->can('tasks.index');
     }
 
     /**

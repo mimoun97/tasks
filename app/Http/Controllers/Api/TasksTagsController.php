@@ -18,6 +18,7 @@ class TasksTagsController extends Controller
      */
     public function update(TasksTagsUpdate $request, Task $task)
     {
+        //dd($task->name);
         $tags = Task::find($request->tags);
         $task->addTags($tags);
     }
