@@ -44,6 +44,7 @@ window.Vuetify = Vuetify
 const PRIMARY_COLOR_KEY = 'primary_color_key'
 
 const primaryColor = window.localStorage.getItem(PRIMARY_COLOR_KEY) || '#4C63B6'//'#19216C'
+if (!window.localStorage.getItem(PRIMARY_COLOR_KEY)) window.localStorage.setItem(PRIMARY_COLOR_KEY, primaryColor)
 
 window.Vue.use(VueTimeago, {
   locale: 'ca', // Default locale

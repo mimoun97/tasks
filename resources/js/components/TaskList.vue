@@ -22,7 +22,7 @@
     </v-toolbar>
 
     <v-card>
-      <v-card-title>
+      <v-card-title class="mx-2">
         <v-layout row wrap>
           <v-flex lg3 class="mr-2">
             <v-select label="Filtres" :items="filters" v-model="filter" item-text="name"></v-select>
@@ -45,8 +45,7 @@
         :rows-per-page-items="[5,10,25,50,100,200,{'text':'Tots','value':-1}]"
         :loading="loading"
         :pagination.sync="pagination"
-        class="hidden-md-and-down"
-      >
+        class="hidden-md-and-down">
         <v-progress-linear slot="progress" color="info" indeterminate></v-progress-linear>
         <template slot="items" slot-scope="{item: task}">
           <tr>
@@ -57,7 +56,7 @@
                 <img v-if="task.user_gravatar" :src="task.user_gravatar" alt="avatar">
                 <img
                   v-else
-                  src="https://www.gravatar.com/avatar/00000000000000000000000000000000?"
+                  src="https://www.gravatar.com/avatar/00000000000000000000000000000000?s=96"
                   alt="avatar"
                 >
               </v-avatar>
@@ -89,20 +88,8 @@
         :loading="loading"
         :pagination.sync="pagination"
       >
-        <v-flex slot="item" slot-scope="{item:task}" xs12 sm6 md4>
-          <v-card class="mb-1">
-            <v-card-title v-text="task.name"></v-card-title>
-            <v-list dense>
-              <v-list-tile>
-                <v-list-tile-content>Completed:</v-list-tile-content>
-                <v-list-tile-content class="align-end">{{ task.completed }}</v-list-tile-content>
-              </v-list-tile>
-              <v-list-tile>
-                <v-list-tile-content>User:</v-list-tile-content>
-                <v-list-tile-content class="align-end">{{ task.user_id }}</v-list-tile-content>
-              </v-list-tile>
-            </v-list>
-          </v-card>
+        <v-flex slot="item" slot-scope="{item:task}" xs12 lg12>
+          <task-card :task="task" @removed="removeTask" @updated="updateTask" :uri="uri" :users="users"></task-card>
         </v-flex>
       </v-data-iterator>
     </v-card>
@@ -110,11 +97,13 @@
 </template>
 
 <script>
-import Toggle from "./Toggle";
-import TaskDestroy from "./TaskDestroy";
-import TaskUpdate from "./TaskUpdate";
-import TaskShow from "./TaskShow";
-import TasksTags from "./TasksTags";
+import Toggle from "./Toggle"
+import TaskDestroy from "./TaskDestroy"
+import TaskUpdate from "./TaskUpdate"
+import TaskShow from "./TaskShow"
+import TasksTags from "./TasksTags"
+import TaskCard from "./TaskCard";
+
 export default {
   name: "TaskList",
   data() {
@@ -142,7 +131,7 @@ export default {
     };
   },
   components: {
-    "toggle": Toggle,
+    "task-card": TaskCard,
     "task-destroy": TaskDestroy,
     "task-update": TaskUpdate,
     "task-show": TaskShow,
@@ -173,7 +162,8 @@ export default {
   },
   methods: {
     removeTask(task) {
-      this.dataTasks.splice(this.dataTasks.indexOf(task), 1);
+      this.dataTasks.splice(this.dataTasks.indexOf(task), 1)
+      this.refresh()
     },
     updateTask(task) {
       this.refresh();

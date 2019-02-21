@@ -1,5 +1,5 @@
 <template>
-  <span>
+  <v-layout>
     <task-create :users="dataUsers"></task-create>
     <task-list v-if="noZeroTasks" :tasks="dataTasks" :tags="dataTags" :users="dataUsers" :uri="uri"></task-list>
 
@@ -7,15 +7,17 @@
                     label="Crea la teva primera tasca!" 
                     icon="done" 
                     description="Si creeu una tasca, podreu afegir etiquetes i col·laborar amb les persones."
-                    button="Crea">
+                    button="Crea"
+                    >
     </empty-state>
     
-  </span>
+  </v-layout>
 </template>
 
 <script>
-import TaskCreate from "./TaskCreate";
-import TaskList from "./TaskList";
+import TaskCreate from "./TaskCreate"
+import TaskList from "./TaskList"
+import EmptyState from "./ui/EmptyState"
 
 export default {
   name: "Tasques",

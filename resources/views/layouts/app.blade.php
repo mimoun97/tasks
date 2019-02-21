@@ -49,11 +49,11 @@
                         <div row>
                             <v-card>
                                 <v-avatar
-                                    tile="false"
+                                    tile
                                     size="96px"
                                     color="grey lighten-4"
                                   >
-                                  <img src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}" alt="avatar"/>
+                                  <img src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?s=96" alt="avatar"/>
                                 </v-avatar>
                                 <v-card-title primary-title>
                                         <div>
@@ -65,7 +65,7 @@
                                 </v-card-title>
                             </v-card>
                             <v-list>
-                            <v-list-item>{{ Auth::user()->name }}</v-list-item>
+                            <v-list-tile>{{ Auth::user()->name }}</v-list-tile>
                             <p>Okey</p>
 
                             <div class="ml-2"><b>Nom :</b> {{ Auth::user()->name }}</div>
