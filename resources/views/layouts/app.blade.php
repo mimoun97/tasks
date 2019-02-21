@@ -65,7 +65,8 @@
                                 </v-card-title>
                             </v-card>
                             <v-list>
-
+                            <v-list-item>{{ Auth::user()->name }}</v-list-item>
+                            <p>Okey</p>
 
                             <div class="ml-2"><b>Nom :</b> {{ Auth::user()->name }}</div>
                             <div class="ml-2"><b>Email :</b> {{ Auth::user()->email }}</div>

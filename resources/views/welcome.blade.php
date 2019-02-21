@@ -31,21 +31,22 @@
                             class="white--text"
                     >
                         <img src="svg/logo.svg" alt="Vuetify.js" height="200">
-                        <h1 class="white--text mb-2 display-1 text-xs-center">Mimoun Haddou</h1>
-                        <v-btn dark color="#6e5494"
-                               class="mb-3"
-                               target="_blank"
-                               large  round ripple
-                               href="https://github.com/mimoun1997/tasks"
-                        ><img src="/img/Octocat.png" alt="GitHub" height="28" class="mr-2">GitHub</v-btn>
-                        <v-btn
-                                class="blue lighten-2 mt-5"
-                                dark
-                                large
-                                href="/home"
-                        >
-                            Get Started
-                        </v-btn>
+                        <h1 class="grey--text mb-2 display-2 text-xs-center">Mimoun Haddou</h1>
+                        
+                            <v-btn dark color="#6e5494"
+                                class="mb-3"
+                                target="_blank"
+                                large  round ripple
+                                href="https://github.com/mimoun1997/tasks"
+                            ><img src="/img/Octocat.png" alt="GitHub" height="28" class="mr-2">GitHub</v-btn>
+                            <v-btn
+                                    class="green darken-3 mt-3"
+                                    dark
+                                    large
+                                    href="/home"
+                            >
+                                Entrar
+                            </v-btn>
                     </v-layout>
                 </v-parallax>
             </section>
@@ -122,15 +123,15 @@
             <section>
                 <v-parallax src="svg/pattern.svg" height="200">
                     <v-layout column align-center justify-center>
-                        <div class="headline white--text mb-3 text-xs-center">Web development has never been easier</div>
-                        <em>Kick-start your application today</em>
+                        <div class="headline grey--text mb-3 text-xs-center">Web development has never been easier</div>
+                        <em class="white--text text--darken-4">Kick-start your application today</em>
                         <v-btn
-                                class="blue lighten-2 mt-5"
-                                dark
-                                large
-                                href="/home"
-                        >
-                            Get Started
+                                    class="green darken-3 mt-3"
+                                    dark
+                                    large
+                                    href="/home"
+                            >
+                                Entrar
                         </v-btn>
                     </v-layout>
                 </v-parallax>
