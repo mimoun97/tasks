@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-layout>
         <tags-create></tags-create>
         <tags-list v-if="noZeroTags" :tags="dataTags" ></tags-list>
 
@@ -9,7 +9,7 @@
                     description="Si creeu una etiqueta, podreu afegir assignar-la a una tasca i poder col·laborar amb les persones."
                     >
         </empty-state>
-    </div>
+    </v-layout>
 </template>
 
 <script>

@@ -42,9 +42,13 @@ window.Vue = Vue
 window.Vuetify = Vuetify
 
 const PRIMARY_COLOR_KEY = 'primary_color_key'
+const SECONDARY_COLOR_KEY = 'secondary_color_key'
 
-const primaryColor = window.localStorage.getItem(PRIMARY_COLOR_KEY) || '#4C63B6'//'#19216C'
+const primaryColor = window.localStorage.getItem(PRIMARY_COLOR_KEY) || '#4C63B6'
+const secondaryColor = window.localStorage.getItem(SECONDARY_COLOR_KEY) || '#2CB1BC'
+
 if (!window.localStorage.getItem(PRIMARY_COLOR_KEY)) window.localStorage.setItem(PRIMARY_COLOR_KEY, primaryColor)
+if (!window.localStorage.getItem(SECONDARY_COLOR_KEY)) window.localStorage.setItem(SECONDARY_COLOR_KEY, secondaryColor)
 
 window.Vue.use(VueTimeago, {
   locale: 'ca', // Default locale
@@ -186,7 +190,7 @@ window.Vue.component('service-worker', ServiceWorker)
 window.Vue.component('navigation', Navigation)
 // Notifications
 window.Vue.component('notifications', Notifications)
-window.Vue.component('notificationsWidget', NotificationsWidget)
+window.Vue.component('notifications-widget', NotificationsWidget)
 //Share Fab
 window.Vue.component('share-fab', ShareFab)
 //empty state

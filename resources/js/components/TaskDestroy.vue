@@ -2,7 +2,7 @@
   <v-btn
     v-can="'tasks.destroy'"
     icon
-    color="error"
+    color="warning"
     flat
     title="Eliminar la tasca"
     :loading="removing"

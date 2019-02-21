@@ -128,10 +128,12 @@
         </v-navigation-drawer>
         <v-toolbar class="white primary--text" fixed app clipped-right clipped-left>
             <v-toolbar-side-icon @click.stop="drawer = !drawer" class="primary--text"></v-toolbar-side-icon>
-            <v-toolbar-title>Aplicació de tasques</v-toolbar-title>
+            <v-toolbar-title class="hidden-md-and-down">Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
 
             <span class="mr-5" v-role="'SuperAdmin'"><git-info class="primary--text"></git-info></span>
+            <v-spacer></v-spacer>
+            <notifications-widget></notifications-widget>
 
             {{-- <v-toolbar-side-icon @click.stop="drawerRigth = !drawerRigth"></v-toolbar-side-icon> --}}
             <v-avatar @click.stop="drawerRight = !drawerRight" title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">

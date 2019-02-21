@@ -5,7 +5,7 @@
         <v-btn slot="activator" icon dark>
           <v-icon>more_vert</v-icon>
         </v-btn>
-        <v-list v-for="i in 3" :key="i">
+        <v-list v-for="i in 5" :key="i">
           <v-list-tile>
             <v-list-tile-title>Opció {{ i }}</v-list-tile-title>
           </v-list-tile>
@@ -52,11 +52,11 @@
             <td>{{ task.id }}</td>
             <td v-text="task.name"></td>
             <td>
-              <v-avatar :title="task.user_name">
+              <v-avatar :title="task.user_name" size="48">
                 <img v-if="task.user_gravatar" :src="task.user_gravatar" alt="avatar">
                 <img
                   v-else
-                  src="https://www.gravatar.com/avatar/00000000000000000000000000000000?s=96"
+                  src="/img/default.png"
                   alt="avatar"
                 >
               </v-avatar>
