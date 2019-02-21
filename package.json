@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "material-design-icons-iconfont": "^4.0.4",
+    "vue-color": "^2.7.0",
     "vue-json-tree-view": "^2.1.4",
-    "vue-material": "^1.0.0-beta-10.2",
     "vue-timeago": "^5.0.0",
     "vuelidate": "^0.7.4",
     "vuetify": "^1.4.1"

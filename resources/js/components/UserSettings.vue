@@ -89,14 +89,22 @@
                     </v-btn>
                 </div>
                 </v-layout>
-                
+
+                <v-flex xs12>
+                    <settings-color />
+                </v-flex> 
             </v-flex>
         </v-layout>
     </v-container>
 </template>
 <script>
+import SettingsColor from "./SettingsColor";
+
 export default {
-    
+    name: 'UserSettings',
+    components: {
+        'settings-color': SettingsColor
+    }
 }
 </script>
 
