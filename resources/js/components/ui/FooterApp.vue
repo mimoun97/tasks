@@ -13,9 +13,9 @@
           :key="icon"
           class="mx-3 white--text"
           dark
-          color="grey lighten-1"
+          color="grey lighten-3"
           icon>
-            <img style="width:24px;height:24px;color:white" :src="icon" />
+            <img style="width:24px;height:24px;" :src="icon" />
         </v-btn>
       </v-card-text>
 
@@ -37,7 +37,6 @@
     </v-card>
   </v-footer>
 </template>
-
 <script>
   export default {
     data: () => ({
@@ -48,7 +47,7 @@
         '/svg/twitter.svg',
         '/svg/instagram.svg'
       ]
-    })lighten
+    })
   }
 </script>
 
