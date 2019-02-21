@@ -1,9 +1,9 @@
 <template>
-  <v-layout align-center column>
-    <v-icon color="grey lighten-1" style="font-size: 128px;">description</v-icon>
-    <h3 class="grey--text text--darken-2 display-1">{{label}}</h3>
-    <p class="grey--text text--lighten-1 subheading mb-2 font-weight-light">{{ description }}</p>
-    <v-btn color="primary" flat raised v-if="button">{{this.button}}</v-btn>
+  <v-layout align-center column class="text-xs-center">
+      <v-icon color="grey lighten-1" style="font-size: 128px;">{{ iicon }}</v-icon>
+      <h3 class="grey--text text--darken-2 display-1">{{llabel}}</h3>
+      <p class="grey--text text--lighten-1 subheading mb-2 font-weight-light">{{ ddescription }}</p>
+      <v-btn color="primary" flat raised v-if="button">{{bbutton}}</v-btn>
   </v-layout>
 </template>
 
