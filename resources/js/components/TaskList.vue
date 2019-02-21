@@ -88,9 +88,9 @@
         :loading="loading"
         :pagination.sync="pagination"
       >
-        <v-flex slot="item" slot-scope="{item:task}" xs12 lg12>
-          <task-card :task="task" @removed="removeTask" @updated="updateTask" :uri="uri" :users="users"></task-card>
-        </v-flex>
+        
+          <task-card class="mx-2" slot="item" slot-scope="{item:task}" :task="task" @removed="removeTask" @updated="updateTask" :uri="uri" :users="users"></task-card>
+        
       </v-data-iterator>
     </v-card>
   </div>
@@ -162,6 +162,7 @@ export default {
   },
   methods: {
     removeTask(task) {
+      console.log(task.name)
       this.dataTasks.splice(this.dataTasks.indexOf(task), 1)
       this.refresh()
     },

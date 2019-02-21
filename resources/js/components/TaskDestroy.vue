@@ -48,13 +48,13 @@ export default {
         window.axios
           .delete(this.uri + "/" + task.id)
           .then(() => {
-            this.$snackbar.showMessage("S'ha esborrat correctament la tasca");
-            this.$emit("removed", task);
-            this.removing = false;
+            this.$snackbar.showMessage("S'ha esborrat correctament la tasca")
+            this.$emit("removed", task)
+            this.removing = false
           })
           .catch(error => {
-            this.$snackbar.showError(error.message);
-            this.removing = false;
+            this.$snackbar.showError(error.message)
+            this.removing = false
           });
       }
     }

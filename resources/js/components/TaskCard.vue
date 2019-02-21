@@ -2,11 +2,11 @@
     <v-card class="my-1">
             <v-card-title primary-title class="title grey--text text--darken-1 my-2" v-text="dataTask.name"></v-card-title>
             <v-card-text class="content grey--text text--darken-4 my-2" v-text="dataTask.description"></v-card-text>
-            <v-card-text>
+            <v-card-text class="">
               <task-completed-toggle :task="dataTask"></task-completed-toggle>
             </v-card-text>
             <v-card-actions class="hidden-xs">
-              <v-layout column justify-center align-start>
+              <v-layout column  class="ml-3 mb-2">
                   <v-flex xs12 md12>
                     <v-avatar  size="48px" color="grey lighten-3">
                       <v-icon size="46" color="white darken-4">person</v-icon>
@@ -14,13 +14,16 @@
                   </v-flex>
                     <v-list-tile-content class="align-start grey--text text--darken-4">{{ dataTask.user_name }}</v-list-tile-content>
                     <v-list-tile-content class="align-start grey--text text--darken-4" >Creat {{ dataTask.created_at_human }}</v-list-tile-content>
-                    <v-list-tile-content class="align-start grey--text text--darken-1" >Ultima atualització {{dataTask.updated_at_human}}</v-list-tile-content>
-                  </v-flex>
+                    <v-list-tile-content class="align-start grey--text text--darken-1" >Ultima actualització {{dataTask.updated_at_human}}</v-list-tile-content>
               </v-layout>
-              <v-layout column align-end>
-                <v-flex xs6>
-                  <task-show :users="users" :task="dataTask"></task-show>
+              <v-layout column align-end justify-space-between>
+                <v-flex mb-2>
+                  <task-show :users="users" :task="dataTask"></task-show> 
+                </v-flex>
+                <v-flex mb-2>
                   <task-update :users="users" :task="dataTask" @updated="updateTask" :uri="uri"></task-update>
+                </v-flex>
+                <v-flex mb-2>
                   <task-destroy :task="dataTask" @removed="removeTask" :uri="uri"></task-destroy>
                 </v-flex>
               </v-layout>
@@ -68,11 +71,16 @@ export default {
     },
     methods: {
         removeTask(task) {
-            this.$emit("removed", task);
+            this.$emit("removed", task)
         },
         updateTask(task) {
-            this.$emit("updated", task);
+            this.$emit("updated", task)
         }
+    }, 
+    watch: {
+      task(newTask) {
+        this.dataTask = newTask
+      }
     }
 }
 </script>
