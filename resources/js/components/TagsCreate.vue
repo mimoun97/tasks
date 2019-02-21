@@ -1,5 +1,14 @@
 <template>
-    <h2>TagsCReate</h2>
+    <v-btn 
+        fab
+        bottom
+        right
+        fixed
+        color="red darken-1"
+        class="white--text"
+        >
+        <v-icon>add</v-icon>
+        </v-btn>
 </template>
 
 <script>

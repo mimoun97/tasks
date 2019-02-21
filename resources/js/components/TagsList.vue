@@ -6,7 +6,7 @@
                     <v-icon>more_vert</v-icon>
                 </v-btn>
                 <v-list>
-                    <v-list-tile @click="opcio1">
+                    <v-list-tile>
                         <v-list-tile-title>Opció 1</v-list-tile-title>
                     </v-list-tile>
                     <v-list-tile href="http://github.com/mimoun1997">
@@ -49,29 +49,28 @@
                     class="hidden-md-and-down"
             >
                 <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
-                <template slot="items" slot-scope="{item: task}">
+                <template slot="items" slot-scope="{item: tag}">
                     <tr>
-                        <td>{{ tag.id }}</td>
-                        <td v-text="tag.name"></td>
+                        <td v-text="tag.id"></td>
+                        <td><v-chip dark :color="tag.color">{{tag.name}}</v-chip></td>
+                        <td v-text="tag.description"></td>
                         <td v-text="tag.created_at_human"></td>
                         <td v-text="tag.updated_at_human"></td>
+                        
+                        <!-- <td><v-avatar  size="28" :color="tag.color"></v-avatar></td> -->
                         <td>
-                            <v-btn icon color="primary" flat title="Mostrar snackbar"
-                                   @click="snackbar=true">
-                                <v-icon>info</v-icon>
-                            </v-btn>
-                            <v-btn icon color="primary" flat title="Mostrar la tasca"
+                            <!-- <v-btn icon color="primary" flat title="Mostrar la etiqueta"
                                    @click="show(tag)">
                                 <v-icon>visibility</v-icon>
                             </v-btn>
-                            <v-btn icon color="success" flat title="Canviar la tasca"
+                            <v-btn icon color="success" flat title="Canviar la etiqueta"
                                    @click="showUpdate(tag)">
                                 <v-icon>edit</v-icon>
                             </v-btn>
-                            <v-btn v-can="tasks.destroy" icon color="error" flat title="Eliminar la tasca"
+                            <v-btn v-can="tasks.destroy" icon color="error" flat title="Eliminar la etiqueta"
                                    @click="showDestroy(tag)">
                                 <v-icon>delete</v-icon>
-                            </v-btn>
+                            </v-btn> -->
                         </td>
                     </tr>
                 </template>
@@ -86,28 +85,40 @@
                              :loading="loading"
                              :pagination.sync="pagination"
             >
-                <v-flex
-                        slot="item"
+                    <v-card slot="item"
                         slot-scope="{item:tag}"
-                        xs12
-                        
-                >
-                    <v-card class="my-5">
-                        <v-card-title v-text="tag.name"></v-card-title>
-                        <v-list dense>
-                            <v-list-tile>
-                                <v-list-tile-content>Descripció:</v-list-tile-content>
-                                <v-list-tile-content class="align-end">{{ tag.description }}</v-list-tile-content>
-                            </v-list-tile>
-                            <v-list-tile>
-                                <v-list-tile-content>Etiqueta:</v-list-tile-content>
-                                <v-list-tile-content class="align-end">{{ tag.task_id }}</v-list-tile-content>
-                            </v-list-tile>
-                        </v-list>
+                        xs12 class="my-1 mx-2">
+                        <v-card-title class="title grey--text text--darken-1 my-2" ><v-chip dark :color="tag.color" class="title">{{tag.name}}</v-chip></v-card-title>
+                        <v-card-text class="content grey--text text--darken-4 my-2" v-text="tag.description"></v-card-text>
+                        <v-card-actions class="hidden-xs">
+                            <v-layout column  class="ml-3" align-start>
+                                <v-list-tile-content class="grey--text text--darken-4">{{ tag.user_name }}</v-list-tile-content>
+                                <v-list-tile-content class="grey--text text--darken-4" >Creat {{ tag.created_at_human }}</v-list-tile-content>
+                                <v-list-tile-content class="grey--text text--darken-1" >Ultima actualització {{tag.updated_at_human}}</v-list-tile-content>
+                            </v-layout>
+                            <v-layout column align-end justify-space-between>
+                                    <v-flex mb-2>
+                                        <v-btn icon color="primary" flat>
+                                            <v-icon >visibility</v-icon>
+                                        </v-btn>
+                                    </v-flex>
+                                    <v-flex mb-2>
+                                        <v-btn icon color="error" flat>
+                                            <v-icon >delete</v-icon>
+                                        </v-btn>
+                                    </v-flex>
+                                    <v-flex mb-2>
+                                        <v-btn icon color="success" flat>
+                                            <v-icon color="blue">edit</v-icon>
+                                        </v-btn>
+                                    </v-flex> 
+                            </v-layout>
+                        </v-card-actions>
                     </v-card>
-                </v-flex>
+            
             </v-data-iterator>
         </v-card>
+        
     </div>
 
 </template>
@@ -125,6 +136,13 @@ export default {
         return {
             tag: null,
             dataTags: this.tags,
+            loading: false,
+            dataTasks: this.tasks,
+            dataUsers: this.users,
+            search: "",
+            pagination: {
+                rowsPerPage: 25
+            },
             headers: [
                 { text: "Id", value: "id" },
                 { text: "Name", value: "name" },
