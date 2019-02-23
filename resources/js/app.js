@@ -35,6 +35,7 @@ import Changelog from './components/changelog/ChangelogComponent.vue'
 import ServiceWorker from './components/ServiceWorker.vue'
 import Notifications from './components/notifications/Notifications'
 import Navigation from './components/Navigation'
+import NavigationRight from './components/NavigationRight'
 import NotificationsWidget from './components/notifications/NotificationsWidget'
 import ShareFab from './components/ui/ShareFab'
 import EmptyState from './components/ui/EmptyState'
@@ -190,6 +191,8 @@ window.Vue.component('service-worker', ServiceWorker)
 
 //Navigation
 window.Vue.component('navigation', Navigation)
+//Navigation Right
+window.Vue.component('navigation-right', NavigationRight)
 // Notifications
 window.Vue.component('notifications', Notifications)
 window.Vue.component('notifications-widget', NotificationsWidget)

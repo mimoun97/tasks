@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "material-design-icons-iconfont": "^4.0.4",
+    "md5": "^2.2.1",
     "typeface-montserrat": "0.0.54",
     "typeface-roboto": "0.0.54",
     "vue-color": "^2.7.0",

@@ -79,3 +79,12 @@ npm run test:unit
 | Laravel                                                      | Vue                                                          | Vuetify                                                      | Tailwindcss                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![Laravel](https://camo.githubusercontent.com/5ceadc94fd40688144b193fd8ece2b805d79ca9b/68747470733a2f2f6c61726176656c2e636f6d2f6173736574732f696d672f636f6d706f6e656e74732f6c6f676f2d6c61726176656c2e737667) | <img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"> | <img width="100" src="https://cdn.vuetifyjs.com/images/logos/logo.svg"> | <img width="200" src="https://tailwindcss.com/img/tailwind.svg"> |
+
+
+# TODO
++ efecte ripple: https://vuetifyjs.com/en/directives/ripples
++ rendiment ligthhouse
++ wepb i html5 element `<picture>`
++ webpack -> production
++ minificació
++ CDN vs import fonts?
