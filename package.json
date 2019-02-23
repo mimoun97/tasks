@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "material-design-icons-iconfont": "^4.0.4",
+    "typeface-montserrat": "0.0.54",
+    "typeface-roboto": "0.0.54",
     "vue-color": "^2.7.0",
     "vue-json-tree-view": "^2.1.4",
     "vue-timeago": "^5.0.0",

@@ -20,7 +20,6 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@mimoun_97" />
     <meta name="twitter:creator" content="@mimoun_97" />
-    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <link rel="stylesheet" href="/css/tailwind.min.css" type="text/css">
     <title>@yield('title','App Tasques')</title>
     <style>

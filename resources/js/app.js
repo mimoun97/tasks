@@ -5,6 +5,8 @@ import VueTimeago from 'vue-timeago'
 
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import 'typeface-roboto/index.css'
+import 'typeface-montserrat/index.css'
 import './bootstrap'
 
 import AppComponent from './components/App.vue'
