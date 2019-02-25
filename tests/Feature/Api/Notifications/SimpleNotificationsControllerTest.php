@@ -24,14 +24,16 @@ class SimpleNotificationsControllerTest extends TestCase
      */
     public function notifications_manager_can_send_simple_notifications()
     {
+        //$this->withExceptionHandling();
         $this->loginAsNotificationsManager('api');
         $user = factory(User::class)->create();
 
         Notification::fake();
-        $response = $this->json('POST','/api/v1/simple_notifications/',[
+        $response = $this->json('POST', '/api/v1/simple_notifications/', [
             'user' => $user->id,
             'title' => 'Prova de notificació'
         ]);
+        dd($response);
         $response->assertSuccessful();
         Notification::assertSentTo(
             $user,
