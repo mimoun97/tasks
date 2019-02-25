@@ -48,7 +48,7 @@
                     :pagination.sync="pagination"
                     class="hidden-md-and-down"
             >
-                <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
+                <v-progress-linear slot="progress" color="secondary" indeterminate></v-progress-linear>
                 <template slot="items" slot-scope="{item: tag}">
                     <tr>
                         <td v-text="tag.id"></td>

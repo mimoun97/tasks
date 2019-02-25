@@ -29,11 +29,9 @@ export default {
   },
   methods: {
     showMessage () {
-      console.log('blablasdas')
       this.$snackbar.showMessage('Crea creada correctament')
     },
     showError () {
-      console.log('adeu')
       this.$snackbar.showError('Missatge error')
     }
   },

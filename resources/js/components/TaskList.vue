@@ -54,11 +54,7 @@
             <td>
               <v-avatar :title="task.user_name" size="48">
                 <img v-if="task.user_gravatar" :src="task.user_gravatar" alt="avatar">
-                <img
-                  v-else
-                  src="/img/default.png"
-                  alt="avatar"
-                >
+                <img v-else src="/img/default.png" alt="avatar">
               </v-avatar>
             </td>
             <td>
@@ -88,20 +84,27 @@
         :loading="loading"
         :pagination.sync="pagination"
       >
-        
-          <task-card class="mx-2" slot="item" slot-scope="{item:task}" :task="task" @removed="removeTask" @updated="updateTask" :uri="uri" :users="users"></task-card>
-        
+        <task-card
+          class="mx-2"
+          slot="item"
+          slot-scope="{item:task}"
+          :task="task"
+          @removed="removeTask"
+          @updated="updateTask"
+          :uri="uri"
+          :users="users"
+        ></task-card>
       </v-data-iterator>
     </v-card>
   </div>
 </template>
 
 <script>
-import Toggle from "./Toggle"
-import TaskDestroy from "./TaskDestroy"
-import TaskUpdate from "./TaskUpdate"
-import TaskShow from "./TaskShow"
-import TasksTags from "./TasksTags"
+import Toggle from "./Toggle";
+import TaskDestroy from "./TaskDestroy";
+import TaskUpdate from "./TaskUpdate";
+import TaskShow from "./TaskShow";
+import TasksTags from "./TasksTags";
 import TaskCard from "./TaskCard";
 
 export default {
@@ -116,7 +119,7 @@ export default {
       filters: ["Totes", "Completades", "Pendents"],
       search: "",
       pagination: {
-      rowsPerPage: 25
+        rowsPerPage: 25
       },
       headers: [
         { text: "Id", value: "id" },
@@ -162,25 +165,23 @@ export default {
   },
   methods: {
     removeTask(task) {
-      console.log(task.name)
       this.dataTasks.splice(this.dataTasks.indexOf(task), 1)
       this.refresh()
     },
     updateTask(task) {
-      this.refresh();
+      this.refresh()
     },
     refresh() {
       this.loading = true;
       window.axios
         .get(this.uri)
         .then(response => {
-          this.dataTasks = response.data;
-          this.loading = false;
-          this.$snackbar.showMessage("Tasques actualitzades correctament");
+          this.dataTasks = response.data
+          this.loading = false
+          this.$snackbar.showMessage("Tasques actualitzades correctament")
         })
         .catch(error => {
-          console.log(error);
-          this.loading = false;
+          this.loading = false
         });
     }
   }

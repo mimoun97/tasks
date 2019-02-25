@@ -30,6 +30,7 @@
                             justify-center
                             class="white--text"
                     >
+
                         <img src="svg/logo.svg" alt="Vuetify.js" height="200">
                         <h1 class="grey--text mb-2 display-2 text-xs-center">Mimoun Haddou</h1>
                         
