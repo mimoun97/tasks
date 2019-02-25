@@ -40,6 +40,7 @@ import NotificationsWidget from './components/notifications/NotificationsWidget'
 import ShareFab from './components/ui/ShareFab'
 import EmptyState from './components/ui/EmptyState'
 import FooterApp from './components/ui/FooterApp'
+import Carrusel from './components/ui/Carrusel'
 
 window.Vue = Vue
 window.Vuetify = Vuetify
@@ -202,6 +203,8 @@ window.Vue.component('share-fab', ShareFab)
 window.Vue.component('empty-state', EmptyState)
 //footer
 window.Vue.component('footer-app', FooterApp)
+//carrusel captures
+window.Vue.component('carrusel', Carrusel)
 
 
 // eslint-disable-next-line no-unused-vars

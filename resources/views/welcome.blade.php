@@ -7,11 +7,11 @@
 @section('content')
     <v-app light>
         <v-toolbar dark class="blue-grey darken-4" class="white--text">
-            <v-toolbar-title>Aplicació de tasques</v-toolbar-title>
+            <v-toolbar-title class="text-xs-center hidden-md-and-down">Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
             @if (!Auth::user())
-                <v-btn class="green lighten-2 black--text" href="/login">Login</v-btn>
-                <v-btn class="yellow lighten-2 black--text" href="/register">Register</v-btn>
+                <v-btn dark class="yellow lighten-2 black--text" href="/login">Login</v-btn>
+                <v-btn dark class="green lighten-2 black--text" href="/register">Register</v-btn>
             @else
                 {{--<v-toolbar-title>--}}
                     {{--<span>{{ Auth::user()->name }}</span>--}}
@@ -36,9 +36,9 @@
                             <v-btn dark color="#6e5494"
                                 class="mb-3"
                                 target="_blank"
-                                large  round ripple
+                                large round ripple
                                 href="https://github.com/mimoun1997/tasks"
-                            ><img src="/img/Octocat.png" alt="GitHub" height="28" class="mr-2">GitHub</v-btn>
+                            ><img src="/img/Octocat.png" alt="GitHub de mimoun1997" height="28" class="mr-2">GitHub</v-btn>
                             <v-btn
                                     class="green darken-3 mt-3"
                                     dark
@@ -117,6 +117,28 @@
                             </v-layout>
                         </v-container>
                     </v-flex>
+                </v-layout>
+            </section>
+
+            <section>
+                <v-layout
+                    
+                    wrap
+                    class="my-5"
+                    align-center
+                >
+                <v-flex xs12 class="my-3">
+                        <div class="text-xs-center">
+                            <h2 class="headline">Algunes captures de pantalla</h2>
+                            <span class="subheading">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos, modi?
+                            </span>
+                        </div>
+                </v-flex>
+                <v-flex xs12>
+                    <carrusel></carrusel>
+                </v-flex>
+                    
                 </v-layout>
             </section>
 
