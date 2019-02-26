@@ -1,5 +1,8 @@
 workbox.skipWaiting()
 workbox.clientsClaim()
+workbox.setConfig({
+    debug: true
+});
 
 // workbox.routing.registerRoute(
 //   new RegExp('https://hacker-news.firebaseio.com'),
