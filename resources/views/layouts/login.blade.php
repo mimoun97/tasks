@@ -8,12 +8,14 @@
     <link rel="manifest" href="/manifest.json">
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script defer src="{{ mix('/js/app.js') }}"></script>
     <title>@yield('title','Tasques')</title>
     <style>
         [v-cloak] {
             display: none;
         }
     </style>
+    
 </head>
 <body>
 <div id="app" v-cloak>
@@ -21,6 +23,5 @@
         @yield('content')
     </v-app>
 </div>
-<script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>

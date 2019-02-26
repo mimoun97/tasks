@@ -15,13 +15,7 @@
       return {
         items: [
           {
-            src: 'img/program.jpeg'
-          },
-          {
             src: 'img/sky.jpeg'
-          },
-          {
-            src: 'img/sunset.jpeg'
           },
           {
             src: 'img/tests.gif'
