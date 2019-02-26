@@ -88,3 +88,4 @@ npm run test:unit
 + webpack -> production
 + minificació
 + CDN vs import fonts?
++ bg images from https://www.pexels.com/ 

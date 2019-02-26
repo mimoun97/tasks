@@ -21,7 +21,7 @@
                   />
                 </v-flex>
                 <v-flex xs12 md6>
-                  <v-switch
+                  <v-switch readonly
                     v-model="dataUser.admin"
                     :label="`${dataUser.admin ? 'Admin' : 'Regular'}`"
                   ></v-switch>
@@ -78,7 +78,7 @@
                 <!--value="Lorem ipsum dolor sit amet, consectetur adipiscing elit."-->
                 <!--/>-->
                 <!--</v-flex>-->
-                <v-flex xs12 text-xs-right>
+                <v-flex xs12 text-xs-center>
                   <v-btn class="mx-0 font-weight-light" color="success">Modificar</v-btn>
                 </v-flex>
               </v-layout>
@@ -118,13 +118,16 @@
                                 round
                                 class="font-weight-light"
               >Upload Photo</v-btn>-->
-              <upload-button v-if="!filename" title="Upload Photo" :selectedCallback="fileSelectedFunc"/>
+              <upload-button
+                v-if="!filename"
+                title="Upload Photo"
+                :selectedCallback="fileSelectedFunc"
+              />
               <v-flex v-if="filename">
-                  <v-card-text >{{ filename }}</v-card-text>
-                  <v-btn color="primary" round>Submit</v-btn>
-                  <v-btn @click="filename=null" color="secondary" round>cancel</v-btn>
+                <v-card-text>{{ filename }}</v-card-text>
+                <v-btn color="primary" round>Submit</v-btn>
+                <v-btn @click="filename=null" color="secondary" round>cancel</v-btn>
               </v-flex>
-            
             </v-card-text>
           </material-card>
         </v-flex>
@@ -143,16 +146,20 @@ export default {
   data() {
     return {
       dataUser: this.user,
-      filename: null,
+      filename: null
     };
+  },
+  props: {
+    user: {
+      type: Object,
+      required: true
+    }
   },
   components: {
     "material-card": MaterialCard,
     "upload-button": UploadButton
   },
   created() {
-    console.log("Hola!");
-    console.log(this.user);
     this.csrf_token = window.csrf_token;
   },
   computed: {

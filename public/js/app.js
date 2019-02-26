@@ -3821,6 +3821,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -3856,6 +3857,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     removeTask: function removeTask(task) {
+      console.log(task);
       this.$emit("removed", task);
     },
     updateTask: function updateTask(task) {
@@ -4147,6 +4149,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    updateUser: function updateUser(user) {
+      this.user = user;
+      this.user_id = user.id;
+      console.log(this.user);
+    },
     reset: function reset() {
       this.task = {
         'name': '',
@@ -5209,6 +5216,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "UserList",
   data: function data() {
@@ -5224,6 +5232,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    console.log(user);
     if (this.users) this.dataUsers = this.users;else {
       window.axios.get("/api/v1/users").then(function (response) {
         _this.dataUsers = response.data;
@@ -5248,29 +5257,11 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ui_MaterialCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ui/MaterialCard */ "./resources/js/components/ui/MaterialCard.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _ui_UploadButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui/UploadButton */ "./resources/js/components/ui/UploadButton.vue");
+var _name$props$data$prop;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -5410,16 +5401,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Profile',
-  props: ['user'],
-  components: {
-    'material-card': _ui_MaterialCard__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  created: function created() {
-    this.csrf_token = window.csrf_token;
+
+/* harmony default export */ __webpack_exports__["default"] = (_name$props$data$prop = {
+  name: "Profile",
+  props: ["user"],
+  data: function data() {
+    return {
+      dataUser: this.user,
+      filename: null
+    };
   }
-});
+}, _defineProperty(_name$props$data$prop, "props", {
+  user: {
+    type: Object,
+    required: true
+  }
+}), _defineProperty(_name$props$data$prop, "components", {
+  "material-card": _ui_MaterialCard__WEBPACK_IMPORTED_MODULE_0__["default"],
+  "upload-button": _ui_UploadButton__WEBPACK_IMPORTED_MODULE_1__["default"]
+}), _defineProperty(_name$props$data$prop, "created", function created() {
+  this.csrf_token = window.csrf_token;
+}), _defineProperty(_name$props$data$prop, "computed", {
+  gravatar: function gravatar() {
+    return "https://www.gravatar.com/avatar/" + window.md5(this.user.email) + "?s=130";
+  },
+  userFromWindow: function userFromWindow() {
+    return window.laravel_user;
+  }
+}), _defineProperty(_name$props$data$prop, "methods", {
+  fileSelectedFunc: function fileSelectedFunc(file) {
+    this.filename = file.name;
+  }
+}), _name$props$data$prop);
 
 /***/ }),
 
@@ -5509,6 +5522,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     users: function users() {
       this.dataUsers = this.users;
+    }
+  },
+  methods: {
+    gravatar: function gravatar(user) {
+      return "https://www.gravatar.com/avatar/" + window.md5(user ? user.email : "google@gmail.com") + "?s=40";
     }
   }
 });
@@ -7331,11 +7349,11 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       items: [{
-        src: 'img/default.png'
+        src: 'img/program.jpeg'
       }, {
-        src: 'img/Octocat.png'
+        src: 'img/sky.jpeg'
       }, {
-        src: 'img/og-image.jpg'
+        src: 'img/sunset.jpeg'
       }, {
         src: 'img/tests.gif'
       }, {
@@ -12912,7 +12930,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.strike[data-v-43ab059a] {\n  text-decoration: line-through;\n}\n", ""]);
+exports.push([module.i, "\n.strike[data-v-43ab059a] {\r\n  text-decoration: line-through;\n}\r\n", ""]);
 
 // exports
 
@@ -12950,7 +12968,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.jbtn-file[data-v-5c4911d3] {\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n}\n.jbtn-file input[type=\"file\"][data-v-5c4911d3] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  min-width: 100%;\n  min-height: 100%;\n  text-align: right;\n  filter: alpha(opacity=0);\n  opacity: 0;\n  outline: none;\n  cursor: inherit;\n  display: block;\n}\n", ""]);
+exports.push([module.i, "\n.jbtn-file[data-v-5c4911d3] {\r\n  cursor: pointer;\r\n  position: relative;\r\n  overflow: hidden;\n}\n.jbtn-file input[type=\"file\"][data-v-5c4911d3] {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  min-width: 100%;\r\n  min-height: 100%;\r\n  text-align: right;\r\n  filter: alpha(opacity=0);\r\n  opacity: 0;\r\n  outline: none;\r\n  cursor: inherit;\r\n  display: block;\n}\r\n", ""]);
 
 // exports
 
@@ -48914,13 +48932,14 @@ var render = function() {
                     "v-avatar",
                     { attrs: { size: "48px", color: "grey lighten-3" } },
                     [
-                      _c(
-                        "v-icon",
-                        { attrs: { size: "46", color: "white darken-4" } },
-                        [_vm._v("person")]
-                      )
-                    ],
-                    1
+                      _vm.dataTask.user_gravatar
+                        ? _c("img", {
+                            attrs: { src: _vm.dataTask.user_gravatar + "?s=48" }
+                          })
+                        : _c("img", {
+                            attrs: { src: "/img/default.png", alt: "avatar" }
+                          })
+                    ]
                   )
                 ],
                 1
@@ -49310,14 +49329,15 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("v-autocomplete", {
-        attrs: { items: _vm.dataUsers, label: "Usuari", "item-text": "name" },
+      _c("user-select", {
+        attrs: { users: _vm.dataUsers, label: "Usuari" },
+        on: { selected: _vm.updateUser },
         model: {
-          value: _vm.user_id,
+          value: _vm.user,
           callback: function($$v) {
-            _vm.user_id = $$v
+            _vm.user = $$v
           },
-          expression: "user_id"
+          expression: "user"
         }
       }),
       _vm._v(" "),
@@ -50846,12 +50866,19 @@ var render = function() {
         return [
           _c(
             "v-list-tile",
+            { key: user.id },
             [
               _c(
                 "v-list-tile-avatar",
                 [
                   _c("v-avatar", { attrs: { title: user.name } }, [
-                    _c("img", { attrs: { src: user.avatar, alt: "avatar" } })
+                    user.gravatar
+                      ? _c("img", {
+                          attrs: { src: user.gavatar, alt: "avatar" }
+                        })
+                      : _c("img", {
+                          attrs: { src: "/img/default.png", alt: "avatar" }
+                        })
                   ])
                 ],
                 1
@@ -50949,7 +50976,14 @@ var render = function() {
                                 [
                                   _c("v-text-field", {
                                     staticClass: "purple-input",
-                                    attrs: { label: "User Name" }
+                                    attrs: { label: "User Name" },
+                                    model: {
+                                      value: _vm.dataUser.name,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.dataUser, "name", $$v)
+                                      },
+                                      expression: "dataUser.name"
+                                    }
                                   })
                                 ],
                                 1
@@ -50961,7 +50995,14 @@ var render = function() {
                                 [
                                   _c("v-text-field", {
                                     staticClass: "purple-input",
-                                    attrs: { label: "Email Address" }
+                                    attrs: { label: "Email Address" },
+                                    model: {
+                                      value: _vm.dataUser.email,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.dataUser, "email", $$v)
+                                      },
+                                      expression: "dataUser.email"
+                                    }
                                   })
                                 ],
                                 1
@@ -50971,9 +51012,22 @@ var render = function() {
                                 "v-flex",
                                 { attrs: { xs12: "", md6: "" } },
                                 [
-                                  _c("v-text-field", {
-                                    staticClass: "purple-input",
-                                    attrs: { label: "Admin" }
+                                  _c("v-switch", {
+                                    attrs: {
+                                      readonly: "",
+                                      label:
+                                        "" +
+                                        (_vm.dataUser.admin
+                                          ? "Admin"
+                                          : "Regular")
+                                    },
+                                    model: {
+                                      value: _vm.dataUser.admin,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.dataUser, "admin", $$v)
+                                      },
+                                      expression: "dataUser.admin"
+                                    }
                                   })
                                 ],
                                 1
@@ -50983,9 +51037,12 @@ var render = function() {
                                 "v-flex",
                                 { attrs: { xs12: "", md6: "" } },
                                 [
-                                  _c("v-text-field", {
-                                    staticClass: "purple-input",
-                                    attrs: { label: "Roles" }
+                                  _c("v-select", {
+                                    attrs: {
+                                      items: _vm.userFromWindow.roles,
+                                      label: "Roles",
+                                      "no-data-text": "No te cap rol."
+                                    }
                                   })
                                 ],
                                 1
@@ -50995,9 +51052,12 @@ var render = function() {
                                 "v-flex",
                                 { attrs: { xs12: "", md12: "" } },
                                 [
-                                  _c("v-text-field", {
-                                    staticClass: "purple-input",
-                                    attrs: { label: "Permissions" }
+                                  _c("v-select", {
+                                    attrs: {
+                                      items: _vm.userFromWindow.permissions,
+                                      label: "Permisos",
+                                      "no-data-text": "No te cap permís."
+                                    }
                                   })
                                 ],
                                 1
@@ -51005,7 +51065,7 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "v-flex",
-                                { attrs: { xs12: "", "text-xs-right": "" } },
+                                { attrs: { xs12: "", "text-xs-center": "" } },
                                 [
                                   _c(
                                     "v-btn",
@@ -51013,11 +51073,7 @@ var render = function() {
                                       staticClass: "mx-0 font-weight-light",
                                       attrs: { color: "success" }
                                     },
-                                    [
-                                      _vm._v(
-                                        "\n                                    Modificar\n                                "
-                                      )
-                                    ]
+                                    [_vm._v("Modificar")]
                                   )
                                 ],
                                 1
@@ -51039,56 +51095,60 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "v-flex",
-            { attrs: { xs12: "", md4: "" } },
+            "v-layout",
+            { attrs: { "justify-space-around": "", row: "" } },
             [
               _c(
-                "material-card",
-                { staticClass: "v-card-profile" },
+                "v-flex",
+                { attrs: { xs12: "", md4: "" } },
                 [
                   _c(
-                    "v-avatar",
-                    {
-                      staticClass: "mx-auto d-block",
-                      attrs: { slot: "offset", size: "130" },
-                      slot: "offset"
-                    },
+                    "material-card",
+                    { staticClass: "v-card-profile" },
                     [
-                      _c("img", {
-                        attrs: {
-                          src:
-                            "https://demos.creative-tim.com/vue-material-dashboard/img/marc.aba54d65.jpg"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-text",
-                    { staticClass: "text-xs-center" },
-                    [
-                      _c("p", [_vm._v("Username here")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        ref: "avatar",
-                        attrs: {
-                          type: "file",
-                          name: "avatar",
-                          id: "avatar-file-input",
-                          accept: "image/*"
-                        }
-                      }),
-                      _vm._v(" "),
                       _c(
-                        "v-btn",
+                        "v-avatar",
                         {
-                          staticClass: "font-weight-light",
-                          attrs: { color: "success", round: "" }
+                          staticClass: "mx-auto d-block",
+                          attrs: { slot: "offset", size: "130" },
+                          slot: "offset"
                         },
-                        [_vm._v("Upload Avatar")]
+                        [_c("img", { attrs: { src: _vm.gravatar } })]
                       ),
                       _vm._v(" "),
-                      _c("p", [_vm._v("TODO LIST AVATARS here")])
+                      _c(
+                        "v-card-text",
+                        { staticClass: "text-xs-center" },
+                        [
+                          _c(
+                            "p",
+                            { staticClass: "title grey--text text--darken-1" },
+                            [_vm._v(_vm._s(_vm.user.name))]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            ref: "avatar",
+                            attrs: {
+                              type: "file",
+                              name: "avatar",
+                              id: "avatar-file-input",
+                              accept: "image/*"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "font-weight-light",
+                              attrs: { color: "success", round: "" }
+                            },
+                            [_vm._v("Upload Avatar")]
+                          ),
+                          _vm._v(" "),
+                          _c("p", [_vm._v("TODO LIST AVATARS here")])
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
@@ -51097,63 +51157,105 @@ var render = function() {
               ),
               _vm._v(" "),
               _c(
-                "material-card",
-                { staticClass: "v-card-profile" },
+                "v-flex",
+                { attrs: { xs12: "", md4: "" } },
                 [
                   _c(
-                    "v-avatar",
-                    {
-                      staticClass: "mx-auto d-block",
-                      attrs: { slot: "offset", size: "130" },
-                      slot: "offset"
-                    },
-                    [_c("img", { attrs: { src: "/user/photo" } })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-text",
-                    { staticClass: "text-xs-center" },
+                    "material-card",
+                    { staticClass: "v-card-profilef" },
                     [
-                      _c("p", [_vm._v("Username here")]),
-                      _vm._v(" "),
                       _c(
-                        "form",
+                        "v-avatar",
                         {
-                          attrs: {
-                            action: "/photo",
-                            method: "POST",
-                            enctype: "multipart/form-data"
-                          }
+                          staticClass: "mx-auto d-block",
+                          attrs: { slot: "offset", size: "130" },
+                          slot: "offset"
                         },
-                        [
-                          _c("input", {
-                            ref: "avatar",
-                            attrs: {
-                              type: "file",
-                              name: "photo",
-                              id: "photo-file-input",
-                              accept: "image/*"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("input", {
-                            attrs: { type: "hidden", name: "_token" },
-                            domProps: { value: _vm.csrf_token }
-                          }),
-                          _vm._v(" "),
-                          _c("input", {
-                            attrs: { type: "submit", value: "Pujar" }
-                          })
-                        ]
+                        [_c("img", { attrs: { src: "/user/photo" } })]
                       ),
                       _vm._v(" "),
                       _c(
-                        "v-btn",
-                        {
-                          staticClass: "font-weight-light",
-                          attrs: { color: "success", round: "" }
-                        },
-                        [_vm._v("Upload Photo")]
+                        "v-card-text",
+                        { staticClass: "text-xs-center" },
+                        [
+                          _c(
+                            "p",
+                            { staticClass: "title grey--text text--darken-1" },
+                            [_vm._v(_vm._s(_vm.user.name))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "form",
+                            {
+                              attrs: {
+                                action: "/photo",
+                                method: "POST",
+                                enctype: "multipart/form-data"
+                              }
+                            },
+                            [
+                              _c("input", {
+                                ref: "avatar",
+                                attrs: {
+                                  type: "file",
+                                  name: "photo",
+                                  id: "photo-file-input",
+                                  accept: "image/*"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                attrs: { type: "hidden", name: "_token" },
+                                domProps: { value: _vm.csrf_token }
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                attrs: { type: "submit", value: "Pujar" }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          !_vm.filename
+                            ? _c("upload-button", {
+                                attrs: {
+                                  title: "Upload Photo",
+                                  selectedCallback: _vm.fileSelectedFunc
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.filename
+                            ? _c(
+                                "v-flex",
+                                [
+                                  _c("v-card-text", [
+                                    _vm._v(_vm._s(_vm.filename))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-btn",
+                                    { attrs: { color: "primary", round: "" } },
+                                    [_vm._v("Submit")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      attrs: { color: "secondary", round: "" },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.filename = null
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("cancel")]
+                                  )
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        ],
+                        1
                       )
                     ],
                     1
@@ -51211,9 +51313,11 @@ var render = function() {
               [
                 _c("v-avatar", { attrs: { title: data.item.name } }, [
                   _c("img", {
-                    attrs: { src: data.item.gravatar, alt: data.item.name }
+                    attrs: { src: _vm.gravatar(data.item), alt: data.item.name }
                   })
                 ]),
+                _vm._v(" "),
+                _c("b", [_vm._v(_vm._s(data.item.gravatar))]),
                 _vm._v("\n      " + _vm._s(data.item.name) + "\n    ")
               ],
               1
@@ -51229,17 +51333,10 @@ var render = function() {
             _c(
               "v-list-tile-avatar",
               [
-                _c("v-avatar", { attrs: { title: user.name } }, [
-                  user.gravatar
-                    ? _c("img", {
-                        attrs: { src: user.gravatar, alt: "avatar" }
-                      })
-                    : _c("img", {
-                        attrs: {
-                          src: "https://www.gravatar.com/avatar/",
-                          alt: "avatar"
-                        }
-                      })
+                _c("v-avatar", { attrs: { size: "40", title: user.name } }, [
+                  _c("img", {
+                    attrs: { src: _vm.gravatar(user), alt: "avatar" }
+                  })
                 ])
               ],
               1
@@ -51733,7 +51830,7 @@ var render = function() {
     [
       _c(
         "v-toolbar",
-        { attrs: { color: "primary darken-3" } },
+        { attrs: { color: "primary" } },
         [
           _c(
             "v-menu",
@@ -54917,7 +55014,10 @@ var render = function() {
     },
     [
       _vm._v("\n  " + _vm._s(_vm.title) + "\n  "),
-      _c("input", { attrs: { type: "file" }, on: { change: _vm.fileSelected } })
+      _c("input", {
+        attrs: { type: "file", accept: "image/*" },
+        on: { change: _vm.fileSelected }
+      })
     ]
   )
 }
@@ -68475,7 +68575,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var withParams = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
+var withParams = Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
 var _default = withParams;
 exports.default = _default;
 
@@ -97473,8 +97573,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/mimoun/Code/mimoun1997/tasks/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/mimoun/Code/mimoun1997/tasks/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\dimhaddou.DISI\Code\mimoun1997\tasks\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\dimhaddou.DISI\Code\mimoun1997\tasks\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -49,22 +49,27 @@ if (!function_exists('create_acacha_user')) {
 if (!function_exists('create_example_tasks')) {
     function create_example_tasks()
     {
+        $userA = factory(User::class)->create();
         Task::create([
             'name' => 'comprar pa',
             'description' => 'pa',
-            'completed' => false
+            'completed' => false,
+            'user_id' => $userA->id
         ]);
-
+        
         Task::create([
             'name' => 'comprar llet',
             'description' => 'llet',
-            'completed' => false
+            'completed' => false,
+            'user_id' => $userA->id
         ]);
-
+        
+        $userB = factory(User::class)->create();
         Task::create([
             'name' => 'Estudiar PHP',
             'description' => 'php',
-            'completed' => true
+            'completed' => true,
+            'user_id' => $userB->id
         ]);
     }
 }
