@@ -2,6 +2,9 @@ importScripts("/service-worker/precache-manifest.eef1aa4e36a007456bd4954c2fa771d
 
 workbox.skipWaiting()
 workbox.clientsClaim()
+workbox.setConfig({
+    debug: true
+});
 
 // workbox.routing.registerRoute(
 //   new RegExp('https://hacker-news.firebaseio.com'),
