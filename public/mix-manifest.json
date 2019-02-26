@@ -1,4 +1,15 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/img/capturatasks.PNG": "/img/capturatasks.PNG",
+    "/img/default.png": "/img/default.png",
+    "/img/favicon-16x16.png": "/img/favicon-16x16.png",
+    "/img/favicon-32x32.png": "/img/favicon-32x32.png",
+    "/img/Octocat.png": "/img/Octocat.png",
+    "/img/Octocat.webp": "/img/Octocat.webp",
+    "/img/og-image.jpg": "/img/og-image.jpg",
+    "/img/sky.jpeg": "/img/sky.jpeg",
+    "/img/team.jpeg": "/img/team.jpeg",
+    "/img/tests.gif": "/img/tests.gif",
+    "/img/tests2.gif": "/img/tests2.gif"
 }

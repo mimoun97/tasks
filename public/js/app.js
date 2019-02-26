@@ -3449,18 +3449,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'ServiceWorker',
+  name: "ServiceWorker",
   methods: {
     registerServiceWorker: function registerServiceWorker() {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
-          console.log('Registration successful, scope is.', registration.scope);
-        }).catch(function (error) {
-          console.log('Service worker registration failed, error', error);
-        });
+      var _this = this;
+
+      if ("serviceWorker" in navigator) {
+        if (!("serviceWorker" in navigator)) {
+          console.log("Service workers aren't supported in this browser.");
+          return;
+        }
+
+        if (document.readyState === "complete") {
+          window.addEventListener("load", function () {
+            _this.register();
+          });
+        } else {
+          this.register();
+        }
       } else {
-        console.log('Navegador obsolet');
+        console.log("Navegador obsolet");
       }
+    },
+    regitser: function regitser() {
+      navigator.serviceWorker.register("/service-worker.js").then(function (registration) {
+        console.log("Registration successful, scope is.", registration.scope);
+      }).catch(function (error) {
+        console.log("Service worker registration failed, error", error);
+      });
     }
   },
   // VULL EXECUTAR EL REGISTRE DEL SERVICE WORKER
@@ -7348,11 +7364,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       items: [{
-        src: 'img/program.jpeg'
-      }, {
         src: 'img/sky.jpeg'
-      }, {
-        src: 'img/sunset.jpeg'
       }, {
         src: 'img/tests.gif'
       }, {
