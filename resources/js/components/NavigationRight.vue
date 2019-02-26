@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="dataDrawer" fixed right clipped-right clipped app>
+  <v-navigation-drawer v-model="dataDrawer" fixed right clipped-right clipped app class="elevation-2">
     <v-card xs12 md12>
       <v-card-title class="primary lighten-2 white--text">
         <h4 class="subheading">Perfil</h4>
@@ -36,7 +36,7 @@
                         <v-list-tile-content>Rols</v-list-tile-content>
                       </v-list-tile>
 
-                      <v-list-tile v-for="rol in user.roles" :key="rol">
+                      <v-list-tile v-for="rol in user.roles" :key="rol" no-data-text="No te cap rol.">
                         <v-list-tile-content>
                           <v-list-tile-title>{{ rol }}</v-list-tile-title>
                         </v-list-tile-content>
@@ -47,7 +47,7 @@
                         <v-list-tile-content>Permissos</v-list-tile-content>
                       </v-list-tile>
 
-                      <v-list-tile v-for="permis in user.permissions" :key="permis">
+                      <v-list-tile v-for="permis in user.permissions" :key="permis" no-data-text="No te cap permís.">
                         <v-list-tile-content>
                           <v-list-tile-title>{{ permis }}</v-list-tile-title>
                         </v-list-tile-content>

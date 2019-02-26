@@ -2634,7 +2634,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     if (window.localStorage.getItem('PRIMARY_COLOR_KEY')) this.$vuetify.theme.primary = window.localStorage.getItem('PRIMARY_COLOR_KEY');
     if (window.localStorage.getItem('SECONDARY_COLOR_KEY')) this.$vuetify.theme.secondary = window.localStorage.getItem('SECONDARY_COLOR_KEY');
-    console.log('Color_primary: ' + this.$vuetify.theme.primary);
   }
 });
 
@@ -12930,7 +12929,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.strike[data-v-43ab059a] {\r\n  text-decoration: line-through;\n}\r\n", ""]);
+exports.push([module.i, "\n.strike[data-v-43ab059a] {\n  text-decoration: line-through;\n}\n", ""]);
 
 // exports
 
@@ -12968,7 +12967,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.jbtn-file[data-v-5c4911d3] {\r\n  cursor: pointer;\r\n  position: relative;\r\n  overflow: hidden;\n}\n.jbtn-file input[type=\"file\"][data-v-5c4911d3] {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  min-width: 100%;\r\n  min-height: 100%;\r\n  text-align: right;\r\n  filter: alpha(opacity=0);\r\n  opacity: 0;\r\n  outline: none;\r\n  cursor: inherit;\r\n  display: block;\n}\r\n", ""]);
+exports.push([module.i, "\n.jbtn-file[data-v-5c4911d3] {\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n}\n.jbtn-file input[type=\"file\"][data-v-5c4911d3] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  min-width: 100%;\n  min-height: 100%;\n  text-align: right;\n  filter: alpha(opacity=0);\n  opacity: 0;\n  outline: none;\n  cursor: inherit;\n  display: block;\n}\n", ""]);
 
 // exports
 
@@ -47610,6 +47609,7 @@ var render = function() {
   return _c(
     "v-navigation-drawer",
     {
+      staticClass: "elevation-2",
       attrs: {
         fixed: "",
         right: "",
@@ -47793,7 +47793,13 @@ var render = function() {
                                           _vm._l(_vm.user.roles, function(rol) {
                                             return _c(
                                               "v-list-tile",
-                                              { key: rol },
+                                              {
+                                                key: rol,
+                                                attrs: {
+                                                  "no-data-text":
+                                                    "No te cap rol."
+                                                }
+                                              },
                                               [
                                                 _c(
                                                   "v-list-tile-content",
@@ -47846,7 +47852,13 @@ var render = function() {
                                           ) {
                                             return _c(
                                               "v-list-tile",
-                                              { key: permis },
+                                              {
+                                                key: permis,
+                                                attrs: {
+                                                  "no-data-text":
+                                                    "No te cap permís."
+                                                }
+                                              },
                                               [
                                                 _c(
                                                   "v-list-tile-content",
@@ -51071,7 +51083,7 @@ var render = function() {
                                     "v-btn",
                                     {
                                       staticClass: "mx-0 font-weight-light",
-                                      attrs: { color: "success" }
+                                      attrs: { color: "primary" }
                                     },
                                     [_vm._v("Modificar")]
                                   )
@@ -68575,7 +68587,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var withParams = Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
+var withParams = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
 var _default = withParams;
 exports.default = _default;
 
@@ -97573,8 +97585,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\dimhaddou.DISI\Code\mimoun1997\tasks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\dimhaddou.DISI\Code\mimoun1997\tasks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/mimoun/Code/mimoun1997/tasks/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/mimoun/Code/mimoun1997/tasks/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

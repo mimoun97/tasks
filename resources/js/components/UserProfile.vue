@@ -79,7 +79,7 @@
                 <!--/>-->
                 <!--</v-flex>-->
                 <v-flex xs12 text-xs-center>
-                  <v-btn class="mx-0 font-weight-light" color="success">Modificar</v-btn>
+                  <v-btn class="mx-0 font-weight-light" color="primary">Modificar</v-btn>
                 </v-flex>
               </v-layout>
             </v-container>
