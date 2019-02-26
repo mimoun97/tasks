@@ -50,6 +50,16 @@ workbox.routing.registerRoute(
     workbox.strategies.staleWhileRevalidate({ cacheName: 'landing' })
 )
 
+workbox.routing.registerRoute(
+    '/tasques',
+    workbox.strategies.staleWhileRevalidate({ cacheName: 'tasqques' })
+)
+
+workbox.routing.registerRoute(
+    new RegExp('/api/'),
+    workbox.strategies.networkFirst()
+);
+
 // NO ENS CAL PQ LES TENIM INTEGRADES EN LOCAL VIA WEBPACK i NMP IMPORTS
 // // fonts
 // workbox.routing.registerRoute(
