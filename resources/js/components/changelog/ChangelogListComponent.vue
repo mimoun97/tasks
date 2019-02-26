@@ -1,6 +1,6 @@
 <template>
     <span>
-        <v-toolbar color="blue darken-3">
+        <v-toolbar color="primary">
             <v-menu bottom>
                 <v-btn slot="activator" icon dark>
                     <v-icon>more_vert</v-icon>
@@ -27,7 +27,7 @@
                     class="white--text"
                     icon="settings"
                     v-model="settingsDialog"
-                    color="blue darken-3"
+                    color="primary darken-3"
                     title="Canviar la configuració del registre de canvis">
                         <changelog-settings module="changelog" @close="settingsDialog = false"></changelog-settings>
             </fullscreen-dialog>

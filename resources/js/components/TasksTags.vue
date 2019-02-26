@@ -17,6 +17,7 @@
                         <template slot="selection"
                                   slot-scope="data">
                             <v-chip
+                                  
                                     :selected="data.selected"
                                     :disabled="data.disabled"
                                     :key="JSON.stringify(data.item)"

@@ -2,16 +2,16 @@
 
 @section('title', 'Welcome')
 
-@section('content')
+{{-- @section('content') --}}
 
 @section('content')
     <v-app light>
         <v-toolbar dark class="blue-grey darken-4" class="white--text">
-            <v-toolbar-title>Aplicació de tasques</v-toolbar-title>
+            <v-toolbar-title class="text-xs-center hidden-md-and-down">Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
             @if (!Auth::user())
-                <v-btn class="green lighten-2 black--text" href="/login">Login</v-btn>
-                <v-btn class="yellow lighten-2 black--text" href="/register">Register</v-btn>
+                <v-btn dark class="yellow lighten-2 black--text" href="/login">Login</v-btn>
+                <v-btn dark class="green lighten-2 black--text" href="/register">Register</v-btn>
             @else
                 {{--<v-toolbar-title>--}}
                     {{--<span>{{ Auth::user()->name }}</span>--}}
@@ -23,28 +23,24 @@
         </v-toolbar>
         <v-content>
             <section>
-                <v-parallax src="svg/pattern.svg" height="600">
+                <v-parallax src="img/sky.jpeg" height="600" width="auto">
                     <v-layout
                             column
                             align-center
                             justify-center
-                            class="white--text"
                     >
+
                         <img src="svg/logo.svg" alt="Vuetify.js" height="200">
-                        <h1 class="white--text mb-2 display-1 text-xs-center">Mimoun Haddou</h1>
+                        <h2 class="blue--text mb-2">Aplicació de tasques</h2>
+                        <div class="black--text headline mb-3 text-xs-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit by <b class="blues--text">Mimoun Haddou</b></div>
+                        <v-btn light large class="blue darken-1 white--text" href="/home">Get Started</v-btn>
                         <v-btn dark color="#6e5494"
-                               class="mb-3"
-                               target="_blank"
-                               large  round ripple
-                               href="https://github.com/mimoun1997/tasks"
-                        ><img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" alt="GitHub" height="28" class="mr-2">GitHub</v-btn>
-                        <v-btn
-                                class="blue lighten-2 mt-5"
-                                dark
-                                large
-                                href="/home"
-                        >
-                            Get Started
+                                class="mb-3"
+                                target="_blank"
+                                large round ripple
+                                href="https://github.com/mimoun1997/tasks"
+                            >
+                            <img src="/img/Octocat.png" alt="GitHub de mimoun1997" height="28" class="mr-2">GitHub
                         </v-btn>
                     </v-layout>
                 </v-parallax>
@@ -120,18 +116,33 @@
             </section>
 
             <section>
-                <v-parallax src="svg/pattern.svg" height="200">
+                <v-layout
+                    
+                    wrap
+                    class="my-5"
+                    align-center
+                >
+                <v-flex xs12 class="my-3">
+                        <div class="text-xs-center">
+                            <h2 class="headline">Algunes captures de pantalla</h2>
+                            <span class="subheading">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos, modi?
+                            </span>
+                        </div>
+                </v-flex>
+                <v-flex xs12>
+                    <carrusel></carrusel>
+                </v-flex>
+                    
+                </v-layout>
+            </section>
+
+            <section>
+                <v-parallax src="img/team.jpeg" height="400">
                     <v-layout column align-center justify-center>
                         <div class="headline white--text mb-3 text-xs-center">Web development has never been easier</div>
-                        <em>Kick-start your application today</em>
-                        <v-btn
-                                class="blue lighten-2 mt-5"
-                                dark
-                                large
-                                href="/home"
-                        >
-                            Get Started
-                        </v-btn>
+                        <em class="black--text text--darken-4">Kick-start your application today</em>
+                        <v-btn light large class="blue darken-1 white--text" href="/home">Get Started</v-btn>
                     </v-layout>
                 </v-parallax>
             </section>
@@ -190,19 +201,6 @@
                     </v-layout>
                 </v-container>
             </section>
-
-            <v-footer class="blue-grey darken-4">
-                <v-layout row wrap align-center>
-                    <v-flex xs12>
-                        <div class="white--text ml-3">
-                            App feta per <a class="white--text" href="https://github.com/mimoun1997"> Mimoun Haddou</a>
-
-                            i amb tot <v-icon class="red--text">favorite</v-icon> tema i layout fets amb <a class="white--text" href="https://vuetifyjs.com" target="_blank">Vuetify</a>
-                            and <a class="white--text" href="https://github.com/vwxyzjn">Costa Huang</a>
-                        </div>
-                    </v-flex>
-                </v-layout>
-            </v-footer>
         </v-content>
     </v-app>
 @endsection

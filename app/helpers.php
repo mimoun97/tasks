@@ -13,10 +13,11 @@ use Spatie\Permission\Models\Permission;
 use App\Notifications\SimpleNotification;
 
 if (!function_exists('create_primary_user')) {
-    function create_primary_user() {
+    function create_primary_user()
+    {
         $user = User::where('email', 'mimounhaddou@iesebre.com')->first();
         if (!$user) {
-            $user= User::firstOrCreate([
+            $user = User::firstOrCreate([
                 'name' => 'Mimoun Haddou',
                 'email' => 'mimounhaddou@iesebre.com',
                 'password' => bcrypt(env('PRIMARY_USER_PASSWORD', 'secret'))
@@ -29,13 +30,14 @@ if (!function_exists('create_primary_user')) {
 }
 
 if (!function_exists('create_acacha_user')) {
-    function create_acacha_user() {
+    function create_acacha_user()
+    {
         $user = User::where('email', 'sergiturbadenas@gmail.com')->first();
         if (!$user) {
-            $user= User::firstOrCreate([
+            $user = User::firstOrCreate([
                 'name' => 'Sergi Tur Badenas',
                 'email' => 'sergiturbadenas@gmail.com',
-                'password' => bcrypt(env('PRIMARY_USER_PASSWORD','123456'))
+                'password' => bcrypt(env('PRIMARY_USER_PASSWORD', '123456'))
             ]);
 
             $user->admin = true;
@@ -45,34 +47,42 @@ if (!function_exists('create_acacha_user')) {
 }
 
 if (!function_exists('create_example_tasks')) {
-    function create_example_tasks() {
+    function create_example_tasks()
+    {
+        $userA = factory(User::class)->create();
         Task::create([
             'name' => 'comprar pa',
             'description' => 'pa',
-            'completed' => false
+            'completed' => false,
+            'user_id' => $userA->id
         ]);
-
+        
         Task::create([
             'name' => 'comprar llet',
             'description' => 'llet',
-            'completed' => false
+            'completed' => false,
+            'user_id' => $userA->id
         ]);
-
+        
+        $userB = factory(User::class)->create();
         Task::create([
             'name' => 'Estudiar PHP',
             'description' => 'php',
-            'completed' => true
+            'completed' => true,
+            'user_id' => $userB->id
         ]);
     }
 }
 
 if (!function_exists('initialize_roles')) {
-    function initialize_roles() {
+    function initialize_roles()
+    {
         $roles = [
             'TaskManager',
             'Tasks',
             'TagsManager',
-            'Tags'
+            'Tags',
+            'NotificationsManager'
         ];
         foreach ($roles as $role) {
             create_role($role);
@@ -85,7 +95,7 @@ if (!function_exists('initialize_roles')) {
             'tasks.complete',
             'tasks.uncomplete',
             'tasks.destroy'
-            ];
+        ];
         $tagsManagerPermissions = [
             'tags.index',
             'tags.show',
@@ -116,7 +126,22 @@ if (!function_exists('initialize_roles')) {
             'user.tags.uncomplete',
             'user.tags.destroy'
         ];
-        $permissions = array_merge($taskManagerPermissions, $userTaskPermissions, $tagsManagerPermissions, $userTagsPermissions);
+
+        $notificationsManagerPermissions = [
+            'notifications.index',
+            'notifications.destroy',
+            'notifications.destroyMultiple',
+            'notifications.simple.store'
+        ];
+
+
+        $permissions = array_merge(
+            $taskManagerPermissions,
+            $userTaskPermissions,
+            $tagsManagerPermissions,
+            $userTagsPermissions,
+            $notificationsManagerPermissions
+        );
         foreach ($permissions as $permission) {
             create_permission($permission);
         }
@@ -125,6 +150,7 @@ if (!function_exists('initialize_roles')) {
             'Tasks' => $userTaskPermissions,
             'TagsManager' => $tagsManagerPermissions,
             'Tags' => $userTagsPermissions,
+            'NotificationsManager' => $notificationsManagerPermissions,
         ];
         foreach ($rolePermissions as $role => $rolePermission) {
             $role = Role::findByName($role);
@@ -142,7 +168,7 @@ if (!function_exists('initialize_gates')) {
             return $user->isSuperAdmin() || $user->hasRole('TaskManager');
         });
 
-                // Changelog
+        // Changelog
         Gate::define('changelog.list', function ($user) {
             return $user->hasRole('ChangelogManager');
         });
@@ -150,7 +176,8 @@ if (!function_exists('initialize_gates')) {
 }
 
 if (!function_exists('create_example_tags')) {
-    function create_example_tags() {
+    function create_example_tags()
+    {
         Tag::create([
             'name' => 'estudis',
             'description' => 'relacionat amb estudis',
@@ -168,13 +195,12 @@ if (!function_exists('create_example_tags')) {
             'description' => 'relacionat amb php',
             'color' => '#FFFFFF'
         ]);
-
-
     }
 }
 
 if (!function_exists('sample_users')) {
-    function sample_users() {
+    function sample_users()
+    {
         // Superadmin no cal -> soc jo mateix
 
         // Pepe Pringao -> No té cap permis ni cap rol
@@ -184,44 +210,44 @@ if (!function_exists('sample_users')) {
                 'name' => 'Pepe Pringao',
                 'email' => 'pepepringao@hotmail.com'
             ]);
-        } catch (Exception $e) {}
+        } catch (Exception $e) { }
 
         try {
             $bartsimpson = factory(User::class)->create([
                 'name' => 'Bart Simpson',
                 'email' => 'bartsimpson@simpson.com'
             ]);
-        } catch (Exception $e) {}
+        } catch (Exception $e) { }
 
         try {
             $bartsimpson->assignRole('Tasks');
-        } catch (Exception $e) {}
+        } catch (Exception $e) { }
 
         try {
             $homersimpson = factory(User::class)->create([
                 'name' => 'Homer Simpson',
                 'email' => 'homersimpson@simpson.com'
             ]);
-        } catch (Exception $e) {}
+        } catch (Exception $e) { }
 
         try {
             $homersimpson->assignRole('TaskManager');
-        } catch (Exception $e) {}
+        } catch (Exception $e) { }
     }
 }
 
 if (!function_exists('map_collection')) {
     function map_collection($collection)
     {
-        return !method_exists($collection, 'map') ? null :
-            $collection->map(function ($item) {
+        return !method_exists($collection, 'map') ? null : $collection->map(function ($item) {
             return $item->map();
         });
     }
 }
 
 if (!function_exists('logged_user')) {
-    function logged_user() {
+    function logged_user()
+    {
         return json_encode(optional(Auth::user())->map());
     }
 }
@@ -231,8 +257,9 @@ if (!function_exists('logged_user')) {
 //TODO cOM GESTIONAR EL SUPERADMIN
 
 
-if (! function_exists('git')) {
-    function git() {
+if (!function_exists('git')) {
+    function git()
+    {
         return Cache::remember('git_info', 5, function () {
             Carbon::setLocale(config('app.locale'));
             return collect([
@@ -253,44 +280,49 @@ if (! function_exists('git')) {
         });
     }
 }
-if (! function_exists('git_current_branch')) {
-    function git_current_branch() {
+if (!function_exists('git_current_branch')) {
+    function git_current_branch()
+    {
         exec('git name-rev --name-only HEAD', $output);
         return $output[0];
     }
 }
-if (! function_exists('git_current_commit')) {
-    function git_current_commit($short = false) {
-        $short ? exec('git rev-parse --short HEAD', $output) : exec('git rev-parse HEAD', $output) ;
+if (!function_exists('git_current_commit')) {
+    function git_current_commit($short = false)
+    {
+        $short ? exec('git rev-parse --short HEAD', $output) : exec('git rev-parse HEAD', $output);
         return $output[0];
     }
 }
-if (! function_exists('git_current_commit_full_info')) {
-    function git_current_commit_full_info() {
+if (!function_exists('git_current_commit_full_info')) {
+    function git_current_commit_full_info()
+    {
         exec('git log -1', $output);
         return $output;
     }
 }
-if (! function_exists('git_current_commit_author_name')) {
-    function git_current_commit_author_name() {
+if (!function_exists('git_current_commit_author_name')) {
+    function git_current_commit_author_name()
+    {
         exec("git log -1 --pretty=format:'%an'", $output);
         return $output[0];
     }
 }
-if (! function_exists('git_current_commit_author_email')) {
-    function git_current_commit_author_email() {
+if (!function_exists('git_current_commit_author_email')) {
+    function git_current_commit_author_email()
+    {
         exec("git log -1 --pretty=format:'%ae'", $output);
         return $output[0];
     }
 }
-if (! function_exists('git_current_commit_message')) {
+if (!function_exists('git_current_commit_message')) {
     function git_current_commit_message()
     {
         exec("git log -1 --pretty=format:'%s'", $output);
         return $output[0];
     }
 }
-if (! function_exists('git_current_commit_timestamp')) {
+if (!function_exists('git_current_commit_timestamp')) {
     function git_current_commit_timestamp()
     {
         //intval(exec("git log -1 --pretty=format:'%at'"));
@@ -298,21 +330,21 @@ if (! function_exists('git_current_commit_timestamp')) {
         return $output[0];
     }
 }
-if (! function_exists('git_current_commit_date')) {
+if (!function_exists('git_current_commit_date')) {
     function git_current_commit_date()
     {
         exec("git log -1 --pretty=format:'%ad'", $output);
         return $output[0];
     }
 }
-if (! function_exists('git_current_commit_date_human')) {
+if (!function_exists('git_current_commit_date_human')) {
     function git_current_commit_date_human()
     {
         exec("git log -1 --pretty=format:'%ar'", $output);
         return $output[0];
     }
 }
-if (! function_exists('git_remote_origin_url')) {
+if (!function_exists('git_remote_origin_url')) {
     function git_remote_origin_url()
     {
         exec("git config --get remote.origin.url", $output);
@@ -448,65 +480,65 @@ if (!function_exists('sample_logs')) {
             'icon' => 'home',
             'color' => 'teal'
         ]);
-        return [$log1,$log2,$log3,$log4];
+        return [$log1, $log2, $log3, $log4];
     }
+}
 
-    if (! function_exists('ellipsis')) {
-        function ellipsis($text, $max = 50)
-        {
-            $ellipted = strlen($text) > $max ? substr($text, 0, $max)."..." : $text;
-            return $ellipted;
-        }
+if (!function_exists('ellipsis')) {
+    function ellipsis($text, $max = 50)
+    {
+        $ellipted = strlen($text) > $max ? substr($text, 0, $max) . "..." : $text;
+        return $ellipted;
     }
+}
 
-    if (!function_exists('is_valid_uuid')) {
-        /**
+if (!function_exists('is_valid_uuid')) {
+    /**
          * Check if a given string is a valid UUID
          *
          * @param   string  $uuid   The string to check
          * @return  boolean
          */
-        function is_valid_uuid($uuid)
-        {
+    function is_valid_uuid($uuid)
+    {
 
-            if (!is_string($uuid) || (preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $uuid) !== 1)) {
-                return false;
-            }
-            return true;
+        if (!is_string($uuid) || (preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $uuid) !== 1)) {
+            return false;
         }
+        return true;
     }
+}
 
-    if (!function_exists('set_sample_notifications_to_user')) {
-        function set_sample_notifications_to_user($user)
-        {
-            $user->notify(new SimpleNotification('Notification 1'));
-            $user->notify(new SimpleNotification('Notification 2'));
-            $user->notify(new SimpleNotification('Notification 3'));
-        }
+if (!function_exists('set_sample_notifications_to_user')) {
+    function set_sample_notifications_to_user($user)
+    {
+        $user->notify(new SimpleNotification('Notification 1'));
+        $user->notify(new SimpleNotification('Notification 2'));
+        $user->notify(new SimpleNotification('Notification 3'));
     }
+}
 
-    if (!function_exists('sample_notifications')) {
-        function sample_notifications()
-        {
-            $user1 = factory(User::class)->create([
-                'name' => 'Homer Simpson',
-                'email' => 'homer@lossimpsons.com'
-            ]);
-            $user2 = factory(User::class)->create([
-                'name' => 'Bart Simpson',
-                'email' => 'bart@lossimpsons.com'
-            ]);
-            $user1->notify(new SimpleNotification('Sample Notification 1'));
-            $user2->notify(new SimpleNotification('Sample Notification 2'));
-        }
+if (!function_exists('sample_notifications')) {
+    function sample_notifications()
+    {
+        $user1 = factory(User::class)->create([
+            'name' => 'Homer Simpson',
+            'email' => 'homer@lossimpsons.com'
+        ]);
+        $user2 = factory(User::class)->create([
+            'name' => 'Bart Simpson',
+            'email' => 'bart@lossimpsons.com'
+        ]);
+        $user1->notify(new SimpleNotification('Sample Notification 1'));
+        $user2->notify(new SimpleNotification('Sample Notification 2'));
     }
+}
 
-    if (!function_exists('map_simple_collection')) {
-        function map_simple_collection($collection)
-        {
-            return $collection->map(function ($item) {
-                return $item->mapSimple();
-            });
-        }
+if (!function_exists('map_simple_collection')) {
+    function map_simple_collection($collection)
+    {
+        return $collection->map(function ($item) {
+            return $item->mapSimple();
+        });
     }
 }

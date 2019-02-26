@@ -1,4 +1,5 @@
 <template>
+<div>
     <v-form action="/login" method="POST">
         <v-toolbar dark color="primary">
             <v-toolbar-title>Login</v-toolbar-title>
@@ -34,21 +35,24 @@
             ></v-text-field>
         </v-card-text>
         <v-card-actions>
-          <v-card-text class="ml-4"><a href="/home" class="grey--text">No recorda la contrasenya?</a></v-card-text>
+          <v-card-text class="ml-4"><a href="/home" class="grey--text text--lighten-1">No recorda la contrasenya?</a></v-card-text>
           <v-spacer></v-spacer>
           <v-btn color="primary" type="submit" :disabled="$v.$invalid">Login</v-btn>
         </v-card-actions>
-        <v-card-text class="grey lighten-1">
+    </v-form>
+    <div class="grey lighten-4">
+    <v-card-text>
       <v-container text-xs-center>
         <v-layout>
       <v-flex href="/login" xs12 text-xs-center>
-        <span class="white--text">No tens un compte?</span>
-        <a href="/register" class="indigo--text ml-2"><b> Registra't</b></a>
+        <span class="grey--text text--lighten-1">No tens cap compte?</span>
+        <a href="/register" class="grey--text text--darken-3 ml-2"><b>Registra't</b></a>
       </v-flex>
         </v-layout>
        </v-container>
     </v-card-text>
-    </v-form>
+   </div>
+</div>
 </template>
 
 <script>

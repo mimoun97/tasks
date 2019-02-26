@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-{{--TODO tags--}}
-
 @section('content')
 
     <v-container fluid>
@@ -12,4 +10,3 @@
         </v-layout>
     </v-container>
 @endsection
-{{-- :tasks={{ $tasks }} --}}

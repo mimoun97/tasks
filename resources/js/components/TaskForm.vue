@@ -4,7 +4,7 @@
         <v-switch v-model="completed" :label="completed ? 'Completada' : 'Pendent'"></v-switch>
 
         <v-textarea v-model="description" label="Descripció" hint="Escriu la descripció de la tasca..."></v-textarea>
-        <v-autocomplete v-model="user_id" :items="dataUsers" label="Usuari" item-text="name"></v-autocomplete>
+        <user-select v-model="user" :users="dataUsers" label="Usuari" @selected="updateUser"></user-select>
         <div class="text-xs-center">
             <v-btn @click="$emit('close')">
                 <v-icon class="mr-1">exit_to_app</v-icon>
@@ -42,6 +42,11 @@
             }
         },
         methods: {
+            updateUser(user) {
+                this.user = user
+                this.user_id = user.id
+                console.log(this.user)
+            },
             reset() {
                 this.task = {
                     'name': '',
