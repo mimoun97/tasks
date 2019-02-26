@@ -23,31 +23,25 @@
         </v-toolbar>
         <v-content>
             <section>
-                <v-parallax src="svg/pattern.svg" height="600">
+                <v-parallax src="img/sky.jpeg" height="600" width="auto">
                     <v-layout
                             column
                             align-center
                             justify-center
-                            class="white--text"
                     >
 
                         <img src="svg/logo.svg" alt="Vuetify.js" height="200">
-                        <h1 class="grey--text mb-2 display-2 text-xs-center">Mimoun Haddou</h1>
-                        
-                            <v-btn dark color="#6e5494"
+                        <h2 class="blue--text mb-2">Aplicació de tasques</h2>
+                        <div class="black--text headline mb-3 text-xs-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit by <b class="blues--text">Mimoun Haddou</b></div>
+                        <v-btn light large class="blue darken-1 white--text" href="/home">Get Started</v-btn>
+                        <v-btn dark color="#6e5494"
                                 class="mb-3"
                                 target="_blank"
                                 large round ripple
                                 href="https://github.com/mimoun1997/tasks"
-                            ><img src="/img/Octocat.png" alt="GitHub de mimoun1997" height="28" class="mr-2">GitHub</v-btn>
-                            <v-btn
-                                    class="green darken-3 mt-3"
-                                    dark
-                                    large
-                                    href="/home"
                             >
-                                Entrar
-                            </v-btn>
+                            <img src="/img/Octocat.png" alt="GitHub de mimoun1997" height="28" class="mr-2">GitHub
+                        </v-btn>
                     </v-layout>
                 </v-parallax>
             </section>
@@ -144,18 +138,11 @@
             </section>
 
             <section>
-                <v-parallax src="svg/pattern.svg" height="200">
+                <v-parallax src="img/team.jpeg" height="400">
                     <v-layout column align-center justify-center>
-                        <div class="headline grey--text mb-3 text-xs-center">Web development has never been easier</div>
-                        <em class="white--text text--darken-4">Kick-start your application today</em>
-                        <v-btn
-                                    class="green darken-3 mt-3"
-                                    dark
-                                    large
-                                    href="/home"
-                            >
-                                Entrar
-                        </v-btn>
+                        <div class="headline white--text mb-3 text-xs-center">Web development has never been easier</div>
+                        <em class="black--text text--darken-4">Kick-start your application today</em>
+                        <v-btn light large class="blue darken-1 white--text" href="/home">Get Started</v-btn>
                     </v-layout>
                 </v-parallax>
             </section>

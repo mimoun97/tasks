@@ -20,8 +20,9 @@
     <style>
         [v-cloak] > * { display:none; }
         [v-cloak]::before {
+            margin: 0 auto;
             content: "";
-            display: block;
+            display: flex;
             width: 72px;
             height: 72px;
             position: absolute;
