@@ -9,7 +9,8 @@
               <v-layout column  class="ml-3 mb-2">
                   <v-flex xs12 md12>
                     <v-avatar  size="48px" color="grey lighten-3">
-                      <v-icon size="46" color="white darken-4">person</v-icon>
+                      <img v-if="dataTask.user_gravatar" :src="dataTask.user_gravatar+'?s=48'">
+                      <img v-else src="/img/default.png" alt="avatar">
                     </v-avatar>
                   </v-flex>
                     <v-list-tile-content class="align-start grey--text text--darken-4">{{ dataTask.user_name }}</v-list-tile-content>
@@ -71,6 +72,7 @@ export default {
     },
     methods: {
         removeTask(task) {
+          console.log(task)
             this.$emit("removed", task)
         },
         updateTask(task) {

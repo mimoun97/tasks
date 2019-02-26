@@ -15,13 +15,13 @@
       return {
         items: [
           {
-            src: 'img/default.png'
+            src: 'img/program.jpeg'
           },
           {
-            src: 'img/Octocat.png'
+            src: 'img/sky.jpeg'
           },
           {
-            src: 'img/og-image.jpg'
+            src: 'img/sunset.jpeg'
           },
           {
             src: 'img/tests.gif'

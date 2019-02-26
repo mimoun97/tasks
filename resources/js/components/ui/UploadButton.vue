@@ -1,7 +1,7 @@
 <template>
   <v-btn color="success" dark class="btn btn-primary jbtn-file font-weight-light" round>
     {{ title }}
-    <input type="file" v-on:change="fileSelected">
+    <input type="file" v-on:change="fileSelected" accept="image/*">
   </v-btn>
 </template>
 

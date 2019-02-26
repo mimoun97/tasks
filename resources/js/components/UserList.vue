@@ -1,10 +1,11 @@
 <template>
   <v-list two-line>
     <template v-for="user in dataUsers">
-      <v-list-tile>
+      <v-list-tile :key="user.id">
         <v-list-tile-avatar>
           <v-avatar :title="user.name">
-            <img :src="user.avatar" alt="avatar">
+            <img v-if="user.gravatar" :src="user.gavatar" alt="avatar">
+            <img v-else src="/img/default.png" alt="avatar">
           </v-avatar>
         </v-list-tile-avatar>
         <v-list-tile-content>
@@ -31,7 +32,8 @@ export default {
     }
   },
   created() {
-    if (this.users) this.dataUsers = this.users;
+    console.log(user)
+    if (this.users) this.dataUsers = this.users
     else {
       window.axios
         .get("/api/v1/users")
@@ -40,7 +42,7 @@ export default {
         })
         .catch(error => {
           console.log(error);
-          this.$snackbar.showError(error)
+          this.$snackbar.showError(error);
         });
     }
   }
