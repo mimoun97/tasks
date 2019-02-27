@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Log;
-use App\Events\TaskUncompleted;
 use App\Task;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Events\TaskUncompleted;
+use App\Events\Tasks\TaskCompleted;
 use Illuminate\Support\Facades\Mail;
-use App\Events\TaskCompleted;
 
 class CompletedTasksController
 {

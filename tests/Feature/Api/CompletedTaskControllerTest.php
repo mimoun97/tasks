@@ -2,13 +2,9 @@
 
 namespace Tests\Feature\Api;
 
-use App\Log;
 use App\Task;
 use Tests\TestCase;
-use App\Events\TaskCompleted;
-use App\Mail\TaskUncompleted;
 use Tests\Feature\Traits\CanLogin;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -30,7 +26,7 @@ class CompletedTaskControllerTest extends TestCase
         ]);
         //2
         Event::fake();
-        Event::assertNotDispatched(\App\Events\TaskCompleted::class);
+        Event::assertNotDispatched(\App\Events\Tasks\TaskCompleted::class);
 
         $response = $this->json('POST', '/api/v1/completed_task/' . $task->id);
         $response->assertSuccessful();
@@ -41,7 +37,7 @@ class CompletedTaskControllerTest extends TestCase
         $this->assertEquals($task->completed, true);
 
         
-        Event::assertDispatched(\App\Events\TaskCompleted::class, function ($event) use ($task) {
+        Event::assertDispatched(\App\Events\Tasks\TaskCompleted::class, function ($event) use ($task) {
             return $event->task->id === $task->id;
         });
     }
