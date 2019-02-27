@@ -33,7 +33,7 @@ class SimpleNotificationsControllerTest extends TestCase
             'user' => $user->id,
             'title' => 'Prova de notificació'
         ]);
-        dd($response);
+        //dd($response);
         $response->assertSuccessful();
         Notification::assertSentTo(
             $user,

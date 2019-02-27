@@ -3,8 +3,10 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\TasksTagsController;
 use App\Http\Controllers\Api\Changelog\ChangelogController;
+use App\Http\Controllers\Api\Notifications\NotificationsController;
+use App\Http\Controllers\Api\Notifications\UserNotificationsController;
 use App\Http\Controllers\Api\Notifications\SimpleNotificationsController;
-use Laravel\Telescope\Http\Controllers\NotificationsController;
+use App\Http\Controllers\Api\Notifications\UserUnreadNotificationsController;
 
 /*
 |--------------------------------------------------------------------------

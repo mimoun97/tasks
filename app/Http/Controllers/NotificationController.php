@@ -17,7 +17,6 @@ class NotificationController extends Controller
      */
     public function index(NotificationsIndex $request)
     {
-        dd('Hola!');
         $notifications = collect([]);
         $users = collect([]);
         if ($request->user()->can('notifications.index')) {

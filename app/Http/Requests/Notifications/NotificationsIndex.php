@@ -6,10 +6,11 @@ use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class SimpleNotificationsStore
+ * Class NotificationsIndex.
+ *
  * @package App\Http\Requests
  */
-class SimpleNotificationsStore extends FormRequest
+class NotificationsIndex extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,7 +19,7 @@ class SimpleNotificationsStore extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->can('notifications.simple.store');
+        return Auth::user()->can('notifications.index');
     }
 
     /**
@@ -28,9 +29,6 @@ class SimpleNotificationsStore extends FormRequest
      */
     public function rules()
     {
-        return [
-            'user' => 'required',
-            'title' => 'required|max:140'
-        ];
+        return [];
     }
 }
