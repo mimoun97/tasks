@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     info() {
-      return this.getConnection();
+      return this.getConnection() || "No connected"
     }
   }
 };

@@ -45,6 +45,9 @@ import Carrusel from './components/ui/Carrusel'
 //progress bar
 import VueProgressBar from 'vue-progressbar'
 
+//device features geo, vibration, orientation..
+import TheDeviceFeatures from './components/device/TheDeviceFeatures'
+
 window.Vue = Vue
 window.Vuetify = Vuetify
 
@@ -223,6 +226,8 @@ window.Vue.component('empty-state', EmptyState)
 window.Vue.component('footer-app', FooterApp)
 //carrusel captures
 window.Vue.component('carrusel', Carrusel)
+//devices section
+window.Vue.component('the-device-features', TheDeviceFeatures)
 
 
 // eslint-disable-next-line no-unused-vars

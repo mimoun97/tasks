@@ -1,7 +1,8 @@
 <template>
-  <div class="primary--text grey lighten-4">
+  <div>
+    <p class="title">Battery Status</p>
     <p>Current theoretical network type is
-      <b v-if="info.type">{{ info.type }}</b>.
+      <b>{{ info.type }}</b>.
     </p>
     <p>Current effective network type is
       <b>{{ info.effectiveType }}</b>.
@@ -32,7 +33,7 @@ export default {
   },
   computed: {
     info() {
-      return this.getConnection();
+      return this.getConnection()
     }
   }
 };

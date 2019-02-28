@@ -3,14 +3,16 @@
     <v-card flat tile class="grey darken-1 white--text text-xs-center">
       <v-card-text>
         <v-btn
-          v-for="icon in icons"
-          :key="icon"
+          v-ripple="{ class: 'white--text' }"
+          v-for="item in social"
+          :key="item"
           class="mx-3 white--text"
-          dark
           color="grey lighten-3"
+          dark
           icon
+          large
         >
-          <img style="width:24px;height:24px;" :src="icon">
+          <img style="width:36px;height:36px;" :src="item">
         </v-btn>
       </v-card-text>
 
@@ -62,7 +64,7 @@
 <script>
 export default {
   data: () => ({
-    icons: [
+    social: [
       "/svg/facebook-box.svg",
       "/svg/google-plus.svg",
       "/svg/linkedin-box.svg",

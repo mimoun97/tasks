@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/device-features', function () {
+    return view('device');
+});
+
 //midleware auth
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/tasks', 'TasksController@index');

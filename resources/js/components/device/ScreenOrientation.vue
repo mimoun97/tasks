@@ -1,5 +1,5 @@
 <template>
-    
+    <p class="title">Screen Orientation</p>
 </template>
 
 <script>
