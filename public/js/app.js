@@ -7663,13 +7663,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -54510,43 +54503,6 @@ var render = function() {
     "v-footer",
     { attrs: { dark: "", height: "auto" } },
     [
-      _c(
-        "v-card",
-        [
-          _c(
-            "v-flex",
-            { attrs: { xs12: "", md12: "" } },
-            [
-              _c(
-                "v-btn",
-                {
-                  attrs: { color: "primary", dark: "" },
-                  on: { click: _vm.start }
-                },
-                [_vm._v("START")]
-              ),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                { attrs: { color: "red", dark: "" }, on: { click: _vm.fail } },
-                [_vm._v("FAIL")]
-              ),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  attrs: { color: "warning", dark: "" },
-                  on: { click: _vm.finish }
-                },
-                [_vm._v("FINISH")]
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
       _c(
         "v-card",
         {

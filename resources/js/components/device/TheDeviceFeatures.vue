@@ -1,7 +1,7 @@
 <template>
-    <v-card>
-        <network-type-speed />
-    </v-card>
+  <v-card>
+    <network-type-speed/>
+  </v-card>
 </template>
 
 <script>
@@ -11,7 +11,8 @@ export default {
     "battery-status": BatteryStatus,
     "online-offline": OnlineOffline,
     "network-type-speed": NetworkTypeSpeed,
-    "screen-orientation": ScreenOrientation
+    "screen-orientation": ScreenOrientation,
+    "geolocation": Geolocation
   },
   data() {
     return {
@@ -30,13 +31,12 @@ export default {
     }
   },
   computed: {
-      info () {
-          return this.getConnection()
-      }
+    info() {
+      return this.getConnection();
+    }
   },
   created() {
-    /**Informació de la bateria
-Estat: online/offline
+    /**
 Network type and speed
 Device memory
 GEOLOCATION: GPS
