@@ -41,6 +41,7 @@
 <div id="app" v-cloak>
     <v-app>
         <snackbar></snackbar>
+        <vue-progress-bar></vue-progress-bar>
         <service-worker></service-worker>
         <navigation v-model="drawer"></navigation>
         <navigation-right v-model="drawerRigth" csrf-token="{{ csrf_token()}}"></navigation-right>

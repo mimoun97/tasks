@@ -1,0 +1,91 @@
+<template>
+  <div class="primary--text grey lighten-4">
+    <p>Current theoretical network type is
+      <b v-if="info.type">{{ info.type }}</b>.
+    </p>
+    <p>Current effective network type is
+      <b>{{ info.effectiveType }}</b>.
+    </p>
+    <p>Current max downlink speed is
+      <b>{{ info.downlinkMax }}</b>.
+    </p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "BatteryStatus",
+  data() {
+    return {
+      dataInfo: info
+    };
+  },
+  methods: {
+    getConnection() {
+      return (
+        navigator.connection ||
+        navigator.mozConnection ||
+        navigator.webkitConnection ||
+        navigator.msConnection
+      );
+    }
+  },
+  computed: {
+    info() {
+      return this.getConnection();
+    }
+  }
+};
+</script>
+
+<style>
+</style>
+/**
+if ('getBattery' in navigator || ('battery' in navigator && 'Promise' in window)) {
+  var target = document.getElementById('target');
+
+  function handleChange(change) {
+    var timeBadge = new Date().toTimeString().split(' ')[0];
+    var newState = document.createElement('p');
+    newState.innerHTML = '<span class="badge">' + timeBadge + '</span> ' + change + '.';
+    target.appendChild(newState);
+  }
+  
+  function onChargingChange() {
+    handleChange('Battery charging changed to <b>' + (this.charging ? 'charging' : 'discharging') + '</b>')
+  }
+  function onChargingTimeChange() {
+    handleChange('Battery charging time changed to <b>' + this.chargingTime + ' s</b>');
+  }
+  function onDischargingTimeChange() {
+    handleChange('Battery discharging time changed to <b>' + this.dischargingTime + ' s</b>');
+  }
+  function onLevelChange() {
+    handleChange('Battery level changed to <b>' + this.level + '</b>');
+  }
+
+  var batteryPromise;
+  
+  if ('getBattery' in navigator) {
+    batteryPromise = navigator.getBattery();
+  } else {
+    batteryPromise = Promise.resolve(navigator.battery);
+  }
+  
+  batteryPromise.then(function (battery) {
+    document.getElementById('charging').innerHTML = battery.charging ? 'charging' : 'discharging';
+    document.getElementById('chargingTime').innerHTML = battery.chargingTime + ' s';
+    document.getElementById('dischargingTime').innerHTML = battery.dischargingTime + ' s';
+    document.getElementById('level').innerHTML = battery.level;
+    
+    battery.addEventListener('chargingchange', onChargingChange);
+    battery.addEventListener('chargingtimechange', onChargingTimeChange);
+    battery.addEventListener('dischargingtimechange', onDischargingTimeChange);
+    battery.addEventListener('levelchange', onLevelChange);
+  });
+}
+
+v-html="<p>Initial battery status was <b id="charging">unknown</b>, charging time <b id="chargingTime">unknown</b>, discharging time <b id="dischargingTime">unknown</b>, level <b id="level">unknown</b>.</p>
+
+<div id="target"></div>"
+ */

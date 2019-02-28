@@ -1,5 +1,12 @@
 <template>
   <v-footer dark height="auto">
+    <v-card>
+      <v-flex xs12 md12>
+        <v-btn @click="start" color="primary" dark>START</v-btn>
+        <v-btn @click="fail" color="red" dark>FAIL</v-btn>
+        <v-btn @click="finish" color="warning" dark>FINISH</v-btn>
+      </v-flex>
+    </v-card>
     <v-card flat tile class="grey darken-1 white--text text-xs-center">
       <v-card-text>
         <v-btn

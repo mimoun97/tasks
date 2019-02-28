@@ -38,7 +38,6 @@
         @yield('content')
     </v-app>
     <share-fab></share-fab>
-
     <footer-app></footer-app>
 
 </div>

@@ -42,6 +42,9 @@ import EmptyState from './components/ui/EmptyState'
 import FooterApp from './components/ui/FooterApp'
 import Carrusel from './components/ui/Carrusel'
 
+//progress bar
+import VueProgressBar from 'vue-progressbar'
+
 window.Vue = Vue
 window.Vuetify = Vuetify
 
@@ -169,6 +172,21 @@ window.Vue.use(permissions)
 window.Vue.use(snackbar)
 window.Vue.use(confirm)
 window.Vue.use(TreeView)
+//progressbar
+const progress_options = {
+  color: '#1992d4',
+  failedColor: '#CF1124',
+  thickness: '5pt',
+  transition: {
+    speed: '0.2s',
+    opacity: '0.6s',
+    termination: 300
+  },
+  autoRevert: true,
+  location: 'top',
+  inverse: false
+}
+Vue.use(VueProgressBar, progress_options)
 
 window.Vue.component('example-component', ExampleComponent)
 window.Vue.component('tasks', Tasks)
