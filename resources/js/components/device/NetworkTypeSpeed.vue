@@ -21,7 +21,7 @@ export default {
   name: "NetworkTypeSpeed",
   data() {
     return {
-      dataInfo: this.info
+      dataInfo: this.info || {}
     };
   },
   methods: {

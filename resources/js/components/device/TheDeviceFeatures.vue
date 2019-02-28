@@ -1,16 +1,27 @@
 <template>
-  <v-layout row>
-    <v-card>
+<v-container>
+  <v-layout row fill-height>
+      <div class="title">
+        <li>Informació de la bateria</li>
+        <li>Estat: online/offline</li>
+        <li>Network type and speed</li>
+        <li>Device memory</li>
+        <li>GEOLOCATION: GPS</li>
+        <li>Screen Orientation</li>
+        <li>Vibrar el mòbil </li>
+</div>
       <v-flex xs12>
         <v-card-text>
           <battery-status/>
         </v-card-text>
       </v-flex>
+      <v-divider></v-divider>
       <v-flex xs12>
         <v-card-text>
           <online-state/>
         </v-card-text>
       </v-flex>
+      <v-divider></v-divider>
       <v-flex xs12>
         <v-card-text>
           <network-type-speed/>
@@ -18,14 +29,22 @@
       </v-flex>
       <v-flex xs12>
         <v-card-text>
+          <device-memory/>
+        </v-card-text>
+      </v-flex>
+      <v-divider></v-divider>
+      <v-flex xs12>
+        <v-card-text>
           <screen-orientation/>
         </v-card-text>
       </v-flex>
+      <v-divider></v-divider>
       <v-flex xs12>
         <v-card-text>
           <geolocation/>
         </v-card-text>
       </v-flex>
+      <v-divider></v-divider>
       <v-flex xs12>
         <v-card-text>
           <vibration/>
@@ -33,6 +52,7 @@
       </v-flex>
     </v-card>
   </v-layout>
+</v-container>
 </template>
 
 <script>
@@ -42,6 +62,7 @@ import NetworkTypeSpeed from "./NetworkTypeSpeed.vue";
 import ScreenOrientation from "./ScreenOrientation.vue";
 import Geolocation from "./Geolocation.vue";
 import Vibration from "./Vibration.vue";
+import DeviceMemory from "./DeviceMemory";
 
 export default {
   name: "TheDeviceFeatures",
@@ -51,7 +72,8 @@ export default {
     "network-type-speed": NetworkTypeSpeed,
     "screen-orientation": ScreenOrientation,
     "geolocation": Geolocation,
-    "vibration": Vibration
+    "vibration": Vibration,
+    "device-memory": DeviceMemory
   }
 };
 </script>

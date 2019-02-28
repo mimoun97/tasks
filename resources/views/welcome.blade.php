@@ -37,7 +37,7 @@
                         <v-btn dark color="#6e5494"
                                 class="mb-3"
                                 target="_blank"
-                                large round ripple
+                                large round v-ripple
                                 href="https://github.com/mimoun1997/tasks"
                             >
                             <img src="/img/Octocat.png" alt="GitHub de mimoun1997" height="28" class="mr-2">GitHub

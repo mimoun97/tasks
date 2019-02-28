@@ -1,15 +1,38 @@
 <template>
-    <p class="title">Screen Orientation</p>
+  <div>
+    <v-flex xs12>
+      <p class="title">Screen Orientation</p>
+    </v-flex>
+    <div id="device"></div>
+
+    <p>
+      Current screen orientation is
+      <b id="orientationType">unknown</b>.
+    </p>
+
+    <v-btn color="red" dark id="lock">
+      <v-icon class="mr-3">{{ orientation ? 'orientation_landscape' : 'orientation_portrait'}}</v-icon>in current orientation
+    </v-btn>
+    <v-btn color="grey" dark id="unlock">
+      <v-icon class="mr-3">orientation_lock</v-icon>Release the lock
+    </v-btn>
+
+    <p id="logTarget"></p>
+  </div>
 </template>
 
 <script>
 export default {
-
-}
+  name: "ScreenOrientation",
+  data: function() {
+    return {
+      orientation: false
+    };
+  }
+};
 </script>
 
 <style>
-
 </style>
 /**
 var app = new Vue({
