@@ -1,13 +1,17 @@
 <template>
-  <div class="primary--text grey lighten-4">
-    <p>Current theoretical network type is
-      <b v-if="info.type">{{ info.type }}</b>.
+  <div>
+    <p class="title">Network type Speed</p>
+    <p>
+      Current theoretical network type is
+      <b>{{ dataInfo.type || 'undefined'}}</b>.
     </p>
-    <p>Current effective network type is
-      <b>{{ info.effectiveType }}</b>.
+    <p>
+      Current effective network type is
+      <b>{{ dataInfo.effectiveType || 'undefined' }}</b>.
     </p>
-    <p>Current max downlink speed is
-      <b>{{ info.downlinkMax }}</b>.
+    <p>
+      Current max downlink speed is
+      <b>{{ dataInfo.downlinkMax || 'undefined'}}</b>.
     </p>
   </div>
 </template>
@@ -17,7 +21,7 @@ export default {
   name: "NetworkTypeSpeed",
   data() {
     return {
-      dataInfo: info
+      dataInfo: this.info
     };
   },
   methods: {
@@ -28,12 +32,18 @@ export default {
         navigator.webkitConnection ||
         navigator.msConnection
       );
+    },
+    handle: function() {
+      this.dataInfo = this.getConnection()
     }
   },
   computed: {
-    info() {
-      return this.getConnection() || "No connected"
+    info:function () {
+      return this.getConnection();
     }
+  },
+  created: function() {
+    navigator.connection.addEventListener("change", this.handle);
   }
 };
 </script>

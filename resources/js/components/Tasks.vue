@@ -3,29 +3,30 @@
     <v-layout column row wrap>
       <v-flex xs12>
         <v-card>
-          <v-card-title dark class="display-2 indigo--text roboto" color="primary">
-            <span v-if="filter">
-              Tasques
-              <b>({{totalFiltered}})</b>
-            </span>
-            <span v-else>
-              Tasques
-              <b>({{total}})</b>
-            </span>
-          </v-card-title>
+          <v-flex xs12>
+            <v-card-title dark class="display-2 indigo--text roboto" color="primary">
+              <span v-if="filter">
+                Tasques
+                <b>
+                  ({{totalFiltered}}/
+                  <b>{{total}})</b>
+                </b>
+              </span>
+              <span v-else>
+                Tasques
+                <b>({{total}})</b>
+              </span>
+            </v-card-title>
+          </v-flex>
           <v-card-text class="xs12">
-            <div>
-              <v-flex id="filters" v-show="total > 0">
+            <div row>
+              <v-flex id="filters" v-show="total > 0" xs12>
                 <v-card raised row d-inline-block dark class="indigo darken-1">
-                  <v-card-title
-                    primary-title
-                    class="justify-center display-1 pl-12 pt-2 pb-0"
-                  >Filtros:</v-card-title>
-                  <v-card-text class="headline pt-0">
+                  <v-card-text class="headline">
                     Filtre activat:
                     <b :class="colorFiltre">"{{ filter }}"</b>
                   </v-card-text>
-                  <v-card-actions class="justify-center pt-0 pb-2">
+                  <v-card-actions class="justify-center">
                     <v-btn @click="setFilter('all')">Totes</v-btn>
                     <v-btn class="green" @click="setFilter('completed')">Completades</v-btn>
                     <v-btn class="orange" @click="setFilter('active')">Pendents</v-btn>
@@ -43,28 +44,23 @@
             <v-list dense>
               <v-list-tile v-for="task in filteredTasks" :key="task.id">
                 <v-list-tile-content>
-                  <v-list-tile-title>
-                    <div>
-                      <span
-                        class="indigo--text"
-                        :id="'task' + task.id"
-                        :class="{ strike: task.completed }"
-                      >
-                        <editable-text
-                          :class="{ 'orange--text': !task.completed }"
-                          class="black--text"
-                          :text="task.name"
-                          @edited="editName(task, $event)"
-                        ></editable-text>
-                      </span>
-                      <span @click="remove(task)">
-                        <v-icon color="error">delete</v-icon>
-                      </span>
-                      <span type="checkbox" name="checked" @click="toggle(task)">
-                        <v-icon v-if="task.completed" color="green">check_box</v-icon>
-                        <v-icon v-else color="orange">check_box_outline_blank</v-icon>
-                      </span>
-                    </div>
+                  <v-list-tile-title
+                    :id="'task' + task.id"
+                    :class="{ strike: task.completed && editing}"
+                  >
+                    <editable-text
+                      :class="{ 'orange--text': !task.completed }"
+                      :text="task.name"
+                      @editing="editing=true"
+                      @edited="editName(task, $event)"
+                    ></editable-text>
+                    <v-btn icon @click="remove(task)">
+                      <v-icon color="error">delete</v-icon>
+                    </v-btn>
+                    <v-btn icon type="checkbox" name="checked" @click="toggle(task)">
+                      <v-icon v-if="task.completed" color="green">check_box</v-icon>
+                      <v-icon v-else color="orange">check_box_outline_blank</v-icon>
+                    </v-btn>
                   </v-list-tile-title>
                 </v-list-tile-content>
               </v-list-tile>
@@ -102,6 +98,7 @@ export default {
   },
   data() {
     return {
+      editing: false,
       filter: "all", // All Completed Active
       newTask: "",
       dataTasks: this.tasks,
