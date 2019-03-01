@@ -1,6 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/manifest.js": "/js/manifest.js",
+    "/js/vendor.js": "/js/vendor.js",
     "/img/capturatasks.PNG": "/img/capturatasks.PNG",
     "/img/default.png": "/img/default.png",
     "/img/favicon-16x16.png": "/img/favicon-16x16.png",

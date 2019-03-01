@@ -45,6 +45,7 @@
                 :class="`${hover ? 'blue' : 'white'}--text`"
                 href="https://vuetifyjs.com"
                 target="_blank"
+                rel="noopener"
               >Vuetify</a>
             </v-hover>
             <span>and</span>

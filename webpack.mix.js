@@ -25,11 +25,18 @@ mix.js('resources/js/app.js', 'public/js').then( () => {
    })
 })
    .sass('resources/sass/app.scss', 'public/css')
-   .copy('resources/img/*.*','public/img/');
+   .copy('resources/img/*.*','public/img/')
+   .sourceMaps(false) //no source maps in production
+   .extract(); // manifest, vendor (llibreries [no s'actualitza == package.json]), app (our code si que cambia), 
 
 
 if (mix.inProduction()) {
-   console.info("In mode production, adding service-worker.js")
+   mix.version();
+}
+
+
+if (mix.inProduction()) {
+   console.info("In mode production (with service-worker.js)")
    mix.webpackConfig({
       plugins: [
          // Options: https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin

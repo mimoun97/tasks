@@ -9,9 +9,11 @@
     <meta name="user" content="{{ logged_user() }}">
     <meta name="git" content="{{ git() }}">
     <meta name="impersonatedBy" content="{{ Auth::user()->impersonatedBy() }}">
+
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/ico" size="16x16" href="/img/favicon-16x16.png">
     <link rel="icon" type="image/ico" size="32x32" href="/img/favicon-32x32.png">
+
     <meta property="og:image:height" content="503">
     <meta property="og:image:width" content="961">
     <meta property="og:description" content="Aplicaci&oacute; tasques">
@@ -21,8 +23,15 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@mimoun_97" />
     <meta name="twitter:creator" content="@mimoun_97" />
+
     <link rel="stylesheet" href="/css/tailwind.min.css" type="text/css">
+
+    <script defer src="{{ mix('/js/manifest.js') }}"></script>
+    <script defer src="{{ mix('/js/vendor.js') }}"></script>
+    <script defer src="{{ mix('/js/app.js') }}"></script>
+
     <title>@yield('title','App Tasques')</title>
+
     <style>
         [v-cloak] > * { display:none; }
         [v-cloak]::before {
@@ -55,8 +64,11 @@
             <notifications-widget></notifications-widget>
 
             {{-- <v-toolbar-side-icon @click.stop="drawerRigth = !drawerRigth"></v-toolbar-side-icon> --}}
-            <v-avatar v-ripple="{ class: 'primary--text' }" @click.stop="drawerRight = !drawerRight" title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">
-                <img @click.stop="drawerRigth = !drawerRigth" src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}git?s=48" alt="avatar" />
+            <v-avatar v-ripple="{ class: 'primary--text' }" @click.stop="drawerRigth = !drawerRigth" title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">
+            <picture>
+                <source srcset="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}.webp?s=48" type="image/webp">
+                <img src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}.jpg?s=48" alt="avatar" />
+            </picture>
             </v-avatar>
 
         </v-toolbar>
@@ -66,6 +78,5 @@
 
     </v-app>
 </div>
-<script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>

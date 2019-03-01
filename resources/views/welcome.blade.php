@@ -37,10 +37,14 @@
                         <v-btn dark color="#6e5494"
                                 class="mb-3"
                                 target="_blank"
+                                rel="noopener"
                                 large round v-ripple
                                 href="https://github.com/mimoun1997/tasks"
                             >
-                            <img src="/img/Octocat.png" alt="GitHub de mimoun1997" height="28" class="mr-2">GitHub
+                            <picture>
+                                <source srcset="/img/Octocat.webp" type="image/webp">
+                                <img src="/img/Octocat.png" alt="GitHub de mimoun1997" height="28" class="mr-2">GitHub
+                            </picture>
                         </v-btn>
                     </v-layout>
                 </v-parallax>
