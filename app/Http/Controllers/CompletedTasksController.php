@@ -11,14 +11,14 @@ class CompletedTasksController extends Controller
 {
     public function store(Task $task)
     {
-    	$task->complete();
+        $task->complete();
 
         return redirect('/tasks');
     }
 
     public function destroy(Task $task)
     {
-    	$task->incomplete();
+        $task->incomplete();
 
         return redirect()->back();
     }

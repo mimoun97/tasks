@@ -1,10 +1,10 @@
 <template>
   <v-autocomplete
-    :read-only="readOnly"
+    :readonly="readOnly"
     :items="dataUsers"
     v-model="selectedUser"
     :item_value="itemValue"
-    clearable
+    :clearable="!readOnly"
     :label="label"
   >
     <template slot="selection" slot-scope="data">

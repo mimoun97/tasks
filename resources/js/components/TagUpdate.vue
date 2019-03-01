@@ -5,38 +5,47 @@
       :fullscreen="$vuetify.breakpoint.smAndDown"
       hide-overlay
       transition="dialog-bottom-transition"
+      @keydown.esc="dialog=false"
     >
-      <v-toolbar color="primary accent-1" class="white--text">
+      <v-toolbar color="primary accent-2" class="white--text">
         <v-btn flat icon class="white--text" @click="dialog=false">
           <v-icon class="mr-1">close</v-icon>
         </v-btn>
-        <v-toolbar-title class="white--text">Crear Tasca</v-toolbar-title>
+        <v-toolbar-title class="white--text">Editar Etiqueta</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn flat class="white--text" @click="dialog=false">
           <v-icon class="mr-1">exit_to_app</v-icon>Sortir
         </v-btn>
+        <!--TODO-->
         <v-btn flat class="white--text">
-          <v-icon class="mr-1">save</v-icon>Afegir
+          <v-icon class="mr-1">save</v-icon>Guardar
         </v-btn>
       </v-toolbar>
       <v-card>
         <v-card-text>
-          <task-form :users="users" @close="dialog=false" @create="created"></task-form>
+          <tag-update-form :tag="tag" @close="dialog=false" @updated="updated"></tag-update-form>
         </v-card-text>
       </v-card>
     </v-dialog>
-    <v-btn @click="dialog = true" fab bottom right fixed color="red darken-1" class="white--text">
-      <v-icon>add</v-icon>
+    <v-btn
+      v-if="$can('tags.update',tag)"
+      icon
+      color="success"
+      flat
+      title="Canviar la tasca"
+      @click="dialog=true"
+    >
+      <v-icon>edit</v-icon>
     </v-btn>
   </span>
 </template>
 
 <script>
-import TaskForm from "./TaskForm";
+import TagUpdateForm from "./TagUpdateForm";
 export default {
-  name: "TaskCreate",
+  name: "TagUpdate",
   components: {
-    "task-form": TaskForm
+    "tag-update-form": TagUpdateForm
   },
   data() {
     return {
@@ -44,15 +53,14 @@ export default {
     };
   },
   props: {
-    users: {
-      type: Array,
+    tag: {
+      type: Object,
       required: true
     }
   },
   methods: {
-    created(tags) {
-      this.$emit("created", task);
-      this.dialog = false
+    updated(tag) {
+      this.$emit("updated", tag);
     }
   }
 };

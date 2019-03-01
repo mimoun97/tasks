@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
     "/img/capturatasks.PNG": "/img/capturatasks.PNG",
     "/img/default.png": "/img/default.png",
     "/img/favicon-16x16.png": "/img/favicon-16x16.png",
@@ -10,11 +11,5 @@
     "/img/sky.jpeg": "/img/sky.jpeg",
     "/img/team.jpeg": "/img/team.jpeg",
     "/img/tests.gif": "/img/tests.gif",
-    "/img/tests2.gif": "/img/tests2.gif",
-    "/js/app.8b0d9b9ed5eec111e49d.hot-update.js": "/js/app.8b0d9b9ed5eec111e49d.hot-update.js",
-    "/js/app.4d2660d1df55a07e19d0.hot-update.js": "/js/app.4d2660d1df55a07e19d0.hot-update.js",
-    "/js/app.f1e11da7a3b230b6c736.hot-update.js": "/js/app.f1e11da7a3b230b6c736.hot-update.js",
-    "/js/app.1ebedea680e25d148a32.hot-update.js": "/js/app.1ebedea680e25d148a32.hot-update.js",
-    "/js/app.39509abb40b700f80d30.hot-update.js": "/js/app.39509abb40b700f80d30.hot-update.js",
-    "/js/app.7c5e3fd62afee1bfe239.hot-update.js": "/js/app.7c5e3fd62afee1bfe239.hot-update.js"
+    "/img/tests2.gif": "/img/tests2.gif"
 }

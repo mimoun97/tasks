@@ -1,6 +1,6 @@
 <template>
     <span>
-        <v-dialog v-model="dialog" :fullscreen="$vuetify.breakpoint.xsOnly" hide-overlay transition="dialog-bottom-transition" @keydown.esc.stop.prevent="dialog=false">
+        <v-dialog v-model="dialog" :fullscreen="$vuetify.breakpoint.smAndDown" hide-overlay transition="dialog-bottom-transition" @keydown.esc.stop.prevent="dialog=false">
             <v-toolbar color="primary accent-1" class="white--text">
             <v-btn flat icon class="white--text" @click="dialog=false">
                 <v-icon>close</v-icon>
@@ -14,12 +14,12 @@
         </v-toolbar>
             <v-card>
                 <v-card-text>
-                    <task-show-form :task="task" :users="users"></task-show-form>
+                    <task-show-form :task="task" :users="users" :uri="uri"></task-show-form>
                 </v-card-text>
             </v-card>
         </v-dialog>
 
-        <v-btn icon color="primary" flat title="Mostrar la tasca"
+        <v-btn icon v-can="'tasks.index'" color="primary" flat title="Mostrar la tasca"
                @click="dialog=true">
             <v-icon>visibility</v-icon>
         </v-btn>
@@ -46,6 +46,10 @@ export default {
     },
     users: {
       type: Array,
+      required: true
+    },
+    uri: {
+      type: String,
       required: true
     }
   }
