@@ -19,7 +19,7 @@
               </v-layout>
               <v-layout column align-end justify-space-between>
                 <v-flex mb-2>
-                  <task-show :users="users" :task="dataTask"></task-show> 
+                  <task-show :users="users" :task="dataTask" :uri="uri"></task-show> 
                 </v-flex>
                 <v-flex mb-2>
                   <task-update :users="users" :task="dataTask" @updated="updateTask" :uri="uri"></task-update>

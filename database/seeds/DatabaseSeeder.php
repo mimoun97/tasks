@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             TagSeeder::class,
-            TaskSeeder::class,
+            //TaskSeeder::class,
             UserSeeder::class
         ]);
 

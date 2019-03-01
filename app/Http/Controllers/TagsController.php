@@ -15,7 +15,7 @@ class TagsController extends Controller
      */
     public function index(TagsIndex $request)
     {
-        $tags = map_collection(Tag::all());
+        $tags = map_collection(Tag::orderBy('created_at', 'desc')->get());
         return view('tags', [
             'tags' => $tags
         ]);

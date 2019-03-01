@@ -36,16 +36,14 @@ class TasquesController extends Controller
             $tasks = map_collection($tasks);
             $uri = '/api/v1/user/tasks';
         }
-        $users = User::all();
-        // $users = Cache::remember(User::USERS_CACHE_KEY, '10', function () {
-        //     User::all();
-        // });
-        $tags = Tag::all();
-        // $tags = Cache::remember(Tag::TAGS_CACHE_KEY, '10', function () {
-        //     Tag::all();
-        // });
-        //Debugbar::info($tags);
-        //Debugbar::info($users);
+
+        $users = Cache::remember(User::USERS_CACHE_KEY, '10', function () {
+            return User::with(['roles', 'permissions'])->orderBy('name')->get();
+        });
+        $tags = Cache::remember(Tag::TAGS_CACHE_KEY, '10', function () {
+            return map_collection(Tag::orderBy('created_at', 'desc')->get());
+        });
+
         return view('tasques', compact('tasks', 'users', 'uri', 'tags'));
     }
 }

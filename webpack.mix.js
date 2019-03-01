@@ -28,15 +28,16 @@ mix.js('resources/js/app.js', 'public/js').then( () => {
    .copy('resources/img/*.*','public/img/');
 
 
-// if (mix.inProduction()) {
-mix.webpackConfig({
-   plugins: [
-      // Options: https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin
-      new workboxPlugin.InjectManifest({
-         swSrc: 'public/src-sw.js', // more control over the caching
-         swDest: 'service-worker.js', // the service-worker file name
-         importsDirectory: 'service-worker', // have a dedicated folder for sw files
-      })
-   ]
-})
-// }
+if (mix.inProduction()) {
+   console.info("In mode production, adding service-worker.js")
+   mix.webpackConfig({
+      plugins: [
+         // Options: https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin
+         new workboxPlugin.InjectManifest({
+            swSrc: 'public/src-sw.js', // more control over the caching
+            swDest: 'service-worker.js', // the service-worker file name
+            importsDirectory: 'service-worker', // have a dedicated folder for sw files
+         })
+      ]
+   })
+}

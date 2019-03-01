@@ -11,42 +11,41 @@
         <v-btn flat icon class="white--text" @click="dialog=false">
           <v-icon>close</v-icon>
         </v-btn>
-        <v-toolbar-title class="white--text">Crear Etiqueta</v-toolbar-title>
+        <v-toolbar-title class="white--text">Mostrar la etiqueta</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn flat class="white--text" @click="dialog=false">
           <v-icon class="mr-1">exit_to_app</v-icon>Sortir
         </v-btn>
-        <v-btn flat class="white--text">
-          <v-icon class="mr-1">save</v-icon>Afegir
-        </v-btn>
       </v-toolbar>
       <v-card>
         <v-card-text>
-          <tags-form @close="dialog=false" @created="created"></tags-form>
+          <tag-show-form :tag="tag"></tag-show-form>
         </v-card-text>
       </v-card>
     </v-dialog>
-    <v-btn @click="dialog = true" fab bottom right fixed color="pink" class="white--text">
-      <v-icon>add</v-icon>
+
+    <v-btn icon color="primary" flat title="Mostrar l'etiqueta" @click="dialog=true">
+      <v-icon>visibility</v-icon>
     </v-btn>
   </span>
 </template>
 
 <script>
-import TagsForm from "./TagsForm";
+import TagShowForm from "./TagShowForm";
 export default {
-  name: "TagsCreate",
+  name: "TagShow",
   components: {
-    "tags-form": TagsForm
+    "tag-show-form": TagShowForm
   },
   data() {
     return {
       dialog: false
     };
   },
-  methods: {
-    created(tags) {
-      this.$emit("created", tags);
+  props: {
+    tag: {
+      type: Object,
+      required: true
     }
   }
 };

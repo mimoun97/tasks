@@ -18,18 +18,21 @@
       :readonly="true"
     ></v-textarea>
 
-    <user-select :readonly="true" :users="dataUsers" label="Usuari"></user-select>
+    <user-select :read-only="true" :users="dataUsers" label="Usuari" v-model="user"></user-select>
   </v-form>
 </template>
 
 <script>
 export default {
+  name: "TaskShowForm",
   data() {
     return {
       name: this.task.name,
-      completed: this.task.completed,
       description: this.task.description,
-      dataUsers: this.users
+      completed: this.task.completed,
+      user: null,
+      dataUsers: this.users,
+      working: false
     };
   },
   props: {
@@ -39,6 +42,10 @@ export default {
     },
     users: {
       type: Array,
+      required: true
+    },
+    uri: {
+      type: String,
       required: true
     }
   },
@@ -52,6 +59,26 @@ export default {
       this.user = this.users.find(user => {
         return parseInt(user.id) === parseInt(task.user_id);
       });
+    },
+    update() {
+      this.working = true;
+      const newTask = {
+        name: this.name,
+        description: this.description,
+        completed: this.completed,
+        user: this.user
+      };
+      window.axios
+        .put(this.uri + "/" + this.task.id, newTask)
+        .then(response => {
+          this.$emit("updated", response.data);
+          this.$emit("close");
+          this.working = false;
+        })
+        .catch(error => {
+          this.$snackbar.showError(error);
+          this.working = false;
+        });
     }
   },
   created() {

@@ -8,5 +8,5 @@ Veure tasca
 @endcomponent
 
 Gràcies,<br>
-{{ $user->name }}
+{{ config('app.name') }}
 @endcomponent

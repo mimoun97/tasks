@@ -35,7 +35,7 @@ class TasksController extends Controller
         $task->name = $request->name;
         $task->description = ($request->has('description')) ? $request->description : null;
         $task->completed = ($request->has('completed')) ? $request->completed : null;
-        $task->user_id = ($request->has('user')) ? $request->user_id : null;
+        $task->user_id = ($request->has('user_id')) ? $request->user_id : null;
         $task->save();
         return $task->map();
     }

@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "toggle",
+  name: "Toggle",
   data() {
     return {
       dataValue: this.value,
