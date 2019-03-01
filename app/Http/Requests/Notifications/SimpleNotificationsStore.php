@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests\Notifications;
 
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class SimpleNotificationsStore
+ * @package App\Http\Requests
+ */
 class SimpleNotificationsStore extends FormRequest
 {
     /**

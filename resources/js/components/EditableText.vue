@@ -1,13 +1,13 @@
 <template>
-    <span>
-        <span v-if="!editing" @dblclick="editing=true">
+    <v-layout>
+        <div v-if="!editing" @dblclick="editing=true">
             {{ currentText }}
-        </span>
-        <span v-if="editing" @keyup.esc="editing=false"
+        </div>
+        <div v-if="editing" @keyup.esc="editing=false"
               @keyup.enter="edit">
             <input type="text" v-model="currentText">
-        </span>
-    </span>
+        </div>
+    </v-layout>
 </template>
 
 <script>
@@ -29,6 +29,9 @@ export default {
   watch: {
     text (newText) {
       this.currentText = this.text
+    },
+    editing (newVal) {
+      this.$emit('editing', newVal)
     }
   },
   // props: ['text'],

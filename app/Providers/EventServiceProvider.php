@@ -23,18 +23,30 @@ class EventServiceProvider extends ServiceProvider
             //SendEmailVerificationNotification::class,
             AddRolesToRegisterUser::class
         ],
-        TaskUncompleted::class => [
-            LogTaskUncompleted::class,
-            //SendMailTaskUncompleted::class
+        'App\Events\Tasks\TaskUncompleted' => [
+            'App\Listeners\Tasks\LogTaskUncompleted',
+            'App\Listeners\ForgetCachedTasks',
+            'App\Listeners\Tasks\SendMailTaskUncompleted',
         ],
-        \App\Events\TaskCompleted::class  => [
-            \App\Listeners\LogTaskCompleted::class,
-            \App\Listeners\ForgetCachedTasks::class,
-            //\App\Listeners\SendMailTaskCompleted::class
+        'App\Events\Tasks\TaskCompleted'  => [
+            'App\Listeners\Tasks\LogTaskCompleted',
+            'App\Listeners\ForgetCachedTasks',
+            'App\Listeners\Tasks\SendMailTaskCompleted'
         ],
-        \App\Events\TaskUpdated::class => [
-            \App\Listeners\LogTaskUpdated::class,
-            //\App\Listeners\SendMailTaskUpdated::class
+        'App\Events\Tasks\TaskUpdated' => [
+            'App\Listeners\Tasks\LogTaskUpdated',
+            'App\Listeners\ForgetCachedTasks',
+            'App\Listeners\Tasks\SendMailTaskUpdated',
+        ],
+        'App\Events\Tasks\TaskStored' => [
+            'App\Listeners\Tasks\LogTaskStored',
+            'App\Listeners\ForgetCachedTasks',
+            'App\Listeners\Tasks\SendMailTaskStored',
+        ],
+        'App\Events\Tasks\TaskDestroyed' => [
+            'App\Listeners\Tasks\LogTaskDestroyed',
+            'App\Listeners\ForgetCachedTasks',
+            'App\Listeners\Tasks\SendMailTaskDestroyed',
         ]
     ];
 

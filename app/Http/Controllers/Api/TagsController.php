@@ -15,7 +15,7 @@ class TagsController extends Controller
 {
     public function index(TagsIndex $request)
     {
-        return map_collection(Tag::orderBy('created_at')->get());
+        return map_collection(Tag::orderBy('created_at', 'desc')->get());
     }
 
     public function show(TagsShow $request, Tag $tag) // Route Model Binding

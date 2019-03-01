@@ -15,8 +15,8 @@ class Task extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'completed', 'description'
+    protected $guard = [
+        //
     ];
 
     public function user()
@@ -92,5 +92,10 @@ class Task extends Model
     public function addTags($tags)
     {
         $this->tags()->saveMany($tags);
+    }
+
+    public function subject()
+    {
+        return ellipsis('Tasca pendent (' . $this->id . '): ' . $this->name, 80);
     }
 }

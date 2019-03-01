@@ -31,7 +31,13 @@
             <v-select label="User" :items="dataUsers" v-model="user" item-text="name" clearable></v-select>
           </v-flex>
           <v-flex lg5>
-            <v-text-field append-icon="search" label="Buscar" v-model="search"></v-text-field>
+            <v-text-field
+              prepend-inner-icon="search"
+              label="Buscar"
+              v-model.lazy="search"
+              browser-autocomplete
+              clearable
+            ></v-text-field>
           </v-flex>
         </v-layout>
       </v-card-title>
@@ -45,7 +51,8 @@
         :rows-per-page-items="[5,10,25,50,100,200,{'text':'Tots','value':-1}]"
         :loading="loading"
         :pagination.sync="pagination"
-        class="hidden-md-and-down">
+        class="hidden-md-and-down"
+      >
         <v-progress-linear slot="progress" color="info" indeterminate></v-progress-linear>
         <template slot="items" slot-scope="{item: task}">
           <tr>
@@ -58,15 +65,16 @@
               </v-avatar>
             </td>
             <td>
-              <task-completed-toggle :task="task"></task-completed-toggle>
+              <toggle :value="task.completed" uri="/api/v1/completed_task" active-text="Completada" unactive-text="Pendent" :resource="task"></toggle>
+              <!-- <task-completed-toggle :task="task"></task-completed-toggle> -->
             </td>
             <td>
-              <tasks-tags :task="task" :tags="task.tags"></tasks-tags>
+              <tasks-tags :task="task" :task-tags="task.tags" :tags="tags" @change="refresh(false)"></tasks-tags>
             </td>
             <td v-text="task.created_at_human"></td>
             <td v-text="task.updated_at_human"></td>
             <td>
-              <task-show :users="users" :task="task"></task-show>
+              <task-show :users="users" :task="task" :uri="uri"></task-show>
               <task-update :users="users" :task="task" @updated="updateTask" :uri="uri"></task-update>
               <task-destroy :task="task" @removed="removeTask" :uri="uri"></task-destroy>
             </td>
@@ -138,7 +146,8 @@ export default {
     "task-destroy": TaskDestroy,
     "task-update": TaskUpdate,
     "task-show": TaskShow,
-    "tasks-tags": TasksTags
+    "tasks-tags": TasksTags,
+    "toggle": Toggle
   },
   props: {
     tasks: {
@@ -165,23 +174,22 @@ export default {
   },
   methods: {
     removeTask(task) {
-      this.dataTasks.splice(this.dataTasks.indexOf(task), 1)
-      this.refresh()
+      this.dataTasks.splice(this.dataTasks.indexOf(task), 1);
     },
     updateTask(task) {
-      this.refresh()
+      this.refresh();
     },
     refresh() {
       this.loading = true;
       window.axios
         .get(this.uri)
         .then(response => {
-          this.dataTasks = response.data
-          this.loading = false
-          this.$snackbar.showMessage("Tasques actualitzades correctament")
+          this.dataTasks = response.data;
+          this.loading = false;
+          this.$snackbar.showMessage("Tasques actualitzades correctament");
         })
         .catch(error => {
-          this.loading = false
+          this.loading = false;
         });
     }
   }

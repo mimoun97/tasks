@@ -10,7 +10,7 @@
             <v-toolbar-title class="text-xs-center hidden-md-and-down">Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
             @if (!Auth::user())
-                <v-btn dark class="yellow lighten-2 black--text" href="/login">Login</v-btn>
+                <v-btn dark class="yellow lighten-2 black--text hidden-md-and-down" href="/login">Login</v-btn>
                 <v-btn dark class="green lighten-2 black--text" href="/register">Register</v-btn>
             @else
                 {{--<v-toolbar-title>--}}
@@ -31,16 +31,20 @@
                     >
 
                         <img src="svg/logo.svg" alt="Vuetify.js" height="200">
-                        <h2 class="blue--text mb-2">Aplicació de tasques</h2>
-                        <div class="black--text headline mb-3 text-xs-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit by <b class="blues--text">Mimoun Haddou</b></div>
+                        <p class="blue--text mb-2" :class='[$vuetify.breakpoint.smAndDown ? "title" : "headline"]'>Aplicació de tasques</p>
+                        <div class="black--text mb-3 text-xs-center" :class='[$vuetify.breakpoint.smAndDown ? "subheading" : "headline"]'>Lorem, ipsum dolor sit amet consectetur adipisicing elit by <b class="blues--text">Mimoun Haddou</b></div>
                         <v-btn light large class="blue darken-1 white--text" href="/home">Get Started</v-btn>
                         <v-btn dark color="#6e5494"
                                 class="mb-3"
                                 target="_blank"
-                                large round ripple
+                                rel="noopener"
+                                large round v-ripple
                                 href="https://github.com/mimoun1997/tasks"
                             >
-                            <img src="/img/Octocat.png" alt="GitHub de mimoun1997" height="28" class="mr-2">GitHub
+                            <picture>
+                                <source srcset="/img/Octocat.webp" type="image/webp">
+                                <img src="/img/Octocat.png" alt="GitHub de mimoun1997" height="28" class="mr-2">GitHub
+                            </picture>
                         </v-btn>
                     </v-layout>
                 </v-parallax>

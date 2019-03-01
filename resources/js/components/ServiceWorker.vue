@@ -22,7 +22,7 @@ export default {
         console.log("Navegador obsolet");
       }
     },
-    regitser() {
+    register() {
       navigator.serviceWorker
         .register("/service-worker.js")
         .then(function(registration) {

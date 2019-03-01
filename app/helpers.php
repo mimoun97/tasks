@@ -32,12 +32,12 @@ if (!function_exists('create_primary_user')) {
 if (!function_exists('create_acacha_user')) {
     function create_acacha_user()
     {
-        $user = User::where('email', 'sergiturbadenas@gmail.com')->first();
+        $user = User::where('email', env('ACACHA_USER_EMAIL', 'sergiturbadenas@gmail.com'))->first();
         if (!$user) {
             $user = User::firstOrCreate([
-                'name' => 'Sergi Tur Badenas',
-                'email' => 'sergiturbadenas@gmail.com',
-                'password' => bcrypt(env('PRIMARY_USER_PASSWORD', '123456'))
+                'name' => env('ACACHA_USER_NAME', 'Sergi Tur Badenas'),
+                'email' => env('ACACHA_USER_EMAIL', 'sergiturbadenas@gmail.com'),
+                'password' => bcrypt(env('ACACHA_USER_PASSWORD', '123456'))
             ]);
 
             $user->admin = true;

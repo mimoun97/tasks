@@ -2,12 +2,12 @@
   <span>
     <v-dialog
       v-model="dialog"
-      fullscreen
+      :fullscreen="$vuetify.breakpoint.smAndDown"
       hide-overlay
       transition="dialog-bottom-transition"
       @keydown.esc="dialog=false"
     >
-      <v-toolbar color="primary lighten-1" class="white--text">
+      <v-toolbar color="primary accent-1" class="white--text">
         <v-btn flat icon class="white--text" @click="dialog=false">
           <v-icon class="mr-1">close</v-icon>
         </v-btn>

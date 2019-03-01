@@ -29,6 +29,6 @@ class ForgetCachedTasks implements ShouldQueue
      */
     public function handle($event)
     {
-        Cache:forget(Task::TASQUES_CACHE_KEY);
+        Cache::forget(Task::TASQUES_CACHE_KEY);
     }
 }

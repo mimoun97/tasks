@@ -1,6 +1,6 @@
 <template>
     <v-layout>
-        <tags-create></tags-create>
+        <tags-create @created="add"></tags-create>
         <tags-list v-if="noZeroTags" :tags="dataTags" ></tags-list>
 
         <empty-state v-else
@@ -28,11 +28,8 @@ export default {
     }
   },
   methods: {
-    showMessage () {
-      this.$snackbar.showMessage('Crea creada correctament')
-    },
-    showError () {
-      this.$snackbar.showError('Missatge error')
+    add (tag) {
+      this.dataTags.push(tag)
     }
   },
   props: ['tags'],

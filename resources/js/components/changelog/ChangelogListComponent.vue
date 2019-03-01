@@ -27,7 +27,7 @@
                     class="white--text"
                     icon="settings"
                     v-model="settingsDialog"
-                    color="primary darken-3"
+                    color="primary"
                     title="Canviar la configuració del registre de canvis">
                         <changelog-settings module="changelog" @close="settingsDialog = false"></changelog-settings>
             </fullscreen-dialog>

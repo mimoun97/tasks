@@ -1,5 +1,5 @@
 <template>
-    <v-switch v-model="dataTask.completed" :label="dataTask.comple ? 'Completada' : 'Pendent'"></v-switch>
+    <v-switch v-model="dataTask.completed" :label="dataTask.completed ? 'Completada' : 'Pendent'"></v-switch>
 </template>
 
 <script>
