@@ -91,10 +91,10 @@ export default {
         };
       }
     },
-    removeTag() {
+    removeTag(tag) {
       // TODO ASYNC PRIMER EXECUTAR UN CONFIRM
       window.axios
-        .delete("/api/v1/tasks/" + this.task.id + "/tag/" + this.tag)
+        .delete("/api/v1/tasks/" + this.task.id + "/tag/" + tag.id)
         .then(response => {
           this.$snackbar.showMessage("Etiqueta eliminada correctament");
         })

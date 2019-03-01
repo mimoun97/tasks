@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
 //        ]);
 
         factory(App\User::class, 10)->create()->each(function ($user) {
+            $user->assignRole('Tasks');
             $user->tasks()->save(factory(App\Task::class)->make());
         });
     }
