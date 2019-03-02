@@ -41,7 +41,7 @@ export default {
     },
     uri: {
       type: String,
-      default: "/api/v1/tasks"
+      required: true
     }
   },
   methods: {

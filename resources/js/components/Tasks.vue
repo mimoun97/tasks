@@ -1,75 +1,70 @@
 <template>
-  <v-container grid-list-md text-xs-center id="tasks" class="tasks">
-    <v-layout column row wrap>
-      <v-flex xs12>
-        <v-card>
-          <v-flex xs12>
-            <v-card-title dark class="display-2 indigo--text roboto" color="primary">
-              <span v-if="filter">
-                Tasques
-                <b>
-                  ({{totalFiltered}}/
-                  <b>{{total}})</b>
-                </b>
-              </span>
-              <span v-else>
-                Tasques
-                <b>({{total}})</b>
-              </span>
-            </v-card-title>
-          </v-flex>
-          <v-card-text class="xs12">
-            <div row>
-              <v-flex id="filters" v-show="total > 0" xs12>
-                <v-card raised row d-inline-block dark class="indigo darken-1">
-                  <v-card-text class="headline">
-                    Filtre activat:
-                    <b :class="colorFiltre">"{{ filter }}"</b>
-                  </v-card-text>
-                  <v-card-actions class="justify-center">
-                    <v-btn @click="setFilter('all')">Totes</v-btn>
-                    <v-btn class="green" @click="setFilter('completed')">Completades</v-btn>
-                    <v-btn class="orange" @click="setFilter('active')">Pendents</v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-flex>
-            </div>
-            <form class="block">
-              <v-layout></v-layout>
-              <v-text-field type="text" v-model="newTask" @keyup.enter="add" name="name" required></v-text-field>
-              <v-btn block dark class="indigo" id="button_add_task" @click="add">Afegir</v-btn>
-            </form>
+  <v-card>
+    <v-flex xs12>
+      <v-card-title dark class="display-2 indigo--text roboto" color="primary">
+        <span v-if="filter">
+          Tasques
+          <b>
+            ({{totalFiltered}}/
+            <b>{{total}})</b>
+          </b>
+        </span>
+        <span v-else>
+          Tasques
+          <b>({{total}})</b>
+        </span>
+      </v-card-title>
+    </v-flex>
+    <v-card-text class="xs12">
+      <div row>
+        <v-flex id="filters" v-show="total > 0" xs12>
+          <v-card raised row d-inline-block dark class="indigo darken-1">
+            <v-card-text class="headline">
+              Filtre activat:
+              <b :class="colorFiltre">"{{ filter }}"</b>
+            </v-card-text>
+            <v-card-actions class="justify-center">
+              <v-btn @click="setFilter('all')">Totes</v-btn>
+              <v-btn class="green" @click="setFilter('completed')">Completades</v-btn>
+              <v-btn class="orange" @click="setFilter('active')">Pendents</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+      </div>
+      <form class="block">
+        <v-layout></v-layout>
+        <v-text-field type="text" v-model="newTask" @keyup.enter="add" name="name" required></v-text-field>
+        <v-btn block dark class="indigo" id="button_add_task" @click="add">Afegir</v-btn>
+      </form>
 
-            <div v-if="errorMessage">Ha succeit un error: {{ errorMessage }}</div>
-            <v-list dense>
-              <v-list-tile v-for="task in filteredTasks" :key="task.id">
-                <v-list-tile-content>
-                  <v-list-tile-title
-                    :id="'task' + task.id"
-                    :class="{ strike: task.completed && editing}"
-                  >
-                    <editable-text
-                      :class="{ 'orange--text': !task.completed }"
-                      :text="task.name"
-                      @editing="editing=true"
-                      @edited="editName(task, $event)"
-                    ></editable-text>
-                    <v-btn icon @click="remove(task)">
-                      <v-icon color="error">delete</v-icon>
-                    </v-btn>
-                    <v-btn icon type="checkbox" name="checked" @click="toggle(task)">
-                      <v-icon v-if="task.completed" color="green">check_box</v-icon>
-                      <v-icon v-else color="orange">check_box_outline_blank</v-icon>
-                    </v-btn>
-                  </v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </v-list>
-          </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+      <div v-if="errorMessage">Ha succeit un error: {{ errorMessage }}</div>
+      <v-list>
+        <v-list-tile v-for="task in filteredTasks" :key="task.id">
+          <v-list-tile-content>
+            <v-list-tile-title :id="'task' + task.id" :class="{ strike: task.completed && editing}">
+              <!-- <v-flex xs10>
+                <editable-text
+                  :class="{ 'grey--text': !task.completed}"
+                  :text="task.name"
+                  @editing="editing=true"
+                  @edited="editName(task, $event)"
+                ></editable-text>
+              </v-flex> -->
+              <v-flex>
+                <v-btn icon @click="remove(task)">
+                  <v-icon color="error">delete</v-icon>
+                </v-btn>
+                <v-btn color="grey lighten-4" icon dark type="checkbox" name="checked" @click="task.completed = !task.completed">
+                  <v-icon v-if="task.completed" color="green">check_box</v-icon>
+                  <v-icon v-else color="orange">check_box_outline_blank</v-icon>
+                </v-btn>
+              </v-flex>
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -131,6 +126,9 @@ export default {
         "green--text": this.filter == "completed",
         "orange--text": this.filter == "active"
       };
+    },
+    user: function() {
+      return window.laravel_user;
     }
   },
   watch: {
@@ -139,6 +137,15 @@ export default {
     }
   },
   methods: {
+    completeTask () {
+      window.axios.post('api/v1/completed_task/' + task.id)
+      this.$snackbar.showMessage("Tasca completada");
+    },
+    uncompleteTask () {
+      window.axios.delete('api/v1/completed_task/' + task.id)
+      this.$snackbar.showMessage("Tasca descompletada");
+    },
+    clearFields() {},
     editName(task, text) {
       task.name = text;
     },
@@ -147,24 +154,32 @@ export default {
     },
     add() {
       if (this.newTask === "") return;
+      var task = {
+        name: this.newTask,
+        description: "Descripció de " + this.newTask,
+        user_id: this.user.id
+      };
       window.axios
-        .post("/api/v1/tasks", {
-          name: this.newTask
-        })
+        .post("/api/v1/tasks", task)
         .then(response => {
           this.dataTasks.splice(0, 0, {
             id: response.data.id,
-            name: this.newTask,
-            completed: false
+            name: response.data.name,
+            completed: response.data.completed,
+            user_id: response.data.user_id
           });
           this.newTask = "";
+          this.$snackbar.showMessage("Tasques actualitzades correctament");
         })
         .catch(error => {
-          console.log(error);
+          this.$snackbar.showError(error);
         });
     },
     remove(task) {
       this.dataTasks.splice(this.dataTasks.indexOf(task), 1);
+    },
+    toggle(task) {
+      task.completed ? this.uncompleteTask() : this.completeTask()
     }
   },
   created() {
@@ -172,11 +187,11 @@ export default {
       window.axios
         .get("/api/v1/tasks")
         .then(response => {
-          //console.log(response.data)
+          this.$snackbar.showMessage("Tasques actualitzades correctament");
           this.dataTasks = response.data;
         })
         .catch(error => {
-          this.errorMessage = error.response.data;
+          this.$snackbar.showMessage(error.message);
         });
     }
   }

@@ -21,7 +21,7 @@
       </v-toolbar>
       <v-card>
         <v-card-text>
-          <task-form :users="users" @close="dialog=false" @create="created"></task-form>
+          <task-form :users="users" @close="dialog=false" @create="created" :uri="uri"></task-form>
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -46,6 +46,10 @@ export default {
   props: {
     users: {
       type: Array,
+      required: true
+    },
+    uri: {
+      type: String,
       required: true
     }
   },

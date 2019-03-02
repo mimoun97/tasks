@@ -12,7 +12,7 @@
             {{ method_field('PUT') }}
             <input name="name" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" value="{{$task->name}}" required>
 
-            <button class="flex-no-shrink p-2 border-2 rounded text-blue border-blue hover:text-white hover:bg-blue" name="completed" value="{{$task->completed == true}}">{{$task->completed ? 'Descompletar' : 'Completar' }}</button>
+            <button class="flex-no-shrink p-2 border-2 rounded text-blue border-blue hover:text-white hover:bg-blue" name="completed" value="{{$task->completed ? false : true}}">{{ $task->completed ? 'Descompletar' : 'Completar' }}</button>
 
             <button class="flex-no-shrink p-2 border-2 rounded-full text-green border-green hover:text-white bg-green-lightest hover:bg-green" type="submit">OK</button>
         </form>
