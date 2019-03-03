@@ -15,7 +15,14 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('description', 250)->nullable();
             $table->timestamps();
+        });
+        Schema::create('project_task', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('project_id');
+            $table->unsignedInteger('task_id');
         });
     }
 
@@ -27,5 +34,6 @@ class CreateProjectsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('projects');
+        Schema::dropIfExists('project_task');
     }
 }

@@ -22,10 +22,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/device-features', function () {
-    return view('device');
-});
-
 //midleware auth
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/tasks', 'TasksController@index');
@@ -52,18 +48,22 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Profile
     //Route::get('/profile', 'ProfileController@index');
-    Route::get('/profile', '\\'. ProfileController::class . '@index');
+    Route::get('/profile', '\\' . ProfileController::class . '@index');
 
-    Route::post('/photo', '\\'. PhotoController::class . '@store');
+    Route::post('/photo', '\\' . PhotoController::class . '@store');
 
-    Route::get('/user/photo', '\\'. LoggedUserPhotoController::class . '@show');
-    Route::put('/user/photo', '\\'. LoggedUserPhotoController::class . '@update');
+    Route::get('/user/photo', '\\' . LoggedUserPhotoController::class . '@show');
+    Route::put('/user/photo', '\\' . LoggedUserPhotoController::class . '@update');
 
-    Route::get('/settings', '\\'. SettingsController::class . '@index');
+    Route::get('/settings', '\\' . SettingsController::class . '@index');
 
-    Route::get('/changelog', '\\'. ChangelogController::class . '@index');
+    Route::get('/changelog', '\\' . ChangelogController::class . '@index');
 
     Route::get('/notifications', '\\' . NotificationController::class . '@index');
+
+    Route::get('/device-features', function () {
+        return view('device');
+    });
 });
 
 
@@ -74,9 +74,6 @@ Route::get('/contact', function () {
 
 Route::get('/about', function () {
     return view('about');
-
-
-
 });
 
 //Equivalent a login->loginCotroller

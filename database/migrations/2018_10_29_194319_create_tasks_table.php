@@ -17,7 +17,7 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->boolean('completed')->nullable()->default(false);
-            $table->string('description', 250)->default("Afegeix descripció de la tasca.");
+            $table->string('description', 250)->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
         });
