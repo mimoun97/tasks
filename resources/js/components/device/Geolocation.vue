@@ -1,5 +1,5 @@
 <template>
-    <p>geolocation</p>
+    <p class="title">Geolocation</p>
 </template>
 
 <script>

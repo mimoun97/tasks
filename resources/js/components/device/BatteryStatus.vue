@@ -1,10 +1,19 @@
 <template>
   <div>
-    <p class="title">Battery Statuss</p>
-    <p>Initial battery status was
-      <b v-text="battery.charging||'unknown'"></b>, charging time
-      <b v-text="battery.chargingTime||'unknown'"></b>, discharging time
+    <p class="title">Battery Status</p>
+    <p>
+      Initial battery status was
+      <b v-text="battery.charging||'unknown'"></b>
+    </p>
+    <p>, charging time</p>
+    <p>
+      Discharging time
+      <b v-text="battery.chargingTime||'unknown'"></b>
+    </p>
+    <p>
       <b v-text="battery.dischargingTime||'unknown'"></b>, level
+    </p>
+    <p>
       <b v-text="battery.level||'unknown'"></b>.
     </p>
 
@@ -15,28 +24,28 @@
 <script>
 export default {
   name: "BatteryStatus",
-  data: function () {
+  data: function() {
     return {
-      batteryPromise: {},
-      timeBadge: null,
       battery: {},
-      change: null
+      change: null,
+      timeBadge: null
     };
   },
   created() {
+    var batteryPromise = {};
     if (
       "getBattery" in navigator ||
       ("battery" in navigator && "Promise" in window)
     ) {
       if ("getBattery" in navigator) {
-        this.batteryPromise = navigator.getBattery();
+        batteryPromise = navigator.getBattery();
       } else {
-        this.batteryPromise = Promise.resolve(navigator.battery);
+        batteryPromise = Promise.resolve(navigator.battery);
       }
     }
 
-    this.batteryPromise.then(function(battery) {
-      this.battery = battery
+    batteryPromise.then(function(battery) {
+      this.battery = battery;
 
       battery.addEventListener("chargingchange", this.onChargingChange);
       battery.addEventListener("chargingtimechange", this.onChargingTimeChange);
@@ -53,10 +62,18 @@ export default {
       this.change = change;
     },
 
-    onChargingChange() {},
-    onChargingTimeChange() {},
-    onDischargingTimeChange() {},
-    onLevelChange() {}
+    onChargingChange() {
+      console.log("onChargingChange");
+    },
+    onChargingTimeChange() {
+      console.log("onChargingTimeChange");
+    },
+    onDischargingTimeChange() {
+      console.log("onDischargingTimeChange");
+    },
+    onLevelChange() {
+      console.log("onLevelChange");
+    }
   }
 };
 </script>

@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="Description" content="Aplicaci&oacute; tasques.">
     <link rel="manifest" href="/manifest.json">
@@ -41,7 +40,9 @@
     <footer-app></footer-app>
 
 </div>
-<script src="{{ mix('/js/app.js') }}"></script>
+<script defer src="{{ mix('/js/manifest.js') }}"></script>
+<script defer src="{{ mix('/js/vendor.js') }}"></script>
+<script defer src="{{ mix('/js/app.js') }}"></script>
 <noscript>
     <p>S'ha <b>d'activar javascript</b> per tal de que la pàgina funcioni <b>correctament.</b></p>
 </noscript>
