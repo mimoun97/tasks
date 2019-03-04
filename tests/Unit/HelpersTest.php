@@ -34,10 +34,10 @@ class HelpersTest extends TestCase
     public function creates_acacha_user()
     {
         create_acacha_user();
-        $user = User::where('email', 'sergiturbadenas@gmail.com')->first();
-        $this->assertEquals($user->name, 'Sergi Tur Badenas');
-        $this->assertEquals($user->email, 'sergiturbadenas@gmail.com');
-        $this->assertTrue(Hash::check(env('PRIMARY_USER_PASSWORD', '123456'), $user->password));
+        $user = User::where('email', env('ACACHA_USER_EMAIL', 'sergiturbadenas@gmail.com'))->first();
+        $this->assertEquals($user->name, env('ACACHA_USER_NAME', 'Sergi Tur Badenas'));
+        $this->assertEquals($user->email, env('ACACHA_USER_EMAIL', 'sergiturbadenas@gmail.com'));
+        $this->assertTrue(Hash::check(env('ACACHA_USER_PASSWORD', '123456'), $user->password));
     }
 
     /**
@@ -76,15 +76,15 @@ class HelpersTest extends TestCase
 
         $mappedTask = map_collection($task);
 
-        $this->assertInternalType('array',$mappedTask);
+        $this->assertInternalType('array', $mappedTask);
     }
 
-        /**
+    /**
      * @test
      */
     public function map_collection_without_map_method()
     {
-        $object = (object) ['a' => 'new object'];
+        $object = (object)['a' => 'new object'];
 
         $mappedObject = map_collection($object);
 

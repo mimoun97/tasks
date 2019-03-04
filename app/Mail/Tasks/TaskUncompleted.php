@@ -11,14 +11,16 @@ class TaskUncompleted extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $task;
+
     /**
-     * Create a new message instance.
-     *
-     * @return void
+     * TaskUncompleted constructor.
+     * @param $user
+     * @param $task
      */
-    public function __construct()
+    public function __construct($task)
     {
-        //
+        $this->task = $task;
     }
 
     /**

@@ -39,8 +39,8 @@ class LogTaskCompleted
             'user_id' => $event->task->user_id,
             'loggable_id' => $event->task->id,
             'loggable_type' => Task::class,
-            'old_value' => false,
-            'new_value' => true
+            'old_value' => true,
+            'new_value' => false
         ]);
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class TaskCompleted extends Mailable
+class TaskUpdated extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,6 +29,6 @@ class TaskCompleted extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.tasks.completed');
+        return $this->view('view.name');
     }
 }
