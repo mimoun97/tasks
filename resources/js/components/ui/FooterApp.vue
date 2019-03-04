@@ -5,14 +5,15 @@
         <v-btn
           v-ripple="{ class: 'white--text' }"
           v-for="item in social"
-          :key="item"
+          :key="item.name"
           class="mx-3 white--text"
           color="grey lighten-3"
           dark
           icon
           large
+          :aria-label="item.name"
         >
-          <img style="width:36px;height:36px;" :src="item">
+          <img style="width:36px;height:36px;" :src="item.icon" :alt="item.name">
         </v-btn>
       </v-card-text>
 
@@ -37,7 +38,7 @@
               >Mimoun Haddou</a>
             </v-hover>
             <span>i amb tot</span>
-            <v-icon class="red--text">favorite</v-icon>
+            <v-icon class="green--text">favorite</v-icon>
             <span>tema i layout fets amb</span>
             <v-hover>
               <a
@@ -66,11 +67,11 @@
 export default {
   data: () => ({
     social: [
-      "/svg/facebook-box.svg",
-      "/svg/google-plus.svg",
-      "/svg/linkedin-box.svg",
-      "/svg/twitter.svg",
-      "/svg/instagram.svg"
+      { icon: "/svg/facebook-box.svg", name: "facebook" },
+      { icon: "/svg/google-plus.svg", name: "gplus" },
+      { icon: "/svg/linkedin-box.svg", name: "linkedin" },
+      { icon: "/svg/twitter.svg", name: "twitter" },
+      { icon: "/svg/instagram.svg", name: "instagram" }
     ]
   })
 };
