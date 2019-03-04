@@ -43,6 +43,7 @@
         :loading="loading"
         :pagination.sync="pagination"
         class="hidden-md-and-down"
+        v-if="$vuetify.breakpoint.smAndDown"
       >
         <v-progress-linear slot="progress" color="secondary" indeterminate></v-progress-linear>
         <template slot="items" slot-scope="{item: tag}">
@@ -64,6 +65,7 @@
         </template>
       </v-data-table>
       <v-data-iterator
+        v-if="$vuetify.breakpoint.lgAndUp"
         class="hidden-lg-and-up"
         :items="dataTags"
         :search="search"

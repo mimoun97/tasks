@@ -52,6 +52,7 @@
         :loading="loading"
         :pagination.sync="pagination"
         class="hidden-md-and-down"
+        v-if="$vuetify.breakpoint.smAndDown"
       >
         <v-progress-linear slot="progress" color="info" indeterminate></v-progress-linear>
         <template slot="items" slot-scope="{item: task}">
@@ -83,6 +84,7 @@
       </v-data-table>
       <v-data-iterator
         class="hidden-lg-and-up"
+        v-if="$vuetify.breakpoint.lgAndUp"
         :items="dataTasks"
         :search="search"
         no-results-text="No s'ha trobat cap registre coincident"
