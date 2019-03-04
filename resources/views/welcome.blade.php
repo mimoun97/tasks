@@ -39,6 +39,7 @@
                                 target="_blank"
                                 large round ripple
                                 href="https://github.com/mimoun1997/tasks"
+                                rel="noopener"
                             >
                             <img src="/img/Octocat.png" alt="GitHub de mimoun1997" height="28" class="mr-2">GitHub
                         </v-btn>
