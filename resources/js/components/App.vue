@@ -6,6 +6,8 @@ export default {
     return {
       drawer: false,
       drawerRigth: false,
+      show1: false, //for password reset
+      show2: false, //for password reset
     }
   },
   created () {
