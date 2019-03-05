@@ -168,13 +168,20 @@ export default {
     },
     removeTag(tag) {
       this.dataTags.splice(this.dataTags.indexOf(tag), 1);
+    },
+    // TODO debounceSearch 
+    debounceSearch(text){
+      return text
     }
   },
   watch: {
     tags: function(newTags, oldTags) {
       this.dataTags = newTags;
     }
-  }
+  },
+  created() {
+    this.debounceSearch = _.debounce(this.debounceSearch, 500);
+  },
 };
 </script>
 

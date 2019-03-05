@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <p class="title">Device Memory</p>
-    <p>
-      Your device memory is ~
-      <b v-if="memory">{{memory}} GiB.</b> 
-    </p>
-  </div>
+  <v-card class="text-xs-center">
+    <v-card-title>Device Memory</v-card-title>
+    <v-card-text>
+      <p>
+        Your device memory is ~
+        <b v-if="memory">{{memory}} GiB.</b>
+      </p>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -18,7 +20,7 @@ export default {
   },
   computed: {
     deviceMemory: function() {
-      return navigator.deviceMemory.toLocaleString()	
+      return navigator.deviceMemory.toLocaleString();
     }
   }
 };
