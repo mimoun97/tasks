@@ -1,24 +1,22 @@
 <template>
-  <div>
-    <p class="title">Battery Status</p>
-    <p>
-      Initial battery status was
-      <b v-text="battery.charging||'unknown'"></b>
-    </p>
-    <p>, charging time</p>
-    <p>
-      Discharging time
-      <b v-text="battery.chargingTime||'unknown'"></b>
-    </p>
-    <p>
-      <b v-text="battery.dischargingTime||'unknown'"></b>, level
-    </p>
-    <p>
-      <b v-text="battery.level||'unknown'"></b>.
-    </p>
-
-    <div id="target"></div>
-  </div>
+  <v-card flat>
+    <v-card-title class="title">Battery Status</v-card-title>
+    <v-card-text class="body-2">
+      <p>
+        Initial battery status was
+        <b v-text="battery.charging ? 'charging' : 'discharging'"></b>
+      </p>
+      <p>Charging time
+        <b v-text="battery.chargingTime"></b>
+      </p>
+      <p>Discharging time
+        <b v-text="battery.dischargingTime"></b>
+      </p>
+      <p>Level
+        <b v-text="battery.level||'unknown'"></b>.
+      </p>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -44,16 +42,19 @@ export default {
       }
     }
 
-    batteryPromise.then(function(battery) {
+    batteryPromise.then(battery => {
       this.battery = battery;
 
-      battery.addEventListener("chargingchange", this.onChargingChange);
-      battery.addEventListener("chargingtimechange", this.onChargingTimeChange);
+      battery.addEventListener("chargingchange", this.onChargingChange());
+      battery.addEventListener(
+        "chargingtimechange",
+        this.onChargingTimeChange()
+      );
       battery.addEventListener(
         "dischargingtimechange",
-        this.onDischargingTimeChange
+        this.onDischargingTimeChange()
       );
-      battery.addEventListener("levelchange", this.onLevelChange);
+      battery.addEventListener("levelchange", this.onLevelChange(9));
     });
   },
   methods: {

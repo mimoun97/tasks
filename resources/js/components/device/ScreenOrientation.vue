@@ -1,6 +1,6 @@
 <template>
-  <v-card>
-    <v-card-title>Screen Orientation</v-card-title>
+  <v-card flat>
+    <v-card-title class="title">Screen Orientation</v-card-title>
 
     <v-card-text>
       <p class="grey--text text--lighten-1 body-1">

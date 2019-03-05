@@ -1,10 +1,10 @@
 <template>
-  <v-card class="text-xs-center">
-    <v-card-title>Device Memory</v-card-title>
+  <v-card flat class="text-xs-center">
+    <v-card-title class="title">Device Memory</v-card-title>
     <v-card-text>
       <p>
         Your device memory is ~
-        <b v-if="memory">{{memory}} GiB.</b>
+        <b>{{memory}} GiB.</b>
       </p>
     </v-card-text>
   </v-card>
@@ -15,14 +15,13 @@ export default {
   name: "DeviceMemory",
   data: function() {
     return {
-      memory: this.deviceMemory || "unknown"
+      memory: "unknown"
     };
   },
-  computed: {
-    deviceMemory: function() {
-      return navigator.deviceMemory.toLocaleString();
-    }
+  created() {
+    this.memory = navigator.deviceMemory.toLocaleString();
   }
+  
 };
 </script>
 

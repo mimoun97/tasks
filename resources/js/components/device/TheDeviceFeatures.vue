@@ -1,57 +1,47 @@
 <template>
-  <div class="title">
-    <ul>
-      <li>Informació de la bateria</li>
-      <li>Estat: online/offline</li>
-      <li>Network type and speed</li>
-      <li>Device memory</li>
-      <li>GEOLOCATION: GPS</li>
-      <li>Screen Orientation</li>
-      <li>Vibrar el mòbil</li>
-    </ul>
-    <div>
-      <v-flex xs12 my-2>
-        <v-card-text>
-          <battery-status/>
-        </v-card-text>
-      </v-flex>
-      <v-divider></v-divider>
-      <v-flex xs12 my-2>
-        <v-card-text>
-          <online-state/>
-        </v-card-text>
-      </v-flex>
-      <v-divider></v-divider>
-      <v-flex xs12 my-2>
-        <v-card-text>
-          <network-type-speed/>
-        </v-card-text>
-      </v-flex>
-      <v-flex xs12 my-2>
-        <v-card-text>
-          <device-memory/>
-        </v-card-text>
-      </v-flex>
-      <v-divider></v-divider>
-      <v-flex xs12 my-2>
-        <v-card-text>
-          <screen-orientation/>
-        </v-card-text>
-      </v-flex>
-      <v-divider></v-divider>
-      <v-flex xs12 my-2>
-        <v-card-text>
-          <geolocation/>
-        </v-card-text>
-      </v-flex>
-      <v-divider></v-divider>
-      <v-flex xs12 my-2>
-        <v-card-text>
-          <vibration/>
-        </v-card-text>
-      </v-flex>
-    </div>
-  </div>
+  <v-card>
+    <v-flex xs12 my-2>
+      <v-card-text>
+        <battery-status/>
+      </v-card-text>
+    </v-flex>
+    <v-divider></v-divider>
+    <v-flex xs12 my-2>
+      <v-card-text>
+        <online-state/>
+      </v-card-text>
+    </v-flex>
+    <v-divider></v-divider>
+    <v-flex xs12 my-2>
+      <v-card-text>
+        <network-type-speed/>
+      </v-card-text>
+    </v-flex>
+    <v-divider></v-divider>
+    <v-flex xs12 my-2>
+      <v-card-text>
+        <device-memory/>
+      </v-card-text>
+    </v-flex>
+    <v-divider></v-divider>
+    <v-flex xs12 my-2>
+      <v-card-text>
+        <screen-orientation/>
+      </v-card-text>
+    </v-flex>
+    <v-divider></v-divider>
+    <v-flex xs12 my-2>
+      <v-card-text>
+        <geolocation/>
+      </v-card-text>
+    </v-flex>
+    <v-divider></v-divider>
+    <v-flex xs12 my-2>
+      <v-card-text>
+        <vibration/>
+      </v-card-text>
+    </v-flex>
+  </v-card>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
-  <v-card>
-    <v-card-title>Geolocation</v-card-title>
+  <v-card flat>
+    <v-card-title class="title">Geolocation</v-card-title>
     <v-card-text>
       <p class="grey--text text--lighten-1 body-1">
         The Geolocation API lets authorized Web applications to access the location data provided by
