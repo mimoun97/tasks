@@ -59,8 +59,10 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     new RegExp('/api/'),
-    workbox.strategies.networkFirst()
-);
+    workbox.strategies.networkFirst({
+        cacheName: 'api'
+    })
+)
 
 // NO ENS CAL PQ LES TENIM INTEGRADES EN LOCAL VIA WEBPACK i NMP IMPORTS
 // // fonts

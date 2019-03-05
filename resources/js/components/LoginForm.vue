@@ -14,20 +14,25 @@
             <input type="hidden" name="_token" :value="csrfToken">
             <v-text-field
                     prepend-icon="person"
+                    hint="Introduïu el vostre email"
                     name="email"
                     label="Login"
                     type="text"
                     v-model="dataEmail"
+                    autocomplete="current-password"
                     :error-messages="emailErrors"
                     @input="$v.dataEmail.$touch()"
                     @blur="$v.dataEmail.$touch()"
 
             ></v-text-field>
             <v-text-field id="password"
+                          hint="Introduïu la contrasenya actual"
                           prepend-icon="lock"
+                          :append-icon="show ? 'visibility' : 'visibility_off'"
                           name="password"
                           label="Password"
-                          type="password"
+                          :type="show ? 'text' : 'password'"
+                          @click:append="show = !show"
                           v-model="password"
                           :error-messages="passwordErrors"
                           @input="$v.password.$touch()"
@@ -35,7 +40,7 @@
             ></v-text-field>
         </v-card-text>
         <v-card-actions>
-          <v-card-text class="ml-4"><a href="/home" class="grey--text text--lighten-1">No recorda la contrasenya?</a></v-card-text>
+          <v-card-text class="ml-4"><a href="/password/reset" class="grey--text text--lighten-1">No recorda la contrasenya?</a></v-card-text>
           <v-spacer></v-spacer>
           <v-btn color="primary" type="submit" :disabled="$v.$invalid">Login</v-btn>
         </v-card-actions>
@@ -69,7 +74,8 @@ export default {
   data () {
     return {
       dataEmail: this.email,
-      password: ''
+      password: '',
+      show: false,
     }
   },
   props: [ 'email', 'csrfToken' ],
