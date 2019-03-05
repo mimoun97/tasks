@@ -1,19 +1,21 @@
 <template>
-  <div>
-    <p class="title">Network type Speed</p>
-    <p>
+  <v-card flat>
+    <v-card-title class="title">Network type Speed</v-card-title>
+    <v-card-text class="body-2">
+      <p>
       Current theoretical network type is
-      <b>{{ dataInfo.type || 'undefined'}}</b>.
+      <b>{{ dataInfo.type}}</b>.
     </p>
     <p>
       Current effective network type is
-      <b>{{ dataInfo.effectiveType || 'undefined' }}</b>.
+      <b>{{ dataInfo.effectiveType}}</b>.
     </p>
     <p>
       Current max downlink speed is
-      <b>{{ dataInfo.downlinkMax || 'undefined'}}</b>.
+      <b>{{ dataInfo.downlink}}</b>.
     </p>
-  </div>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -21,7 +23,7 @@ export default {
   name: "NetworkTypeSpeed",
   data() {
     return {
-      dataInfo: this.info || {}
+      dataInfo: {}
     };
   },
   methods: {
@@ -33,17 +35,14 @@ export default {
         navigator.msConnection
       );
     },
-    handle: function() {
-      this.dataInfo = this.getConnection()
-    }
-  },
-  computed: {
-    info:function () {
-      return this.getConnection();
+    handle() {
+      this.dataInfo = this.getConnection();
     }
   },
   created: function() {
-    navigator.connection.addEventListener("change", this.handle);
+    this.dataInfo = this.getConnection();
+    console.log(this.dataInfo)
+    navigator.connection.addEventListener("change", this.handle());
   }
 };
 </script>

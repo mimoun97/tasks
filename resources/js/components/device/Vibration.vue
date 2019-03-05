@@ -1,6 +1,6 @@
 <template>
-  <v-card class="text-xs-center">
-    <v-card-title>Vibration</v-card-title>
+  <v-card flat class="text-xs-center">
+    <v-card-title class="title">Vibration</v-card-title>
     <v-card-text class="grey--text lighten-2">
       <p
         class="grey--text text--lighten-1 body-1"

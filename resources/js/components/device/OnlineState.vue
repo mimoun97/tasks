@@ -1,6 +1,6 @@
 <template>
-  <v-card>
-    <v-card-title>Online state</v-card-title>
+  <v-card flat>
+    <v-card-title class="title">Online state</v-card-title>
     <v-card-text>
       <p>
         Connection state changed to
