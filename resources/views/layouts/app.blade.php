@@ -64,12 +64,19 @@
             <notifications-widget></notifications-widget>
 
             {{-- <v-toolbar-side-icon @click.stop="drawerRigth = !drawerRigth"></v-toolbar-side-icon> --}}
-            <v-avatar v-ripple="{ class: 'primary--text' }" @click.stop="drawerRigth = !drawerRigth" title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">
-            <picture>
-                <source srcset="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}.webp?s=48" type="image/webp">
-                <img src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}.jpg?s=48" alt="avatar" />
-            </picture>
-            </v-avatar>
+            <v-hover>
+                <v-avatar 
+                    slot-scope="{ hover }"
+                    :class="hover ? 'pointer' : ''"
+                    v-ripple="{ class: 'primary--text' }" 
+                    @click.stop="drawerRigth = !drawerRigth" 
+                    title="{{ Auth::user()->name }} ( {{ Auth::user()->email }} )">
+                    <picture>
+                        <source srcset="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}.webp?s=48" type="image/webp">
+                        <img src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}.jpg?s=48" alt="avatar" />
+                    </picture>
+                </v-avatar>
+            </v-hover>
 
         </v-toolbar>
         <v-content>

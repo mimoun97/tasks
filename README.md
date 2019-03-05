@@ -89,3 +89,5 @@ npm run test:unit
 + minificació
 + CDN vs import fonts?
 + bg images from https://www.pexels.com/ 
+
++ tips for performance [The Cost Of JavaScript](https://medium.com/dev-channel/the-cost-of-javascript-84009f51e99e)
