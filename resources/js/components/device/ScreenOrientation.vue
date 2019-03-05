@@ -1,33 +1,73 @@
 <template>
-  <div>
-    <v-flex xs12>
-      <p class="title">Screen Orientation</p>
-    </v-flex>
-    <div id="device"></div>
+  <v-card>
+    <v-card-title>Screen Orientation</v-card-title>
 
-    <p>
-      Current screen orientation is
-      <b id="orientationType">unknown</b>.
-    </p>
+    <v-card-text>
+      <p class="grey--text text--lighten-1 body-1">
+        The
+        <b>Screen Orientation API</b> allows Web applications to get the information about the current orientation of the document
+        (portrait or landscape) as well as to lock the screen orientation in a requested state.
+      </p>
+      <p>
+        Current screen orientation is
+        <b v-text="orientation || 'unknown'"></b>.
+      </p>
+    </v-card-text>
 
-    <v-btn color="red" dark id="lock">
-      <v-icon class="mr-3">{{ orientation ? 'orientation_landscape' : 'orientation_portrait'}}</v-icon>in current orientation
-    </v-btn>
-    <v-btn color="grey" dark id="unlock">
-      <v-icon class="mr-3">orientation_lock</v-icon>Release the lock
-    </v-btn>
-
-    <p id="logTarget"></p>
-  </div>
+    <v-card-actions class="justify-center">
+      <v-btn color="grey" dark id="unlock"><span v-text="isLocked ? 'Release the lock' : 'Lock'"></span>
+        <v-icon right>orientation_lock</v-icon>
+      </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
 export default {
+  // TODO release the lock
   name: "ScreenOrientation",
   data: function() {
     return {
-      orientation: false
+      orientation: null,
+      orientKey: "orientation",
+      isLocked: false,
     };
+  },
+  methods: {
+    update() {
+      if (!screen[this.orientKey]) return;
+      let type = screen[this.orientKey].type || screen[this.orientKey];
+      this.orientation = type;
+    },
+    setOrientKey() {
+      if ("mozOrientation" in screen) {
+        this.orientKey = "mozOrientation";
+      } else if ("msOrientation" in screen) {
+        this.orientKey = "msOrientation";
+      }
+    },
+    onOrientationChange() {
+      this.update();
+    }
+  },
+  created() {
+    this.setOrientKey();
+
+    if (screen[this.orientKey]) {
+      this.update();
+    }
+
+    if ("onchange" in screen[this.orientKey]) {
+      //new api
+      this.update();
+
+      screen[this.orientKey].addEventListener("change", this.onOrientationChange);
+    } else if ("onorientationchange" in screen) {
+      // older API
+      this.update();
+
+      screen.addEventListener("orientationchange", this.onOrientationChange);
+    }
   }
 };
 </script>
