@@ -6,10 +6,10 @@
                     <v-icon>more_vert</v-icon>
                 </v-btn>
                 <v-list>
-                    <v-list-tile href="/changelog/module/notifications" target="_blank">
+                    <v-list-tile href="/changelog/module/notifications" target="_blank" rel="noopener">
                         <v-list-tile-title>Mostrar historial de notificacions (registre de canvis)</v-list-tile-title>
                     </v-list-tile>
-                    <v-list-tile href="/users" target="_blank">
+                    <v-list-tile href="/users" target="_blank" rel="noopener">
                         <v-list-tile-title>Gestionar usuaris</v-list-tile-title>
                     </v-list-tile>
                 </v-list>
@@ -18,7 +18,7 @@
             <v-spacer></v-spacer>
 
             <v-tooltip bottom>
-                <v-btn slot="activator" id="notifications_help_button" icon class="white--text" href="http://docs.scool.cat/docs/users" target="_blank">
+                <v-btn slot="activator" id="notifications_help_button" icon class="white--text" href="http://docs.scool.cat/docs/users" target="_blank" rel="noopener">
                     <v-icon>help</v-icon>
                 </v-btn>
                 <span>Ajuda</span>

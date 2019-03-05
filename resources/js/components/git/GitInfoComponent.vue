@@ -13,7 +13,7 @@
             <li>Commit: {{ dataGit.commit }}</li>
             <li>
               URL Commit:
-              <a :href="githubURLCommit()" target="_blank">{{ dataGit.commit }}</a>
+              <a :href="githubURLCommit()" target="_blank" rel="noopener">{{ dataGit.commit }}</a>
             </li>
             <li>Commit_short: {{ dataGit.commit_short }}</li>
             <li>Autor: {{ dataGit.author_name }}</li>
@@ -22,10 +22,10 @@
             <li>Data: {{ dataGit.date_human }} | {{ dataGit.date_formatted }}</li>
             <li>Origin: {{ dataGit.origin }}</li>
             <li>Projecte Github:
-              <a :href="githubURL()" target="_blank">{{ githubUri() }}</a>
+              <a :href="githubURL()" target="_blank" rel="noopener">{{ githubUri() }}</a>
             </li>
             <li>Commits Github:
-              <a :href="githubURLIssues()" target="_blank">{{ githubUri() }}</a>
+              <a :href="githubURLIssues()" target="_blank" rel="noopener">{{ githubUri() }}</a>
             </li>
           </ul>
         </v-card-text>

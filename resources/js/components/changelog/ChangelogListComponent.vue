@@ -6,7 +6,7 @@
                     <v-icon>more_vert</v-icon>
                 </v-btn>
                 <v-list>
-                    <v-list-tile href="/jobs/sheet_holders" target="_blank">
+                    <v-list-tile href="/jobs/sheet_holders" target="_blank" rel="noopener">
                         <v-list-tile-title>TODO 0 Estadístiques</v-list-tile-title>
                     </v-list-tile>
                 </v-list>

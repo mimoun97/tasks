@@ -1,5 +1,15 @@
 <template>
-  <v-btn absolute dark fab bottom right color="accent" @click="show()">
+  <v-btn
+    v-if="canShare"
+    absolute
+    dark
+    fab
+    bottom
+    right
+    color="accent"
+    @click="show()"
+    aria-label="Share"
+  >
     <v-icon>share</v-icon>
   </v-btn>
 </template>
@@ -9,15 +19,13 @@ export default {
   name: "ShareFab",
   data() {
     return {
-      dialog: false
+      dialog: false,
+      canShare: false
     };
   },
   methods: {
     show() {
-      if (!("share" in navigator)) {
-        alert("Web Share API not supported!!");
-        return;
-      }
+      if (!("share" in navigator)) return;
 
       navigator
         .share({
@@ -25,9 +33,12 @@ export default {
           text: "Aplicació de tasques",
           url: "https://tasks.mimoun1997.scool.cat/"
         })
-        .then(() => console.log("Successful share"))
-        .catch(error => console.log("Error sharing:", error));
+        .then(() => this.$snackbar.showMessage("Thanks for sharing"))
+        .catch(error => this.$snackbar.showError("Error: " + error));
     }
+  },
+  created() {
+    this.canShare = ("share" in navigator);
   }
 };
 </script>
