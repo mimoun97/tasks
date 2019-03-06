@@ -250,12 +250,6 @@ class TasquesControllerTest extends TestCase
 
         $response = $this->get('/tasques/' . $task->id);
 
-        $response->assertViewIs('tasques_show');
-
-        $response->assertViewHas('task', $task);
-        $response->assertViewHas('users');
-        $response->assertViewHas('uri', '/api/v1/user/tasks');
-
-        $response->assertSee($task->name);
+        $response->assertStatus(403);
     }
 }

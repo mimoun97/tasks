@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
     "/js/manifest.js": "/js/manifest.js",
     "/js/vendor.js": "/js/vendor.js",
     "/img/capturatasks.PNG": "/img/capturatasks.PNG",
@@ -12,23 +13,5 @@
     "/img/sky.jpeg": "/img/sky.jpeg",
     "/img/team.jpeg": "/img/team.jpeg",
     "/img/tests.gif": "/img/tests.gif",
-    "/img/tests2.gif": "/img/tests2.gif",
-    "/js/app.f0c398c61980732fd22c.hot-update.js": "/js/app.f0c398c61980732fd22c.hot-update.js",
-    "/js/app.46182b91aee83f4a24ac.hot-update.js": "/js/app.46182b91aee83f4a24ac.hot-update.js",
-    "/js/app.8f59040bea2deb28a07b.hot-update.js": "/js/app.8f59040bea2deb28a07b.hot-update.js",
-    "/js/app.811539dec04d3b35b1d0.hot-update.js": "/js/app.811539dec04d3b35b1d0.hot-update.js",
-    "/js/app.320dac89b48f4dfebd5a.hot-update.js": "/js/app.320dac89b48f4dfebd5a.hot-update.js",
-    "/js/app.21317d216e52a3fa67fb.hot-update.js": "/js/app.21317d216e52a3fa67fb.hot-update.js",
-    "/js/app.e4499b7d026ee9d01791.hot-update.js": "/js/app.e4499b7d026ee9d01791.hot-update.js",
-    "/js/app.ddc7e9914aec71017054.hot-update.js": "/js/app.ddc7e9914aec71017054.hot-update.js",
-    "/js/app.fd47ca3dad4ecc8c5eff.hot-update.js": "/js/app.fd47ca3dad4ecc8c5eff.hot-update.js",
-    "/js/app.6b993080576f196d32bf.hot-update.js": "/js/app.6b993080576f196d32bf.hot-update.js",
-    "/js/app.b5c2444d86a94c8b134b.hot-update.js": "/js/app.b5c2444d86a94c8b134b.hot-update.js",
-    "/js/app.0891233a8cdcbd9a4ffb.hot-update.js": "/js/app.0891233a8cdcbd9a4ffb.hot-update.js",
-    "/js/app.49b5df5e97a769cd0350.hot-update.js": "/js/app.49b5df5e97a769cd0350.hot-update.js",
-    "/js/app.f5c35b93c2261f00c341.hot-update.js": "/js/app.f5c35b93c2261f00c341.hot-update.js",
-    "/js/app.79ca000ec53a97c84013.hot-update.js": "/js/app.79ca000ec53a97c84013.hot-update.js",
-    "/js/app.a0d1f77225b5dee1881c.hot-update.js": "/js/app.a0d1f77225b5dee1881c.hot-update.js",
-    "/js/app.76152551dccfcfd4127b.hot-update.js": "/js/app.76152551dccfcfd4127b.hot-update.js",
-    "/js/app.08577030b6e0165394d5.hot-update.js": "/js/app.08577030b6e0165394d5.hot-update.js"
+    "/img/tests2.gif": "/img/tests2.gif"
 }
