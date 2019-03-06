@@ -82,4 +82,40 @@ class TasquesControllerTest extends TestCase
         $response->assertViewHas('users');
         $response->assertViewHas('uri');
     }
+
+    /**
+     * @test
+     */
+    public function guest_user_cannot_show_a_task_by_link()
+    {
+        $this->withExceptionHandling();
+        $task = factory(Task::class)->create([
+            'name' => 'No copiar',
+            'completed' => false,
+            'description' => 'Copiant , no s\'apren'
+        ]);
+
+        $this->assertNotNull($task);
+
+        $response = $this->get('/tasques/' . $task->id);
+
+        $response->assertRedirect('/login');
+
+        // $this->assertDatabaseMissing('tasks', ['name' => 'No copiar, així no s\'apren']);
+
+        // $response = $this->get('/tasques/');
+        // $response->assertRedirect('/login');
+    }
+
+    
+    /**
+     * @test
+     */
+    public function regular_user_cannot_show_a_task_by_link()
+    {
+        //$this->withoutExceptionHandling();
+        $this->login();
+        $response = $this->get('/tasques');
+        $response->assertStatus(403);
+    }
 }
