@@ -119,28 +119,6 @@
             </section>
 
             <section>
-                <v-layout
-                    
-                    wrap
-                    class="my-5"
-                    align-center
-                >
-                <v-flex xs12 class="my-3">
-                        <div class="text-xs-center">
-                            <h2 class="headline">Algunes captures de pantalla</h2>
-                            <span class="subheading">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos, modi?
-                            </span>
-                        </div>
-                </v-flex>
-                <v-flex xs12>
-                    <carrusel></carrusel>
-                </v-flex>
-                    
-                </v-layout>
-            </section>
-
-            <section>
                 <v-parallax src="img/team.jpeg" height="400">
                     <v-layout column align-center justify-center>
                         <div class="headline black--text mb-3 text-xs-center">Web development has never been easier</div>
