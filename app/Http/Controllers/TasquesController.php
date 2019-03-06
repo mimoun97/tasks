@@ -10,6 +10,7 @@ use App\Http\Requests\TasquesShow;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\TasquesIndex;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Cache;
 
 class TasquesController extends Controller
@@ -37,12 +38,15 @@ class TasquesController extends Controller
         return view('tasques', compact('tasks', 'users', 'uri', 'tags'));
     }
 
-    public function show(TasquesShow $request)
+    public function show(TasquesShow $request) //TasquesShow-> authorize() return true;
     {
-        $uri = Auth::user()->can('tasks.manage') ? $this->adminUri : $this->usersUri;
-
         $task = Task::findOrFail($request->id);
+        //TODO using policies and gates together
+        abort_unless(Gate::allows('task.link.show', $task), 403);
+
         $task->map();
+
+        $uri = Auth::user()->can('tasks.manage') ? $this->adminUri : $this->usersUri;
 
         $users = User::with(['roles', 'permissions'])->orderBy('name')->get();
 

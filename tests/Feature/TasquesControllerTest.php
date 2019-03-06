@@ -171,10 +171,13 @@ class TasquesControllerTest extends TestCase
 
         $this->loginAsTaskManager();
 
+        $ownerUser = factory(User::class)->create();
+
         $task = factory(Task::class)->create([
             'name' => 'No copiar',
             'completed' => false,
-            'description' => 'Copiant , no s\'apren'
+            'description' => 'Copiant , no s\'apren',
+            'user_id' => $ownerUser->id
         ]);
 
         $this->assertNotNull($task);
@@ -233,7 +236,7 @@ class TasquesControllerTest extends TestCase
         //TODO only show a task if you can.
         $this->withExceptionHandling();
 
-        $taskUser = $this->loginAsTasksUser();
+        $this->loginAsTasksUser();
 
         $ownerUser = factory(User::class)->create();
 

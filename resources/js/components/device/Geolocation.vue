@@ -84,7 +84,7 @@ export default {
       );
     }
   },
-  destroyed() {
+  beforeDestroy() {
     this.destroyLocation();
   }
 };

@@ -14,7 +14,8 @@ class TasquesShow extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->can('user.tasks.show') || Auth::user()->can('tasks.show');
+        //TODO millorar
+        return true;
     }
 
     /**

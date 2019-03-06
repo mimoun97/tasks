@@ -47,6 +47,8 @@ import VueProgressBar from 'vue-progressbar'
 
 //device features geo, vibration, orientation..
 import TheDeviceFeatures from './components/device/TheDeviceFeatures'
+//task link show
+import TaskCard from './components/TaskCard'
 
 window.Vue = Vue
 window.Vuetify = Vuetify
@@ -228,7 +230,8 @@ window.Vue.component('footer-app', FooterApp)
 window.Vue.component('carrusel', Carrusel)
 //devices section
 window.Vue.component('the-device-features', TheDeviceFeatures)
-
+// task link tasca
+window.Vue.component('task-card', TaskCard);
 
 // eslint-disable-next-line no-unused-vars
 const app = new window.Vue(AppComponent)

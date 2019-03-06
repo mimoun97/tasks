@@ -172,6 +172,12 @@ if (!function_exists('initialize_gates')) {
         Gate::define('changelog.list', function ($user) {
             return $user->hasRole('ChangelogManager');
         });
+
+        // task link show
+        Gate::define('task.link.show', function ($user, $task) {
+            //can only if owner or you have privileges(admin or TaskManager)
+            return $user->id == $task->user_id || Auth::user()->can('tasks.manage');
+        });
     }
 }
 
