@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/tasques', 'TasquesController@index');
     // TODO LINK TASCA
-    Route::get('/tasques/{id}', '\\' . TasquesController::class . '@show');
+    Route::get('/tasques/{id}', '\\' . TasquesController::class . '@show')->name('tasca.show');
 
     Route::get('/user/tasks', 'LoggedUserTasksController@index');
 
@@ -74,6 +74,10 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::get('/about', function () {
         return view('about');
+    });
+
+    Route::get('/screenshots', function () {
+        return view('screenshots');
     });
 });
 
