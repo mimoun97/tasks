@@ -5,7 +5,7 @@
 @section('content')
 <v-container fluid fill-height>
     <v-layout row align-center justify-center>
-        <div class="col-md-8">
+        <v-flex md8>
             <v-card class="elevation-12">
                 <v-toolbar dark color="primary">
                     <v-toolbar-title>{{ __('Reset Password') }}</v-toolbar-title>
@@ -59,8 +59,8 @@
                         </v-layout>
                     </form>
                 </v-card-text>
-            </div>
-        </div>
+            </v-card>
+        </v-flex>
     </v-layout>
 </v-container>
 @endsection
