@@ -6,36 +6,27 @@ use App\Tag;
 use App\Task;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\TasquesShow;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\TasquesIndex;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Cache;
-//use Barryvdh\Debugbar\Facade as Debugbar;
 
 class TasquesController extends Controller
 {
+
+    private $usersUri = '/api/v1/user/tasks';
+    private $adminUri = '/api/v1/tasks';
+
     public function index(TasquesIndex $request)
     {
         $tasks = Auth::user()->can('tasks.manage')  ?
-        Task::with(['user', 'tags'])->orderBy('created_at', 'desc')->get() : $request->user()->tasks;
-        // $tasks = Cache::remember(Task::TASQUES_CACHE_KEY, '10', function () {
-        //     return Auth::user()->can('tasks.manage')  ?
-        //      Task::with(['user', 'tags'])->orderBy('created_at', 'desc')->get() : $request->user()->tasks;
-        // });
+            Task::with(['user', 'tags'])->orderBy('created_at', 'desc')->get() : $request->user()->tasks;
 
-        // $tasks = Auth::user()->can('tasks.manage') ?
-        //     Task::with(['user', 'tags'])->orderBy('created_at', 'desc')->get() : $request->user()->tasks;
+        $tasks = map_collection($tasks);
 
-        //Debugbar::info($tasks);
-        
-
-        if (Auth::user()->can('tasks.manage')) {
-            $tasks = map_collection($tasks);
-            $uri = '/api/v1/tasks';
-        } else {
-            $tasks = map_collection($tasks);
-            $uri = '/api/v1/user/tasks';
-        }
+        $uri = Auth::user()->can('tasks.manage') ? $this->adminUri : $this->usersUri;
 
         $users = Cache::remember(User::USERS_CACHE_KEY, '10', function () {
             return User::with(['roles', 'permissions'])->orderBy('name')->get();
@@ -45,5 +36,20 @@ class TasquesController extends Controller
         });
 
         return view('tasques', compact('tasks', 'users', 'uri', 'tags'));
+    }
+
+    public function show(TasquesShow $request) //TasquesShow-> authorize() return true;
+    {
+        $task = Task::findOrFail($request->id);
+        //TODO using policies and gates together
+        abort_unless(Gate::allows('task.link.show', $task), 403);
+
+        $task->map();
+
+        $uri = Auth::user()->can('tasks.manage') ? $this->adminUri : $this->usersUri;
+
+        $users = User::with(['roles', 'permissions'])->orderBy('name')->get();
+
+        return view('tasques_show', compact('task', 'users', 'uri'));
     }
 }

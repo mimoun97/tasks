@@ -53,7 +53,7 @@
         :pagination.sync="pagination"
         class="hidden-md-and-down"
       >
-        <v-progress-linear slot="progress" color="info" indeterminate></v-progress-linear>
+        <v-progress-linear slot="progress" color="primary" indeterminate></v-progress-linear>
         <template slot="items" slot-scope="{item: task}">
           <tr>
             <td>{{ task.id }}</td>

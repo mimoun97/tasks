@@ -6,8 +6,10 @@ use App\Task;
 use App\User;
 use Tests\TestCase;
 use Tests\Feature\Traits\CanLogin;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use phpDocumentor\Reflection\Types\Void_;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class TasksControllerTest extends TestCase
 {
@@ -31,14 +33,14 @@ class TasksControllerTest extends TestCase
 
         $this->assertNotNull($task);
 
-        $response = $this->json('GET','/api/v1/tasks/' . $task->id);
+        $response = $this->json('GET', '/api/v1/tasks/' . $task->id);
 
         $result = json_decode($response->getContent());
         //dd($result);
         $response->assertSuccessful();
         $this->assertEquals($task->name, $result->name);
         $this->assertEquals($task->description, $result->description);
-        $this->assertEquals($task->completed, (boolean) $result->completed);
+        $this->assertEquals($task->completed, (boolean)$result->completed);
     }
 
     /**
@@ -54,7 +56,7 @@ class TasksControllerTest extends TestCase
 
         $this->assertNotNull($task);
 
-        $response = $this->json('GET','/api/v1/tasks/' . $task->id);
+        $response = $this->json('GET', '/api/v1/tasks/' . $task->id);
 
         $response->assertSuccessful();
 
@@ -62,7 +64,7 @@ class TasksControllerTest extends TestCase
 
         $this->assertEquals($task->name, $result->name);
         $this->assertEquals($task->description, $result->description);
-        $this->assertEquals($task->completed, (boolean) $result->completed);
+        $this->assertEquals($task->completed, (boolean)$result->completed);
     }
 
     /**
@@ -78,7 +80,7 @@ class TasksControllerTest extends TestCase
 
         $this->assertNotNull($task);
 
-        $response = $this->json('GET','/api/v1/tasks/' . $task->id);
+        $response = $this->json('GET', '/api/v1/tasks/' . $task->id);
 
         $response->assertStatus(401); //Unauthorized
     }
@@ -96,7 +98,7 @@ class TasksControllerTest extends TestCase
 
         $this->assertNotNull($task);
 
-        $response = $this->json('GET','/api/v1/tasks/' . $task->id);
+        $response = $this->json('GET', '/api/v1/tasks/' . $task->id);
 
         //$response->assertStatus(403);//Forbidden
         $response->assertForbidden(); //403
@@ -107,7 +109,11 @@ class TasksControllerTest extends TestCase
      */
     public function task_manager_can_delete_task()
     {
-        $user  =$this->loginAsTaskManager('api');
+        $this->withoutExceptionHandling();
+        $user  = $this->loginAsTaskManager('api');
+
+        Event::fake();
+        Event::assertNotDispatched(\App\Events\Tasks\TaskDestroyed::class);
 
         $this->assertNotNull($user);
 
@@ -115,19 +121,21 @@ class TasksControllerTest extends TestCase
 
         $this->assertNotNull($task);
 
-        $response = $this->json('DELETE','/api/v1/tasks/' . $task->id);
+        $response = $this->json('DELETE', '/api/v1/tasks/' . $task->id);
 
         $response->assertSuccessful();
 
-        $this->assertNull(Task::find($task->id));
+        Event::assertDispatched(\App\Events\Tasks\TaskDestroyed::class, function ($event) use ($task) {
+            return $event->task->id === $task->id;
+        });
     }
 
-        /**
+    /**
      * @test
      */
     public function superadmin_can_delete_task()
     {
-        $user  =$this->loginAsSuperAdmin('api');
+        $user  = $this->loginAsSuperAdmin('api');
 
         $this->assertNotNull($user);
 
@@ -135,11 +143,20 @@ class TasksControllerTest extends TestCase
 
         $this->assertNotNull($task);
 
-        $response = $this->json('DELETE','/api/v1/tasks/' . $task->id);
+        //2
+        Event::fake();
+        Event::assertNotDispatched(\App\Events\Tasks\TaskDestroyed::class);
+
+        $response = $this->json('DELETE', '/api/v1/tasks/' . $task->id);
 
         $response->assertSuccessful();
 
         $this->assertNull(Task::find($task->id));
+
+        //3
+        Event::assertDispatched(\App\Events\Tasks\TaskDestroyed::class, function ($event) use ($task) {
+            return $event->task->id === $task->id;
+        });
     }
 
     /**
@@ -155,7 +172,11 @@ class TasksControllerTest extends TestCase
 
         $this->assertNotNull($task);
 
-        $response = $this->json('DELETE','/api/v1/tasks/' . $task->id);
+        Event::fake();
+
+        $response = $this->json('DELETE', '/api/v1/tasks/' . $task->id);
+
+        Event::assertNotDispatched(\App\Events\Tasks\TaskDestroyed::class);
 
         $response->assertStatus(403);
 
@@ -169,7 +190,7 @@ class TasksControllerTest extends TestCase
     {
         $this->loginAsSuperAdmin('api');
 
-        $response = $this->json('POST','/api/v1/tasks/',[
+        $response = $this->json('POST', '/api/v1/tasks/', [
             'name' => ''
         ])->assertJson([
             "message" => "The given data was invalid."
@@ -178,14 +199,14 @@ class TasksControllerTest extends TestCase
         $response->assertStatus(422);
     }
 
-       /**
+    /**
      * @test
      */
     public function task_manager_cannot_create_tasks_without_name()
     {
         $this->loginAsSuperAdmin('api');
 
-        $response = $this->json('POST','/api/v1/tasks/',[
+        $response = $this->json('POST', '/api/v1/tasks/', [
             'name' => ''
         ])->assertJson([
             "message" => "The given data was invalid."
@@ -194,34 +215,38 @@ class TasksControllerTest extends TestCase
         $response->assertStatus(422);
     }
 
-//     /**
-//      * @test
-//      */
-//     public function can_create_task()
-//     {
-//         $this->login('api');
-//         $response = $this->json('POST','/api/v1/tasks/',[
-//             'name' => 'Comprar pa'
-//         ]);
+    //     /**
+    //      * @test
+    //      */
+    //     public function can_create_task()
+    //     {
+    //         $this->login('api');
+    //         $response = $this->json('POST','/api/v1/tasks/',[
+    //             'name' => 'Comprar pa'
+    //         ]);
 
-//         $result = json_decode($response->getContent());
-//         //dd($result);
-//         $response->assertSuccessful();
+    //         $result = json_decode($response->getContent());
+    //         //dd($result);
+    //         $response->assertSuccessful();
 
-// //        $this->assertDatabaseHas('tasks', [ 'name' => 'Comprar pa' ]);
-//         $this->assertNotNull($task = Task::find($result->id));
-//         $this->assertEquals('Comprar pa',$result->name);
-//         $this->assertFalse($result->completed);
-//     }
+    // //        $this->assertDatabaseHas('tasks', [ 'name' => 'Comprar pa' ]);
+    //         $this->assertNotNull($task = Task::find($result->id));
+    //         $this->assertEquals('Comprar pa',$result->name);
+    //         $this->assertFalse($result->completed);
+    //     }
 
     /**
      * @test
      */
     public function superadmin_can_create_task()
     {
+        $this->withoutExceptionHandling();
         $user = $this->loginAsSuperAdmin('api');
 
-        $response = $this->json('POST','/api/v1/tasks/',[
+        Event::fake();
+        Event::assertNotDispatched(\App\Events\Tasks\TaskStored::class);
+
+        $response = $this->json('POST', '/api/v1/tasks/', [
             'name' => 'Comprar pa',
             'description' => 'comprar pa',
             'completed' => true
@@ -231,12 +256,16 @@ class TasksControllerTest extends TestCase
 
         $response->assertSuccessful();
 
-        $this->assertDatabaseHas('tasks', [ 'name' => 'Comprar pa' ]);
+        $this->assertDatabaseHas('tasks', ['name' => 'Comprar pa']);
         $this->assertNotNull($task = Task::find($result->id));
         $this->assertEquals('Comprar pa', $result->name);
         $this->assertEquals('comprar pa', $result->description);
         $this->assertTrue($result->completed);
         $this->assertNull($task->user_id);
+
+        Event::assertDispatched(\App\Events\Tasks\TaskStored::class, function ($event) use ($task) {
+            return $event->task->id === $task->id;
+        });
     }
 
     /**
@@ -248,6 +277,9 @@ class TasksControllerTest extends TestCase
         $this->loginAsSuperAdmin('api');
 
         $user = factory(User::class)->create();
+
+        Event::fake();
+        Event::assertNotDispatched(\App\Events\Tasks\TaskStored::class);
 
         $response = $this->json('POST', '/api/v1/tasks/', [
             'name' => 'Comprar pa',
@@ -266,15 +298,22 @@ class TasksControllerTest extends TestCase
         $this->assertEquals('comprar pa', $result->description);
         $this->assertTrue($result->completed);
         $this->assertEquals($result->user_id, $task->user_id);
+
+        Event::assertDispatched(\App\Events\Tasks\TaskStored::class, function ($event) use ($task) {
+            return $event->task->id === $task->id;
+        });
     }
 
-        /**
+    /**
      * @test
      */
     public function task_manager_can_create_task()
     {
         $this->withoutExceptionHandling();
         $this->loginAsTaskManager('api');
+
+        Event::fake();
+        Event::assertNotDispatched(\App\Events\Tasks\TaskStored::class);
 
         $response = $this->json('POST', '/api/v1/tasks/', [
             'name' => 'Comprar pa',
@@ -292,6 +331,10 @@ class TasksControllerTest extends TestCase
         $this->assertEquals('comprar pa', $result->description);
         $this->assertTrue($result->completed);
         $this->assertNull($task->user_id);
+
+        Event::assertDispatched(\App\Events\Tasks\TaskStored::class, function ($event) use ($task) {
+            return $event->task->id === $task->id;
+        });
     }
 
     /**
@@ -302,11 +345,16 @@ class TasksControllerTest extends TestCase
         //$this->withoutExceptionHandling();
         $this->login('api');
 
+        Event::fake();
+        Event::assertNotDispatched(\App\Events\Tasks\TaskStored::class);
+
         $response = $this->json('POST', '/api/v1/tasks/', [
             'name' => 'Comprar pa',
             'description' => 'comprar pa',
             'completed' => true
         ]);
+
+        Event::assertNotDispatched(\App\Events\Tasks\TaskStored::class);
 
         $response->assertStatus(403); //Forbidden
     }
@@ -321,12 +369,12 @@ class TasksControllerTest extends TestCase
 
         create_example_tasks();
 
-        $response = $this->json('GET','/api/v1/tasks');
+        $response = $this->json('GET', '/api/v1/tasks');
         $response->assertSuccessful();
 
         $result = json_decode($response->getContent());
         //dd($result);
-        $this->assertCount(3,$result);
+        $this->assertCount(3, $result);
 
         $this->assertEquals('comprar pa', $result[0]->name);
         $this->assertEquals('pa', $result[0]->description);
@@ -334,14 +382,14 @@ class TasksControllerTest extends TestCase
 
         $this->assertEquals('comprar llet', $result[1]->name);
         $this->assertEquals('llet', $result[1]->description);
-        $this->assertFalse((boolean) $result[1]->completed);
+        $this->assertFalse((boolean)$result[1]->completed);
 
         $this->assertEquals('Estudiar PHP', $result[2]->name);
         $this->assertEquals('php', $result[2]->description);
-        $this->assertTrue((boolean) $result[2]->completed);
+        $this->assertTrue((boolean)$result[2]->completed);
     }
 
-        /**
+    /**
      * @test
      */
     public function task_manager_can_list_tasks()
@@ -350,12 +398,12 @@ class TasksControllerTest extends TestCase
 
         create_example_tasks();
 
-        $response = $this->json('GET','/api/v1/tasks');
+        $response = $this->json('GET', '/api/v1/tasks');
         $response->assertSuccessful();
 
         $result = json_decode($response->getContent());
         //dd($result);
-        $this->assertCount(3,$result);
+        $this->assertCount(3, $result);
 
         $this->assertEquals('comprar pa', $result[0]->name);
         $this->assertEquals('pa', $result[0]->description);
@@ -363,14 +411,14 @@ class TasksControllerTest extends TestCase
 
         $this->assertEquals('comprar llet', $result[1]->name);
         $this->assertEquals('llet', $result[1]->description);
-        $this->assertFalse((boolean) $result[1]->completed);
+        $this->assertFalse((boolean)$result[1]->completed);
 
         $this->assertEquals('Estudiar PHP', $result[2]->name);
         $this->assertEquals('php', $result[2]->description);
-        $this->assertTrue((boolean) $result[2]->completed);
+        $this->assertTrue((boolean)$result[2]->completed);
     }
 
-       /**
+    /**
      * @test
      */
     public function regular_user_cannot_list_tasks()
@@ -426,9 +474,12 @@ class TasksControllerTest extends TestCase
             'completed' => false
         ]);
 
+        Event::fake();
+        Event::assertNotDispatched(\App\Events\Tasks\TaskUpdated::class);
+
         $this->assertNotNull($oldTask);
 
-        $response = $this->json('PUT','/api/v1/tasks/' . $oldTask->id, [
+        $response = $this->json('PUT', '/api/v1/tasks/' . $oldTask->id, [
             'name' => 'Comprar pa',
             'description' => 'comprar pa',
             'completed' => true
@@ -442,8 +493,13 @@ class TasksControllerTest extends TestCase
         $this->assertNotNull($newTask);
         $this->assertEquals('Comprar pa', $result->name);
         $this->assertEquals('comprar pa', $result->description);
-        $this->assertTrue((boolean) $newTask->completed);
+        $this->assertTrue((boolean)$newTask->completed);
         $this->assertNull($newTask->user_id);
+
+        $task = $newTask;
+        Event::assertDispatched(\App\Events\Tasks\TaskUpdated::class, function ($event) use ($task) {
+            return $event->task->id === $task->id;
+        });
     }
 
     /**
@@ -454,6 +510,9 @@ class TasksControllerTest extends TestCase
         $this->withoutExceptionHandling();
         $this->loginAsTaskManager('api');
 
+        Event::fake();
+        Event::assertNotDispatched(\App\Events\Tasks\TaskUpdated::class);
+
         $oldTask = factory(Task::class)->create([
             'name' => 'Comprar llet',
             'description' => 'comprar llet',
@@ -462,7 +521,7 @@ class TasksControllerTest extends TestCase
 
         $this->assertNotNull($oldTask);
 
-        $response = $this->json('PUT','/api/v1/tasks/' . $oldTask->id, [
+        $response = $this->json('PUT', '/api/v1/tasks/' . $oldTask->id, [
             'name' => 'Comprar pa',
             'description' => 'comprar pa',
             'completed' => true
@@ -476,8 +535,13 @@ class TasksControllerTest extends TestCase
         $this->assertNotNull($newTask);
         $this->assertEquals('Comprar pa', $result->name);
         $this->assertEquals('comprar pa', $result->description);
-        $this->assertTrue((boolean) $newTask->completed);
+        $this->assertTrue((boolean)$newTask->completed);
         $this->assertNull($newTask->user_id);
+
+        $task = $newTask;
+        Event::assertDispatched(\App\Events\Tasks\TaskUpdated::class, function ($event) use ($task) {
+            return $event->task->id === $task->id;
+        });
     }
 
     /**
@@ -489,10 +553,14 @@ class TasksControllerTest extends TestCase
 
         $task = factory(Task::class)->create();
 
+        Event::fake();
+
         $this->assertNotNull($task);
-        $response = $this->json('PUT','/api/v1/tasks/' . $task->id, [
+        $response = $this->json('PUT', '/api/v1/tasks/' . $task->id, [
             'name' => ''
         ]);
+
+        Event::assertNotDispatched(\App\Events\Tasks\TaskUpdated::class);
 
         $response->assertStatus(422);
     }
@@ -506,10 +574,14 @@ class TasksControllerTest extends TestCase
 
         $task = factory(Task::class)->create();
 
+        Event::fake();
+
         $this->assertNotNull($task);
-        $response = $this->json('PUT','/api/v1/tasks/' . $task->id, [
+        $response = $this->json('PUT', '/api/v1/tasks/' . $task->id, [
             'name' => ''
         ]);
+
+        Event::assertNotDispatched(\App\Events\Tasks\TaskUpdated::class);
 
         $response->assertStatus(422);
     }

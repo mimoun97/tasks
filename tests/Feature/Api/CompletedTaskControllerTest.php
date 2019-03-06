@@ -69,13 +69,13 @@ class CompletedTaskControllerTest extends TestCase
         ]);
         //2
         Event::fake();
-        Event::assertNotDispatched(\App\Events\TaskUncompleted::class);
+        Event::assertNotDispatched(\App\Events\Tasks\TaskUncompleted::class);
         $response = $this->json('DELETE','/api/v1/completed_task/' . $task->id);
         $response->assertSuccessful();
         $task = $task->fresh();
         $this->assertEquals((boolean) $task->completed, false);
 
-        Event::assertDispatched(\App\Events\TaskUncompleted::class, function ($event) use ($task) {
+        Event::assertDispatched(\App\Events\Tasks\TaskUncompleted::class, function ($event) use ($task) {
             return $event->task->id === $task->id;
         });
     }

@@ -82,10 +82,13 @@ npm run test:unit
 
 
 ## TODO
-+ efecte ripple: https://vuetifyjs.com/en/directives/ripples
-+ rendiment ligthhouse
-+ wepb i html5 element `<picture>`
-+ webpack -> production
-+ minificació
-+ CDN vs import fonts?
-+ bg images from https://www.pexels.com/ 
+- [ ] efecte ripple: https://vuetifyjs.com/en/directives/ripples
+- [ ] rendiment ligthhouse
+- [ ] wepb i html5 element `<picture>`
+- [ ] webpack -> production
+- [ ] minificació
+- [ ] CDN vs import fonts?
+- [x] bg images from https://www.pexels.com/
+- [ ] link compartir tasca
+
++ tips for performance [The Cost Of JavaScript](https://medium.com/dev-channel/the-cost-of-javascript-84009f51e99e)

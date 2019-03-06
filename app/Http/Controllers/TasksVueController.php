@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class TasksVueController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::orderBy('created_at', 'desc')->get();
+        $tasks = Task::with(['user', 'tags'])->orderBy('created_at', 'desc')->get();
+        //$tasks = Task::orderBy('created_at', 'desc')->get();
 
         return view('tasks_vue', compact('tasks'));
     }

@@ -1,10 +1,13 @@
 <template>
-  <div>
-    <p class="title">Online state</p>
-    <p>Connection state changed to
-      <b class="headline">{{ online ? 'offline' : 'online' }}.</b>
-    </p>
-  </div>
+  <v-card flat>
+    <v-card-title class="title">Online state</v-card-title>
+    <v-card-text>
+      <p>
+        Connection state changed to
+        <b class="headline" :class="online ? 'red--text' : 'green--text'">{{ online ? 'offline' : 'online' }}.</b>
+      </p>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>

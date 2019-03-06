@@ -3,8 +3,10 @@
 namespace App\Listeners\Tasks;
 
 use App\Events\Tasks\TaskUpdated;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Mail\Tasks\TaskUpdated as TaskUpdatedMail;
 
 class SendMailTaskUpdated
 {
@@ -26,6 +28,9 @@ class SendMailTaskUpdated
      */
     public function handle(TaskUpdated $event)
     {
-        //
+        $subject = $event->task->subject();
+        Mail::to($event->task->user)
+            ->cc(config('tasks.manager_email'))
+            ->send((new TaskUpdatedMail($event->task))->subject($subject));
     }
 }

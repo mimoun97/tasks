@@ -26,16 +26,16 @@ class LoggedUserTasksControllerTest extends TestCase
         $task2 = factory(Task::class)->create();
         $task3 = factory(Task::class)->create();
 
-        $tasks = [$task1,$task2,$task3];
+        $tasks = [$task1, $task2, $task3];
         $user->addTasks($tasks);
 
         // 2 execute
-        $response = $this->json('GET','/api/v1/user/tasks');
+        $response = $this->json('GET', '/api/v1/user/tasks');
         $response->assertSuccessful();
 
         $result = json_decode($response->getContent());
 
-        $this->assertCount(3,$result);
+        $this->assertCount(3, $result);
         $this->assertEquals($result[0]->id, $task1->id);
         $this->assertEquals($result[1]->id, $task2->id);
         $this->assertEquals($result[2]->id, $task3->id);
@@ -46,9 +46,7 @@ class LoggedUserTasksControllerTest extends TestCase
      */
     public function cannot_list_logged_user_tasks_if_user_is_not_logged()
     {
-        //$this->markTestSkipped('TODO');
-        //$this->login();
-        $response = $this->json('GET','/user/tasks');
+        $response = $this->json('GET', '/user/tasks');
         $response->assertStatus(401);
     }
 
@@ -85,7 +83,7 @@ class LoggedUserTasksControllerTest extends TestCase
         $user->addTask($oldTask);
 
         // 2
-        $response = $this->json('PUT','/api/v1/user/tasks/' . $oldTask->id, [
+        $response = $this->json('PUT', '/api/v1/user/tasks/' . $oldTask->id, [
             'name' => 'Comprar pa',
             'description' => 'tornar',
             'completed' => false
@@ -95,10 +93,10 @@ class LoggedUserTasksControllerTest extends TestCase
         $response->assertSuccessful();
         $newTask = $oldTask->refresh();
         $this->assertNotNull($newTask);
-        $this->assertEquals($oldTask->id,$result->id);
-        $this->assertEquals('Comprar pa',$result->name);
-        $this->assertEquals('tornar',$result->description);
-        $this->assertFalse((boolean) $newTask->completed);
+        $this->assertEquals($oldTask->id, $result->id);
+        $this->assertEquals('Comprar pa', $result->name);
+        $this->assertEquals('tornar', $result->description);
+        $this->assertFalse((boolean)$newTask->completed);
     }
 
     /**
@@ -112,9 +110,9 @@ class LoggedUserTasksControllerTest extends TestCase
             'name' => 'Comprar llet'
         ]);
         $user->addTask($task);
-        $response = $this->json('DELETE','/api/v1/user/tasks/' . $task->id);
+        $response = $this->json('DELETE', '/api/v1/user/tasks/' . $task->id);
         $response->assertSuccessful();
-        $this->assertCount(0,$user->tasks);
+        $this->assertCount(0, $user->tasks);
         $task = $task->fresh();
         $this->assertNull($task);
     }
@@ -136,5 +134,4 @@ class LoggedUserTasksControllerTest extends TestCase
         $response = $this->json('DELETE', '/api/v1/user/tasks/' . $task->id);
         $response->assertStatus(404);
     }
-
 }

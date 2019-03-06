@@ -11,7 +11,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class LogTaskUncompTletedTest extends TestCase
+class LogTaskUncompletedTest extends TestCase
 {
     use RefreshDatabase;
     /**
@@ -30,7 +30,7 @@ class LogTaskUncompTletedTest extends TestCase
         //event(new TaskUncompleted($task));
 
         $listener = new LogTaskUncompleted();
-        $listener->handle(new \App\Events\TaskUncompleted($task));
+        $listener->handle(new \App\Events\Tasks\TaskUncompleted($task));
 
         //        // Test log is inserted
         $log  = Log::where('loggable_id', $task->id)->first();
@@ -45,7 +45,5 @@ class LogTaskUncompTletedTest extends TestCase
         $this->assertEquals($log->loggable_type, 'App\Task');
         $this->assertEquals($log->icon, 'lock_open');
         $this->assertEquals($log->color, 'primary');
-
-        
     }
 }

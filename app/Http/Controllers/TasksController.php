@@ -10,7 +10,7 @@ class TasksController extends Controller
 
     public function index()
     {
-        $tasks = map_collection(Task::orderBy('created_at','desc')->get());
+        $tasks = map_collection(Task::orderBy('created_at', 'desc')->get());
 
         //return $tasks; //en format json
         //return view('tasks',['tasks' => $tasks]);
@@ -19,9 +19,9 @@ class TasksController extends Controller
 
     public function store(Request $request)
     {
-//        dd(Request::input());
+        //        dd(Request::input());
         // Request::
-//        https://laravel.com/docs/5.7/requests
+        //        https://laravel.com/docs/5.7/requests
         Task::create(request(['name', 'completed']));
 
         // Retornar a /tasks
@@ -30,7 +30,7 @@ class TasksController extends Controller
 
     public function destroy(Request $request)
     {
-//        dd($request->id);
+        //        dd($request->id);
         $task = Task::findOrFail($request->id);
         $task->delete();
         // Retornar a /tasks
@@ -39,11 +39,11 @@ class TasksController extends Controller
 
     public function update(Request $request)
     {
-//        dd($request->id);
+        //        dd($request->id);
         // Models -> Eloquent -> ORM (HIBERNATE de Java) Object Relation Model
-//        dd(Task::find($request->id));
+        //        dd(Task::find($request->id));
 
-//        if (!Task::find($request->id)) return response(404,'No he trobat');
+        //        if (!Task::find($request->id)) return response(404,'No he trobat');
         $task = Task::findOrFail($request->id);
 
         request()->validate([
@@ -52,7 +52,9 @@ class TasksController extends Controller
 
         $task->name = $request->name;
         //$task->complete($request->has('completed'));
-        $request->has('completed') ? $task->complete() : $task->incomplete();
+        if ($request->has('completed')) {
+            $request->completed ? $task->complete() : $task->incomplete();
+        };
         $task->save();
 
         return redirect('/tasks');
@@ -62,8 +64,7 @@ class TasksController extends Controller
     {
 
         $task = Task::findOrFail($request->id);
-        return view('task_edit',[ 'task' => $task]);
-//        return view('task_edit',compact('task'));
+        return view('task_edit', ['task' => $task]);
+        //        return view('task_edit',compact('task'));
     }
-
 }

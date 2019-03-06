@@ -15,7 +15,6 @@ class TaskCompleted extends Mailable
 
     /**
      * TaskUncompleted constructor.
-     * @param $user
      * @param $task
      */
     public function __construct($task)

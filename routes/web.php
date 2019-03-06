@@ -13,6 +13,7 @@
 
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TasquesController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ChangelogController;
 use App\Http\Controllers\NotificationController;
@@ -20,10 +21,6 @@ use App\Http\Controllers\LoggedUserPhotoController;
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('/device-features', function () {
-    return view('device');
 });
 
 //midleware auth
@@ -42,6 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/tasks_vue', 'TasksVueController@index');
 
     Route::get('/tasques', 'TasquesController@index');
+    // TODO LINK TASCA
+    Route::get('/tasques/{id}', '\\' . TasquesController::class . '@show')->name('tasca.show');
 
     Route::get('/user/tasks', 'LoggedUserTasksController@index');
 
@@ -52,31 +51,34 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Profile
     //Route::get('/profile', 'ProfileController@index');
-    Route::get('/profile', '\\'. ProfileController::class . '@index');
+    Route::get('/profile', '\\' . ProfileController::class . '@index');
 
-    Route::post('/photo', '\\'. PhotoController::class . '@store');
+    Route::post('/photo', '\\' . PhotoController::class . '@store');
 
-    Route::get('/user/photo', '\\'. LoggedUserPhotoController::class . '@show');
-    Route::put('/user/photo', '\\'. LoggedUserPhotoController::class . '@update');
+    Route::get('/user/photo', '\\' . LoggedUserPhotoController::class . '@show');
+    Route::put('/user/photo', '\\' . LoggedUserPhotoController::class . '@update');
 
-    Route::get('/settings', '\\'. SettingsController::class . '@index');
+    Route::get('/settings', '\\' . SettingsController::class . '@index');
 
-    Route::get('/changelog', '\\'. ChangelogController::class . '@index');
+    Route::get('/changelog', '\\' . ChangelogController::class . '@index');
 
     Route::get('/notifications', '\\' . NotificationController::class . '@index');
-});
 
+    Route::get('/device-features', function () {
+        return view('device');
+    });
 
+    Route::get('/contact', function () {
+        return view('contact');
+    });
+    
+    Route::get('/about', function () {
+        return view('about');
+    });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('/about', function () {
-    return view('about');
-
-
-
+    Route::get('/screenshots', function () {
+        return view('screenshots');
+    });
 });
 
 //Equivalent a login->loginCotroller

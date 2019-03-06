@@ -29,7 +29,7 @@ class SendMailTaskCompleted
      */
     public function handle(TaskCompleted $event)
     {
-        $subject = $event->task->subject();
+        $subject = "Hola";//$event->task->subject()"";
         Mail::to($event->task->user)
             ->cc(config('tasks.manager_email'))
             ->send((new TaskCompletedMail($event->task))->subject($subject));

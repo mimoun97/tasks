@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <task-create :users="dataUsers" @created="add"></task-create>
+    <task-create :users="dataUsers" @created="add" :uri="uri"></task-create>
     <task-list v-if="noZeroTasks" :tasks="dataTasks" :tags="dataTags" :users="dataUsers" :uri="uri"></task-list>
 
     <empty-state v-else
