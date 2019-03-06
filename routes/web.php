@@ -13,6 +13,7 @@
 
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TasquesController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ChangelogController;
 use App\Http\Controllers\NotificationController;
@@ -38,6 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/tasks_vue', 'TasksVueController@index');
 
     Route::get('/tasques', 'TasquesController@index');
+    // TODO LINK TASCA
+    Route::get('/tasques/{id}', '\\' . TasquesController::class . '@show');
 
     Route::get('/user/tasks', 'LoggedUserTasksController@index');
 
@@ -64,16 +67,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/device-features', function () {
         return view('device');
     });
-});
 
-
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('/about', function () {
-    return view('about');
+    Route::get('/contact', function () {
+        return view('contact');
+    });
+    
+    Route::get('/about', function () {
+        return view('about');
+    });
 });
 
 //Equivalent a login->loginCotroller
