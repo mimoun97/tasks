@@ -3,7 +3,7 @@
 @section('title', 'Edita Tasca PHP')
 
 @section('content')
-<div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg font-sans" >
+<div class="bg-white rounded shadow p-6 m-4 w-full font-sans" >
     <div class="mb-4">
         <h1 class="text-grey-darkest">Edita una tasca</h1>
         <div >
@@ -29,7 +29,7 @@
     @endif
     <div class="mb-2">
         <div class="flex mt-2">
-            <a href="/tasks" >
+            <a href="{{ url()->previous() }}">
                 <button class="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-teal">Atras</button>
             </a>
         </div>
