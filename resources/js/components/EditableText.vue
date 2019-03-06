@@ -1,10 +1,12 @@
 <template>
-  <v-flex column fill-height>
+  <div>
     <div v-if="!editing" @dblclick="editing=true">{{ currentText }}</div>
     <div v-if="editing" @keyup.esc="editing=false" @keyup.enter="edit">
-      <input type="text" v-model="currentText">
+      <v-flex xs12>
+        <input type="text" v-model="currentText">
+      </v-flex>
     </div>
-  </v-flex>
+  </div>
 </template>
 
 <script>
