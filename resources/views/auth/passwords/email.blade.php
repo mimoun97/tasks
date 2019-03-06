@@ -6,7 +6,7 @@
 <v-container fluid fill-height>
     <v-layout row align-center justify-center>
         <div class="col-md-8">
-            <v-card>
+            <v-card class="elevation-12">
                 <v-toolbar dark color="primary">
                     <v-toolbar-title>{{ __('Reset Password') }}</v-toolbar-title>
                     <v-spacer></v-spacer>
