@@ -7,6 +7,14 @@
         the device - obtained using either GPS or from the network environment. Apart from the one-off
         location query, it gives a way for the app to be notified about the location changes.
       </p>
+      <p class="grey--text text--lighten-1 body-1">
+        Per a <b>simular la ubicació en chrome</b> entra a developer tools al menú de la dreta <b>More tools</b>
+        entra a <b>Sensors</b> i a l'apartat <b>Geolocation</b> pots triar la ubicació que vols i mira com s'actualitza
+        l'ubicació.
+      </p>
+      <p class="grey--text text--lighten-1 body-1">
+        Si vols que l'applicació rastreji la teva ubicació clica al boto <span class="red--text">STOP WTCHING MY LOCATION</span>
+      </p>
       <p>
         Latitud:
         <b>{{location.lati}}</b>

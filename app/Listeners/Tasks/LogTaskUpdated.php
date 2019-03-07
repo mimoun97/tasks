@@ -39,7 +39,7 @@ class LogTaskUpdated implements ShouldQueue
             'user_id' => $event->task->user_id,
             'loggable_id' => $event->task->id,
             'loggable_type' => Task::class,
-            'old_value' => $event->task,
+            'old_value' => $event->oldTask,
             'new_value' => $event->task
         ]);
     }

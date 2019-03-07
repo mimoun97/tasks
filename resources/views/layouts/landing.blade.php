@@ -6,17 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="Description" content="Aplicaci&oacute; tasques.">
     <meta name="theme-color" content="#2196F3">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/ico" size="16x16" href="/img/favicon-16x16.png">
-    <link rel="icon" type="image/ico" size="32x32" href="/img/favicon-32x32.png">
-    <meta property="og:image:height" content="503">
     <meta property="og:image:width" content="961">
     <meta property="og:description" content="Aplicaci&oacute; tasques">
     <meta property="og:title" content="App Tasques">
     <meta property="og:url" content="https://tasks.mimoun1997.scool.cat/">
     <meta property="og:image" content="https://tasks.mimoun1997.scool.cat/img/og-image.jpg">
+    <meta property="og:image:height" content="503">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/ico" size="16x16" href="/img/favicon-16x16.png">
+    <link rel="icon" type="image/ico" size="32x32" href="/img/favicon-32x32.png">
+    
     <title>@yield('title','Tasques')</title>
+
+    <script defer src="{{ mix('/js/manifest.js') }}"></script>
+    <script defer src="{{ mix('/js/vendor.js') }}"></script>
+    <script defer src="{{ mix('/js/app.js') }}"></script>
+
     <style>
         [v-cloak] > * { display:none; }
         [v-cloak]::before {
@@ -37,13 +44,11 @@
     <v-app>
         @yield('content')
     </v-app>
+    <service-worker></service-worker>
     <share-fab></share-fab>
     <footer-app></footer-app>
 
 </div>
-<script defer src="{{ mix('/js/manifest.js') }}"></script>
-<script defer src="{{ mix('/js/vendor.js') }}"></script>
-<script defer src="{{ mix('/js/app.js') }}"></script>
 <noscript>
     <p>S'ha <b>d'activar javascript</b> per tal de que la pàgina funcioni <b>correctament.</b></p>
 </noscript>
