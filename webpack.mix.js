@@ -35,7 +35,7 @@ if (mix.inProduction()) {
 }
 
 
-if (mix.inProduction()) {
+//if (mix.inProduction()) {
    console.info("In mode production (with service-worker.js)")
    mix.webpackConfig({
       plugins: [
@@ -47,4 +47,4 @@ if (mix.inProduction()) {
          })
       ]
    })
-}
+//}
