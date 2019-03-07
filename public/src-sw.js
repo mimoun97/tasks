@@ -1,7 +1,7 @@
 workbox.skipWaiting()
 workbox.clientsClaim()
 workbox.setConfig({
-    debug: true
+    debug: false
 });
 
 // workbox.routing.registerRoute(

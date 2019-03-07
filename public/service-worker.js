@@ -1,9 +1,9 @@
-importScripts("/service-worker/precache-manifest.f0ff06e2454b744640066d4e908b4b37.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/service-worker/precache-manifest.77d320f304fd696f8e9a40f4aefd6c1d.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 workbox.skipWaiting()
 workbox.clientsClaim()
 workbox.setConfig({
-    debug: true
+    debug: false
 });
 
 // workbox.routing.registerRoute(
@@ -59,10 +59,8 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     new RegExp('/api/'),
-    workbox.strategies.networkFirst({
-        cacheName: 'api'
-    })
-)
+    workbox.strategies.networkFirst({ cacheName: 'api' })
+);
 
 // NO ENS CAL PQ LES TENIM INTEGRADES EN LOCAL VIA WEBPACK i NMP IMPORTS
 // // fonts
