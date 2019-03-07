@@ -15,15 +15,17 @@ class TaskUpdated
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $task;
+    public $oldTask;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($task)
+    public function __construct($task, $oldTask = null)
     {
         $this->task = $task;
+        $this->oldTask = $oldTask;
     }
 
     /**
