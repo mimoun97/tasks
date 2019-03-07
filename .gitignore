@@ -17,3 +17,4 @@ yarn-error.log
 database/database.sqlite
 database.sqlite
 TODO.md
+/lighthouse

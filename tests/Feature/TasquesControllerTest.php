@@ -40,8 +40,22 @@ class TasquesControllerTest extends TestCase
     {
         //$this->withoutExceptionHandling();
         $this->loginAsSuperAdmin();
+
+        create_example_tasks();
+
         $response = $this->get('/tasques');
+        
         $response->assertSuccessful();
+
+        $response->assertViewIs('tasques');
+
+        $response->assertViewHas('tasks');
+
+        $response->assertViewHas('tasks', function ($tasks) {
+            return count($tasks) === 3;
+        });
+        $response->assertViewHas('users');
+        $response->assertViewHas('uri');
     }
 
     /**
@@ -51,27 +65,50 @@ class TasquesControllerTest extends TestCase
     {
         //$this->withoutExceptionHandling();
         $this->loginAsTaskManager();
+
+        create_example_tasks();
+
         $response = $this->get('/tasques');
+
         $response->assertSuccessful();
+
+        $response->assertViewIs('tasques');
+
+        $response->assertViewHas('tasks');
+
+        $response->assertViewHas('tasks', function ($tasks) {
+            return count($tasks) === 3;
+        });
+        $response->assertViewHas('users');
+        $response->assertViewHas('uri');
     }
 
     /**
      * @test
      */
-    public function owner_tasks_user_can_index_tasques()
+    public function owner_tasks_user_can_index_only_owned_tasques()
     {
         $this->withoutExceptionHandling();
         create_example_tasks();
 
         $user = $this->loginAsTasksUser();
 
+        $otherUser = factory(User::class)->create();
+
         //var_dump($user->getAllPermissions());
 
-        Task::create([
+        $task = Task::create([
             'name' => 'Comprar pa',
             'completed' => false,
             'description' => 'lorem',
             'user_id' => $user->id
+        ]);
+
+        $notOwnedTask = Task::create([
+            'name' => 'No es meua aquesta tasca',
+            'completed' => true,
+            'description' => 'Cant see you!',
+            'user_id' => $otherUser->id
         ]);
 
         $response = $this->get('/tasques');
@@ -80,6 +117,11 @@ class TasquesControllerTest extends TestCase
         $response->assertViewIs('tasques');
 
         $response->assertViewHas('tasks');
+
+        $response->assertViewHas('tasks', function ($tasks) {
+            return count($tasks) === 1  &&
+                $tasks[0]['name'] === 'Comprar pa';
+        });
         $response->assertViewHas('users');
         $response->assertViewHas('uri');
     }
@@ -109,7 +151,7 @@ class TasquesControllerTest extends TestCase
         // $response->assertRedirect('/login');
     }
 
-    
+
     /**
      * @test
      */
@@ -118,7 +160,7 @@ class TasquesControllerTest extends TestCase
         $this->withExceptionHandling();
 
         $this->login();
-        
+
         $task = factory(Task::class)->create([
             'name' => 'No copiar',
             'completed' => false,
