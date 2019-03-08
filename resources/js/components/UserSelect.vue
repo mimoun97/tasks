@@ -12,14 +12,17 @@
         <v-avatar :title="data.item.name">
           <img :src="gravatar(data.item)" :alt="data.item.name">
         </v-avatar>
-        <b>{{ data.item.gravatar }}</b>
-        {{ data.item.name }}
+        <b>{{ data.item.name }}</b>
       </v-chip>
     </template>
     <template slot="item" slot-scope="{ item: user }">
       <v-list-tile-avatar>
         <v-avatar size="40" :title="user.name">
-          <img :src="gravatar(user)" alt="avatar">
+          <picture>
+            <source :srcset="gravatar(user)+'?s=40.jpeg'" type="image/jpeg">
+            <source :srcset="gravatar(user)+'?s=40.webp'" type="image/webp">
+            <img :src="gravatar(user)+'?s=40.jpg'" alt="avatar">
+          </picture>
         </v-avatar>
       </v-list-tile-avatar>
       <v-list-tile-content>
@@ -80,7 +83,10 @@ export default {
   },
   methods: {
     gravatar: function(user) {
-      return ("https://www.gravatar.com/avatar/" + window.md5(user ? user.email : "google@gmail.com") + "?s=40");
+      return (
+        "https://www.gravatar.com/avatar/" +
+        window.md5(user ? user.email : "google@gmail.com")
+      );
     }
   }
 };

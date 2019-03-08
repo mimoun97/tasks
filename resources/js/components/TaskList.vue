@@ -2,7 +2,7 @@
   <div>
     <v-toolbar color="primary lighten-1">
       <v-menu>
-        <v-btn slot="activator" icon dark>
+        <v-btn slot="activator" icon dark aria-label="Menu">
           <v-icon>more_vert</v-icon>
         </v-btn>
         <v-list v-for="i in 5" :key="i">
@@ -13,10 +13,10 @@
       </v-menu>
       <v-toolbar-title class="white--text">Tasques</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon class="white--text">
+      <v-btn icon class="white--text" aria-label="Settings">
         <v-icon>settings</v-icon>
       </v-btn>
-      <v-btn icon class="white--text" @click="refresh" :loading="loading" :disabled="loading">
+      <v-btn icon class="white--text" @click="refresh" :loading="loading" :disabled="loading" aria-label="Refresh">
         <v-icon>refresh</v-icon>
       </v-btn>
     </v-toolbar>
@@ -60,7 +60,7 @@
             <td v-text="task.name"></td>
             <td>
               <v-avatar :title="task.user_name" size="48">
-                <img v-if="task.user_gravatar" :src="task.user_gravatar" alt="avatar">
+                <img v-if="task.user_gravatar" :src="task.user_gravatar+'?48'" alt="avatar">
                 <img v-else src="/img/default.png" alt="avatar">
               </v-avatar>
             </td>

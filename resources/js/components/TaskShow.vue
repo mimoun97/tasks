@@ -19,7 +19,7 @@
             </v-card>
         </v-dialog>
 
-        <v-btn icon v-can="'tasks.index'" color="primary" flat title="Mostrar la tasca"
+        <v-btn icon v-can="'tasks.index'" color="grey" flat title="Mostrar la tasca"
                @click="dialog=true">
             <v-icon>visibility</v-icon>
         </v-btn>

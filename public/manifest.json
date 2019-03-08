@@ -33,5 +33,5 @@
     "display": "fullscreen",
     "orientation": "portrait",
     "scope": "/",
-    "start_url": "/?homescreen=1"
+    "start_url": "/tasques?homescreen=1"
   }

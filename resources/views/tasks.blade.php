@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+<link rel="stylesheet" href="/css/tailwind.min.css" type="text/css">
+
 @section('title', 'Tasques PHP i Tailwind')
 
 @section('content')

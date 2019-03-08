@@ -7,15 +7,15 @@
       transition="dialog-bottom-transition"
     >
       <v-toolbar color="primary accent-1" class="white--text">
-        <v-btn flat icon class="white--text" @click="dialog=false">
+        <v-btn flat icon class="white--text" @click="dialog=false" aria-label="Tancar">
           <v-icon class="mr-1">close</v-icon>
         </v-btn>
         <v-toolbar-title class="white--text">Crear Tasca</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn flat class="white--text" @click="dialog=false">
+        <v-btn flat class="white--text" @click="dialog=false" aria-label="Tancar">
           <v-icon class="mr-1">exit_to_app</v-icon>Sortir
         </v-btn>
-        <v-btn flat class="white--text">
+        <v-btn flat class="white--text" aria-label="Desar">
           <v-icon class="mr-1">save</v-icon>Afegir
         </v-btn>
       </v-toolbar>
@@ -25,7 +25,16 @@
         </v-card-text>
       </v-card>
     </v-dialog>
-    <v-btn @click="dialog = true" fab bottom right fixed color="red darken-1" class="white--text">
+    <v-btn
+      @click="dialog = true"
+      fab
+      bottom
+      right
+      fixed
+      color="secondary darken-2"
+      class="white--text"
+      aria-label="Afegir"
+    >
       <v-icon>add</v-icon>
     </v-btn>
   </span>
@@ -56,7 +65,7 @@ export default {
   methods: {
     created(tags) {
       this.$emit("created", task);
-      this.dialog = false
+      this.dialog = false;
     }
   }
 };

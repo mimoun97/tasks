@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Aplicaci&oacute; tasques.">
+    <meta name="theme-color" content="#2196F3">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="user" content="{{ logged_user() }}">
     <meta name="git" content="{{ git() }}">
@@ -23,8 +24,6 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@mimoun_97" />
     <meta name="twitter:creator" content="@mimoun_97" />
-
-    <link rel="stylesheet" href="/css/tailwind.min.css" type="text/css">
 
     <script defer src="{{ mix('/js/manifest.js') }}"></script>
     <script defer src="{{ mix('/js/vendor.js') }}"></script>
@@ -55,7 +54,7 @@
         <navigation v-model="drawer"></navigation>
         <navigation-right v-model="drawerRigth" csrf-token="{{ csrf_token()}}"></navigation-right>
         <v-toolbar class="white primary--text" fixed app clipped-right clipped-left>
-            <v-toolbar-side-icon @click.stop="drawer = !drawer" class="primary--text"></v-toolbar-side-icon>
+            <v-toolbar-side-icon @click.stop="drawer = !drawer" class="primary--text" aria-lable="Menu"></v-toolbar-side-icon>
             <v-toolbar-title class="hidden-md-and-down">Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
 
