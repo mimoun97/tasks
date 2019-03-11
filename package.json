@@ -19,7 +19,8 @@
     "vue-progressbar": "^0.7.5",
     "vue-timeago": "^5.0.0",
     "vuelidate": "^0.7.4",
-    "vuetify": "^1.4.1"
+    "vuetify": "^1.4.1",
+    "workbox-background-sync": "^4.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^3.3.0",
@@ -51,6 +52,6 @@
     "vue-loader": "^15.5.1",
     "vue-template-compiler": "^2.5.22",
     "vuetify-loader": "^1.1.1",
-    "workbox-webpack-plugin": "^3.6.3"
+    "workbox-webpack-plugin": "^4.1"
   }
 }
