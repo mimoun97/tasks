@@ -28,7 +28,7 @@ class LogTaskUpdatedTest extends TestCase
             'user_id' => $user->id
         ]);
 
-        $oldTask = clone $task;  //$task->map();
+        $oldTask = clone $task;  //or $task->map();
 
         $task->name = 'Comprar pa al supermercat';
         $task->save();
