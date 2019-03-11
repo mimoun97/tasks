@@ -49,6 +49,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/v1/user/tasks', 'Api\LoggedUserTasksController@index');
     Route::get('/v1/user/tasks/{task}', 'Api\LoggedUserTasksController@show');
     Route::delete('/v1/user/tasks/{task}', 'Api\LoggedUserTasksController@destroy');
+    // TODO tests pff
     Route::post('/v1/user/tasks/', 'Api\LoggedUserTasksController@store');
     Route::put('/v1/user/tasks/{task}', 'Api\LoggedUserTasksController@update');
 
