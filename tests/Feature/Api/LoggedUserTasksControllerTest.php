@@ -3,8 +3,9 @@
 namespace Tests\Feature\Api;
 
 use App\Task;
-use Tests\Feature\Traits\CanLogin;
+use App\User;
 use Tests\TestCase;
+use Tests\Feature\Traits\CanLogin;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -44,7 +45,7 @@ class LoggedUserTasksControllerTest extends TestCase
     /**
      * @test
      */
-    public function cannot_list_logged_user_tasks_if_user_is_not_logged()
+    public function cannot_list_user_tasks_if_user_is_not_logged()
     {
         $response = $this->json('GET', '/user/tasks');
         $response->assertStatus(401);
@@ -55,7 +56,7 @@ class LoggedUserTasksControllerTest extends TestCase
      */
     public function cannot_edit_a_task_not_associated_to_user()
     {
-        $user = $this->login('api');
+        $user = $this->loginAsTasksUser('api');
         $oldTask = factory(Task::class)->create([
             'name' => 'Comprar llet'
         ]);
@@ -64,16 +65,16 @@ class LoggedUserTasksControllerTest extends TestCase
         $response = $this->json('PUT', '/api/v1/user/tasks/' . $oldTask->id, [
             'name' => 'Comprar pa'
         ]);
-        $response->assertStatus(404);
+        $response->assertStatus(403);
     }
 
     /**
      * @test
      */
-    public function can_edit_task()
+    public function logged_user_tasks_can_edit_his_task()
     {
         $this->withoutExceptionHandling();
-        $user = $this->login('api');
+        $user = $this->loginAsTasksUser('api');
 
         $oldTask = factory(Task::class)->create([
             'name' => 'Comprar llet',
@@ -102,10 +103,10 @@ class LoggedUserTasksControllerTest extends TestCase
     /**
      * @test
      */
-    public function can_delete_tasks()
+    public function logged_user_tasks_can_delete_his_tasks()
     {
         $this->withoutExceptionHandling();
-        $user = $this->login('api');
+        $user = $this->loginAsTasksUser('api');
         $task = factory(Task::class)->create([
             'name' => 'Comprar llet'
         ]);
@@ -123,15 +124,18 @@ class LoggedUserTasksControllerTest extends TestCase
     public function cannot_delete_a_task_not_associated_to_user()
     {
         initialize_roles();
-        $user = $this->login('api');
+        $user = $this->loginAsTasksUser('api');
         $user->assignRole('Tasks');
+
+        $ownerUser = factory(User::class)->create();
 
         $task = factory(Task::class)->create([
             'name' => 'Comprar llet',
-            'description' => 'Bla bla bla'
+            'description' => 'Bla bla bla',
+            'user_id' => $ownerUser->id
         ]);
 
         $response = $this->json('DELETE', '/api/v1/user/tasks/' . $task->id);
-        $response->assertStatus(404);
+        $response->assertStatus(403);
     }
 }

@@ -19,6 +19,7 @@ class LogTaskStoredTest extends TestCase
      */
     public function a_task_stored_log_has_been_created()
     {
+        // prepare
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
         $task = Task::create([
@@ -28,10 +29,14 @@ class LogTaskStoredTest extends TestCase
         ]);
 
         $listener = new LogTaskStored();
+
+        //execute
         $listener->handle(new \App\Events\Tasks\TaskStored($task));
 
         //        // Test log is inserted
         $log  = Log::where('loggable_id', $task->id)->first();
+
+        //assert
         $this->assertEquals($log->text, "S'ha creat la tasca '{$task->name}'");
         $this->assertEquals($log->action_type, 'crear');
         $this->assertEquals($log->module_type, 'Tasques');

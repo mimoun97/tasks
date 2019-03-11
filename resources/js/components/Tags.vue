@@ -5,7 +5,7 @@
 
         <empty-state v-else
                     label="Crea la teva primera etiqueta!" 
-                    icon="done" 
+                    icon="loyalty" 
                     description="Si creeu una etiqueta, podreu afegir assignar-la a una tasca i poder col·laborar amb les persones."
                     >
         </empty-state>

@@ -25,7 +25,7 @@ class LoggedUserTasksControllerTest extends TestCase
         $task2 = factory(Task::class)->create();
         $task3 = factory(Task::class)->create();
 
-        $tasks = collect([$task1,$task2,$task3]);
+        $tasks = collect([$task1, $task2, $task3]);
         $user->addTasks($tasks);
 
         $response = $this->get('/user/tasks');
@@ -33,6 +33,9 @@ class LoggedUserTasksControllerTest extends TestCase
 
         $response->assertViewIs('tasks.user.index');
         $response->assertViewHas('tasks', $user->tasks);
+        $response->assertViewHas('tasks', function () use ($tasks) {
+            return count($tasks) === 3;
+        });
     }
 
     /**
@@ -41,7 +44,7 @@ class LoggedUserTasksControllerTest extends TestCase
     public function cannot_list_logged_user_tasks_if_user_is_not_logged()
     {
         //$this->markTestSkipped('TODO');
-        $response = $this->json('GET','/user/tasks');
+        $response = $this->json('GET', '/user/tasks');
         $response->assertStatus(401);
     }
 }

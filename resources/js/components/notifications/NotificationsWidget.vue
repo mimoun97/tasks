@@ -2,7 +2,7 @@
     <v-menu offset-y>
         <v-badge slot="activator" left overlap color="error" class="ml-3 mr-2">
             <span slot="badge" v-text="amount"></span>
-            <v-btn icon color="white" :loading="loading" :disabled="loading">
+            <v-btn icon color="white" :loading="loading" :disabled="loading" aria-label="Notifications">
                 <v-icon :large="large" color="primary">notifications</v-icon>
             </v-btn>
         </v-badge>
