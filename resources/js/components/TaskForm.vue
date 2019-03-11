@@ -74,7 +74,7 @@ export default {
           this.$emit("close");
         })
         .catch(error => {
-          this.$snackbar.showError(error.data);
+          this.$snackbar.showError(error.message);
           this.loading = false;
         });
     }

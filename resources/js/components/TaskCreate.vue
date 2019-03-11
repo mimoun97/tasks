@@ -31,7 +31,7 @@
       bottom
       right
       fixed
-      color="secondary darken-2"
+      color="primary"
       class="white--text"
       aria-label="Afegir"
     >
