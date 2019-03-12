@@ -8,12 +8,17 @@
         location query, it gives a way for the app to be notified about the location changes.
       </p>
       <p class="grey--text text--lighten-1 body-1">
-        Per a <b>simular la ubicació en chrome</b> entra a developer tools al menú de la dreta <b>More tools</b>
-        entra a <b>Sensors</b> i a l'apartat <b>Geolocation</b> pots triar la ubicació que vols i mira com s'actualitza
+        Per a
+        <b>simular la ubicació en chrome</b> entra a developer tools al menú de la dreta
+        <b>More tools</b>
+        entra a
+        <b>Sensors</b> i a l'apartat
+        <b>Geolocation</b> pots triar la ubicació que vols i mira com s'actualitza
         l'ubicació.
       </p>
-      <p class="grey--text text--lighten-1 body-1">
-        Si vols que l'applicació rastreji la teva ubicació clica al boto <span class="red--text">STOP WTCHING MY LOCATION</span>
+      <p class="grey--text text--lighten-1 body-1">Si vols que l'applicació
+        <b>no rastreji</b> la teva ubicació clica al boto
+        <span class="red--text">STOP WATCHING MY LOCATION</span>
       </p>
       <p>
         Latitud:
@@ -26,22 +31,28 @@
       <p v-if="message" v-text="message" class="red--text"></p>
     </v-card-text>
     <v-card-actions class="justify-center">
-      <v-btn
-        @click="getCurrentPosition()"
-        color="blue-grey"
-        class="white--text"
-        :loading="working"
-      >Ask for location
-        <v-icon right dark color="white">my_location</v-icon>
-      </v-btn>
-      <v-btn
-        @click="destroyLocation()"
-        color="red"
-        class="white--text"
-        :loading="working"
-      >Stop watching my location!
-        <v-icon right dark color="white">stop</v-icon>
-      </v-btn>
+      <v-layout>
+      <v-flex xs12 md6>
+        <v-btn
+          @click="getCurrentPosition()"
+          color="blue-grey"
+          class="white--text"
+          :loading="working"
+        >Ask for location
+          <v-icon right dark color="white">my_location</v-icon>
+        </v-btn>
+      </v-flex>
+      <v-flex xs12 md6>
+        <v-btn
+          @click="destroyLocation()"
+          color="red"
+          class="white--text"
+          :loading="working"
+        >Stop watching my location!
+          <v-icon right dark color="white">stop</v-icon>
+        </v-btn>
+      </v-flex>
+      </v-layout>
     </v-card-actions>
   </v-card>
 </template>
@@ -80,7 +91,7 @@ export default {
     destroyLocation() {
       if (this.watchID) {
         navigator.geolocation.clearWatch(this.watchID);
-        this.watchID = null
+        this.watchID = null;
       }
     }
   },
