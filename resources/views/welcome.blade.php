@@ -40,7 +40,7 @@
                                 aria-label="GitHub"
                             >
                             <picture>
-                                <source srcset="/img/Octocat.webp" type="image/webp">
+                                <source srcset="/img/Octocat.webp" type="image/webp" height="28">
                                 <img src="/img/Octocat.png" alt="GitHub de mimoun1997" height="28" class="mr-2">GitHub
                             </picture>
                         </v-btn>

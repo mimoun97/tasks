@@ -51,6 +51,8 @@ import TheDeviceFeatures from './components/device/TheDeviceFeatures'
 import TaskCard from './components/TaskCard'
 // parallax webp
 import VParallaxWebp from './components/ui/VParallaxWebp.vue'
+//clock
+import Clock from './components/clock/Clock.vue'
 
 window.Vue = Vue
 window.Vuetify = Vuetify
@@ -236,6 +238,8 @@ window.Vue.component('the-device-features', TheDeviceFeatures)
 window.Vue.component('task-card', TaskCard);
 //parallax webp
 window.Vue.component('v-parallax-webp', VParallaxWebp)
+// clock
+window.Vue.component('clock', Clock)
 
 // eslint-disable-next-line no-unused-vars
 const app = new window.Vue(AppComponent)
