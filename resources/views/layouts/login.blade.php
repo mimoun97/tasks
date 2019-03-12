@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Aplicaci&oacute; tasques.">
+    <meta name="theme-color" content="#2196F3">
+    <meta property="og:image:width" content="961">
+    <meta property="og:description" content="Aplicaci&oacute; tasques">
+    <meta property="og:title" content="App Tasques">
+    <meta property="og:url" content="https://tasks.mimoun1997.scool.cat/">
+    <meta property="og:image" content="https://tasks.mimoun1997.scool.cat/img/og-image.jpg">
+    <meta property="og:image:height" content="503">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mimoun_97" />
+    <meta name="twitter:creator" content="@mimoun_97" />
+
     <link rel="manifest" href="/manifest.json">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -12,7 +23,7 @@
     <script defer src="{{ mix('/js/vendor.js') }}"></script>
     <script defer src="{{ mix('/js/app.js') }}"></script>
 
-    <title>@yield('title','Tasques')</title>
+    <title>@yield('title','Login to Tasques')</title>
     <style>
         [v-cloak] > * { display:none; }
         [v-cloak]::before {
@@ -35,10 +46,8 @@
     
 </head>
 <body>
-<div id="app" v-cloak>
-    <v-app>
+    <v-app id="app" v-cloak style="background: linear-gradient(to top, #00c6fb 0%, #005bea 100%) fixed; background: -webkit-linear-gradient(to top, #00c6fb 0%, #005bea 100%) fixed">
         @yield('content')
     </v-app>
-</div>
 </body>
 </html>

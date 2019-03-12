@@ -28,7 +28,7 @@
             :class="isActive(child) ? activeClass : ''"
           >
             <v-list-tile-action v-if="child.icon">
-              <v-icon :color="isActive(child)  ? 'primary' : 'white'">{{ child.icon }}</v-icon>
+              <v-icon :color="isActive(child)  ? activeIconColor : 'white'">{{ child.icon }}</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>{{ child.text }}</v-list-tile-title>
@@ -43,7 +43,7 @@
           :class="isActive(item) ? activeClass : ''"
         >
           <v-list-tile-action>
-            <v-icon :color="isActive(item)  ? 'primary' : 'white'">{{ item.icon }}</v-icon>
+            <v-icon :color="isActive(item)  ? activeIconColor : 'white'">{{ item.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>{{ item.text }}</v-list-tile-title>
@@ -60,7 +60,8 @@ export default {
   name: "Navigation",
   data() {
     return {
-      activeClass: ["primary--text", "white"],
+      activeClass: ["primary--text", "text--lighten-2", "primary", "darken-1"],
+      activeIconColor: "primary lighten-2",
       dataDrawer: this.drawer,
       items: [
         { icon: "home", text: "Welcome", url: "/" },
@@ -107,7 +108,7 @@ export default {
   methods: {
     isActive(item) {
       let path = window.location.pathname;
-      return item.url === path ? true : false;
+      return item.url === path
     }
   }
 };

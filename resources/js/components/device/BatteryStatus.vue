@@ -7,13 +7,13 @@
         <b v-text="battery.charging ? 'charging' : 'discharging'"></b>
       </p>
       <p>Charging time
-        <b v-text="battery.chargingTime"></b>
+        <b v-text="battery.chargingTime+ ' s'"></b>
       </p>
       <p>Discharging time
         <b v-text="battery.dischargingTime"></b>
       </p>
       <p>Level
-        <b v-text="battery.level||'unknown'"></b>.
+        <b>{{ battery.level * 100 + "%" || 'unknown' }}</b>.
       </p>
     </v-card-text>
   </v-card>

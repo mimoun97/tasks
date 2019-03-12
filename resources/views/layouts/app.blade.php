@@ -52,8 +52,9 @@
     </style>
 </head>
 <body>
-<div id="app" v-cloak>
-    <v-app>
+    <v-app id="app" v-cloak style="background: #F0F4F8;background: -webkit-linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    background: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);">
+    
         <snackbar></snackbar>
         <vue-progress-bar></vue-progress-bar>
         <service-worker></service-worker>
@@ -89,7 +90,6 @@
         </v-content>
 
     </v-app>
-</div>
 <noscript>
     <p>S'ha <b>d'activar javascript</b> per tal de que la pàgina funcioni <b>correctament.</b></p>
 </noscript>

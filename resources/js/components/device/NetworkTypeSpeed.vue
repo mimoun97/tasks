@@ -4,7 +4,7 @@
     <v-card-text class="body-2">
       <p>
       Current theoretical network type is
-      <b>{{ dataInfo.type}}</b>.
+      <b>{{ dataInfo.type || 'unknown'}}</b>.
     </p>
     <p>
       Current effective network type is
@@ -12,7 +12,7 @@
     </p>
     <p>
       Current max downlink speed is
-      <b>{{ dataInfo.downlink}}</b>.
+      <b>{{ dataInfo.downlink }} Mbps</b>.
     </p>
     </v-card-text>
   </v-card>

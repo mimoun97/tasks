@@ -20,12 +20,11 @@
         </v-toolbar>
         <v-content>
             <section>
-                <v-parallax src="img/sky.jpeg" height="600" width="auto">
+                <v-parallax-webp src="img/sky.webp" height="600" alt-format="jpeg">
                     <v-layout
                             column
                             align-center
-                            justify-center
-                    >
+                            justify-center>
 
                         <img src="svg/logo.svg" alt="Vuetify.js" height="200">
                         <p class="blue--text mb-2" :class='[$vuetify.breakpoint.smAndDown ? "title" : "headline"]'>Aplicació de tasques</p>
@@ -46,7 +45,7 @@
                             </picture>
                         </v-btn>
                     </v-layout>
-                </v-parallax>
+                </v-parallax-webp>
             </section>
 
             <section>
@@ -119,13 +118,13 @@
             </section>
 
             <section>
-                <v-parallax src="img/team.jpeg" height="400">
+                <v-parallax-webp src="img/team.webp" height="400" alt-format="jpeg">
                     <v-layout column align-center justify-center>
                         <div class="headline black--text mb-3 text-xs-center">Web development has never been easier</div>
                         <em class="black--text text--darken-4">Kick-start your application today</em>
                         <v-btn light large class="blue darken-2 white--text" href="/home" aria-label="Get Started Now!">Get Started Now!</v-btn>
                     </v-layout>
-                </v-parallax>
+                </v-parallax-webp>
             </section>
 
             <section>
