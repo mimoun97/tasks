@@ -83,7 +83,8 @@ export default {
         { icon: "message", text: "Contact", url: "/contact" },
         { icon: "public", text: "About", url: "/about" },
         { icon: "settings", text: "Settings", url: "/settings" },
-        { icon: "phone", text: "Device Features", url: "/device-features" }
+        { icon: "phone", text: "Device Features", url: "/device-features" },
+        { icon: "clock", text: "Clock", url: "/clock" }
       ]
     };
   },

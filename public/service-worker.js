@@ -1,7 +1,7 @@
-importScripts("/service-worker/precache-manifest.6a7ced9797a8f2f14b358835240d5bcb.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/service-worker/precache-manifest.5b40beec0bc30ffac0659b787ae246aa.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
-workbox.core.skipWaiting()
-workbox.core.clientsClaim()
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
 workbox.core.setConfig({
     debug: false
 });

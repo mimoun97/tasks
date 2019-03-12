@@ -1,5 +1,5 @@
-workbox.core.skipWaiting()
-workbox.core.clientsClaim()
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
 workbox.core.setConfig({
     debug: false
 });

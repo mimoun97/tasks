@@ -11,6 +11,7 @@
 |
 */
 
+use App\Http\Controllers\ClockController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TasquesController;
@@ -79,6 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/screenshots', function () {
         return view('screenshots');
     });
+
+    Route::get('/clock', '\\' . ClockController::class . '@index');
 });
 
 //Equivalent a login->loginCotroller
