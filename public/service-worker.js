@@ -1,8 +1,8 @@
-importScripts("/service-worker/precache-manifest.0a941bf2c5ecc9f99ad7ab62df777b45.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/service-worker/precache-manifest.6a7ced9797a8f2f14b358835240d5bcb.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
-workbox.skipWaiting()
-workbox.clientsClaim()
-workbox.setConfig({
+workbox.core.skipWaiting()
+workbox.core.clientsClaim()
+workbox.core.setConfig({
     debug: false
 });
 
@@ -28,7 +28,7 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest)
 // static
 workbox.routing.registerRoute(
     new RegExp('.(?:ico)$'),
-    workbox.strategies.networkFirst({
+    new workbox.strategies.NetworkFirst({
         cacheName: 'icons'
     })
 )
@@ -36,7 +36,7 @@ workbox.routing.registerRoute(
 // images
 workbox.routing.registerRoute(
     new RegExp('.(?:jpg|jpeg|png|gif|svg|webp)$'),
-    workbox.strategies.cacheFirst({
+    new workbox.strategies.CacheFirst({
         cacheName: 'images',
         plugins: [
             new workbox.expiration.Plugin({
@@ -49,18 +49,28 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     '/',
-    workbox.strategies.staleWhileRevalidate({ cacheName: 'landing' })
+    new workbox.strategies.StaleWhileRevalidate({ cacheName: 'landing' })
 )
 
 workbox.routing.registerRoute(
     '/tasques',
-    workbox.strategies.staleWhileRevalidate({ cacheName: 'tasqques' })
+    new workbox.strategies.StaleWhileRevalidate({ cacheName: 'tasqques' })
 )
 
 workbox.routing.registerRoute(
     new RegExp('/api/'),
-    workbox.strategies.networkFirst({ cacheName: 'api' })
-);
+    new workbox.strategies.NetworkFirst({ cacheName: 'api' })
+)
+
+
+workbox.routing.registerRoute(
+    '/api/v1/newsletter',
+    new workbox.strategies.NetworkOnly({
+        cacheName: 'api',
+        plugins: [bgSyncPlugin]
+    }),
+    'POST'
+)
 
 // NO ENS CAL PQ LES TENIM INTEGRADES EN LOCAL VIA WEBPACK i NMP IMPORTS
 // // fonts
