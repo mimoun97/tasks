@@ -48,6 +48,12 @@ export default {
     },
     onOrientationChange() {
       this.update();
+    },
+    lock(lockType) {
+      window.screen.orientation.lock(lockType)
+    },
+    unlock() {
+      //TODO
     }
   },
   created() {
