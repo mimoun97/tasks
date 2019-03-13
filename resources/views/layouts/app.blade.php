@@ -71,7 +71,8 @@
 
             {{-- <v-toolbar-side-icon @click.stop="drawerRigth = !drawerRigth"></v-toolbar-side-icon> --}}
             <v-hover>
-                <v-avatar 
+                <v-avatar
+                    style="box-shadow: inset 0 0 0 1px hsla(0, 0%, 0%, .1)"
                     slot-scope="{ hover }"
                     :class="hover ? 'pointer' : ''"
                     v-ripple="{ class: 'primary--text' }" 

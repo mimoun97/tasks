@@ -48,7 +48,7 @@
     </style>
 </head>
 <body style="background: linear-gradient(to top, #00c6fb 0%, #005bea 100%) fixed; background: -webkit-linear-gradient(to top, #00c6fb 0%, #005bea 100%) fixed">
-    <v-app id="app" v-cloak>
+    <v-app id="app" v-cloak >
         <v-content>
             @yield('content')
         </v-content>
