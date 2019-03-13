@@ -1,8 +1,11 @@
-workbox.core.skipWaiting();
-workbox.core.clientsClaim();
-workbox.core.setConfig({
-    debug: false
+workbox.setConfig({
+    debug: true
 });
+// 4.0
+workbox.core.skipWaiting()
+workbox.core.clientsClaim()
+
+workbox.precaching.cleanupOutdatedCaches()
 
 // workbox.routing.registerRoute(
 //   new RegExp('https://hacker-news.firebaseio.com'),
@@ -60,6 +63,31 @@ workbox.routing.registerRoute(
     new workbox.strategies.NetworkFirst({ cacheName: 'api' })
 )
 
+
+// TODO NOTIFICATIONS
+self.addEventListener('push', (event) => {
+    const title = 'TODO CANVIAR TITOL'
+    const options = {
+        body: event.data.text()
+    }
+    event.waitUntil(self.registration.showNotification(title, options))
+})
+
+
+const showNotification = () => {
+    self.registration.showNotification('Post Sent', {
+        body: 'You are back online and your post was successfully sent!'
+        // icon: 'assets/icon/256.png',
+        // badge: 'assets/icon/32png.png'
+    })
+}
+
+const bgSyncPlugin = new workbox.backgroundSync.Plugin('newsletter', {
+    maxRetentionTime: 24 * 60, // Retry for max of 24 Hours
+    callbacks: {
+        queueDidReplay: showNotification
+    }
+})
 
 workbox.routing.registerRoute(
     '/api/v1/newsletter',

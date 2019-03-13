@@ -120,8 +120,8 @@
             <section>
                 <v-parallax-webp src="img/team.webp" height="400" alt-format="jpeg">
                     <v-layout column align-center justify-center>
-                        <div class="headline black--text mb-3 text-xs-center">Web development has never been easier</div>
-                        <em class="black--text text--darken-4">Kick-start your application today</em>
+                        <div class="headline white--text mb-3 text-xs-center" style="text-shadow: 0 0 50px hsla(0, 0%, 0%, .8)">Web development has never been easier</div>
+                        <em class="white--text text--darken-4" style="text-shadow: 0 0 40px hsla(0, 0%, 0%, .7)">Kick-start your application today</em>
                         <v-btn light large class="blue darken-2 white--text" href="/home" aria-label="Get Started Now!">Get Started Now!</v-btn>
                     </v-layout>
                 </v-parallax-webp>

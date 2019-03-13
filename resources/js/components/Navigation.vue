@@ -84,7 +84,7 @@ export default {
         { icon: "public", text: "About", url: "/about" },
         { icon: "settings", text: "Settings", url: "/settings" },
         { icon: "phone", text: "Device Features", url: "/device-features" },
-        { icon: "clock", text: "Clock", url: "/clock" }
+        { icon: "access_time", text: "Clock", url: "/clock" }
       ]
     };
   },

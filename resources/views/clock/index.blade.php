@@ -4,9 +4,9 @@
 
 @section('content')
 
-<v-container fluid>
-    <v-layout>
-        <v-flex>
+<v-container fluid fill-height>
+    <v-layout align-center justify-center column fill-height>
+        <v-flex xs12>
             <clock />
         </v-flex>
     </v-layout>

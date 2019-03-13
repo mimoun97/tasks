@@ -1,9 +1,11 @@
 <template>
   <v-layout align-center column class="text-xs-center">
+    <v-avatar color="grey lighten-4" size="196" class="mb-2">
       <v-icon color="grey lighten-1" style="font-size: 128px;">{{ iicon }}</v-icon>
-      <h3 class="grey--text text--darken-2 display-1">{{llabel}}</h3>
-      <p class="grey--text text--lighten-1 subheading mb-2 font-weight-light">{{ ddescription }}</p>
-      <v-btn color="primary" flat raised v-if="button">{{bbutton}}</v-btn>
+    </v-avatar>
+    <h3 class="grey--text text--darken-2 display-1">{{llabel}}</h3>
+    <p class="grey--text text--lighten-1 subheading mb-2 font-weight-light">{{ ddescription }}</p>
+    <v-btn color="primary" flat raised v-if="button">{{bbutton}}</v-btn>
   </v-layout>
 </template>
 
@@ -40,5 +42,4 @@ export default {
 </script>
 
 <style>
-
 </style>
