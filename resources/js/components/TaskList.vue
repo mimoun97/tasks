@@ -30,7 +30,7 @@
           <v-flex lg4 class="mr-2">
             <v-select label="User" :items="dataUsers" v-model="user" item-text="name" clearable></v-select>
           </v-flex>
-          <v-flex lg5>
+          <v-flex lg4>
             <v-text-field
               prepend-inner-icon="search"
               label="Buscar"
