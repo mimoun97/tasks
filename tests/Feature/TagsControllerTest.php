@@ -9,7 +9,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class TagsCoTntrollerTest extends TestCase
+class TagsControllerTest extends TestCase
 {
 
     use RefreshDatabase, CanLogin;
