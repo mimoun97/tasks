@@ -38,7 +38,7 @@ export default {
         '<span class="grey--text text--lighten-1 body-1" >Elimina la tasca de la base de dades. Les tasques esborrades no es poden recuperar.<span>',
         {
           title: "Eliminar la tasca?",
-          buttonTruetext: "Elimina",
+          buttonTrueText: "Eliminar",
           buttonTrueColor: "red darken-3",
           buttonFalsetext: "Cancel·la",
           buttonFalseColor: "grey lighten-1",

@@ -7,7 +7,7 @@
         hint="El nom de l'etiqueta..."
         placeholder="Nom de l'etiqueta"
       ></v-text-field>
-      <v-layout row align-center justify-space-around >
+      <v-layout row align-center justify-space-around>
         <v-flex xs10 md8 mr-2>
           <v-text-field
             v-model="color"
@@ -21,15 +21,23 @@
         </v-flex>
       </v-layout>
 
-      <v-textarea v-model="description" label="Descripció" hint="bla bla bla..."></v-textarea>
+      <v-textarea v-model="description" label="Descripció" hint="Ka descripció de la tasca"></v-textarea>
 
-      <v-flex class="text-xs-center">
-        <v-btn @click="$emit('close')">
-          <v-icon class="mr-1">exit_to_app</v-icon>Cancel·lar
-        </v-btn>
-        <v-btn color="success" @click="update" :disabled="working" :loading="working">
-          <v-icon class="mr-1">save</v-icon>Actualitzar
-        </v-btn>
+      <v-flex class="text-xs-right">
+        <v-btn
+          class="grey--text text--lighten-2"
+          flat
+          @click="close"
+          aria-label="Cancel·lar"
+        >Cancel·lar</v-btn>
+        <v-btn
+          flat
+          color="primary"
+          @click="update"
+          :disabled="working"
+          :loading="working"
+          aria-label="Actualitza"
+        >Actualitza</v-btn>
       </v-flex>
     </v-layout>
   </v-form>
@@ -71,6 +79,9 @@ export default {
           this.$snackbar.showError(error);
           this.working = false;
         });
+    },
+    close () {
+      this.$emit("close")
     }
   },
   watch: {
