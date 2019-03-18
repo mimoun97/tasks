@@ -82,7 +82,8 @@ if (!function_exists('initialize_roles')) {
             'Tasks',
             'TagsManager',
             'Tags',
-            'NotificationsManager'
+            'NotificationsManager',
+            'NewslettersManager'
         ];
         foreach ($roles as $role) {
             create_role($role);
@@ -134,13 +135,18 @@ if (!function_exists('initialize_roles')) {
             'notifications.simple.store'
         ];
 
+        $newsletterManagerPermissions = [
+            'newsletters.index'
+        ];
+
 
         $permissions = array_merge(
             $taskManagerPermissions,
             $userTaskPermissions,
             $tagsManagerPermissions,
             $userTagsPermissions,
-            $notificationsManagerPermissions
+            $notificationsManagerPermissions,
+            $newsletterManagerPermissions
         );
         foreach ($permissions as $permission) {
             create_permission($permission);
@@ -151,6 +157,7 @@ if (!function_exists('initialize_roles')) {
             'TagsManager' => $tagsManagerPermissions,
             'Tags' => $userTagsPermissions,
             'NotificationsManager' => $notificationsManagerPermissions,
+            'NewslettersManager' => $newsletterManagerPermissions
         ];
         foreach ($rolePermissions as $role => $rolePermission) {
             $role = Role::findByName($role);

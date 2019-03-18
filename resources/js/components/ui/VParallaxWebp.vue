@@ -7,6 +7,7 @@
 <script>
 import helpers from '../../utils/helpers'
 export default {
+  name: "VParallaxWebp",
   data () {
     return {
       dataSrc: null

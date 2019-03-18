@@ -93,4 +93,13 @@ trait CanLogin
     {
         return $this->loginAsUsingRole($guard, 'Tasks');
     }
+
+    /**
+     * @param null $guard
+     * @return mixed
+     */
+    protected function loginAsNewslettersManager($guard = null)
+    {
+        return $this->loginAsUsingRole($guard, 'NewslettersManager');
+    }
 }

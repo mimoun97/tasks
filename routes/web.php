@@ -19,6 +19,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ChangelogController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\LoggedUserPhotoController;
+use App\Http\Controllers\Newsletters\NewslettersController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -82,6 +83,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('/clock', '\\' . ClockController::class . '@index');
+
+    Route::get('/newsletters', '\\' . NewslettersController::class . '@index');
 });
 
 //Equivalent a login->loginCotroller
