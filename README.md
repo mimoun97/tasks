@@ -1,5 +1,16 @@
-# Tasks - Aplicació tasques 
+# Tasks - Aplicació tasques
 
+<center>
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mimoun1997/tasks/?branch=master)
+
+[![Build Status](https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mimoun1997/tasks/build-status/master)
+
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+
+[![StyleCI](https://github.styleci.io/repos/154520137/shield?branch=master)](https://github.styleci.io/repos/154520137)
+
+</center>
 > Aplicació de tasques feta a 2DAM curs 2018-2019
 
 [![Captura pantalla](public/img/capturatasks.PNG)]()

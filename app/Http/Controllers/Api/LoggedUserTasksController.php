@@ -20,7 +20,6 @@ use App\Mail\Tasks\TaskUpdated;
 
 class LoggedUserTasksController extends Controller
 {
-    //TODO requests user
     public function index(UserTasksIndex $request)
     {
         return map_collection($request->user()->tasks);
@@ -42,8 +41,10 @@ class LoggedUserTasksController extends Controller
     public function destroy(UserTaskDestroy $request, Task $task)
     {
         Auth::user()->tasks()->findOrFail($task->id);
-        $task->delete();
+
         event(new TaskDestroyed($task));
+
+        $task->delete();
     }
 
     public function store(UserTasksStore $request)
@@ -59,5 +60,4 @@ class LoggedUserTasksController extends Controller
 
         return $task->map();
     }
-    //TODO test test test..
 }
