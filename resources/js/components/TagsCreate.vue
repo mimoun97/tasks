@@ -26,7 +26,7 @@
         </v-card-text>
       </v-card>
     </v-dialog>
-    <v-btn @click="dialog = true" fab bottom right fixed color="pink" class="white--text">
+    <v-btn @click="dialog = true" fab bottom right fixed color="primary" class="white--text">
       <v-icon>add</v-icon>
     </v-btn>
   </span>

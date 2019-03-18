@@ -35,12 +35,16 @@ export default {
     async destroy(task) {
       // ES6 async await
       let result = await this.$confirm(
-        "Les tasques esborrades no es poden recuperar",
+        '<span class="grey--text text--lighten-1 body-1" >Elimina la tasca de la base de dades. Les tasques esborrades no es poden recuperar.<span>',
         {
-          title: "Esteu segurs?",
-          buttonTruetext: "Eliminar",
-          buttonFalsetext: "Cancel·lar",
-          color: "error"
+          title: "Eliminar la tasca?",
+          buttonTrueText: "Eliminar",
+          buttonTrueColor: "red darken-3",
+          buttonFalsetext: "Cancel·la",
+          buttonFalseColor: "grey lighten-1",
+          color: "grey lighten-2",
+          icon: 'delete_forever',
+          width: 350,
         }
       );
       if (result) {

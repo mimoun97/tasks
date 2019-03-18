@@ -10,13 +10,10 @@
         <v-btn flat icon class="white--text" @click="dialog=false" aria-label="Tancar">
           <v-icon class="mr-1">close</v-icon>
         </v-btn>
-        <v-toolbar-title class="white--text">Crear Tasca</v-toolbar-title>
+        <v-toolbar-title class="white--text">Nova Tasca</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn flat class="white--text" @click="dialog=false" aria-label="Tancar">
-          <v-icon class="mr-1">exit_to_app</v-icon>Sortir
-        </v-btn>
         <v-btn flat class="white--text" aria-label="Desar">
-          <v-icon class="mr-1">save</v-icon>Afegir
+          Afegir
         </v-btn>
       </v-toolbar>
       <v-card>

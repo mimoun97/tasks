@@ -11,10 +11,10 @@
         <v-btn flat icon class="white--text" @click="dialog=false">
           <v-icon>close</v-icon>
         </v-btn>
-        <v-toolbar-title class="white--text">Mostrar la etiqueta</v-toolbar-title>
+        <v-toolbar-title class="white--text">Mostrar etiqueta</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn flat class="white--text" @click="dialog=false">
-          <v-icon class="mr-1">exit_to_app</v-icon>Sortir
+          Sortir
         </v-btn>
       </v-toolbar>
       <v-card>

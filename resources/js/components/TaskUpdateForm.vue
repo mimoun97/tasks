@@ -12,14 +12,14 @@
 
     <v-textarea v-model="description" label="Descripció" hint="bla bla bla..."></v-textarea>
 
-    <user-select :read-only="!$hasRole('TaskManager')" v-model="user" :users="dataUsers" label="Usuari"></user-select>
-
-    <div class="text-xs-center">
-      <v-btn @click="close">
-        <v-icon class="mr-1">exit_to_app</v-icon>Cancel·lar
+    <user-select :read-only="!$can('tasks.manage')" v-model="user" :users="dataUsers" label="Usuari"></user-select>
+    
+    <div class="text-xs-right">
+      <v-btn class="grey--text text--lighten-2" flat @click="close" aria-label="Cancel·lar">
+        Cancel·lar
       </v-btn>
-      <v-btn color="success" @click="update" :disabled="working" :loading="working">
-        <v-icon class="mr-1">save</v-icon>Actualitzar
+      <v-btn flat color="primary" @click="update" :disabled="working" :loading="working" aria-label="Actualitza">
+        Actualitza
       </v-btn>
     </div>
   </v-form>

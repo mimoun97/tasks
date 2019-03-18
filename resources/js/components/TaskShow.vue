@@ -8,7 +8,6 @@
             <v-toolbar-title class="white--text">Mostrar Tasca</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn flat class="white--text" @click="dialog=false">
-                <v-icon class="mr-1">exit_to_app</v-icon>
                 Sortir
             </v-btn>
         </v-toolbar>
