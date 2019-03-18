@@ -10,12 +10,12 @@
 
     <v-textarea v-model="description" label="Descripció" hint="Escriu la descripció de la tasca..."></v-textarea>
     <user-select v-model="user" :users="dataUsers" label="Usuari" @selected="updateUser"></user-select>
-    <div class="text-xs-center">
-      <v-btn @click="$emit('close')" aria-label="Cancel·lar">
-        <v-icon class="mr-1">exit_to_app</v-icon>Cancel·lar
+    <div class="text-xs-right">
+      <v-btn class="grey--text text--lighten-2" flat @click="$emit('close')" aria-label="Cancel·lar">
+        Cancel·lar
       </v-btn>
-      <v-btn color="success" @click="add" aria-label="Afegir">
-        <v-icon class="mr-1">save</v-icon>Afegir
+      <v-btn flat color="primary" @click="add" aria-label="Afegir">
+        Afegir
       </v-btn>
     </div>
   </v-form>
