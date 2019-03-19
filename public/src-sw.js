@@ -1,11 +1,11 @@
 workbox.setConfig({
     debug: true
 });
-// 4.0
-workbox.core.skipWaiting()
-workbox.core.clientsClaim()
+// 4.0 TODO
+workbox.skipWaiting()
+workbox.clientsClaim()
 
-workbox.precaching.cleanupOutdatedCaches()
+//workbox.precaching.cleanupOutdatedCaches()
 
 // workbox.routing.registerRoute(
 //   new RegExp('https://hacker-news.firebaseio.com'),
