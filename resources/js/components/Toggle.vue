@@ -36,8 +36,7 @@ export default {
   watch: {
     dataValue(dataValue, oldDataValue) {
       if (dataValue !== oldDataValue) {
-        if (dataValue) this.completeTask();
-        else this.uncompleteTask();
+        dataValue === false ? this.completeTask() : this.uncompleteTask();
       }
     }
   },
