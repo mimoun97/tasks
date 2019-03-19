@@ -22,7 +22,7 @@ class NewslettersControllerTest extends TestCase
         $response->assertSuccessful();
         $response->assertViewIs('newsletters.index');
 
-        $response->assertViewHas('newsletter',function( $newsletter) {
+        $response->assertViewHas('newsletter', function ($newsletter) {
             return $newsletter instanceof \Illuminate\Support\Collection;
         });
     }

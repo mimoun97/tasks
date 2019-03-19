@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Newsletters;
 
-use App\Newsletter;
 use Illuminate\Http\Request;
+use Newsletter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Newsletters\NewsletterIndex;
 
@@ -18,6 +18,6 @@ class NewslettersController extends Controller
     public function index(NewsletterIndex $request)
     {
         $newsletter = collect(Newsletter::getMembers());
-        return view('tenants.newsletters.index', compact('newsletter'));
+        return view('newsletters.index', compact('newsletter'));
     }
 }
