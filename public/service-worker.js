@@ -3,11 +3,11 @@ importScripts("/service-worker/precache-manifest.e3fc8ef785f0a5c0447fd9bfaac59bd
 workbox.setConfig({
     debug: true
 });
-// 4.0 TODO
-workbox.skipWaiting()
-workbox.clientsClaim()
+// 4.0
+workbox.core.skipWaiting()
+workbox.core.clientsClaim()
 
-//workbox.precaching.cleanupOutdatedCaches()
+workbox.precaching.cleanupOutdatedCaches()
 
 // workbox.routing.registerRoute(
 //   new RegExp('https://hacker-news.firebaseio.com'),
