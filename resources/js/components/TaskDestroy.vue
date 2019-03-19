@@ -7,13 +7,14 @@
     title="Eliminar la tasca"
     :loading="removing"
     :disabled="removing"
-    @click="destroy(task)"
+    @click.stop="destroy(task)"
   >
-    <v-icon >delete</v-icon>
+    <v-icon>delete</v-icon>
   </v-btn>
 </template>
 
 <script>
+import EventBus from "../eventBus";
 export default {
   name: "TaskDestroy",
   data() {
@@ -43,8 +44,8 @@ export default {
           buttonFalsetext: "Cancel·la",
           buttonFalseColor: "grey lighten-1",
           color: "grey lighten-2",
-          icon: 'delete_forever',
-          width: 350,
+          icon: "delete_forever",
+          width: 350
         }
       );
       if (result) {
@@ -52,16 +53,22 @@ export default {
         window.axios
           .delete(this.uri + "/" + task.id)
           .then(() => {
-            this.$snackbar.showMessage("S'ha esborrat correctament la tasca")
-            this.$emit("removed", task)
-            this.removing = false
+            this.$snackbar.showMessage("S'ha esborrat correctament la tasca");
+            this.$emit("removed", task);
+            this.removing = false;
           })
           .catch(error => {
-            this.$snackbar.showError(error.message)
-            this.removing = false
+            this.$snackbar.showError(error.message);
+            this.removing = false;
           });
       }
     }
+  },
+  mounted () {
+    EventBus.$on("remove-task-gesture-"+ this.task.id, task => {
+      console.log("remove-task-gesture-"+ task.id);
+      this.destroy(task)
+    });
   }
 };
 </script>
