@@ -16,7 +16,14 @@
       <v-btn icon class="white--text" aria-label="Settings">
         <v-icon>settings</v-icon>
       </v-btn>
-      <v-btn icon class="white--text" @click="refresh" :loading="loading" :disabled="loading" aria-label="Refresh">
+      <v-btn
+        icon
+        class="white--text"
+        @click="refresh"
+        :loading="loading"
+        :disabled="loading"
+        aria-label="Refresh"
+      >
         <v-icon>refresh</v-icon>
       </v-btn>
     </v-toolbar>
@@ -54,8 +61,11 @@
         class="hidden-md-and-down"
       >
         <v-progress-linear slot="progress" color="primary" indeterminate></v-progress-linear>
-        <template slot="items" slot-scope="{item: task}">
-          <tr>
+        <template
+          slot="items"
+          slot-scope="{item: task}"
+        >
+          <tr v-touch="{ right: () => removeTaskTouch(task) }">
             <td>{{ task.id }}</td>
             <td v-text="task.name"></td>
             <td>
@@ -65,8 +75,14 @@
               </v-avatar>
             </td>
             <td>
-              <toggle :value="task.completed" uri="/api/v1/completed_task" active-text="Completada" unactive-text="Pendent" :resource="task"></toggle>
-              <!-- <task-completed-toggle :task="task"></task-completed-toggle> -->
+              <!-- <toggle
+                :value="task.completed"
+                uri="/api/v1/completed_task"
+                active-text="Completada"
+                unactive-text="Pendent"
+                :resource="task"
+              ></toggle> -->
+              <task-completed-toggle :task="task"></task-completed-toggle>
             </td>
             <td>
               <tasks-tags :task="task" :task-tags="task.tags" :tags="tags" @change="refresh(false)"></tasks-tags>
@@ -76,7 +92,7 @@
             <td>
               <task-show :users="users" :task="task" :uri="uri"></task-show>
               <task-update :users="users" :task="task" @updated="updateTask" :uri="uri"></task-update>
-              <task-destroy :task="task" @removed="removeTask" :uri="uri"></task-destroy>
+              <task-destroy :task="task" @removed="removeTask" :uri="uri" ref="taskDestroy"></task-destroy>
             </td>
           </tr>
         </template>
@@ -101,6 +117,7 @@
           @updated="updateTask"
           :uri="uri"
           :users="users"
+          v-touch="{ right: () => removeTaskTouch(task) }"
         ></task-card>
       </v-data-iterator>
     </v-card>
@@ -108,12 +125,13 @@
 </template>
 
 <script>
-import Toggle from "./Toggle";
+import TaskCompletedToggle from "./TaskCompletedToggle";
 import TaskDestroy from "./TaskDestroy";
 import TaskUpdate from "./TaskUpdate";
 import TaskShow from "./TaskShow";
 import TasksTags from "./TasksTags";
 import TaskCard from "./TaskCard";
+import EventBus from "../eventBus";
 
 export default {
   name: "TaskList",
@@ -147,7 +165,7 @@ export default {
     "task-update": TaskUpdate,
     "task-show": TaskShow,
     "tasks-tags": TasksTags,
-    "toggle": Toggle
+    "task-completed-toggle": TaskCompletedToggle
   },
   props: {
     tasks: {
@@ -173,8 +191,16 @@ export default {
     }
   },
   methods: {
+    async removeTaskTouch(task) {
+      EventBus.$emit("remove-task-gesture-"+task.id, task)
+    },
     removeTask(task) {
-      this.dataTasks.splice(this.dataTasks.indexOf(task), 1);
+      //if task remove called from touch-gesture the emit event propagates again, we check if the task 
+      // is in the dataTasks
+      if (this.dataTasks.indexOf(task) !== -1) {
+        this.dataTasks.splice(this.dataTasks.indexOf(task), 1);
+      }
+
     },
     updateTask(task) {
       this.refresh();

@@ -53,6 +53,9 @@ import TaskCard from './components/TaskCard'
 import VParallaxWebp from './components/ui/VParallaxWebp.vue'
 //clock
 import Clock from './components/clock/Clock.vue'
+//newsletters
+import Newsletters from './components/newsletters/Newsletters.vue'
+import NewsLetterSubscriptionCard from './components/newsletters/NewsLetterSubscriptionCard'
 
 window.Vue = Vue
 window.Vuetify = Vuetify
@@ -240,6 +243,9 @@ window.Vue.component('task-card', TaskCard);
 window.Vue.component('v-parallax-webp', VParallaxWebp)
 // clock
 window.Vue.component('clock', Clock)
+//newsletters
+window.Vue.component('newsletter-subscription-card', NewsLetterSubscriptionCard)
+window.Vue.component('newsletters', Newsletters)
 
 // eslint-disable-next-line no-unused-vars
 const app = new window.Vue(AppComponent)

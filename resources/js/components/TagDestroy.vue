@@ -1,6 +1,6 @@
 <template>
   <v-btn
-    v-can="'tags.destroy'"
+    v-can="'tags.destroys'"
     icon
     color="error"
     flat
@@ -30,12 +30,16 @@ export default {
   methods: {
     async destroy(tag) {
       let result = await this.$confirm(
-        "Les etiquetes esborrades no es poden recuperar",
+        '<span class="grey--text text--lighten-1 body-1" >Elimina l\'etiqueta de la base de dades. Les etiquetes esborrades no es poden recuperar.<span>',
         {
-          title: "Esteu segurs?",
-          buttonTruetext: "Eliminar",
-          buttonFalsetext: "Cancel·lar",
-          color: "error"
+          title: "Eliminar l\'etiqueta?",
+          buttonTrueText: "Eliminar",
+          buttonTrueColor: "red darken-3",
+          buttonFalsetext: "Cancel·la",
+          buttonFalseColor: "grey lighten-1",
+          color: "grey lighten-2",
+          icon: 'delete_forever',
+          width: 350,
         }
       );
       if (result) {

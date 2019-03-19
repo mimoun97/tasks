@@ -1,4 +1,4 @@
-self.__precacheManifest = [
+self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "url": "/fonts/vendor/typeface-montserrat/files/montserrat-latin-100.woff?c8fb2f714bbc7bc3e8dfffa916b286dc"
   },
@@ -200,11 +200,11 @@ self.__precacheManifest = [
     "url": "/js/manifest.js"
   },
   {
-    "revision": "d155dfeda9f1be064c28",
+    "revision": "18ae45db7634aa2ceaf2",
     "url": "/js/app.js"
   },
   {
-    "revision": "d155dfeda9f1be064c28",
+    "revision": "18ae45db7634aa2ceaf2",
     "url": "/css/app.css"
   }
-];
+]);

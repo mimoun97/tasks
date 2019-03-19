@@ -18,18 +18,19 @@ class TasksController extends Controller
 
     public function index(Request $request)
     {
-        return map_collection(Task::orderBy('created_at')->get());
+        return map_collection(Task::with(['tags', 'user'])->orderBy('created_at')->get());
     }
 
-    public function show(TaskShow $request, Task $task) // Route Model Binding
+    public function show(TaskShow $request, Task $task) // Route Model Binding, fail automatic si no troba la tasca
     {
         return $task->map();
     }
 
     public function destroy(DestroyTask $request, Task $task)
     {
-        $task->delete();
         event(new TaskDestroyed($task));
+
+        $task->delete();
     }
 
     public function store(StoreTask $request)

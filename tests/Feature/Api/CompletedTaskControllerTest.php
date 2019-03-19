@@ -15,6 +15,81 @@ class CompletedTaskControllerTest extends TestCase
     /**
      * @test
      */
+    public function guest_user_cannot_complete_a_task()
+    {
+        //1
+        //$this->withoutExceptionHandling();
+        $task= Task::create([
+            'name' => 'comprar pa',
+            'completed' => false
+        ]);
+        //2
+
+        $response = $this->json('POST', '/api/v1/completed_task/' . $task->id);
+        $response->assertStatus(401); //unautheticated
+    }
+
+    /**
+     * @test
+     */
+    public function super_admin_can_complete_a_task()
+    {
+        //1
+        $this->withoutExceptionHandling();
+        $this->loginAsSuperAdmin('api');
+        $task= Task::create([
+            'name' => 'comprar pa',
+            'completed' => false
+        ]);
+        //2
+        Event::fake();
+        Event::assertNotDispatched(\App\Events\Tasks\TaskCompleted::class);
+
+        $response = $this->json('POST', '/api/v1/completed_task/' . $task->id);
+        $response->assertSuccessful();
+        $task = $task->fresh();
+
+        //3
+        $this->assertEquals($task->name, 'comprar pa');
+        $this->assertEquals($task->completed, true);
+
+        
+        Event::assertDispatched(\App\Events\Tasks\TaskCompleted::class, function ($event) use ($task) {
+            return $event->task->id === $task->id;
+        });
+    }
+    /**
+     * @test
+     */
+    public function task_manager_can_complete_a_task()
+    {
+        //1
+        $this->withoutExceptionHandling();
+        $this->loginAsTaskManager('api');
+        $task= Task::create([
+            'name' => 'comprar pa',
+            'completed' => false
+        ]);
+        //2
+        Event::fake();
+        Event::assertNotDispatched(\App\Events\Tasks\TaskCompleted::class);
+
+        $response = $this->json('POST', '/api/v1/completed_task/' . $task->id);
+        $response->assertSuccessful();
+        $task = $task->fresh();
+
+        //3
+        $this->assertEquals($task->name, 'comprar pa');
+        $this->assertEquals($task->completed, true);
+
+        
+        Event::assertDispatched(\App\Events\Tasks\TaskCompleted::class, function ($event) use ($task) {
+            return $event->task->id === $task->id;
+        });
+    }
+    /**
+     * @test
+     */
     public function can_complete_a_task()
     {
         //1

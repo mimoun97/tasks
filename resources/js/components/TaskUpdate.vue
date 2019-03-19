@@ -13,12 +13,9 @@
         </v-btn>
         <v-toolbar-title class="white--text">Editar Tasca</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn flat class="white--text" @click="dialog=false" aria-label="Sortir">
-          <v-icon class="mr-1">exit_to_app</v-icon>Sortir
-        </v-btn>
         <!--TODO-->
         <v-btn flat class="white--text" aria-label="Desar">
-          <v-icon class="mr-1">save</v-icon>Guardar
+          Guardar
         </v-btn>
       </v-toolbar>
       <v-card>

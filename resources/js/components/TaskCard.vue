@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import Toggle from "./Toggle";
+import TaskCompletedToggle from "./TaskCompletedToggle";
 import TaskDestroy from "./TaskDestroy";
 import TaskUpdate from "./TaskUpdate";
 import TaskShow from "./TaskShow";
@@ -49,7 +49,7 @@ import TasksTags from "./TasksTags";
 export default {
   name: "TaskCard",
   components: {
-    toggle: Toggle,
+    "task-completed-toggle": TaskCompletedToggle,
     "task-destroy": TaskDestroy,
     "task-update": TaskUpdate,
     "task-show": TaskShow,
