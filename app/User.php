@@ -2,13 +2,14 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Session;
-use Lab404\Impersonate\Models\Impersonate;
+use App\Channel;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Notifications\Notifiable;
+use Lab404\Impersonate\Models\Impersonate;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -161,5 +162,10 @@ class User extends Authenticatable
             'admin' => (boolean)$this->admin,
             'hash_id' => $this->hash_id,
         ];
+    }
+
+    public function channels()
+    {
+        return $this->belongsToMany(Channel::class);
     }
 }
