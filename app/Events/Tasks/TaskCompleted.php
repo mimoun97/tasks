@@ -33,6 +33,6 @@ class TaskCompleted implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('tasks');
+        return new PrivateChannel('tasks', $this->task);
     }
 }
