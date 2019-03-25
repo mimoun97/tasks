@@ -32,11 +32,6 @@ export default {
         );
       };
     }
-
-    window.Echo.channel('tasks')
-    .listen('TaskCompleted', (e) => {
-        console.log(e.task.name);
-    });
   }
 };
 </script>

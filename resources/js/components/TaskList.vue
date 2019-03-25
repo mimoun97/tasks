@@ -59,6 +59,7 @@
         :loading="loading"
         :pagination.sync="pagination"
         class="hidden-md-and-down"
+        v-if="$vuetify.breakpoint.mdAndUp"
       >
         <v-progress-linear slot="progress" color="primary" indeterminate></v-progress-linear>
         <template
@@ -99,6 +100,7 @@
       </v-data-table>
       <v-data-iterator
         class="hidden-lg-and-up"
+        v-if="$vuetify.breakpoint.mdAndDown"
         :items="dataTasks"
         :search="search"
         no-results-text="No s'ha trobat cap registre coincident"
@@ -218,6 +220,25 @@ export default {
           this.loading = false;
         });
     }
+  },
+  created() {
+    console.log("dins created() taskliost: ", window.laravel_user)
+    if (window.laravel_user.admin) {
+      window.Echo.private('Tasques')
+        .listen('TaskCompleted', (e) => {
+          console.log('TaskUncompleted Received')
+          console.log(e.task)
+          this.refresh()
+        })
+    } else {
+      window.Echo.private('App.User.' + window.laravel_user.id)
+        .listen('TaskCompleted', (e) => {
+          console.log('TaskUncompleted Received')
+          console.log(e.task)
+          this.refresh()
+        })
+    }
+
   }
 };
 </script>
