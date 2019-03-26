@@ -84,7 +84,8 @@ if (!function_exists('initialize_roles')) {
             'TagsManager',
             'Tags',
             'NotificationsManager',
-            'NewslettersManager'
+            'NewslettersManager',
+            'Chat'
         ];
         foreach ($roles as $role) {
             create_role($role);
@@ -140,6 +141,8 @@ if (!function_exists('initialize_roles')) {
             'newsletters.index'
         ];
 
+        $chatPermissions = chat_permissions();
+
 
         $permissions = array_merge(
             $taskManagerPermissions,
@@ -147,7 +150,8 @@ if (!function_exists('initialize_roles')) {
             $tagsManagerPermissions,
             $userTagsPermissions,
             $notificationsManagerPermissions,
-            $newsletterManagerPermissions
+            $newsletterManagerPermissions,
+            $chatPermissions
         );
         foreach ($permissions as $permission) {
             create_permission($permission);
@@ -158,7 +162,8 @@ if (!function_exists('initialize_roles')) {
             'TagsManager' => $tagsManagerPermissions,
             'Tags' => $userTagsPermissions,
             'NotificationsManager' => $notificationsManagerPermissions,
-            'NewslettersManager' => $newsletterManagerPermissions
+            'NewslettersManager' => $newsletterManagerPermissions,
+            'Chat' => $chatPermissions
         ];
         foreach ($rolePermissions as $role => $rolePermission) {
             $role = Role::findByName($role);
@@ -185,6 +190,27 @@ if (!function_exists('initialize_gates')) {
         Gate::define('task.link.show', function ($user, $task) {
             //can only if owner or you have privileges(admin or TaskManager)
             return $user->id == $task->user_id || Auth::user()->can('tasks.manage');
+        });
+
+        Gate::define('chat.index', function ($loggedUser, $chat) {
+            $result = $chat->users->search(function ($user) use ($loggedUser) {
+                return $loggedUser->id  === $user->id;
+            });
+            return $result === false ? false : true;
+        });
+
+        Gate::define('chat.store', function ($loggedUser, $chat) {
+            $result = $chat->users->search(function ($user) use ($loggedUser) {
+                return $loggedUser->id  === $user->id;
+            });
+            return $result === false ? false : true;
+        });
+
+        Gate::define('chat.destroy', function ($loggedUser, $chat) {
+            $result = $chat->users->search(function ($user) use ($loggedUser) {
+                return $loggedUser->id  === $user->id;
+            });
+            return $result === false ? false : true;
         });
     }
 }
@@ -720,5 +746,67 @@ if (!function_exists('get_admin_user')) {
     function get_admin_user()
     {
         return User::where('email', env('PRIMARY_USER_EMAIL', 'mimounhaddou@iesebre.com'))->first();
+    }
+}
+
+if (!function_exists('initialize_chat_role')) {
+    function initialize_chat_role()
+    {
+        $role = Role::firstOrCreate(['name' => 'Chat']);
+        $permissions = chat_permissions();
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
+            $role->givePermissionTo($permission);
+        }
+    }
+}
+
+if (!function_exists('chat_permissions')) {
+    function chat_permissions()
+    {
+        return [
+            'chat.index',
+            'chat.store',
+            'chat.destroy'
+        ];
+    }
+}
+
+if (!function_exists('create_sample_channel')) {
+    function create_sample_channel($user = null,$name = 'Pepe Pardo Jeans', $randomTimestamps = true)
+    {
+        create_acacha_user();
+        if(! $user) $user = get_admin_user();
+
+        if ($randomTimestamps) {
+            $channelData = add_random_timestamps([
+                'name' => $name,
+                'image' => 'http://i.pravatar.cc/300',
+                'last_message' => 'Bla bla bla'
+            ]);
+        } else {
+            $channelData = [
+                'name' => $name,
+                'image' => 'http://i.pravatar.cc/300',
+                'last_message' => 'Bla bla bla'
+            ];
+        }
+
+        $channel = Channel::create($channelData)->addUser($user);
+
+        $channel->addMessage(ChatMessage::create([
+            'text' => 'Hola que tal!'
+        ]));
+        $channel->addMessage(ChatMessage::create([
+            'text' => 'Whats up?'
+        ]));
+        $channel->addMessage(ChatMessage::create([
+            'text' => 'Dude your are so cool!'
+        ]));
+        $channel->addMessage(ChatMessage::create([
+            'text' => 'WTF are you fool?'
+        ]));
+
+        return $channel;
     }
 }

@@ -56,6 +56,16 @@ trait CanLogin
      * @param null $guard
      * @return mixed
      */
+    public function loginAsChatUser($guard = 'web')
+    {
+        initialize_chat_role();
+        return $this->loginAsUsingRole($guard, 'Chat');
+    }
+
+    /**
+     * @param null $guard
+     * @return mixed
+     */
     protected function loginAsNotificationsManager($guard = null)
     {
         return $this->loginAsUsingRole($guard, ['NotificationsManager']);

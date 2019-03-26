@@ -1,5 +1,5 @@
 <template>
-    <div id="dsadsasadasdasddsadsa">
+    <div>
         <v-toolbar color="primary">
             <v-avatar
                     color="grey lighten-4"
@@ -37,7 +37,7 @@
                       </v-list-tile-avatar>
 
                       <v-list-tile-content>
-                        <v-list-tile-title v-html="message.title"></v-list-tile-title>
+                        <v-list-tile-title v-html="message.text"></v-list-tile-title>
                       </v-list-tile-content>
 
                       <v-list-tile-action>
@@ -47,11 +47,7 @@
                   </v-list>
             </v-flex>
               <v-flex xs12>
-                    <v-text-field
-                            label="Solo"
-                            placeholder="Nou missatge"
-                            solo
-                    ></v-text-field>
+                  <chat-message-add :channel="channel" @added="add"></chat-message-add>
               </v-flex>
           </v-layout>
         </v-container>
@@ -59,8 +55,12 @@
 </template>
 
 <script>
+import ChatMessageAdd from './ChatMessageAdd'
 export default {
   name: 'ChatChannel',
+  components: {
+    'chat-message-add': ChatMessageAdd
+  },
   data () {
     return {
       dataMessages: [],
@@ -76,26 +76,10 @@ export default {
     }
   },
   methods: {
+    add () {
+      this.fetchMessages()
+    },
     fetchMessages () {
-      // TODO esborrar seguent línia quan estigui feta l'API
-      this.dataMessages = [
-        {
-          id: 1,
-          title: 'Hey man!'
-        },
-        {
-          id: 2,
-          title: 'How are you?'
-        },
-        {
-          id: 3,
-          title: 'bla bla bla....'
-        },
-        {
-          id: 4,
-          title: 'bla bla bla....'
-        }
-      ]
       if (this.channel) {
         this.loading = true
         window.axios('/api/v1/channel/' + this.channel.id + '/messages').then((response) => {

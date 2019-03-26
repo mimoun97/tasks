@@ -10,6 +10,7 @@
     "watch-poll": "npm run watch -- --watch-poll"
   },
   "dependencies": {
+    "gravatar": "^1.8.0",
     "laravel-echo": "^1.5.3",
     "material-design-icons-iconfont": "^4.0.4",
     "md5": "^2.2.1",
