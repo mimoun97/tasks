@@ -10,12 +10,13 @@ class LoggedUserPhotoController extends Controller
 {
     public function show(Request $request)
     {
+        $user = $request->user();
         $photo = $this->userPhotoExists($request->user()) ? $request->user()->photo->url : $this->defaultPhoto();
         //dd($photo);
+        //dd(Storage::disk('local')->allFiles());
         return response()->file(Storage::disk('local')->path($photo), [
             'Cache-Control' => 'no-cache, must-revalidate, no-store, max-age=0, private',
-            'Pragma' => 'no-cache'
-        ]);
+            'Pragma' => 'no-cache']);
     }
 
     protected function userPhotoExists($user)
@@ -25,6 +26,6 @@ class LoggedUserPhotoController extends Controller
 
     protected function defaultPhoto()
     {
-        return User::DEFAULT_PHOTO_PATH;
+        return 'public/photos/default.png';//User::DEFAULT_PHOTO_PATH;
     }
 }

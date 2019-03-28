@@ -131,23 +131,25 @@ class LoggedUserTasksControllerTest extends TestCase
         $user->addTask($task);
         //dd($user->tasks()->get());
 
+        /** clonem perqué se borra i necessitem mirar
+         * si s'ha borrat la tasca correcta amb l'event*/
+        $taskDeleted = clone $task;
         //execute
-        $response = $this->json('DELETE', '/api/v1/user/tasks/' . $task->id);
-        $response->assertSuccessful();
-        $task = $task->fresh();
-
         Event::fake();
         Event::assertNotDispatched(\App\Events\Tasks\TaskDestroyed::class);
 
+        $response = $this->json('DELETE', '/api/v1/user/tasks/' . $task->id);
+        $response->assertSuccessful();
+        $task = $task->fresh();
         //assert
         $this->assertCount(0, $user->tasks);
         $this->assertNull($task);
         $this->assertDatabaseMissing('tasks', ['name' => 'Comprar llet']);
 
         Event::assertDispatched(\App\Events\Tasks\TaskDestroyed::class);
-        // Event::assertDispatched(\App\Events\Tasks\TaskDestroyed::class, function ($event) use ($task) {
-        //     return $event->task->id === $task->id;
-        // });
+        Event::assertDispatched(\App\Events\Tasks\TaskDestroyed::class, function ($event) use ($taskDeleted) {
+            return $event->task->id === $taskDeleted->id;
+        });
     }
 
     /**

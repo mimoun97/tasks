@@ -9,6 +9,7 @@ use Tests\Feature\Traits\CanLogin;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\Response;
 use File;
 
 class LoggedUserPhotoControllerTest extends TestCase
@@ -22,8 +23,11 @@ class LoggedUserPhotoControllerTest extends TestCase
         //$this->withExceptionHandling();
         $this->login();
         $response = $this->get('/user/photo');
+        //dd($response->getContent());
         $response->assertSuccessful();
-        $this->assertEquals(storage_path('app/' . User::DEFAULT_PHOTO_PATH), $response->baseResponse->getFile()->getPathName());
+        //dd( storage_path( 'app/public/'.User::DEFAULT_PHOTO_PATH));
+        $this->assertEquals(storage_path('app/public/' . User::DEFAULT_PHOTO_PATH), $response
+            ->baseResponse->getFile()->getPathName());
     }
 
     /** @test */
@@ -44,8 +48,10 @@ class LoggedUserPhotoControllerTest extends TestCase
         $this->actingAs($user, 'web');
         $response = $this->get('/user/photo');
         $response->assertSuccessful();
-        $this->assertEquals(Storage::disk('local')->path('photos/' . $user->id . '.jpg'), $response->baseResponse->getFile()->getPathName());
-        $this->assertFileEquals(Storage::disk('local')->path('photos/' . $user->id . '.jpg'), $response->baseResponse->getFile()->getPathName());
+        $this->assertEquals(Storage::disk('local')->path('photos/' . $user->id . '.jpg'), $response
+            ->baseResponse->getFile()->getPathName());
+        $this->assertFileEquals(Storage::disk('local')->path('photos/' . $user->id . '.jpg'), $response
+            ->baseResponse->getFile()->getPathName());
 
     }
 }
