@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\TasksTagsController;
+use App\Http\Controllers\Api\Chat\ChatMessagesController;
 use App\Http\Controllers\Api\Changelog\ChangelogController;
 use App\Http\Controllers\Api\Newsletter\NewsletterController;
 use App\Http\Controllers\Api\Notifications\NotificationsController;
@@ -76,4 +77,10 @@ Route::middleware('auth:api')->group(function () {
 
     //newsletter
     Route::post('/v1/newsletter', '\\' . NewsletterController::class . '@store');
+
+    // Chat
+    // Channel messages
+    Route::get('/v1/channel/{channel}/messages', '\\' . ChatMessagesController::class . '@index');
+    Route::post('/v1/channel/{channel}/messages', '\\' . ChatMessagesController::class . '@store');
+    Route::delete('/v1/channel/{channel}/messages/{message}', '\\' . ChatMessagesController::class . '@destroy');
 });

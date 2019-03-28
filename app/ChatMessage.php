@@ -3,8 +3,8 @@
 namespace App;
 
 use App\Channel;
+use App\Traits\ApiURI;
 use App\FormattedDates;
-use App\Models\Traits\ApiURI;
 use Illuminate\Database\Eloquent\Model;
 
 class ChatMessage extends Model

@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Api\Chat;
 
+use App\Channel;
+use App\ChatMessage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChatMessages\ChatMessagesIndex;
+use App\Http\Requests\ChatMessages\ChatMessagesStore;
+use App\Http\Requests\ChatMessages\ChatMessagesDestroy;
 
 class ChatMessagesController extends Controller
 {
@@ -12,9 +17,9 @@ class ChatMessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ChatMessagesIndex $request, Channel $channel)
     {
-        //
+        return map_collection($channel->messages);
     }
 
     /**
@@ -23,32 +28,13 @@ class ChatMessagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ChatMessagesStore $request, Channel $channel)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        $message = ChatMessage::create([
+            'text' => $request->text
+        ]);
+        $channel->addMessage($message);
+        return $message;
     }
 
     /**
@@ -57,8 +43,9 @@ class ChatMessagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ChatMessagesDestroy $request, Channel $channel, ChatMessage $message)
     {
-        //
+        $message->delete();
+        return $message;
     }
 }

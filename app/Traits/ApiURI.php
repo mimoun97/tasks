@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\Traits;
+namespace App\Traits;
 
 use Illuminate\Support\Str;
 
 /**
  * Class ApiURI.
  *
- * @package App\Models\Traits
+ * @package App\Traits
  */
 trait ApiURI
 {

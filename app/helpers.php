@@ -6,6 +6,7 @@ use App\Task;
 use App\User;
 use App\Channel;
 use Carbon\Carbon;
+use App\ChatMessage;
 use Faker\Generator as Faker;
 use Illuminate\Container\factory;
 use Spatie\Permission\Models\Role;
@@ -773,10 +774,10 @@ if (!function_exists('chat_permissions')) {
 }
 
 if (!function_exists('create_sample_channel')) {
-    function create_sample_channel($user = null,$name = 'Pepe Pardo Jeans', $randomTimestamps = true)
+    function create_sample_channel($user = null, $name = 'Pepe Pardo Jeans', $randomTimestamps = true)
     {
-        create_acacha_user();
-        if(! $user) $user = get_admin_user();
+        create_primary_user();
+        if(!$user) $user = get_admin_user();
 
         if ($randomTimestamps) {
             $channelData = add_random_timestamps([

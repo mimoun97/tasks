@@ -3,6 +3,7 @@
 namespace Tests\Feature\Api\Chat;
 
 use Tests\TestCase;
+use App\ChatMessage;
 use Tests\Feature\Traits\CanLogin;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -17,12 +18,14 @@ class ChatMessagesControllerTest extends TestCase
      */
     public function can_list_chat_messages()
     {
+        $this->withoutExceptionHandling();
         $this->loginAsChatUser('api');
 
         $channel = create_sample_channel();
         $response = $this->json('GET', '/api/v1/channel/' . $channel->id . '/messages');
         $response->assertSuccessful();
         $result = json_decode($response->getContent());
+        //dd($result);
         $this->assertTrue(is_array($result));
         $this->assertEquals('Hola que tal!', $result[0]->text);
     }
@@ -68,7 +71,7 @@ class ChatMessagesControllerTest extends TestCase
         $response->assertSuccessful();
         $result = json_decode($response->getContent());
         $this->assertTrue(is_array($result));
-        $this->assertEquals('Hola que tal! ', $result[0]->text);
+        $this->assertEquals('Hola que tal!', $result[0]->text);
     }
 
     /**
@@ -77,8 +80,9 @@ class ChatMessagesControllerTest extends TestCase
      */
     public function guest_user_cannot_list_chat_messages()
     {
+        //$this->withoutExceptionHandling();
         $channel = create_sample_channel();
-        $response = $this->json('GET', ' /api/v1/channel/' . $channel->id . '/messages');
+        $response = $this->json('GET', '/api/v1/channel/' . $channel->id . '/messages');
         $response->assertStatus(401);
     }
 
@@ -88,6 +92,7 @@ class ChatMessagesControllerTest extends TestCase
      */
     public function can_add_message_to_channel()
     {
+        $this->withoutExceptionHandling();
         $this->loginAsChatUser('api');
 
         $channel = create_sample_channel();
@@ -96,6 +101,7 @@ class ChatMessagesControllerTest extends TestCase
         ]);
         $response->assertSuccessful();
         $message = json_decode($response->getContent());
+        //dd($message);
         $this->assertEquals('Hola que tal!', $message->text);
         $this->assertNotNull($message->id);
         $this->assertEquals($channel->id, $message->channel_id);
@@ -122,16 +128,26 @@ class ChatMessagesControllerTest extends TestCase
         $this->assertEquals('Hola que tal!', $channel->lastMessage()->text);
     }
 
+    /**
+     * @test
+     * @group curriculum
+     */
     public function regular_user_cannot_add_message_to_channel()
     {
+        //$this->withoutExceptionHandling();
         $this->login('api');
         $channel = create_sample_channel();
-        $response = $this->json('POST', '/api/v1/channel/' . $channel->id . '/messages', [
+        $response = $this->json('POST', '/api/v1/channel/'. $channel->id .'/messages', [
             'text' => 'Hola que tal!'
         ]);
-        $response->assertStatus(401);
+        //dd($response);
+        $response->assertStatus(403);
     }
 
+    /**
+     * @test
+     * @group curriculum
+     */
     public function guest_user_cannot_add_message_to_channel()
     {
         $channel = create_sample_channel();
@@ -147,6 +163,7 @@ class ChatMessagesControllerTest extends TestCase
      */
     public function can_delete_message_from_channel()
     {
+        //$this->withoutExceptionHandling();
         $this->loginAsChatUser('api');
 
         $channel = create_sample_channel();
@@ -189,7 +206,7 @@ class ChatMessagesControllerTest extends TestCase
         ]);
         $channel->addMessage($message);
         $originalNumberOfMessages = count($channel->messages);
-        $response = $this->json('DELETE', '/api/v1/channel/' . $channel->id . '/messages /'  . $message->id);
+        $response = $this->json('DELETE', '/api/v1/channel/' . $channel->id . '/messages/'  . $message->id);
         $response->assertSuccessful();
         $result = json_decode($response->getContent());
         $this->assertEquals('Nou missatge', $result->text);
@@ -220,7 +237,7 @@ class ChatMessagesControllerTest extends TestCase
         ]);
         $channel->addMessage($message);
         $originalNumberOfMessages = count($channel->messages);
-        $response = $this->json('DELETE', '/api/v1/channel/' . $channel->id . '/message s/'   .$message->id);
+        $response = $this->json('DELETE', '/api/v1/channel/' . $channel->id . '/messages/'   .$message->id);
         $response->assertStatus(403);
         //        dd($channel->messages->pluck('text'));
     }
@@ -238,9 +255,10 @@ class ChatMessagesControllerTest extends TestCase
         $message = ChatMessage::create([
             'text' => 'Nou missatge'
         ]);
+        //dd($message);
         $channel->addMessage($message);
         $originalNumberOfMessages = count($channel->messages);
-        $response = $this->json('DELETE', '/api/v1/channel/' . $channel->id . '/messag es/'   .$message->id);
+        $response = $this->json('DELETE', '/api/v1/channel/' . $channel->id . '/messages/'. $message->id );
         $response->assertStatus(401);
         //        dd($channel->messages->pluck('text'));
     }
