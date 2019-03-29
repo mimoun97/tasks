@@ -56,6 +56,12 @@ class TaskStored extends Notification implements ShouldQueue
      */
     public function toDatabase($notifiable)
     {
-        return $this->task->map();
+        
+        return [
+            "title" => "S'ha creat un anova tasca:" . $this->task->subject(),
+            //"url" => "/tasques/" . $this->task->id,
+            "icon" => "add",
+            $this->task->map()
+        ];
     }
 }

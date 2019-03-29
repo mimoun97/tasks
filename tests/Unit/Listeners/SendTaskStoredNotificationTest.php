@@ -40,7 +40,6 @@ class SendTaskStoredNotificationTest extends TestCase
             $user,
             TaskStored::class,
             function ($notification, $channels) use ($task) {
-                //dd("hola!");
                 return $notification->task->id === $task->id;
             }
         );

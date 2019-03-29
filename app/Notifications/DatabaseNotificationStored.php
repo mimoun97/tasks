@@ -1,27 +1,26 @@
 <?php
 
-namespace App\Notifications\Tasks;
+namespace App\Notifications;
 
-use App\Task;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class TaskUncompleted extends Notification
+class DatabaseNotificationStored extends Notification
 {
     use Queueable;
 
-    public $task;
+    public $notification;
 
     /**
-     * Create a new event instance.
+     * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Task $task)
+    public function __construct($notification)
     {
-        $this->task = $task;
+        $this->notification = $notification;
     }
 
     /**
@@ -32,7 +31,7 @@ class TaskUncompleted extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['broadcast'];
     }
 
     /**
@@ -44,7 +43,7 @@ class TaskUncompleted extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.' . $this->task->name)
+                    ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }
@@ -55,10 +54,10 @@ class TaskUncompleted extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toBroadcast($notifiable)
+    public function toArray($notifiable)
     {
         return [
-            //
+            'notification' => 'TODO notification DatabaseNotificationStored'
         ];
     }
 }
