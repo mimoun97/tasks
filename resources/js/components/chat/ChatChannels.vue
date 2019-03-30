@@ -89,10 +89,8 @@
         </v-toolbar>
         <v-container fluid text-xs-center class="ma-0 pa-0">
           <v-layout row wrap>
-            <v-flex xs12 style="height: 64px;">
-              <v-card dark color="cyan" style="height: 64px;">
-                <v-card-text class="px-0">TODO activar notificacions d'escriptori</v-card-text>
-              </v-card>
+            <v-flex xs12 >
+              <notifications-activate-button></notifications-activate-button>
             </v-flex>
             <v-flex xs12>
               <v-card dark style="height: 64px;">
@@ -129,11 +127,13 @@
 
 <script>
 import UserAvatar from '../users/UserAvatar'
+import NotificationsActivateButton from './notifications/NotificationsActivateButton.vue'
 
 export default {
   name: 'ChatChannels',
   components: {
-    'user-avatar': UserAvatar
+    'user-avatar': UserAvatar,
+    'notifications-activate-button': NotificationsActivateButton
   },
   data () {
     return {
@@ -153,7 +153,7 @@ export default {
     channel: {}
   },
   created () {
-    this.user = window.user
+    this.user = window.laravel_user
   }
 }
 </script>
