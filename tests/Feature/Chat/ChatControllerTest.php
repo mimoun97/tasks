@@ -10,6 +10,7 @@ use Tests\Feature\Traits\CanLogin;
 class ChatControllerTest extends TestCase
 {
     use RefreshDatabase, CanLogin;
+    
     /** @test */
     public function chat_user_can_see_chats()
     {

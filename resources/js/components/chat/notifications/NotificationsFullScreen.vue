@@ -3,13 +3,13 @@
     <v-flex>
       <v-dialog v-model="dataShow" fullscreen transition="dialog-bottom-transition">
         <v-card color="rgb(0, 0, 0, 0.85)">
-          <v-layout fill-height padding layout-justify-center align-center row>
-            <v-flex xs3>
-                <v-avatar size="54" color="rgb(120, 120, 120, 0.8)">
-                  <v-icon color="white" size="28">arrow_upward</v-icon>
+          <v-layout align-center justify-center row fill-height>
+            <v-flex xs3 offset-xs2>
+                <v-avatar  size="54" color="rgb(120, 120, 120, 0.8)">
+                  <v-icon color="white" size="28" class="icon__flip">call_made</v-icon>
                 </v-avatar>
               </v-flex>
-            <v-flex xs9>
+            <v-flex xs9 offset-xs2>
               
                 <v-card-title class="headline white--text">
                   <p>Permitir notificaciones</p>
@@ -23,9 +23,11 @@
               </v-card-actions>
             </v-flex>
           </v-layout>
+
         </v-card>
       </v-dialog>
     </v-flex>
+    
   </v-layout>
 </template>
 
@@ -59,5 +61,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.icon__flip {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
 </style>

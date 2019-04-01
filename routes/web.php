@@ -18,6 +18,7 @@ use App\Http\Controllers\TasquesController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ChangelogController;
 use App\Http\Controllers\Chat\ChatController;
+use App\Http\Controllers\Game\GamePadController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\LoggedUserPhotoController;
 use App\Http\Controllers\Newsletters\NewslettersController;
@@ -90,6 +91,9 @@ Route::group(['middleware' => 'auth'], function () {
     //chat
     Route::get('/chat', '\\' . ChatController::class . '@index');
     Route::get('/xat', '\\' . ChatController::class . '@index');
+
+    //game
+    Route::get('/gamepad', '\\' . GamePadController::class . '@index');
 });
 
 //Equivalent a login->loginCotroller

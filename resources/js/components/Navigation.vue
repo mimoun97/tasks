@@ -85,7 +85,9 @@ export default {
         { icon: "settings", text: "Settings", url: "/settings" },
         { icon: "phone", text: "Device Features", url: "/device-features" },
         { icon: "access_time", text: "Clock", url: "/clock" },
-        { icon: "email", text: "Newsletters", url: "/newsletters" }
+        { icon: "email", text: "Newsletters", url: "/newsletters" },
+        { icon: "chat", text: "Chat", url: "/chat" },
+        { icon: "videogame_asset", text: "GamePad", url: "/gamepad" }
       ]
     };
   },
