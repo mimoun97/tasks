@@ -20,9 +20,10 @@ if (!function_exists('create_primary_user')) {
         $user = User::where('email', env('PRIMARY_USER_EMAIL', 'mimounhaddou@iesebre.com'))->first();
         if (!$user) {
             $user = User::firstOrCreate([
-                'name' => env('PRIMARY_USER_NAME', 'Mimoun Haddou'),
-                'email' => env('PRIMARY_USER_EMAIL', 'mimounhaddou@iesebre.com'),
-                'password' => bcrypt(env('PRIMARY_USER_PASSWORD', 'secret'))
+                'name' => config('tasks.admin_user.name'),
+                'email' => config('tasks.admin_user.email'),
+                'mobile' => config('tasks.admin_user.mobile'),
+                'password' => config('tasks.admin_user.password')
             ]);
 
             $user->admin = true;
@@ -37,9 +38,9 @@ if (!function_exists('create_acacha_user')) {
         $user = User::where('email', env('ACACHA_USER_EMAIL', 'sergiturbadenas@gmail.com'))->first();
         if (!$user) {
             $user = User::firstOrCreate([
-                'name' => env('ACACHA_USER_NAME', 'Sergi Tur Badenas'),
-                'email' => env('ACACHA_USER_EMAIL', 'sergiturbadenas@gmail.com'),
-                'password' => bcrypt(env('ACACHA_USER_PASSWORD', '123456'))
+                'name' => config('tasks.user_user.name'),
+                'email' => config('tasks.user_user.email'),
+                'password' => config('tasks.user_user.email')
             ]);
 
             $user->admin = true;
