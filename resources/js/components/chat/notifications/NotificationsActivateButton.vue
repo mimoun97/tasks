@@ -1,12 +1,12 @@
 <template>
-  <v-card dark color="cyan lighten-3">
-    <v-layout align-center row wrap>
-      <v-flex xs2>
+  <v-card dark color="#9de1fe" flat>
+    <v-layout align-center row class="text-xs-left">
+      <v-flex xs3 >
         <v-avatar size="54" color="white">
-          <v-icon color="cyan lighten-3" size="28">notifications_off</v-icon>
+          <v-icon color="#9de1fe" size="28">notifications_off</v-icon>
         </v-avatar>
       </v-flex>
-      <v-flex xs10>
+      <v-flex xs9>
         <v-card-text class="grey--text text--darken-2">
         <p class="title">Recibe notificaciones de mensajes nuevos</p> 
           <p class="body pointer underline" @click="dialog = true">Activar notificacions d'escriptori ></p>
@@ -42,3 +42,4 @@ export default {
     text-decoration: underline
 }
 </style>
+//style="background-color: green;"

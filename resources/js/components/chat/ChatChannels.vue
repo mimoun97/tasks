@@ -93,9 +93,7 @@
               <notifications-activate-button></notifications-activate-button>
             </v-flex>
             <v-flex xs12>
-              <v-card dark style="height: 64px;">
-                  search here
-              </v-card>
+              <search-messages></search-messages>
             </v-flex>
             <v-flex xs12 class="scroll-y" style="max-height: calc(100vh - 64px - 64px - 64px - 64px)">
                 <v-list subheader>
@@ -128,12 +126,14 @@
 <script>
 import UserAvatar from '../users/UserAvatar'
 import NotificationsActivateButton from './notifications/NotificationsActivateButton.vue'
+import SearchMessages from './search/SearchMessages.vue'
 
 export default {
   name: 'ChatChannels',
   components: {
     'user-avatar': UserAvatar,
-    'notifications-activate-button': NotificationsActivateButton
+    'notifications-activate-button': NotificationsActivateButton,
+    'search-messages': SearchMessages
   },
   data () {
     return {
