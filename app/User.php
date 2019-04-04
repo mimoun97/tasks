@@ -11,7 +11,7 @@ use Lab404\Impersonate\Models\Impersonate;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasRoles, Notifiable, HasApiTokens, Impersonate;
 
@@ -167,5 +167,10 @@ class User extends Authenticatable
     public function channels()
     {
         return $this->belongsToMany(Channel::class);
+    }
+
+    public function routeNotificationForNexmo()
+    {
+        return $this->mobile;
     }
 }

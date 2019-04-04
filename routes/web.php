@@ -98,7 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 //Equivalent a login->loginCotroller
 //Equivalent a register->registerController
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::post('/login_alt', 'Auth\LoginAltController@login');
 Route::post('/register_alt', 'Auth\RegisterAltController@register');

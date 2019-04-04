@@ -44,9 +44,9 @@ class TaskUncompleted extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.' . $this->task->name)
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('The introduction to the notification.' . $this->task->name)
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     /**
@@ -60,5 +60,17 @@ class TaskUncompleted extends Notification
         return [
             //
         ];
+    }
+
+    /**
+     * Get the Nexmo / SMS representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return NexmoMessage
+     */
+    public function toNexmo($notifiable)
+    {
+        return (new NexmoMessage)
+            ->content('Tasca descompletada '. ellipsis($this->task->name, 40));
     }
 }

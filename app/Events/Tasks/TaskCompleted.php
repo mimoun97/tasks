@@ -34,6 +34,6 @@ class TaskCompleted implements ShouldBroadcast
     public function broadcastOn()
     {
         return new PrivateChannel('App.User.'. $this->task->user_id, $this->task);
-        return new PrivateChannel('Tasques');
+        return new PrivateChannel('Tasques', $this->task);
     }
 }

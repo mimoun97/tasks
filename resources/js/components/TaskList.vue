@@ -222,17 +222,23 @@ export default {
     }
   },
   created() {
-    console.log("dins created() taskliost: ", window.laravel_user)
+    console.log("dins created() taskliost: ", 'App.User.'+window.laravel_user.id)
     if (window.laravel_user.admin) {
       window.Echo.private('Tasques')
         .listen('TaskCompleted', (e) => {
-          console.log('TaskUncompleted Received')
+          console.log('TaskCompleted Received')
+          console.log(e.task)
+          this.refresh()
+        })
+         window.Echo.private('Tasques')
+        .listen("App\\Events\\Tasks\\TaskCompleted", (e) => {
+          console.log('TaskCompleted Received')
           console.log(e.task)
           this.refresh()
         })
     } else {
       window.Echo.private('App.User.' + window.laravel_user.id)
-        .listen('TaskCompleted', (e) => {
+        .listen('App\\Events\\Tasks\\TaskCompleted', (e) => {
           console.log('TaskUncompleted Received')
           console.log(e.task)
           this.refresh()
