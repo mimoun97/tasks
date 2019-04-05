@@ -2,11 +2,13 @@
 
 namespace App\Notifications\Tasks;
 
+use App\Task;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use NotificationChannels\WebPush\WebPushChannel;
+use NotificationChannels\WebPush\WebPushMessage;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\Task;
 
 class TaskStored extends Notification implements ShouldQueue
 {
@@ -31,7 +33,7 @@ class TaskStored extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', WebPushChannel::class];
     }
 
     /**
@@ -58,10 +60,28 @@ class TaskStored extends Notification implements ShouldQueue
     {
         
         return [
-            "title" => "S'ha creat un anova tasca:" . $this->task->subject(),
+            "title" => "S'ha creat una nova tasca:" . $this->task->subject(),
             //"url" => "/tasques/" . $this->task->id,
             "icon" => "add",
             $this->task->map()
         ];
+    }
+
+    public function toWebPush($notifiable, $notification)
+    {
+        return (new WebPushMessage)
+            ->title("S'ha creat una nova tasca")
+            //->icon('/approved-icon.png')
+            ->body($this->task->subject())
+            ->action('View account', 'view_account');
+        // ->data(['id' => $notification->id])
+        // ->badge()
+        // ->dir()
+        // ->image()
+        // ->lang()
+        // ->renotify()
+        // ->requireInteraction()
+        // ->tag()
+        // ->vibrate()
     }
 }

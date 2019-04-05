@@ -163,6 +163,7 @@ return [
         //Spatie\Permission\PermissionServiceProvider::class,
 
         \App\Providers\GoogleDriveServiceProvider::class,
+        NotificationChannels\WebPush\WebPushServiceProvider::class,
 
         /*
          * Package Service Providers...

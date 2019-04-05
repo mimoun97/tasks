@@ -68,6 +68,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/notifications', '\\' . NotificationController::class . '@index');
 
+    // Push Subscriptions
+    Route::post('subscriptions', 'PushSubscriptionController@update');
+    Route::post('subscriptions/delete', 'PushSubscriptionController@destroy');
+
     Route::get('/device-features', function () {
         return view('device');
     });

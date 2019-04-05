@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Notifications\Notifiable;
 use Lab404\Impersonate\Models\Impersonate;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use NotificationChannels\WebPush\HasPushSubscriptions;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasRoles, Notifiable, HasApiTokens, Impersonate;
+    use HasRoles, Notifiable, HasApiTokens, Impersonate, HasPushSubscriptions;
 
     const DEFAULT_PHOTO = 'default.png';
 
