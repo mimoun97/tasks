@@ -80,6 +80,7 @@
 
             <v-card-actions class="text-xs-center">
               <v-layout align-center justify-end>
+                <push-notifications-button></push-notifications-button>
                 <v-form action="logout" method="POST">
                   <input type="hidden" name="_token" :value="csrfToken">
                   <v-btn
@@ -141,8 +142,13 @@
 </template>
 
 <script>
+import PushNotificationsButton from './push/PushNotificationsButton.vue';
+
 export default {
   name: "NavigationRight",
+  components: {
+    'push-notifications-button': PushNotificationsButton
+  },
   data() {
     return {
       dataDrawer: this.drawerRight

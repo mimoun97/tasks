@@ -7,6 +7,8 @@ workbox.core.clientsClaim()
 
 workbox.precaching.cleanupOutdatedCaches()
 
+//TODO notifications push
+
 // workbox.routing.registerRoute(
 //   new RegExp('https://hacker-news.firebaseio.com'),
 //   workbox.strategies.staleWhileRevalidate()

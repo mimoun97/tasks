@@ -2,6 +2,7 @@
   <span></span>
 </template>
 <script>
+//TODO import pushSubscriptions from ..
 export default {
   name: "ServiceWorker",
   methods: {
