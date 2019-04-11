@@ -21,6 +21,7 @@ use App\Http\Controllers\Chat\ChatController;
 use App\Http\Controllers\Game\GamePadController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\LoggedUserPhotoController;
+use App\Http\Controllers\Multimedia\MultimediaController;
 use App\Http\Controllers\Newsletters\NewslettersController;
 
 Route::get('/', function () {
@@ -98,6 +99,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //game
     Route::get('/gamepad', '\\' . GamePadController::class . '@index');
+
+    //multimedia html5 video i audio
+    Route::get('/multimedia', '\\' . MultimediaController::class . '@index');
 });
 
 //Equivalent a login->loginCotroller
