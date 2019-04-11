@@ -1,6 +1,5 @@
 <template>
   <v-content>
-    <h1>PLay!</h1>
     <p>Press a button to activate your game controller.</p>
     <div id="ball"></div>
   </v-content>

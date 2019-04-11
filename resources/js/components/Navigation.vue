@@ -87,7 +87,8 @@ export default {
         { icon: "access_time", text: "Clock", url: "/clock" },
         { icon: "email", text: "Newsletters", url: "/newsletters" },
         { icon: "chat", text: "Chat", url: "/chat" },
-        { icon: "videogame_asset", text: "GamePad", url: "/gamepad" }
+        { icon: "videogame_asset", text: "GamePad", url: "/gamepad" },
+        { icon: "music_video", text: "Multimedia", url: "/multimedia" }
       ]
     };
   },
