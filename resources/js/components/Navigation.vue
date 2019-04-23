@@ -78,6 +78,7 @@ export default {
           ]
         },
         { icon: "tags", text: "Tags", url: "/tags" },
+        { icon: "users", text: "Users", url: "/users" },
         { icon: "notifications", text: "Notifications", url: "/notifications" },
         { icon: "receipt", text: "Changelog", url: "/changelog" },
         { icon: "message", text: "Contact", url: "/contact" },
