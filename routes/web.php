@@ -18,6 +18,7 @@ use App\Http\Controllers\TasquesController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ChangelogController;
 use App\Http\Controllers\Chat\ChatController;
+use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Game\GamePadController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\LoggedUserPhotoController;
@@ -102,6 +103,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //multimedia html5 video i audio
     Route::get('/multimedia', '\\' . MultimediaController::class . '@index');
+
+    //users CRUD view
+    Route::get('/users', '\\' . UsersController::class . '@index');
 });
 
 //Equivalent a login->loginCotroller
