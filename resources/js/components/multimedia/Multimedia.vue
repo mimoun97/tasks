@@ -13,7 +13,7 @@
         ></video>
       </v-card-media>
       <v-card-actions>
-        <v-btn icon color="primary" dark @click="video.play()">
+        <v-btn icon color="primary" dark @click="video.playbackRate = 0.5">
           <v-icon>fast_rewind</v-icon>
         </v-btn>
         <v-btn icon color="primary" dark @click="video.play()">
@@ -22,10 +22,10 @@
         <v-btn icon color="primary" dark @click="video.pause()">
           <v-icon>pause</v-icon>
         </v-btn>
-        <v-btn icon color="primary" dark @click="video.pause()">
+        <v-btn icon color="primary" dark @click="video.stop()">
           <v-icon>stop</v-icon>
         </v-btn>
-        <v-btn icon color="primary" dark @click="video.play()">
+        <v-btn icon color="primary" dark @click="video.playbackRate = 2">
           <v-icon>fast_forward</v-icon>
         </v-btn>
         <v-slider

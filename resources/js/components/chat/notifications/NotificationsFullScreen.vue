@@ -1,7 +1,7 @@
 <template>
   <v-layout align-center justify-center row fill-height>
     <v-flex>
-      <v-dialog v-model="dataShow" fullscreen transition="dialog-bottom-transition">
+      <v-dialog v-model="dataShow" fullscreen transition="dialog-bottom-transition" full-width>
         <v-card color="rgb(0, 0, 0, 0.85)">
           <v-layout align-center justify-center row fill-height>
             <v-flex xs3 offset-xs2>
