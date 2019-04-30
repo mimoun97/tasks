@@ -42,11 +42,15 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\Tasks\LogTaskStored',
             'App\Listeners\ForgetCachedTasks',
             'App\Listeners\Tasks\SendMailTaskStored',
+            'App\Listeners\Tasks\SendTaskStoredNotification',
         ],
         'App\Events\Tasks\TaskDestroyed' => [
             'App\Listeners\Tasks\LogTaskDestroyed',
             'App\Listeners\ForgetCachedTasks',
             'App\Listeners\Tasks\SendMailTaskDestroyed',
+        ],
+        'App\Events\DatabaseNotificationStored' => [
+            'App\Listeners\LogNotification',
         ]
     ];
 

@@ -17,8 +17,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TasquesController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ChangelogController;
+use App\Http\Controllers\Chat\ChatController;
+use App\Http\Controllers\Users\UsersController;
+use App\Http\Controllers\Game\GamePadController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\LoggedUserPhotoController;
+use App\Http\Controllers\Multimedia\MultimediaController;
 use App\Http\Controllers\Newsletters\NewslettersController;
 
 Route::get('/', function () {
@@ -66,6 +70,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/notifications', '\\' . NotificationController::class . '@index');
 
+    // Push Subscriptions
+    Route::post('subscriptions', 'PushSubscriptionController@update');
+    Route::post('subscriptions/delete', 'PushSubscriptionController@destroy');
+
     Route::get('/device-features', function () {
         return view('device');
     });
@@ -85,11 +93,24 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/clock', '\\' . ClockController::class . '@index');
 
     Route::get('/newsletters', '\\' . NewslettersController::class . '@index');
+
+    //chat
+    Route::get('/chat', '\\' . ChatController::class . '@index');
+    Route::get('/xat', '\\' . ChatController::class . '@index');
+
+    //game
+    Route::get('/gamepad', '\\' . GamePadController::class . '@index');
+
+    //multimedia html5 video i audio
+    Route::get('/multimedia', '\\' . MultimediaController::class . '@index');
+
+    //users CRUD view
+    Route::get('/users', '\\' . UsersController::class . '@index');
 });
 
 //Equivalent a login->loginCotroller
 //Equivalent a register->registerController
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::post('/login_alt', 'Auth\LoginAltController@login');
 Route::post('/register_alt', 'Auth\RegisterAltController@register');

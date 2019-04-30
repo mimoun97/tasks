@@ -78,6 +78,7 @@ export default {
           ]
         },
         { icon: "tags", text: "Tags", url: "/tags" },
+        { icon: "supervised_user_circle", text: "Users", url: "/users" },
         { icon: "notifications", text: "Notifications", url: "/notifications" },
         { icon: "receipt", text: "Changelog", url: "/changelog" },
         { icon: "message", text: "Contact", url: "/contact" },
@@ -85,7 +86,10 @@ export default {
         { icon: "settings", text: "Settings", url: "/settings" },
         { icon: "phone", text: "Device Features", url: "/device-features" },
         { icon: "access_time", text: "Clock", url: "/clock" },
-        { icon: "email", text: "Newsletters", url: "/newsletters" }
+        { icon: "email", text: "Newsletters", url: "/newsletters" },
+        { icon: "chat", text: "Chat", url: "/chat" },
+        { icon: "videogame_asset", text: "GamePad", url: "/gamepad" },
+        { icon: "music_video", text: "Multimedia", url: "/multimedia" }
       ]
     };
   },

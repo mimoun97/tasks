@@ -1,4 +1,4 @@
-importScripts("/service-worker/precache-manifest.e3fc8ef785f0a5c0447fd9bfaac59bd2.js", "https://storage.googleapis.com/workbox-cdn/releases/4.1.0/workbox-sw.js");
+importScripts("/service-worker/precache-manifest.e6b0620739b8b15ef4f6677f567fd5df.js", "https://storage.googleapis.com/workbox-cdn/releases/4.1.0/workbox-sw.js");
 
 workbox.setConfig({
     debug: true
@@ -8,6 +8,8 @@ workbox.core.skipWaiting()
 workbox.core.clientsClaim()
 
 workbox.precaching.cleanupOutdatedCaches()
+
+//TODO notifications push
 
 // workbox.routing.registerRoute(
 //   new RegExp('https://hacker-news.firebaseio.com'),

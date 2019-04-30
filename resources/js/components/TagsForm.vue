@@ -27,16 +27,22 @@
                     @input="$v.description.$touch()"
                     @blur="$v.description.$touch()"></v-textarea>
 
-        <div class="text-xs-center">
-            <v-btn @click="$emit('close')">
-                <v-icon class="mr-1">exit_to_app</v-icon>
-                Cancel·lar
-            </v-btn>
-            <v-btn color="success" @click="add" :disabled="loading || $v.$invalid" :loading="loading">
-                <v-icon class="mr-1" >save</v-icon>
-                Crear
-            </v-btn>
-        </div>
+        <v-flex class="text-xs-right">
+        <v-btn
+          class="grey--text text--lighten-2"
+          flat
+          @click="$emit('close')"
+          aria-label="Cancel·lar"
+        >Cancel·lar</v-btn>
+        <v-btn
+          flat
+          color="primary"
+          @click="add"
+          :disabled="loading || $v.$invalid"
+          :loading="loading"
+          aria-label="Actualitza"
+        >Crea</v-btn>
+      </v-flex>
     </v-form>
 </template>
 

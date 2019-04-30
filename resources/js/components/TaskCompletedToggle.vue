@@ -44,7 +44,7 @@ export default {
           this.$snackbar.showMessage(
             "Tasca completada correctament: " + response
           );
-          this.dataTask.completed = true;
+          //this.dataTask.completed = true;
           this.loading = false;
         })
         .catch(error => {
@@ -57,19 +57,19 @@ export default {
       console.log("okkkk")
       window.axios
         .delete("api/v1/completed_task/" + this.task.id)
-        .then(response => {
-          this.$snackbar.showMessage(
-            "Tasca descompletada correctament: " + response.toString()
-          );
-          this.dataTask.completed = false;
-          debugger
-          this.loading = false;
-        })
-        .catch(error => {
-          console.log(error)
-          this.$snackbar.showError(error);
-          this.loading = false;
-        });
+          .then(response => {
+            this.$snackbar.showMessage(
+              "Tasca descompletada correctament: " + response.toString()
+            );
+            this.dataTask.completed = false;
+            debugger
+            this.loading = false;
+          })
+          .catch(error => {
+            console.log(error)
+            this.$snackbar.showError(error);
+            this.loading = false;
+          });
     }
   }
 };

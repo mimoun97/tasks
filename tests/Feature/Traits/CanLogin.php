@@ -56,6 +56,16 @@ trait CanLogin
      * @param null $guard
      * @return mixed
      */
+    public function loginAsChatUser($guard = 'web')
+    {
+        initialize_chat_role();
+        return $this->loginAsUsingRole($guard, 'Chat');
+    }
+
+    /**
+     * @param null $guard
+     * @return mixed
+     */
     protected function loginAsNotificationsManager($guard = null)
     {
         return $this->loginAsUsingRole($guard, ['NotificationsManager']);
@@ -76,9 +86,9 @@ trait CanLogin
         return $user;
     }
 
-    protected function loginAsSuperAdmin($guard = null)
+    protected function loginAsSuperAdmin($guard = null, $user = null)
     {
-        $user = factory(User::class)->create();
+        if (!$user) $user = factory(User::class)->create();
         $user->admin = true;
         $user->save();
         $this->actingAs($user, $guard);

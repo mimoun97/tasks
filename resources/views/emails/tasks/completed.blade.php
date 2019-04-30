@@ -3,7 +3,7 @@
 
 S'ha marcat com a completada la tasca {{ $task->name }}
 
-@component('mail::button', ['url' => url('/tasques')])
+@component('mail::button', ['url' => url('/tasques/' . $task->id)])
 Veure tasca
 @endcomponent
 

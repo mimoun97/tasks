@@ -7,6 +7,7 @@
                 @if (session('status'))
                     <v-alert :value="true" type="success" outline>{{ session('status') }}</v-alert>
                 @endif
+                <v-alert :value="true" type="info" outline>Benvingut a tasques!</v-alert>
             </v-flex>
             
         </v-layout>

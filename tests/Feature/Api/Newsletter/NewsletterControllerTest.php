@@ -6,29 +6,16 @@ use Tests\TestCase;
 use Newsletter;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\Traits\CanLogin;
 
 class NewsletterControllerTest extends TestCase
 {
-    use RefreshDatabase;
-    // /**
-    //  * Refresh the in-memory database.
-    //  *
-    //  * @return void
-    //  */
-    // protected function refreshInMemoryDatabase()
-    // {
-    //     $this->artisan('migrate', [
-    //         '--path' => 'database/migrations/tenant'
-    //     ]);
-    //     $this->app[Kernel::class]->setArtisan(null);
-    // }
-    /**
-     * @test
-     * @group users
-     */
+    use RefreshDatabase,  CanLogin;
+
     public function guest_user_can_subscribe_to_newsletter()
     {
         //$this->withoutExceptionHandling();
+        $this->login('api');
         Newsletter::shouldReceive('subscribePending')
             ->once()
             ->with('prova@gmail.com')
@@ -42,6 +29,7 @@ class NewsletterControllerTest extends TestCase
      */
     public function email_is_required()
     {
+        $this->login('api');
         $response = $this->json('POST', '/api/v1/newsletter', ['email' => null]);
         $response->assertStatus(422);
         $response = $this->json('POST', '/api/v1/newsletter', ['email' => 'invalidemail']);

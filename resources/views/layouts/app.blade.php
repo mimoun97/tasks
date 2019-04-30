@@ -10,6 +10,7 @@
     <meta name="user" content="{{ logged_user() }}">
     <meta name="git" content="{{ git() }}">
     <meta name="impersonatedBy" content="{{ Auth::user()->impersonatedBy() }}">
+    <meta name="vapidPublicKey" content="{{ config('webpush.vapid.public_key') }}">
 
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/ico" size="16x16" href="/img/favicon-16x16.png">
