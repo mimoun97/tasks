@@ -8,7 +8,7 @@
     <v-layout align-center justify-center column fill-height>
         <v-flex xs12>
             <!-- TODO users component-->
-            <users />
+            <users :users="{{ $users }}"></users>
         </v-flex>
     </v-layout>
 </v-container>

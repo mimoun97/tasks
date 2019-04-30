@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Users;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,6 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $users = map_collection(User::all());
+        return view('users.index', compact('users'));
     }
 }

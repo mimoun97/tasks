@@ -62,6 +62,8 @@ import Chat from './components/chat/Chat.vue'
 import GamePad from './components/game/GamePad.vue'
 //multimedia
 import Multimedia from './components/multimedia/Multimedia.vue'
+//user
+import Users from './components/users/Users.vue'
 
 window.Vue = Vue
 window.Vuetify = Vuetify
@@ -258,6 +260,8 @@ window.Vue.component('chat', Chat)
 window.Vue.component('game-pad', GamePad)
 //multimedia
 window.Vue.component('multimedia', Multimedia)
+//users
+window.Vue.component('users', Users)
 
 // eslint-disable-next-line no-unused-vars
 const app = new window.Vue(AppComponent)
