@@ -77,10 +77,11 @@
                 </v-layout>
               </v-card-title>
             </v-layout>
-
+            <v-card-actions class="text-xs-center">
+              <push-notifications-button></push-notifications-button>
+            </v-card-actions>
             <v-card-actions class="text-xs-center">
               <v-layout align-center justify-end>
-                <push-notifications-button></push-notifications-button>
                 <v-form action="logout" method="POST">
                   <input type="hidden" name="_token" :value="csrfToken">
                   <v-btn
