@@ -62,10 +62,7 @@
         v-if="$vuetify.breakpoint.mdAndUp"
       >
         <v-progress-linear slot="progress" color="primary" indeterminate></v-progress-linear>
-        <template
-          slot="items"
-          slot-scope="{item: task}"
-        >
+        <template slot="items" slot-scope="{item: task}">
           <tr v-touch="{ right: () => removeTaskTouch(task) }">
             <td>{{ task.id }}</td>
             <td v-text="task.name"></td>
@@ -82,7 +79,7 @@
                 active-text="Completada"
                 unactive-text="Pendent"
                 :resource="task"
-              ></toggle> -->
+              ></toggle>-->
               <task-completed-toggle :task="task"></task-completed-toggle>
             </td>
             <td>
@@ -193,16 +190,72 @@ export default {
     }
   },
   methods: {
+    registerPusherEvents() {
+      if (window.laravel_user.admin === true) {
+        window.Echo.private("Tasques")
+          .listen("Tasks\\TaskCompleted", e => {
+            console.log("TaskCompleted Received");
+            console.log(e.task);
+            this.refresh();
+          })
+          .listen("Tasks\\TaskUncompleted", e => {
+            console.log("TaskCompleted Received");
+            console.log(e.task);
+            this.refresh();
+          })
+          .listen("Tasks\\TaskDestroyed", e => {
+            console.log("TaskDestroyed Received");
+            console.log(e.task);
+            this.refresh();
+          })
+          .listen("Tasks\\TaskStored", e => {
+            console.log("TaskStored Received");
+            console.log(e.task);
+            this.refresh();
+          })
+          .listen("Tasks\\TaskUpdated", e => {
+            console.log("TaskUpdated Received");
+            console.log(e.task);
+            this.refresh();
+          });
+      } else {
+        window.Echo.private("App.User." + window.laravel_user.id)
+          .listen("Tasks\\TaskCompleted", e => {
+            console.log("TaskCompleted Received");
+            console.log(e.task);
+            this.refresh();
+          })
+          .listen("Tasks\\TaskUncompleted", e => {
+            console.log("TaskCompleted Received");
+            console.log(e.task);
+            this.refresh();
+          })
+          .listen("Tasks\\TaskDestroyed", e => {
+            console.log("TaskDestroyed Received");
+            console.log(e.task);
+            this.refresh();
+          })
+          .listen("Tasks\\TaskStored", e => {
+            console.log("TaskStored Received");
+            console.log(e.task);
+            this.refresh();
+          })
+          .listen("Tasks\\TaskUpdated", e => {
+            console.log("TaskUpdated Received");
+            console.log(e.task);
+            this.refresh();
+          });
+      }
+    },
     async removeTaskTouch(task) {
-      EventBus.$emit("remove-task-gesture-"+task.id, task)
+      EventBus.$emit("remove-task-gesture-" + task.id, task);
     },
     removeTask(task) {
-      //if task remove called from touch-gesture the emit event propagates again, we check if the task 
+      //if task remove called from touch-gesture the emit event propagates again, we check if the task
       // is in the dataTasks
       if (this.dataTasks.indexOf(task) !== -1) {
         this.dataTasks.splice(this.dataTasks.indexOf(task), 1);
       }
-
     },
     updateTask(task) {
       this.refresh();
@@ -222,29 +275,7 @@ export default {
     }
   },
   created() {
-    console.log("dins created() taskliost: ", 'App.User.'+window.laravel_user.id)
-    if (window.laravel_user.admin) {
-      window.Echo.private('Tasques')
-        .listen('TaskCompleted', (e) => {
-          console.log('TaskCompleted Received')
-          console.log(e.task)
-          this.refresh()
-        })
-         window.Echo.private('Tasques')
-        .listen("App\\Events\\Tasks\\TaskCompleted", (e) => {
-          console.log('TaskCompleted Received')
-          console.log(e.task)
-          this.refresh()
-        })
-    } else {
-      window.Echo.private('App.User.' + window.laravel_user.id)
-        .listen('App\\Events\\Tasks\\TaskCompleted', (e) => {
-          console.log('TaskUncompleted Received')
-          console.log(e.task)
-          this.refresh()
-        })
-    }
-
+    this.registerPusherEvents();
   }
 };
 </script>

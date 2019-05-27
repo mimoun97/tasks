@@ -10,7 +10,7 @@ use NotificationChannels\WebPush\WebPushChannel;
 use NotificationChannels\WebPush\WebPushMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class HelloNotification extends Notification
+class HelloNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 

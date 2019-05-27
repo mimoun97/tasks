@@ -69,7 +69,7 @@
                 <img v-else src="/img/default.png" alt="avatar">
               </v-avatar>
             </td>
-            <td></td>
+            <td>{{user.mobile}}</td>
             <td></td>
             <td></td>
             <td>
@@ -117,10 +117,8 @@ export default {
         { text: "Id", value: "id" },
         { text: "Name", value: "name" },
         { text: "Admin", value: "admin" },
-        { text: "Correu", value: "email" },
+        { text: "Avatar", value: "gravatar" },
         { text: "mobile", value: "mobile" },
-        { text: "permissions", value: "permissions" },
-        { text: "roles", value: "roles" },
         { text: "Accions", value: "accions" }
       ]
     };
@@ -147,16 +145,16 @@ export default {
     },
     sendMail(user) {
         // TODO sendMail
-        console.log("sendMail to:", user.name);
+        console.log("sendMail to:", user.email);
     },
     sendSMS(user) {
         // TODO sendSMS
-        console.log("sendSMS to:", user.name);
+        console.log("sendSMS to:", user.mobile);
     }
   },
   created() {},
   mounted() {
-    console.error(this.users);
+    console.debug(this.users);
   }
 };
 </script>

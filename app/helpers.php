@@ -38,9 +38,10 @@ if (!function_exists('create_acacha_user')) {
         $user = User::where('email', env('ACACHA_USER_EMAIL', 'sergiturbadenas@gmail.com'))->first();
         if (!$user) {
             $user = User::firstOrCreate([
-                'name' => config('tasks.user_user.name'),
-                'email' => config('tasks.user_user.email'),
-                'password' => config('tasks.user_user.email')
+                'name' => config('tasks.acacha_user.name'),
+                'email' => config('tasks.acacha_user.email'),
+                'mobile' => config('tasks.acacha_user.mobile'),
+                'password' => config('tasks.acacha_user.email')
             ]);
 
             $user->admin = true;

@@ -1,5 +1,14 @@
 <template>
-    <span>
+<span>
+  <v-avatar :size="size" :tile="tile" color="grey lighten-4" class="mt-2 elevation-2">
+                <picture>
+                  <source :srcset="gravatar+'?s=48.jpeg'" type="image/jpeg">
+                  <source :srcset="gravatar+'?s=48.webp'.webp" type="image/webp">
+                  <img :src="gravatar+'?s=48.jpg'" alt="avatar">
+                </picture>
+              </v-avatar>
+</span>
+    <!-- <span>
         <v-avatar color="grey lighten-4" :size="size" v-if="hashId" :tile="tile" @click="change" @dblclick="$emit('dblclick')">
             <img ref="previewImage"
                  :src="'/user/' + hashId + '/photo'"
@@ -23,7 +32,7 @@
                       tooltip="Eliminar foto"
                       message="Segur que voleu esborrar la foto de l'usuari?"
         ></confirm-icon>
-    </span>
+    </span> -->
 </template>
 
 <script>
@@ -56,7 +65,7 @@ export default {
       default: () => { return {} }
     },
     hashId: {
-      required: true
+      required: false
     },
     size: {
       type: String,
@@ -68,6 +77,10 @@ export default {
     tile: {
       type: Boolean,
       default: false
+    },
+    email: {
+      type: String,
+      default: 'google@google.com'
     }
   },
   methods: {
@@ -121,6 +134,14 @@ export default {
           this.showError(error)
         })
     }
+  },
+  computed: {
+    gravatar: function() {
+      return (
+        "https://www.gravatar.com/avatar/" +
+        window.md5(this.email)
+      );
+    },
   }
 }
 </script>
