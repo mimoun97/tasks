@@ -27,5 +27,6 @@ class SimpleNotificationsController extends Controller
 //        $user = $user->fresh();
 //        dd ($user->notifications);
 //        return $user->fresh()->notifications->last();
+        return response()->json('Notification sent.', 201);
     }
 }
