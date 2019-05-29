@@ -60,13 +60,16 @@ export default {
           .catch(error => {
             this.$snackbar.showError(error.message);
             this.removing = false;
-          });
+          })
+          .finally(() => {
+            this.removing = false;
+          })
+        }
       }
-    }
   },
   mounted () {
     EventBus.$on("remove-task-gesture-"+ this.task.id, task => {
-      console.log("remove-task-gesture-"+ task.id);
+      // console.log("remove-task-gesture-"+ task.id);
       this.destroy(task)
     });
   }

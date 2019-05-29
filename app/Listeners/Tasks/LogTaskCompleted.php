@@ -30,7 +30,7 @@ class LogTaskCompleted
     public function handle(TaskCompleted $event)
     {
         Log::create([
-            'text' => "S'ha marcat com a completada la tasca '" . $event->task->name . "'",
+            'text' => "S'ha marcat com a completada la tasca '" . ellipsis($event->task->name) . "'",
             'time' => Carbon::now(),
             'action_type' => 'completar',
             'module_type' => 'Tasques',
