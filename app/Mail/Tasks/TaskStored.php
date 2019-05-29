@@ -29,6 +29,6 @@ class TaskStored extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.tasks.stored');
+        return $this->markdown('emails.tasks.stored');
     }
 }
