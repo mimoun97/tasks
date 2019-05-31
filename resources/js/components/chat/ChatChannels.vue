@@ -1,149 +1,111 @@
 <template>
-    <span>
-        <v-navigation-drawer
-                v-model="prova"
-                absolute
-                temporary
-                clipped
-                width="900"
+  <span>
+    <new-chat-drawer @close="drawer = !drawer" :value="drawer"/>
+    <toolbar-canals :user="user" @toggleDrawer="toggleDrawer()"></toolbar-canals>
+    <v-container fluid text-xs-center class="ma-0 pa-0">
+      <v-layout row wrap>
+        <profile-drawer v-model="profileDrawer"></profile-drawer>
+
+        <v-flex xs12>
+          <v-card dark color="cyan">
+            <notifications-button :fullscreen="notifications_permission" @click="notifications_permission = !notifications_permission"></notifications-button>
+          </v-card>
+        </v-flex>
+        <v-flex xs12>
+            <search-mimoun></search-mimoun>
+        </v-flex>
+        <v-flex
+          xs12
+          class="scroll-y ml-4"
+          style="max-height: calc(100vh - 64px - 64px - 64px - 64px)"
         >
-          <v-list class="pa-1">
-            <v-list-tile avatar>
-              <v-list-tile-avatar>
-                <img src="https://randomuser.me/api/portraits/men/85.jpg">
-              </v-list-tile-avatar>
-
-              <v-list-tile-content>
-                <v-list-tile-title>John Leider</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-
-          <v-list class="pt-0" dense>
-            <v-divider></v-divider>
-
-            <v-list-tile @click="">
-              <v-list-tile-action>
-                <v-icon>clse</v-icon>
-              </v-list-tile-action>
-
-              <v-list-tile-content>
-                <v-list-tile-title>Prova asd asdsa asd asd asd asd as dasd asd as dasd asd as <div></div></v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-
-              <v-list-tile @click="">
-              <v-list-tile-action>
-                <v-icon>clse</v-icon>
-              </v-list-tile-action>
-
-              <v-list-tile-content>
-                <v-list-tile-title>Prova</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-
-              <v-list-tile @click="">
-              <v-list-tile-action>
-                <v-icon>clse</v-icon>
-              </v-list-tile-action>
-
-              <v-list-tile-content>
-                <v-list-tile-title>Prova</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-
-              <v-list-tile @click="">
-              <v-list-tile-action>
-                <v-icon>clse</v-icon>
-              </v-list-tile-action>
-
-              <v-list-tile-content>
-                <v-list-tile-title>Prova</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-        </v-navigation-drawer>
-
-
-
-
-
-
-
-        <v-toolbar color="primary">
-            <user-avatar :user="user" size="52px" @click="$emit('toggleright')"></user-avatar>
-            <v-toolbar-title>Channels</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-tooltip bottom>
-                <v-btn icon slot="activator" @click="prova=!prova">
-                    <v-icon>turned_in_not</v-icon>
-                </v-btn>
-                <span>Nova conversació</span>
-            </v-tooltip>
-            <v-tooltip bottom>
-                <v-btn icon slot="activator">
-                    <v-icon>more_vert</v-icon>
-                </v-btn>
-                <span>Menú</span>
-            </v-tooltip>
-        </v-toolbar>
-        <v-container fluid text-xs-center class="ma-0 pa-0">
-          <v-layout row wrap>
-            <v-flex xs12 >
-              <notifications-activate-button></notifications-activate-button>
-            </v-flex>
-            <v-flex xs12>
-              <search-messages></search-messages>
-            </v-flex>
-            <v-flex xs12 class="scroll-y" style="max-height: calc(100vh - 64px - 64px - 64px - 64px)">
-                <v-list subheader>
-                    <v-subheader>Recent channels</v-subheader>
-                    <v-list-tile
-                            v-for="channel in dataChannels"
-                            :key="channel.id"
-                            avatar
-                            @click="$emit('input',channel)"
-                    >
-                      <v-list-tile-avatar>
-                        <img :src="channel.avatar">
-                      </v-list-tile-avatar>
-
-                      <v-list-tile-content>
-                        <v-list-tile-title v-html="channel.name"></v-list-tile-title>
-                      </v-list-tile-content>
-
-                      <v-list-tile-action>
-                        <v-icon color="primary">chat_bubble</v-icon>
-                      </v-list-tile-action>
-                    </v-list-tile>
-                  </v-list>
-            </v-flex>
-          </v-layout>
-        </v-container>
-    </span>
+          <contacts-list :channels="items"></contacts-list>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </span>
 </template>
 
 <script>
-import UserAvatar from '../users/UserAvatar'
-import NotificationsActivateButton from './notifications/NotificationsActivateButton.vue'
-import SearchMessages from './search/SearchMessages.vue'
+import UserAvatar from "../ui/UserAvatarComponent";
+import NewChatDrawer from "./NewChatDrawer";
+import ProfileDrawer from "./ProfileDrawer";
+import ContactsList from "./ContactsList";
+import ToolbarCanals from "./ToolbarCanals";
+
+// part mimoun1997
+import NotificationsActivateButton from "./notifications/NotificationsActivateButton";
 
 export default {
-  name: 'ChatChannels',
+  name: "ChatChannels",
   components: {
-    'user-avatar': UserAvatar,
-    'notifications-activate-button': NotificationsActivateButton,
-    'search-messages': SearchMessages
+    NewChatDrawer,
+    UserAvatar,
+    ProfileDrawer,
+    ContactsList,
+    ToolbarCanals,
+    "notifications-button": NotificationsActivateButton
   },
-  data () {
-    return {
-      prova: false,
-      dataChannels: this.channels
+  methods: {
+    toggleDrawer() {
+      this.profileDrawer = !this.profileDrawer;
     }
   },
+  data() {
+    return {
+      user: "",
+      drawer: false,
+      dataChannels: this.channels,
+      profileDrawer: false,
+      userAvatar: window.laravel_user.gravatar,
+      notifications_permission: false,
+      items: [
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+          msgcount: 0,
+          action: "15 min ago",
+          headline: "Brunch this weekend?",
+          title: "Ali Connors",
+          subtitle: "I'll be in your neighborho?"
+        },
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
+          msgcount: 2,
+          action: "18:50",
+          headline: "Summer BBQ",
+          title: "Jennifer",
+          subtitle: "Wish I couldeekend."
+        },
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
+          msgcount: 4,
+          action: "19:00",
+          headline: "Oui oui",
+          title: "Sandra Adams",
+          subtitle: "Do youever been?"
+        },
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
+          msgcount: 9,
+          action: "20:10",
+          headline: "Birthday gift",
+          title: "Trevor Hansen",
+          subtitle: "Have her birthday?"
+        },
+        {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
+          msgcount: 6,
+          action: "Ahir",
+          headline: "Recipe to try",
+          title: "Britta Holt",
+          subtitle: "We should eat this: , Squash, Corn, and tomatillo Tacos."
+        }
+      ]
+    };
+  },
   model: {
-    prop: 'channel',
-    event: 'input'
+    prop: "channel",
+    event: "input"
   },
   props: {
     channels: {
@@ -152,8 +114,8 @@ export default {
     },
     channel: {}
   },
-  created () {
-    this.user = window.laravel_user
+  created() {
+    this.user = window.laravel_user;
   }
-}
+};
 </script>

@@ -1,10 +1,11 @@
 <template>
-  <v-layout align-center justify-center row fill-height>
+  <v-layout align-center justify-center row fill-height >
     <v-flex>
       <v-dialog v-model="dataShow" fullscreen transition="dialog-bottom-transition" full-width>
-        <v-card color="rgb(0, 0, 0, 0.85)">
-          <v-layout align-center justify-center row fill-height>
-            <v-flex xs3 offset-xs2>
+        <v-card color="rgb(0, 0, 0, 0.85)" class="parent">
+          <v-layout align-center justify-center row fill-height >
+            <div class="child">
+              <v-flex xs3 offset-xs2>
                 <v-avatar  size="54" color="rgb(120, 120, 120, 0.8)">
                   <v-icon color="white" size="28" class="icon__flip">call_made</v-icon>
                 </v-avatar>
@@ -22,6 +23,7 @@
                 <v-btn class="white--text" color="#38c75cff" @click="dataShow = false">OK</v-btn>
               </v-card-actions>
             </v-flex>
+            </div>
           </v-layout>
 
         </v-card>
@@ -69,5 +71,14 @@ export default {
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: "FlipH";
+}
+.parent {
+  position: relative;
+}
+.child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>

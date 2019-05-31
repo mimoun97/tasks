@@ -9,7 +9,7 @@
       <v-flex xs9>
         <v-card-text class="grey--text text--darken-2">
         <p class="title">Recibe notificaciones de mensajes nuevos</p> 
-          <p class="body pointer underline" @click="dialog = true">Activar notificacions d'escriptori ></p>
+          <p class="body pointer underline" @click="dialog = !dialog">Activar notificacions d'escriptori ></p>
           <p></p>
         </v-card-text>
       </v-flex>
@@ -28,8 +28,15 @@ export default {
   },
   data() {
     return {
-      dialog: false
+      dialog: this.fullscreen
     };
+  },
+  props: {
+    fullscreen: {
+      type: Boolean,
+      required: false,
+      default: true,
+    }
   },
 };
 </script>
