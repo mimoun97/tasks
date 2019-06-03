@@ -10,6 +10,7 @@ use App\Mail\Tasks\TaskDestroyed as TaskDestroyedMail;
 
 class SendMailTaskDestroyed
 {
+    use InteractsWithQueue;
     /**
      * Create the event listener.
      *

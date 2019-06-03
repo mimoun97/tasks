@@ -14,7 +14,7 @@
         </v-card-text>
       </v-flex>
     </v-layout>
-    <notifications-full-screen v-model="dialog"></notifications-full-screen>
+    <notifications-full-screen v-model="fullscreen"></notifications-full-screen>
   </v-card>
 </template>
 

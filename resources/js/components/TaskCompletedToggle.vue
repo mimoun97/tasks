@@ -51,7 +51,7 @@ export default {
           this.$snackbar.showError(error);
           this.loading = false;
         });
-    }, 1000),
+    }, 300),
     uncompleteTask() {
       this.loading = true;
       console.log("okkkk")

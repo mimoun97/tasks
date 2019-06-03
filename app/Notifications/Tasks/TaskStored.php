@@ -73,7 +73,7 @@ class TaskStored extends Notification implements ShouldQueue
             ->title("S'ha creat una nova tasca")
             //->icon('/approved-icon.png')
             ->body($this->task->subject())
-            ->action('View account', 'view_account');
+            ->action('Veure tasca', 'view_account');
         // ->data(['id' => $notification->id])
         // ->badge()
         // ->dir()

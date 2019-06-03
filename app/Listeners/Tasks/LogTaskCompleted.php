@@ -11,6 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class LogTaskCompleted
 {
+    use InteractsWithQueue;
     /**
      * Create the event listener.
      *

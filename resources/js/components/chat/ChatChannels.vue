@@ -7,12 +7,13 @@
         <profile-drawer v-model="profileDrawer"></profile-drawer>
 
         <v-flex xs12>
-          <v-card dark color="cyan">
-            <notifications-button :fullscreen="notifications_permission" @click="notifications_permission = !notifications_permission"></notifications-button>
-          </v-card>
+          <notifications-button
+            :fullscreen="notifications_permission"
+            @click="notifications_permission = !notifications_permission"
+          ></notifications-button>
         </v-flex>
         <v-flex xs12>
-            <search-mimoun></search-mimoun>
+          <search-mimoun style="background-color: #eee;"></search-mimoun>
         </v-flex>
         <v-flex
           xs12
@@ -35,6 +36,7 @@ import ToolbarCanals from "./ToolbarCanals";
 
 // part mimoun1997
 import NotificationsActivateButton from "./notifications/NotificationsActivateButton";
+import SearchMimoun from "./search-mimoun/SearchMimoun";
 
 export default {
   name: "ChatChannels",
@@ -44,7 +46,8 @@ export default {
     ProfileDrawer,
     ContactsList,
     ToolbarCanals,
-    "notifications-button": NotificationsActivateButton
+    "notifications-button": NotificationsActivateButton,
+    "search-mimoun": SearchMimoun
   },
   methods: {
     toggleDrawer() {

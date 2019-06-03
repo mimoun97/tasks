@@ -10,6 +10,7 @@ use App\Mail\Tasks\TaskStored as TaskStoredMail;
 
 class SendMailTaskStored
 {
+    use InteractsWithQueue;
     /**
      * Create the event listener.
      *

@@ -11,6 +11,7 @@ use App\User;
 
 class SendMailTaskCompleted
 {
+    use InteractsWithQueue;
     /**
      * Create the event listener.
      *
