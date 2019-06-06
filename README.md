@@ -10,16 +10,16 @@
         <h4>Aplicació de tasques feta a 2DAM curs 2018-2019</h4>
     </p>
     <p>
-        <a href="https://tasks.mimoun1997.scool.cat/" target="_blank" rel="noopener noreferrer">
+        <a href="https://scrutinizer-ci.com/g/mimoun1997/tasks/?branch=master" target="_blank" rel="noopener noreferrer">
             <img src="https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality" />
         </a>
-        <a>
+        <a href="https://scrutinizer-ci.com/g/mimoun1997/tasks/build-status/master" target="_blank" rel="noopener noreferrer">
             <img src="https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/build.png?b=master" alt="Build Status" />
         </a>
-        <a>
+        <a href="https://scrutinizer-ci.com/code-intelligence" target="_blank" rel="noopener noreferrer">
             <img src="https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/code-intelligence.svg?b=master" alt="Code Intelligence Status" />
         </a>
-        <a>
+        <a href="https://github.styleci.io/repos/154520137" target="_blank" rel="noopener noreferrer">
             <img src="https://github.styleci.io/repos/154520137/shield?branch=master" alt="StyleCI" />
         </a>
     </p>
@@ -32,7 +32,6 @@
     <img src="./resources/img/preview2.gif" alt="Captura" />
 </div>
 
----
 
 ## Index
 
@@ -44,7 +43,6 @@
 - [Referències](#referències)
 - [TODO](#todo)
 
----
 
 ## Instal·lació
 
@@ -63,7 +61,6 @@ php artisan migrate --seed
 php artisan passport:install
 ```
 
----
 
 ## Documentació
 
@@ -80,7 +77,6 @@ Tancar issues en commits paraules clau
 
 
 
----
 ## Tests
 
 - php
@@ -97,7 +93,6 @@ phpunit
 cd vue
 npm run test:unit
 ```
----
 
 ## Referències
 

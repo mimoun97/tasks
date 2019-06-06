@@ -1,35 +1,32 @@
 <template>
-  <v-layout align-center justify-center row fill-height >
+  <v-layout align-center justify-center row fill-height>
     <v-flex>
       <v-dialog v-model="dataShow" fullscreen transition="dialog-bottom-transition" full-width>
         <v-card color="rgb(0, 0, 0, 0.85)" class="parent">
-          <v-layout align-center justify-center row fill-height >
+          <v-layout align-center justify-center row fill-height>
             <div class="child">
               <v-flex xs3 offset-xs2>
-                <v-avatar  size="54" color="rgb(120, 120, 120, 0.8)">
+                <v-avatar size="54" color="rgb(120, 120, 120, 0.8)">
                   <v-icon color="white" size="28" class="icon__flip">call_made</v-icon>
                 </v-avatar>
               </v-flex>
-            <v-flex xs9 offset-xs2>
-              
+              <v-flex xs9 offset-xs2>
                 <v-card-title class="headline white--text">
                   <p>Permitir notificaciones</p>
                 </v-card-title>
 
-              <v-card-text class="grey--text text--lighten-2 subhead">
-                <h5>Haz clic en "Permitir" arriba para recibir notificaciones de mensajes nuevos.</h5>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn class="white--text" color="#38c75cff" @click="dataShow = false">OK</v-btn>
-              </v-card-actions>
-            </v-flex>
+                <v-card-text class="grey--text text--lighten-2 subhead">
+                  <h5>Haz clic en "Permitir" arriba para recibir notificaciones de mensajes nuevos.</h5>
+                </v-card-text>
+                <v-card-actions>
+                  <v-btn class="white--text" color="#38c75cff" @click="dataShow = false">OK</v-btn>
+                </v-card-actions>
+              </v-flex>
             </div>
           </v-layout>
-
         </v-card>
       </v-dialog>
     </v-flex>
-    
   </v-layout>
 </template>
 
@@ -38,26 +35,31 @@ export default {
   name: "NotificationsFullScreen",
   data() {
     return {
-      dataShow: true
+      showing: false,
+      granted: false
     };
   },
-  model: {
-    prop: "dataShow",
-    event: "input"
-  },
-  props: {
-    show: {
-      Type: Boolean,
-      default: null
-    }
-  },
-  watch: {
-    show(newval) {
-      this.$emit("input", newval);
+  methods: {
+    requestPermission() {
+      this.showing = true
+      Notification.requestPermission().then((result) => {
+        if (result === "denied") {
+          console.log("Permission wasn't granted. Allow a retry.");
+          this.showing = false
+          this.granted = false
+          return;
+        }
+        if (result === "default") {
+          console.log("The permission request was dismissed.");
+          this.showing = false
+          return;
+        }
+        // Do something with the granted permission.
+        this.granted = true
+      });
     },
-    dataShow(newVal) {
-      console.log(newVal);
-      this.show = newVal;
+    hasPermission() {
+      return this.granted
     }
   }
 };
@@ -65,12 +67,12 @@ export default {
 
 <style scoped>
 .icon__flip {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 }
 .parent {
   position: relative;

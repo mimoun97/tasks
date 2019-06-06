@@ -9,12 +9,12 @@
       <v-flex xs9>
         <v-card-text class="grey--text text--darken-2">
         <p class="title">Recibe notificaciones de mensajes nuevos</p> 
-          <p class="body pointer underline" @click="dialog = !dialog">Activar notificacions d'escriptori ></p>
+          <p class="body pointer underline" @click="requestPermission">Activar notificacions d'escriptori ></p>
           <p></p>
         </v-card-text>
       </v-flex>
     </v-layout>
-    <notifications-full-screen v-model="fullscreen"></notifications-full-screen>
+    <notifications-full-screen ref="notificationFull"></notifications-full-screen>
   </v-card>
 </template>
 
@@ -28,15 +28,16 @@ export default {
   },
   data() {
     return {
-      dialog: this.fullscreen
+      hasPermission: false,
     };
   },
-  props: {
-    fullscreen: {
-      type: Boolean,
-      required: false,
-      default: true,
+  methods: {
+    requestPermission: function() {
+        this.$refs.notificationFull.requestPermission();
     }
+  },
+  created() {
+    this.hasPermission = this.$refs.notificationFull.hasPermission()
   },
 };
 </script>

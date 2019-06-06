@@ -27,14 +27,14 @@ class UserUnreadNotificationsControllerTest extends TestCase
         $user = $this->login('api');
         set_sample_notifications_to_user($user);
         $user->notifications[1]->markAsRead();
-        $response = $this->json('GET','/api/v1/user/unread_notifications/');
+        $response = $this->json('GET', '/api/v1/user/unread_notifications/');
         $response->assertSuccessful();
         $result = json_decode($response->getContent());
-        $this->assertCount(2,$result);
-        $this->assertEquals('Notification 1',$result[0]->data->title);
-        $this->assertEquals(SimpleNotification::class,$result[0]->type);
-        $this->assertEquals('Notification 3',$result[1]->data->title);
-        $this->assertEquals(SimpleNotification::class,$result[1]->type);
+        $this->assertCount(2, $result);
+        $this->assertEquals('Notification 1', $result[0]->data->title);
+        $this->assertEquals(SimpleNotification::class, $result[0]->type);
+        $this->assertEquals('Notification 3', $result[1]->data->title);
+        $this->assertEquals(SimpleNotification::class, $result[1]->type);
     }
 
     /**
@@ -43,7 +43,7 @@ class UserUnreadNotificationsControllerTest extends TestCase
      */
     public function guest_user_can_get_his_owned_unread_notifications()
     {
-        $response = $this->json('GET','/api/v1/user/unread_notifications/');
+        $response = $this->json('GET', '/api/v1/user/unread_notifications/');
         $response->assertStatus(401);
     }
 
@@ -56,14 +56,14 @@ class UserUnreadNotificationsControllerTest extends TestCase
     {
         $user = $this->login('api');
         set_sample_notifications_to_user($user);
-        $response = $this->json('DELETE','/api/v1/user/unread_notifications/' . $user->notifications[1]->id);
+        $response = $this->json('DELETE', '/api/v1/user/unread_notifications/' . $user->notifications[1]->id);
         $response->assertSuccessful();
         $result = json_decode($response->getContent());
-        $this->assertCount(2,$result);
-        $this->assertEquals('Notification 1',$result[0]->data->title);
-        $this->assertEquals(SimpleNotification::class,$result[0]->type);
-        $this->assertEquals('Notification 3',$result[1]->data->title);
-        $this->assertEquals(SimpleNotification::class,$result[1]->type);
+        $this->assertCount(2, $result);
+        $this->assertEquals('Notification 1', $result[0]->data->title);
+        $this->assertEquals(SimpleNotification::class, $result[0]->type);
+        $this->assertEquals('Notification 3', $result[1]->data->title);
+        $this->assertEquals(SimpleNotification::class, $result[1]->type);
     }
 
     /**
@@ -73,7 +73,10 @@ class UserUnreadNotificationsControllerTest extends TestCase
     public function guest_user_cannot_mark_notification_as_readed()
     {
         sample_notifications();
-        $response = $this->json('DELETE','/api/v1/user/unread_notifications/' . User::first()->unreadNotifications->first()->id);
+        $response = $this->json(
+            'DELETE',
+            '/api/v1/user/unread_notifications/' . User::first()->unreadNotifications->first()->id
+        );
         $response->assertStatus(401);
     }
 
@@ -85,10 +88,10 @@ class UserUnreadNotificationsControllerTest extends TestCase
     {
         $user = $this->login('api');
         set_sample_notifications_to_user($user);
-        $response = $this->json('DELETE','/api/v1/user/unread_notifications/all');
+        $response = $this->json('DELETE', '/api/v1/user/unread_notifications/all');
         $response->assertSuccessful();
         $result = json_decode($response->getContent());
-        $this->assertCount(0,$result);
+        $this->assertCount(0, $result);
     }
 
     /**
@@ -99,7 +102,7 @@ class UserUnreadNotificationsControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
         set_sample_notifications_to_user($user);
-        $response = $this->json('DELETE','/api/v1/user/unread_notifications/all');
+        $response = $this->json('DELETE', '/api/v1/user/unread_notifications/all');
         $response->assertStatus(401);
     }
 }

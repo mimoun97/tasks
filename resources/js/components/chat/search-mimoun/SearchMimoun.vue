@@ -16,7 +16,7 @@ export default {
   name: "SearchMimoun",
   data() {
     return {
-      search: undefined
+      search: ''
     };
   }
 };
