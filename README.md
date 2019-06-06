@@ -11,37 +11,38 @@
     </p>
     <p>
         <a href="https://tasks.mimoun1997.scool.cat/" target="_blank" rel="noopener noreferrer">
-            <img width="100" src="https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality" />
+            <img src="https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality" />
         </a>
         <a>
-            <img width="100" src="https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/build.png?b=master" alt="Build Status" />
+            <img src="https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/build.png?b=master" alt="Build Status" />
         </a>
         <a>
-            <img width="100" src="https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/code-intelligence.svg?b=master" alt="Code Intelligence Status" />
+            <img src="https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/code-intelligence.svg?b=master" alt="Code Intelligence Status" />
         </a>
         <a>
-            <img width="100" src="https://github.styleci.io/repos/154520137/shield?branch=master" alt="StyleCI" />
+            <img src="https://github.styleci.io/repos/154520137/shield?branch=master" alt="StyleCI" />
         </a>
     </p>
 </div>
 
 
 <div align="center">
-    <p>
-        <h2>Previsualització</h2>
-        <img align="left" src="./resources/img/preview.gif" alt="Captura" />
-    	<img align="right" src="./resources/img/preview2.gif" alt="Captura" />
-    </p>
+    <h2>Previsualització</h2>
+    <img src="./resources/img/preview.gif" alt="Captura" />
+    <img src="./resources/img/preview2.gif" alt="Captura" />
 </div>
 
 ---
 
 ## Index
 
-- [Instal·lació] (#instal·lació)
-- [Documentació] (#documentacio)
-- [Tests] (#tests)
-- [Referències] (#referencies)
+- [Index](#index)
+- [Instal·lació](#instal·lació)
+- [Documentació](#documentació)
+    - [Issues / Incidències](#issues--incidències)
+- [Tests](#tests)
+- [Referències](#referències)
+- [TODO](#todo)
 
 ---
 
