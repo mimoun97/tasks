@@ -69,6 +69,8 @@ class User extends Authenticatable implements MustVerifyEmail
             'email' => $this->email,
             'gravatar' => $this->gravatar,
             'mobile' => $this->mobile,
+            'mobile_verified_at' => $this->mobile_verified_at,
+            'mobile_verification_code' =>$this->mobile_verification_code,
             'admin' => (boolean)$this->admin,
             'roles' => $this->roles()->pluck('name')->unique()->toArray(),
             'permissions' => $this->getAllPermissions()->pluck('name')->unique()->toArray()

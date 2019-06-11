@@ -24,6 +24,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\LoggedUserPhotoController;
 use App\Http\Controllers\Multimedia\MultimediaController;
 use App\Http\Controllers\Newsletters\NewslettersController;
+use App\Http\Controllers\WebPush\PushSubscriptionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -71,8 +72,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/notifications', '\\' . NotificationController::class . '@index');
 
     // Push Subscriptions
-    Route::post('subscriptions', 'PushSubscriptionController@update');
-    Route::post('subscriptions/delete', 'PushSubscriptionController@destroy');
+    Route::post('subscriptions', '\\' . PushSubscriptionController::class . '@update');
+    Route::post('subscriptions/delete', '\\' . PushSubscriptionController::class . '@destroy');
 
     Route::get('/device-features', function () {
         return view('device');

@@ -68,6 +68,9 @@
 
             <span class="mr-5" v-role="'SuperAdmin'"><git-info class="primary--text"></git-info></span>
             <v-spacer></v-spacer>
+
+            <users-online-widget></users-online-widget>
+
             <notifications-widget></notifications-widget>
 
             {{-- <v-toolbar-side-icon @click.stop="drawerRigth = !drawerRigth"></v-toolbar-side-icon> --}}

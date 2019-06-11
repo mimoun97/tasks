@@ -40,6 +40,7 @@
           </v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
+      <v-btn color="primary" flat raised href="/users">Lista usuaris</v-btn>
     </v-list>
     <v-card v-else flat>
       <v-layout align-center column class="text-xs-center">
@@ -53,7 +54,6 @@
         <v-btn color="primary" flat raised>Reitenta</v-btn>
       </v-layout>
     </v-card>
-    <v-btn color="primary" flat raised href="/users">Lista usuaris</v-btn>
   </v-menu>
 </template>
 

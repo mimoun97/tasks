@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\TasksTagsController;
+use App\Http\Controllers\Api\SMS\VerifyMobileController;
 use App\Http\Controllers\Api\Chat\ChatMessagesController;
 use App\Http\Controllers\Api\HelloNotificationsController;
 use App\Http\Controllers\Api\Changelog\ChangelogController;
@@ -87,4 +88,9 @@ Route::middleware('auth:api')->group(function () {
 
     //push notifications 
     Route::post('/v1/notifications/hello', '\\' . HelloNotificationsController::class . '@store');
+
+    // mobile verify_mobile
+    Route::post('/v1/users/{user}/verify_mobile', '\\' . VerifyMobileController::class . '@store');
+    Route::post('/v1/users/{user}/send_mobile_verification', '\\' . VerifyMobileController::class .'@send');
+
 });
