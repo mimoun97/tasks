@@ -63,6 +63,7 @@ import GamePad from './components/game/GamePad.vue'
 import Multimedia from './components/multimedia/Multimedia.vue'
 //user
 import Users from './components/users/Users.vue'
+import UsersOnlineWidget from './components/users/UsersOnlineWidget.vue'
 
 window.Vue = Vue
 window.Vuetify = Vuetify
@@ -259,6 +260,7 @@ window.Vue.component('game-pad', GamePad)
 window.Vue.component('multimedia', Multimedia)
 //users
 window.Vue.component('users', Users)
+window.Vue.component('users-online-widget', UsersOnlineWidget)
 
 // eslint-disable-next-line no-unused-vars
 const app = new window.Vue(AppComponent)
