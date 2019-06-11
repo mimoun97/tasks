@@ -1,8 +1,8 @@
 <template>
   <v-btn
-    v-can="'tags.destroys'"
+    v-can="'tags.destroy'"
     icon
-    color="error"
+    color="grey"
     flat
     title="Eliminar l'etiqueta"
     :loading="removing"

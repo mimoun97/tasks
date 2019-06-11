@@ -15,7 +15,7 @@
 <script>
 import TaskCreate from "./TaskCreate";
 import TaskList from "./TaskList";
-import EmptyState from "./ui/EmptyState";
+import EmptyState from "../ui/EmptyState";
 
 export default {
   name: "Tasques",

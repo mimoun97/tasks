@@ -13,17 +13,16 @@ import AppComponent from './components/App.vue'
 import ExampleComponent from './components/ExampleComponent.vue'
 import Tasks from './components/Tasks.vue'
 import EditableText from './components/EditableText.vue'
-import Tasques from './components/Tasques.vue'
+
 import LoginForm from './components/LoginForm.vue'
 import RegisterForm from './components/RegisterForm.vue'
 import UserList from './components/UserList.vue'
 import UserSelect from './components/UserSelect.vue'
-import Tags from './components/Tags.vue'
+import Tags from './components/tags/Tags.vue'
 import Impersonate from './components/Impersonate.vue'
 import About from './components/About.vue'
 import Contact from './components/Contact.vue'
-import TaskList from './components/TaskList.vue'
-import TaskCompletedToggle from './components/TaskCompletedToggle.vue'
+import Tasques from './components/tasques/Tasques.vue'
 import UserProfile from './components/UserProfile.vue'
 
 import snackbar from './plugins/snackbar'
@@ -48,7 +47,7 @@ import VueProgressBar from 'vue-progressbar'
 //device features geo, vibration, orientation..
 import TheDeviceFeatures from './components/device/TheDeviceFeatures'
 //task link show
-import TaskCard from './components/TaskCard'
+import TaskCard from './components/tasques/TaskCard'
 // parallax webp
 import VParallaxWebp from './components/ui/VParallaxWebp.vue'
 //clock
@@ -220,9 +219,7 @@ window.Vue.component('tags', Tags)
 window.Vue.component('impersonate', Impersonate)
 window.Vue.component('about', About)
 window.Vue.component('contact', Contact)
-window.Vue.component('task-list', TaskList)
 window.Vue.component('git-info', GitInfoComponent)
-window.Vue.component('task-completed-toggle', TaskCompletedToggle)
 window.Vue.component('user-profile', UserProfile)
 window.Vue.component('user-settings', UserSettings)
 window.Vue.component('changelog', Changelog)

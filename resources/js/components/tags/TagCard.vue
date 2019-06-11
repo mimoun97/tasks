@@ -1,5 +1,5 @@
 <template>
-    <v-card class="my-2">
+    <v-card flat class="my-2">
         <v-card-title v-text="tag.name"></v-card-title>
         <v-list dense>
             <v-list-tile>
