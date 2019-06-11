@@ -1,6 +1,6 @@
 <template>
   <v-menu offset-y>
-    <v-badge slot="activator" left overlap color="error" class="ml-3 mr-2 mt-2">
+    <v-badge slot="activator" left overlap color="success" class="ml-3 mr-2 mt-2">
       <span slot="badge" v-text="counter"></span>
       <v-btn icon color="white" :loading="loading" :disabled="loading">
         <v-icon color="primary">person</v-icon>
@@ -9,8 +9,8 @@
     <v-list v-if="counter > 0">
       <v-list-tile>
         <v-list-tile-title>
-          <span v-if="counter === 1"><b v-text="users[0].name"></b> connectat</span>
-          <span v-else><b v-text="counter + ' usuaris'"></b> connectats</span>
+          <span v-if="counter === 1"><b v-text="users[0].name"></b> (Tú) online</span>
+          <span v-else><b class="success--text" v-text="counter"></b> usuaris online</span>
         </v-list-tile-title>
       </v-list-tile>
       <v-divider></v-divider>
@@ -42,7 +42,8 @@
       </v-list-tile>
       <v-btn color="primary" flat raised href="/users">Lista usuaris</v-btn>
     </v-list>
-    <v-card v-else flat>
+    <v-divider v-if="counter === 1"></v-divider>
+    <v-card class="py-2" v-if="counter === 1" flat>
       <v-layout align-center column class="text-xs-center">
         <v-avatar color="grey lighten-4" size="56" class="mb-2">
           <v-icon color="grey lighten-1" style="font-size: 48px;">error_outline</v-icon>

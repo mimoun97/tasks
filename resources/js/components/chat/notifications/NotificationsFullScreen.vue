@@ -1,7 +1,7 @@
 <template>
   <v-layout align-center justify-center row fill-height>
     <v-flex>
-      <v-dialog v-model="dataShow" fullscreen transition="dialog-bottom-transition" full-width>
+      <v-dialog v-model="showing" fullscreen transition="dialog-bottom-transition" full-width>
         <v-card color="rgb(0, 0, 0, 0.85)" class="parent">
           <v-layout align-center justify-center row fill-height>
             <div class="child">
@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       showing: false,
-      granted: false
+      granted: undefined
     };
   },
   methods: {
@@ -52,10 +52,12 @@ export default {
         if (result === "default") {
           console.log("The permission request was dismissed.");
           this.showing = false
+          this.granted = undefined
           return;
         }
         // Do something with the granted permission.
         this.granted = true
+        this.showing = false
       });
     },
     hasPermission() {

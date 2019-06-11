@@ -6,7 +6,7 @@
 
 @section('content')
     <v-app light>
-        <v-toolbar dark color="grey">
+        <v-toolbar dark color="#2196F3">
             <v-toolbar-title class="hidden-md-and-down">Aplicació de tasques</v-toolbar-title>
             <v-spacer></v-spacer>
             @if (!Auth::user())

@@ -56,7 +56,9 @@ export default {
     reset() {
       this.loading = true;
       window.axios
-        .post("/password/" + this.user.email)
+        .post("/password/email", {
+          email: this.user.email
+        })
         .then(response => {
           console.log(this.user.email);
           this.loading = false;

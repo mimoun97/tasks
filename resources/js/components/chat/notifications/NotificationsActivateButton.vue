@@ -1,6 +1,6 @@
 <template>
-  <v-card dark color="#9de1fe" flat>
-    <v-layout align-center row class="text-xs-left">
+  <v-card dark color="#9de1fe" flat v-show="hasPermission == undefined">
+    <v-layout align-center row class="text-xs-left pl-2">
       <v-flex xs3 >
         <v-avatar size="54" color="white">
           <v-icon color="#9de1fe" size="28">notifications_off</v-icon>
@@ -8,8 +8,8 @@
       </v-flex>
       <v-flex xs9>
         <v-card-text class="grey--text text--darken-2">
-        <p class="title">Recibe notificaciones de mensajes nuevos</p> 
-          <p class="body pointer underline" @click="requestPermission">Activar notificacions d'escriptori ></p>
+        <p class="title font-weight-light">Recibe notificaciones de mensajes nuevos</p> 
+          <p class="body pointer" @click="requestPermission"><span class="underline">Activar notificacions d'escriptori</span> ></p>
           <p></p>
         </v-card-text>
       </v-flex>
@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      hasPermission: false,
+      hasPermission: undefined,
     };
   },
   methods: {
