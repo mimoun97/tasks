@@ -71,8 +71,8 @@ window.Vuetify = Vuetify
 const PRIMARY_COLOR_KEY = 'primary_color_key'
 const SECONDARY_COLOR_KEY = 'secondary_color_key'
 
-const primaryColor = window.localStorage.getItem(PRIMARY_COLOR_KEY) || '#4C63B6'
-const secondaryColor = window.localStorage.getItem(SECONDARY_COLOR_KEY) || '#2CB1BC'
+const primaryColor = window.localStorage.getItem(PRIMARY_COLOR_KEY) || '#2196F3'
+const secondaryColor = window.localStorage.getItem(SECONDARY_COLOR_KEY) || '#4C63B6'
 
 if (!window.localStorage.getItem(PRIMARY_COLOR_KEY)) window.localStorage.setItem(PRIMARY_COLOR_KEY, primaryColor)
 if (!window.localStorage.getItem(SECONDARY_COLOR_KEY)) window.localStorage.setItem(SECONDARY_COLOR_KEY, secondaryColor)

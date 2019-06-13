@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import EventBus from "../../eventBus";
 import pushSubscriptions from '../../api/pushSubscriptions.js'
 export default {
   name: 'PushNotificationButton',
@@ -69,26 +70,26 @@ export default {
     }
   },
   created () {
-    window.eventBus.$on('pushDisabled', () => {
+    EventBus.$on('pushDisabled', () => {
       console.log('Received event pushDisabled')
       this.disabled = true
     })
-    window.eventBus.$on('pushEnabled', () => {
+    EventBus.$on('pushEnabled', () => {
       console.log('Received event pushEnabled')
       this.disabled = false
     })
-    window.eventBus.$on('enableNotifications', () => {
+    EventBus.$on('enableNotifications', () => {
       console.log('Received event enableNotifications')
       this.disableWatcher = true
       this.notificationEnabled = true
       this.disableWatcher = false
     })
-    window.eventBus.$on('disableNotifications', () => {
+    EventBus.$on('disableNotifications', () => {
       this.disableWatcher = true
       this.notificationEnabled = false
       this.disableWatcher = false
     })
-    window.eventBus.$on('pushOperationFinished', () => {
+    EventBus.$on('pushOperationFinished', () => {
       this.loading = false
     })
   }
