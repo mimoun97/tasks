@@ -74,7 +74,7 @@
         :loading="loading"
         :pagination.sync="pagination"
       >
-        <v-card slot="item" slot-scope="{item:tag}" xs12 class="my-1 mx-2">
+        <v-card flat slot="item" slot-scope="{item:tag}" xs12 class="my-1 mx-2">
           <v-card-title class="title grey--text text--darken-1 my-2">
             <v-chip dark :color="tag.color" class="title">{{tag.name}}</v-chip>
           </v-card-title>

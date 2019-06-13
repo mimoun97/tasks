@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('admin')->default(false);
             $table->string('mobile')->nullable();
             $table->timestamp('mobile_verified_at')->nullable();
+            $table->text('mobile_verification_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

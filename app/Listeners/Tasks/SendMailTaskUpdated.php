@@ -10,6 +10,7 @@ use App\Mail\Tasks\TaskUpdated as TaskUpdatedMail;
 
 class SendMailTaskUpdated
 {
+    use InteractsWithQueue;
     /**
      * Create the event listener.
      *

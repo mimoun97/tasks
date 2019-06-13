@@ -1,5 +1,5 @@
 <template>
-  <v-card class="my-1">
+  <v-card flat class="my-1">
     <v-card-title primary-title class="title grey--text text--darken-1 my-2" v-text="dataTask.name"></v-card-title>
     <v-card-text class="content grey--text text--darken-4 my-2" v-text="dataTask.description"></v-card-text>
     <v-card-text class>
@@ -34,6 +34,9 @@
         <v-flex mb-2>
           <task-destroy :task="dataTask" @removed="removeTask" :uri="uri"></task-destroy>
         </v-flex>
+        <v-flex mb-2>
+          <task-share :task="dataTask"></task-share>
+        </v-flex>
       </v-layout>
     </v-card-actions>
   </v-card>
@@ -45,6 +48,7 @@ import TaskDestroy from "./TaskDestroy";
 import TaskUpdate from "./TaskUpdate";
 import TaskShow from "./TaskShow";
 import TasksTags from "./TasksTags";
+import TaskShare from "./TaskShare"
 
 export default {
   name: "TaskCard",
@@ -53,7 +57,8 @@ export default {
     "task-destroy": TaskDestroy,
     "task-update": TaskUpdate,
     "task-show": TaskShow,
-    "tasks-tags": TasksTags
+    "tasks-tags": TasksTags,
+    "task-share": TaskShare
   },
   data() {
     return {

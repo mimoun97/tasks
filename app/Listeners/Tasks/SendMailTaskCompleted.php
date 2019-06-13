@@ -11,6 +11,7 @@ use App\User;
 
 class SendMailTaskCompleted
 {
+    use InteractsWithQueue;
     /**
      * Create the event listener.
      *
@@ -29,7 +30,7 @@ class SendMailTaskCompleted
      */
     public function handle(TaskCompleted $event)
     {
-        $subject = "Hola";//$event->task->subject()"";
+        $subject = $event->task->subject();
         Mail::to($event->task->user)
             ->cc(config('tasks.manager_email'))
             ->send((new TaskCompletedMail($event->task))->subject($subject));

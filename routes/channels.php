@@ -18,3 +18,12 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 Broadcast::channel('Tasques', function ($user) {
     return $user->isSuperAdmin() || $user->hasRole('TaskManager');
 });
+
+Broadcast::channel('App.Chat', function ($user) {
+    return [
+        'id' => $user->id,
+        'name' => $user->name,
+        'email' => $user->email,
+        'gravatar' => $user->gravatar
+    ];
+});

@@ -23,7 +23,7 @@ if (!function_exists('create_primary_user')) {
                 'name' => config('tasks.admin_user.name'),
                 'email' => config('tasks.admin_user.email'),
                 'mobile' => config('tasks.admin_user.mobile'),
-                'password' => config('tasks.admin_user.password')
+                'password' => bcrypt(config('tasks.admin_user.password'))
             ]);
 
             $user->admin = true;
@@ -41,7 +41,7 @@ if (!function_exists('create_acacha_user')) {
                 'name' => config('tasks.acacha_user.name'),
                 'email' => config('tasks.acacha_user.email'),
                 'mobile' => config('tasks.acacha_user.mobile'),
-                'password' => config('tasks.acacha_user.email')
+                'password' => bcrypt(config('tasks.acacha_user.email'))
             ]);
 
             $user->admin = true;

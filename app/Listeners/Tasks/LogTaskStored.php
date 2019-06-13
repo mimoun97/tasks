@@ -30,7 +30,7 @@ class LogTaskStored implements ShouldQueue
     public function handle(TaskStored $event)
     {
         Log::create([
-            'text' => "S'ha creat la tasca '" . $event->task->name . "'",
+            'text' => "S'ha creat la tasca '" . ellipsis($event->task->name) . "'",
             'time' => Carbon::now(),
             'action_type' => 'crear',
             'module_type' => 'Tasques',

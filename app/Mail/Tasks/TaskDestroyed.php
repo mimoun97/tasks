@@ -1,30 +1,27 @@
 <?php
 
-namespace App\Mail;
+namespace App\Mail\Tasks;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class TaskUncompleted extends Mailable
+class TaskDestroyed extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
     public $task;
 
     /**
-     * TaskUncompleted constructor.
-     * @param $user
-     * @param $task
+     * Create a new message instance.
+     *
+     * @return void
      */
-    public function __construct($user, $task)
+    public function __construct($task)
     {
-        $this->user = $user;
         $this->task = $task;
     }
-
 
     /**
      * Build the message.
@@ -33,6 +30,6 @@ class TaskUncompleted extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.tasks.uncompleted');
+        return $this->markdown('emails.tasks.destroyed');
     }
 }

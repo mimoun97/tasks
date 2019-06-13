@@ -30,7 +30,7 @@ class LogTaskDestroyed implements ShouldQueue
     public function handle(TaskDestroyed $event)
     {
         Log::create([
-            'text' => "S'ha eliminat la tasca '" . $event->task->name . "'",
+            'text' => "S'ha eliminat la tasca '" . ellipsis($event->task->name) . "'",
             'time' => Carbon::now(),
             'action_type' => 'eliminar',
             'module_type' => 'Tasques',

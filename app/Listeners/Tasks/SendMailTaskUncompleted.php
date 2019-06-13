@@ -10,6 +10,7 @@ use App\Mail\Tasks\TaskUncompleted as TaskUncompletedMail;
 
 class SendMailTaskUncompleted
 {
+    use InteractsWithQueue;
     /**
      * Create the event listener.
      *

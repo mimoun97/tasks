@@ -24,7 +24,7 @@
       </v-card>
     </v-dialog>
 
-    <v-btn icon color="primary" flat title="Mostrar l'etiqueta" @click="dialog=true">
+    <v-btn icon color="grey" flat title="Mostrar l'etiqueta" @click="dialog=true">
       <v-icon>visibility</v-icon>
     </v-btn>
   </span>

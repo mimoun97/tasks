@@ -1,34 +1,48 @@
-# Tasks - Aplicació tasques
+<div align="center">
+    <p>
+        <h1>
+            <a href="https://tasks.mimoun1997.scool.cat/">
+            <img src="resources/img/icons/icon-512x512.png" height="256" alt="Tasks"/>
+            </a>
+            <br/>
+            Tasques M97
+        </h1>
+        <h4>Aplicació de tasques feta a 2DAM curs 2018-2019</h4>
+    </p>
+    <p>
+        <a href="https://scrutinizer-ci.com/g/mimoun1997/tasks/?branch=master" target="_blank" rel="noopener noreferrer">
+            <img src="https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality" />
+        </a>
+        <a href="https://scrutinizer-ci.com/g/mimoun1997/tasks/build-status/master" target="_blank" rel="noopener noreferrer">
+            <img src="https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/build.png?b=master" alt="Build Status" />
+        </a>
+        <a href="https://scrutinizer-ci.com/code-intelligence" target="_blank" rel="noopener noreferrer">
+            <img src="https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/code-intelligence.svg?b=master" alt="Code Intelligence Status" />
+        </a>
+        <a href="https://github.styleci.io/repos/154520137" target="_blank" rel="noopener noreferrer">
+            <img src="https://github.styleci.io/repos/154520137/shield?branch=master" alt="StyleCI" />
+        </a>
+    </p>
+</div>
 
-<center>
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mimoun1997/tasks/?branch=master)
+<div align="center">
+    <h2>Previsualització</h2>
+    <img src="./resources/img/preview.gif" alt="Captura" />
+    <img src="./resources/img/preview2.gif" alt="Captura" />
+</div>
 
-[![Build Status](https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mimoun1997/tasks/build-status/master)
-
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/mimoun1997/tasks/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
-
-[![StyleCI](https://github.styleci.io/repos/154520137/shield?branch=master)](https://github.styleci.io/repos/154520137)
-
-</center>
-> Aplicació de tasques feta a 2DAM curs 2018-2019
-
-[![Captura pantalla](public/img/capturatasks.PNG)]()
-
-- Captures de pantalla tasks
-
-
-
----
 
 ## Index
 
-- [Instal·lació] (#installacio)
-- [Documentació] (#documentacio)
-- [Tests] (#tests)
-- [Referències] (#referencies)
+- [Index](#index)
+- [Instal·lació](#instal·lació)
+- [Documentació](#documentació)
+    - [Issues / Incidències](#issues--incidències)
+- [Tests](#tests)
+- [Referències](#referències)
+- [TODO](#todo)
 
----
 
 ## Instal·lació
 
@@ -48,9 +62,6 @@ php artisan passport:install
 ```
 
 
-
----
-
 ## Documentació
 
 TODO
@@ -66,24 +77,22 @@ Tancar issues en commits paraules clau
 
 
 
-
----
 ## Tests
 
-Per executar els testos
 - php
 ```bash
 phpunit
 ```
-Executant phpunit en SO windows.
-![Test](public/img/tests.gif)
+
+<p align="center">
+	<img src="public/img/tests.gif" alt="Tests" />
+</p>
 
 - javascript
 ```bash
 cd vue
 npm run test:unit
 ```
----
 
 ## Referències
 
@@ -93,12 +102,12 @@ npm run test:unit
 
 
 ## TODO
-- [ ] efecte ripple: https://vuetifyjs.com/en/directives/ripples
-- [ ] rendiment ligthhouse
+- [x] efecte ripple: https://vuetifyjs.com/en/directives/ripples
+- [x] rendiment ligthhouse
 - [ ] wepb i html5 element `<picture>`
-- [ ] webpack -> production
-- [ ] minificació
-- [ ] CDN vs import fonts?
+- [x] webpack -> production
+- [x] minificació
+- [x] CDN vs import fonts?
 - [x] bg images from https://www.pexels.com/
 - [ ] link compartir tasca
 

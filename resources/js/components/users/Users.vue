@@ -60,9 +60,7 @@
           <tr>
             <td>{{ user.id }}</td>
             <td v-text="user.name"></td>
-            <td>
-              <v-switch v-model="user.admin" label=""></v-switch>
-            </td>
+            <td v-text="user.mobile_verified_at"></td>
             <td>
               <v-avatar :title="user.name" size="48">
                 <img v-if="user.gravatar" :src="user.gravatar+'?48'" alt="avatar">
@@ -70,15 +68,10 @@
               </v-avatar>
             </td>
             <td>{{user.mobile}}</td>
-            <td></td>
-            <td></td>
             <td>
-              <v-btn @click="sendSMS(user)" color="primary" round class="white--text" aria-label>
-                <v-icon>sms</v-icon>
-              </v-btn>
-              <v-btn @click="sendMail(user)" color="primary" class="white--text" aria-label>
-                <v-icon>email</v-icon>
-              </v-btn>
+              <mobile-sms :user="user"></mobile-sms>
+              <verify-mobile-form :user="user"></verify-mobile-form>
+              <user-emails :user="user"></user-emails>
             </td>
           </tr>
         </template>
@@ -102,8 +95,15 @@
 </template>
 
 <script>
+import MobileSMS from './MobileSMS'
+import UserEmails from './UserEmails'
+
 export default {
   name: "Users",
+  components: {
+    'mobile-sms': MobileSMS,
+    'user-emails': UserEmails
+  },
   data() {
     return {
       user: "",
@@ -116,7 +116,7 @@ export default {
       headers: [
         { text: "Id", value: "id" },
         { text: "Name", value: "name" },
-        { text: "Admin", value: "admin" },
+        { text: "Mòbil verificat", value: "mobile_verified_at" },
         { text: "Avatar", value: "gravatar" },
         { text: "mobile", value: "mobile" },
         { text: "Accions", value: "accions" }
@@ -146,10 +146,6 @@ export default {
     sendMail(user) {
         // TODO sendMail
         console.log("sendMail to:", user.email);
-    },
-    sendSMS(user) {
-        // TODO sendSMS
-        console.log("sendSMS to:", user.mobile);
     }
   },
   created() {},

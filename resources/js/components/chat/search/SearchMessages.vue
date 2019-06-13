@@ -1,5 +1,5 @@
 <template>
-  <v-card color="#eeeeee" flat>
+  <v-card flat>
     <v-layout align-center justify-space-around column fill-height>
       <v-flex xs12>
         <v-text-field

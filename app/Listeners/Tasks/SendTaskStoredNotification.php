@@ -9,6 +9,7 @@ use App\Notifications\Tasks\TaskStored as TaskStoredNotification;
 
 class SendTaskStoredNotification
 {
+    use InteractsWithQueue;
     /**
      * Create the event listener.
      *

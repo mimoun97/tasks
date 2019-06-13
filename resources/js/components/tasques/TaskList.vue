@@ -130,7 +130,7 @@ import TaskUpdate from "./TaskUpdate";
 import TaskShow from "./TaskShow";
 import TasksTags from "./TasksTags";
 import TaskCard from "./TaskCard";
-import EventBus from "../eventBus";
+import EventBus from "../../eventBus";
 
 export default {
   name: "TaskList",
@@ -251,11 +251,7 @@ export default {
       EventBus.$emit("remove-task-gesture-" + task.id, task);
     },
     removeTask(task) {
-      //if task remove called from touch-gesture the emit event propagates again, we check if the task
-      // is in the dataTasks
-      if (this.dataTasks.indexOf(task) !== -1) {
-        this.dataTasks.splice(this.dataTasks.indexOf(task), 1);
-      }
+        this.dataTasks.splice(this.dataTasks.indexOf(task), 1)
     },
     updateTask(task) {
       this.refresh();
