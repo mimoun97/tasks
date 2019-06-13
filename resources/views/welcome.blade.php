@@ -13,7 +13,7 @@
                 <v-btn dark class="yellow lighten-2 black--text hidden-md-and-down" href="/login">Login</v-btn>
                 <v-btn dark class="green lighten-2 black--text" href="/register">Register</v-btn>
             @else
-                <v-btn dark round color="primary" class="elevation-2" placeholder="Home" href="/home" aria-label="Home">
+                <v-btn dark round color="blue darken-2" class="elevation-2" placeholder="Home" href="/home" aria-label="Home">
                     <v-icon>home</v-icon>
                 </v-btn>
             @endif

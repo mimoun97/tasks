@@ -48,7 +48,7 @@
         <v-avatar color="grey lighten-4" size="56" class="mb-2">
           <v-icon color="grey lighten-1" style="font-size: 48px;">error_outline</v-icon>
         </v-avatar>
-        <h3 class="grey--text text--darken-2">No hi ha cap usuari online</h3>
+        <h3 class="grey--text text--darken-2">No hi ha cap altre usuari online</h3>
         <p
           class="grey--text text--lighten-1 mb-2 font-weight-light" style="text-overflow: ellipsis;"
         >Comproba la teva conexió a internet</p>
